@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 64px;
+    background-color: #ffffff;
+}

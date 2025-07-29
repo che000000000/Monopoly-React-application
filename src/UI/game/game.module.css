@@ -1,0 +1,17 @@
+.container {
+    padding: 0.4%;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: calc(97vh - 111px);
+    width: calc(97vh - 111px);
+    display: grid;
+    grid-template-columns: 1fr 4.67fr 1fr; /* 15% ≈ 1fr, 70% ≈ 4.67fr */
+    grid-template-rows: 1fr 4.67fr 1fr;
+    gap: 0.5%;
+}
+
+.section {
+    font-size: 1.6vh;
+    background-color: #000000;
+    padding: 5px;
+}
