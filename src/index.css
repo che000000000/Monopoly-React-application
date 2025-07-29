@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Jost';
+    src: url('./fonts/Jost-VariableFont_wght.ttf');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Jost';
+    background-color: #000000;
+}
+
+ul {
+    font-family: 'Jost';
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+    font-family: 'Jost';
+}
+
+button {
+    font-family: 'Jost';
+    font-weight: 600;
+    color: #fff;
+    background-color: #06080f;
+    border: none;
+    padding: 0;
+}
+
+.input {
+    background-color: none;
+}
