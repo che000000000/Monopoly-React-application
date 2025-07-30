@@ -1,16 +1,17 @@
 .container {
     color: #000000;
     border: 0.2vh solid #000000;
-    height: calc(97vh - 111px);
-    width: calc(97vh - 111px);
+    height: calc(97vh);
+    width: calc(97vh);
     display: grid;
     grid-template-columns: 1fr 4.67fr 1fr;
-    grid-template-rows: 1fr 4.67fr 1fr;
+    grid-template-rows: 1fr 4.67fr 1fr;     
 }
 
 .section {
+    font-size: 1.5vh;
     background-color: #ffffff;
-    border: 1px solid #000000;
+    border: 0.2vh solid #000000;
 }
 
 .top_section {

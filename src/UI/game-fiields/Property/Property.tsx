@@ -5,7 +5,7 @@ function Property(props: { orientation: string, color: string, name: string }) {
         case 'top': return (
             <div className={styles.top_container}>
                 <div className={styles.top_header} style={{ backgroundColor: props.color }}></div>
-                <div className={styles.field_name}>{props.name}</div>
+                <div className={styles.vertical_field_name}>{props.name}</div>
                 <div className={styles.field_price}>M100</div>
             </div>
         )
@@ -19,7 +19,7 @@ function Property(props: { orientation: string, color: string, name: string }) {
         case 'bottom': return (
             <div className={styles.bottom_container}>
                 <div className={styles.field_price}>M100</div>
-                <div className={styles.field_name}>{props.name}</div>
+                <div className={styles.vertical_field_name}>{props.name}</div>
                 <div className={styles.bottom_header} style={{ backgroundColor: props.color }}></div>
             </div>
         )
