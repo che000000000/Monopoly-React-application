@@ -1,7 +1,7 @@
 .container {
     width: 328px;
     display: flex;
-    border: 1px solid #fff;
+    border: 1px solid #000000;
     border-radius: 10px;
 }
 
@@ -11,10 +11,10 @@
     border-radius: 11px;
     border: none;
     outline: none;
-    background-color: #06080f;
+    background-color: #ffffff;
     font-family: 'Jost';
     font-size: 14px;
-    color: #fff;
+    color: #000000;
     font-weight: 600;
 }
 
@@ -26,8 +26,8 @@ input::placeholder {
     display: flex;
     flex-grow: 0;
     width: max-content;
+    color: #ffffff;
     padding: 5px 10px;
-    border-left: 1px solid #fff;
-    border-radius: 11px;
+    border-radius: 9px;
     cursor: pointer;
 }

@@ -10,7 +10,8 @@
 body {
     margin: 0;
     font-family: 'Jost';
-    background-color: #000000;
+    font-weight: 500;
+    background-color: #ffffff;
 }
 
 ul {
@@ -27,8 +28,7 @@ li {
 button {
     font-family: 'Jost';
     font-weight: 600;
-    color: #fff;
-    background-color: #06080f;
+    background-color: #000000;
     border: none;
     padding: 0;
 }

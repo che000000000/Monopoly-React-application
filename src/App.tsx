@@ -5,7 +5,7 @@ import styles from './app.module.css'
 function App() {
   return (
     <div className={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.main_content}>
         <Game />
       </div>
