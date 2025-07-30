@@ -4,13 +4,13 @@
   width: fit-content;
   height: fit-content;
   padding: 0 5px;
-  border: 1px solid #fff;
+  border: 1px solid #000000;
   cursor: pointer;
 }
 
 .text {
   font-size: 20px;
   font-weight: 800;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #000000;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
 }

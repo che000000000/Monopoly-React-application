@@ -6,11 +6,10 @@
 
 .nav_item {
     font-size: 16px;
-    font-weight: 500;
     transition: 125ms;
     cursor: pointer;
 }
 
 .nav_item:hover {
-    color: #cfcfcf;
+    color: #424242;
 }
