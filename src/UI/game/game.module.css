@@ -1,6 +1,6 @@
 .container {
-    height: 98vh;
-    width: 98vh;
+    height: calc(98vh);
+    width: calc(98vh);
     display: grid;
     grid-template-columns: 13.5% 73% 13.5%;
     grid-template-rows: 13.5% 73% 13.5%;
