@@ -1,6 +1,6 @@
 .container {
-    height: calc(98vh);
-    width: calc(98vh);
+    height: 99vmin;
+    width: 99vmin;
     display: grid;
     grid-template-columns: 13.5% 73% 13.5%;
     grid-template-rows: 13.5% 73% 13.5%;
@@ -8,7 +8,7 @@
 }
 
 .section {
-    font-size: 1.5vh;
+    font-size: 1.5vmin;
     background-color: #ffffff;
 }
 
@@ -33,25 +33,25 @@
 }
 
 .chat_section {
-    border: 0.3vh solid #000000;
+    border: 0.3vmin solid #000000;
 }
 
 .stop {
-    border-left: 0.3vh solid #000000;
-    border-top: 0.3vh solid #000000;
+    border-left: 0.3vmin solid #000000;
+    border-top: 0.3vmin solid #000000;
 }
 
 .goto_prison {
-    border-top: 0.3vh solid #000000;
-    border-right: 0.3vh solid #000000;
+    border-top: 0.3vmin solid #000000;
+    border-right: 0.3vmin solid #000000;
 }
 
 .start {
-    border-right: 0.3vh solid #000000;
-    border-bottom: 0.3vh solid #000000;
+    border-right: 0.3vmin solid #000000;
+    border-bottom: 0.3vmin solid #000000;
 }
 
 .forward_joly {
-    border-bottom: 0.3vh solid #000000;
-    border-left: 0.3vh solid #000000;
+    border-bottom: 0.3vmin solid #000000;
+    border-left: 0.3vmin solid #000000;
 }

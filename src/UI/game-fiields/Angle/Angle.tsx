@@ -17,27 +17,27 @@ function Angle(props: { type: AngleTypes }) {
             <div className={styles.container}>
                 <div className={styles.go_description}>ПОЛУЧИТЕ ЗАРПЛАТУ M200. КОГДА ВЫ ПРОХОДИТЕ ЭТО ПОЛЕ.</div>
                 <div className={styles.go_name}>ВПЕРЕД</div>
-                <img className={styles.go_icon} src={go_arrow}></img>
+                <img className={styles.go_icon} alt='go' src={go_arrow}></img>
             </div>
         )
         case AngleTypes.JUST_VISITING: return (
             <div className={styles.container}>
                 <div className={styles.name}>ПРОСТО</div>
-                <img className={styles.icon} src={just_visiting}></img>
+                <img className={styles.icon} alt='just-visiting' src={just_visiting}></img>
                 <div className={styles.name}>ПОСЕТИЛИ</div>
             </div>
         )
         case AngleTypes.FREE_PARKING: return (
             <div className={styles.container}>
                 <div className={styles.name}>БЕСПЛАТНАЯ</div>
-                <img className={styles.icon} src={free_parking}></img>
+                <img className={styles.icon} alt='free-parking' src={free_parking}></img>
                 <div className={styles.name}>ПАРКОВКА</div>
             </div>
         )
         case AngleTypes.JAIL: return (
             <div className={styles.container}>
                 <div className={styles.name}>ОТПРАВЛЯЙТЕСЬ</div>
-                <img className={styles.icon} src={jail}></img>
+                <img className={styles.icon} alt='jail' src={jail}></img>
                 <div className={styles.name}>В ТЮРЬМУ</div>
             </div>
         )

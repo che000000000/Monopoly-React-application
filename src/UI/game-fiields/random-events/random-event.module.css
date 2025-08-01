@@ -8,44 +8,44 @@
 .top_container {
     flex-direction: column;
     padding: 35% 0 20%;
-    border-right: 0.3vh solid #000000;
-    border-top: 0.3vh solid #000000;
+    border-right: 0.3vmin solid #000000;
+    border-top: 0.3vmin solid #000000;
 }
 
 .right_container {
-    padding: 0 10% 0 5%;
-    border-bottom: 0.3vh solid #000000;
-    border-right: 0.3vh solid #000000;
+    padding: 0 5% 0 10%;
+    border-bottom: 0.3vmin solid #000000;
+    border-right: 0.3vmin solid #000000;
 }
 
 .bottom_container {
     flex-direction: column;
     padding: 35% 0 20%;
-    border-right: 0.3vh solid #000000;
-    border-bottom: 0.3vh solid #000000;
+    border-right: 0.3vmin solid #000000;
+    border-bottom: 0.3vmin solid #000000;
 }
 
 .left_container {
     flex-direction: row-reverse;
-    padding: 0 5% 0 0;
-    border-bottom: 0.3vh solid #000000;
-    border-left: 0.3vh solid #000000;
+    padding: 0 10% 0 5%;
+    border-bottom: 0.3vmin solid #000000;
+    border-left: 0.3vmin solid #000000;
 }
 
 .vertical_field_name {
-    font-size: 0.8vh;
+    font-size: 0.8vmin;
     font-weight: 700;
 }
 
 .horizontal_field_name {
-    font-size: 0.8vh;
+    font-size: 0.8vmin;
     font-weight: 700;
-    width: 7vh;
+    width: 7vmin;
 }
 
 .icon {
-    width: 5vh;
-    height: 5vh;
+    width: 4vmin;
+    height: 4vmin;
 }
 
 .right_icon {

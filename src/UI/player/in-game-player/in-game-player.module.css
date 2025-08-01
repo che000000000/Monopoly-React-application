@@ -1,0 +1,38 @@
+.container {
+    height: 4vmin;
+    display: flex;
+    align-items: center;
+    gap: 0.8vmin;
+    font-size: 1.4vmin;
+    font-weight: 700;
+    background-color: #ffffff;
+    border: 0.2vmin solid #000000;
+    padding: 0 0.5vmin;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.is_turn_owner_container {
+    background-color: #6dd459;
+}
+
+.left_player_container {
+    background-color: #e74c4c;
+}
+
+.name {
+    max-width: 11vmin;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.avatar {
+    width: 3vmin;
+    height: 3vmin;
+    border-radius: 64px;
+}
+
+.figurine {
+    width: 3.5vmin;
+}

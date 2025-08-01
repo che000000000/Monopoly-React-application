@@ -3,14 +3,16 @@
   align-items: center;
   width: fit-content;
   height: fit-content;
-  padding: 0 5px;
-  border: 1px solid #000000;
+  padding: 0 0.5vh;
+  background-color: #ec2121;
+  border: 0.2vh solid #dddddd;
   cursor: pointer;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .text {
-  font-size: 20px;
+  font-size: 2vh;
   font-weight: 800;
-  color: #000000;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

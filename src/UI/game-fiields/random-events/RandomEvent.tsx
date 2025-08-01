@@ -1,4 +1,4 @@
-import styles from './special.module.css'
+import styles from './random-event.module.css'
 import chance from '../../../icons/chance.svg'
 import railway from '../../../icons/railway.svg'
 import community_chest from '../../../icons/community-chest.svg'
@@ -6,7 +6,7 @@ import tax from '../../../icons/tax.svg'
 import utility_electric_station from '../../../icons/utility_electric_station.svg'
 import utility_water_works from '../../../icons/utility_water_works.svg'
 
-export enum SpecialTypes {
+export enum RandomEvents {
     CHANCE = 'CHANCE',
     COMMUNITY_CHEST = 'COMMUNITY_CHEST',
     RAILROAD = 'RAILROAD',
@@ -14,18 +14,18 @@ export enum SpecialTypes {
     UTILITY = 'UTILITY'
 }
 
-function Special(props: { orientation: string, type: SpecialTypes, name: string }) {
-    const getIcon = (fieldType: SpecialTypes, fieldName: string) => {
+function RandomEvent(props: { orientation: string, type: RandomEvents, name: string }) {
+    const getIcon = (fieldType: RandomEvents, fieldName: string) => {
         switch (fieldType) {
-            case SpecialTypes.CHANCE:
+            case RandomEvents.CHANCE:
                 return chance;
-            case SpecialTypes.COMMUNITY_CHEST:
+            case RandomEvents.COMMUNITY_CHEST:
                 return community_chest;
-            case SpecialTypes.RAILROAD:
+            case RandomEvents.RAILROAD:
                 return railway;
-            case SpecialTypes.TAX:
+            case RandomEvents.TAX:
                 return tax;
-            case SpecialTypes.UTILITY:
+            case RandomEvents.UTILITY:
                 return fieldName === 'ЭЛЕКТРИЧЕСТВО'
                     ? utility_electric_station
                     : utility_water_works;
@@ -65,4 +65,4 @@ function Special(props: { orientation: string, type: SpecialTypes, name: string 
     }
 }
 
-export default Special;
+export default RandomEvent;
