@@ -33,19 +33,19 @@
 }
 
 .vertical_field_name {
-    font-size: 0.8vmin;
+    font-size: 0.85vmin;
     font-weight: 700;
 }
 
 .horizontal_field_name {
-    font-size: 0.8vmin;
+    font-size: 0.85vmin;
     font-weight: 700;
     width: 7vmin;
 }
 
 .icon {
-    width: 4vmin;
-    height: 4vmin;
+    width: 4.7vmin;
+    height: 4.7vmin;
 }
 
 .right_icon {

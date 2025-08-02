@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vmin;
+}
+
+.title {
+    font-size: 1.8vmin;
+}
+
+.input {
+    width: 26vmin;
+    font-family: 'Jost';
+    font-size: 1.5vmin;
+    font-weight: 600;
+    padding: 0.6vmin;
+    border: 0.2vmin solid #000000;
+    border-radius: 3px;
+    outline: none;
+}

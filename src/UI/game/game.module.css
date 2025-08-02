@@ -1,4 +1,5 @@
 .container {
+    padding: 0.5vmin;
     height: 99vmin;
     width: 99vmin;
     display: grid;

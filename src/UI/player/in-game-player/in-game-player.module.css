@@ -6,9 +6,9 @@
     font-size: 1.4vmin;
     font-weight: 700;
     background-color: #ffffff;
-    border: 0.2vmin solid #000000;
+    border: 0.3vmin solid #000000;
     padding: 0 0.5vmin;
-    border-radius: 5px;
+    border-radius: 0.5vmin;
     cursor: pointer;
 }
 

@@ -1,5 +1,5 @@
-import Angle, { AngleTypes } from '../game-fiields/Angle/Angle';
-import Property from '../game-fiields/Property/Property';
+import Angle, { AngleTypes } from '../game-fiields/angle/Angle';
+import Property from '../game-fiields/property/Property';
 import RandomEvent, { RandomEvents } from '../game-fiields/random-events/RandomEvent';
 import GameHeader from '../game-header/GameHeader';
 import styles from './game.module.css'

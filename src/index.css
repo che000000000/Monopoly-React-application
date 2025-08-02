@@ -10,7 +10,7 @@
 body {
     margin: 0;
     font-family: 'Jost';
-    font-weight: 500;
+    font-weight: 600;
     background-color: #ffffff;
 }
 
@@ -29,8 +29,10 @@ button {
     font-family: 'Jost';
     font-weight: 600;
     background-color: #000000;
+    color: #ffffff;
     border: none;
     padding: 0;
+    cursor: pointer;
 }
 
 .input {
