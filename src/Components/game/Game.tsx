@@ -43,7 +43,7 @@ function game() {
         <Property orientation='right' color='#1b7928ff' name='ГОГОЛЕВКИЙ БУЛЬВАР' />
         <RandomEvent orientation='right' type={RandomEvents.COMMUNITY_CHEST} name='ОБЩЕСТВЕННАЯ КАЗНА' />
         <Property orientation='right' color='#1b7928ff' name='КУТУЗОВСКИЙ ПРОСПЕКТ' />
-        <RandomEvent orientation='right' type={RandomEvents.RAILROAD} name='ЛЕНИНГРАДСКАЯ ЖЕЛЕЗНАЯ ДОРОГА' />
+        <RandomEvent orientation='right' type={RandomEvents.RAILROAD} name='МОСКОВСКАЯ ЖЕЛЕЗНАЯ ДОРОГА' />
         <RandomEvent orientation='right' type={RandomEvents.CHANCE} name='ШАНС' />
         <Property orientation='right' color='#274abeff' name='УЛ. МАЛАЯ БРОННАЯ' />
         <RandomEvent orientation='right' type={RandomEvents.TAX} name='СВЕРХНАЛОГ' />

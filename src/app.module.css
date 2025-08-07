@@ -5,27 +5,3 @@
     align-items: center;
     color: #000000;
 }
-
-@media(max-width: 2560px) {
-    .main_content {
-        width: 1024px;
-    }
-}
-
-@media(max-width: 1024px) {
-    .main_content {
-        width: 768px;
-    }
-}
-
-@media(max-width: 786px) {
-    .main_content {
-        width: 425px;
-    }
-}
-
-@media(max-width: 480px) {
-    .main_content {
-        width: 320px;
-    }
-}

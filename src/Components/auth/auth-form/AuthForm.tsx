@@ -4,6 +4,8 @@ import AuthInput, { AuthInputTypes } from '../auth-input/AuthInput';
 import styles from './auth-form.module.css'
 import AuthButton from '../auth-button/AuthButton';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser, registerUser } from '../../../store/authSlice';
 
 export enum AuthFormTypes {
     LOGIN,
@@ -17,6 +19,8 @@ export enum AuthFormData {
 }
 
 function AuthForm(props: { type: AuthFormTypes }) {
+    const dispatch = useDispatch()
+
     const [formInputsData, setformInputsData] = useState({
         login: '',
         password: '',
@@ -31,8 +35,26 @@ function AuthForm(props: { type: AuthFormTypes }) {
         })
     }, [props.type])
 
-    const handleFormInputsData = (field: string, value: string) => {
+    const handleFormInputsData = (field: AuthFormData, value: string) => {
         setformInputsData(prev => ({ ...prev, [field]: value }))
+    }
+
+    const handleLogin = (login: string, password: string) => {
+        dispatch(loginUser({ login, password }))
+        setformInputsData({
+            login: '',
+            password: '',
+            confirmPassword: ''
+        })
+    }
+
+    const handleRegister = (login: string, password: string, confirmPassword: string) => {
+        dispatch(registerUser({ login, password, confirmPassword }))
+        setformInputsData({
+            login: '',
+            password: '',
+            confirmPassword: ''
+        })
     }
 
     switch (props.type) {
@@ -61,7 +83,7 @@ function AuthForm(props: { type: AuthFormTypes }) {
                         <Link to={'/register'} className={styles.link}>
                             У вас ещё нет уч. записи?
                         </Link>
-                        <AuthButton text='Войти' />
+                        <AuthButton text='Войти' onClick={() => handleLogin(formInputsData.login, formInputsData.password)} />
                     </div>
                 </div>
             </div>
@@ -98,17 +120,12 @@ function AuthForm(props: { type: AuthFormTypes }) {
                         <Link to={'/login'} className={styles.link}>
                             Уже есть уч. запись?
                         </Link>
-                        <AuthButton text='Зарегестрировать' />
+                        <AuthButton text='Зарегестрировать' onClick={() => handleRegister(formInputsData.login, formInputsData.password, formInputsData.confirmPassword)} />
                     </div>
                 </div>
             </div>
         )
     }
-    return (
-        <div >
-
-        </div>
-    )
 }
 
 export default AuthForm;

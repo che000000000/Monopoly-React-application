@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-left: 0.3vmin solid #eeeeee;
+    border-bottom: 0.3vmin solid #eeeeee;
+    border-right: 0.3vmin solid #eeeeee;
+    border-radius: 0 0 3px 3px;
+}
+
+@media(max-width: 480px) {
+    .container {
+        padding: 2vw;
+    }
+}
