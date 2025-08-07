@@ -1,10 +1,12 @@
+import { UserRole } from "../store/enums/user-role"
+
 export type AuthStateT = {
     isAuth: boolean
     user: {
         id: string,
         name: string,
         avatarUrl: string,
-        role: string
+        role: UserRole
     }
 }
 

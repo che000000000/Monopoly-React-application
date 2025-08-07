@@ -8,7 +8,8 @@
 }
 
 .avatar {
-    height: 4vmin;
+    width: 44px;
+    height: 44px;
     border-radius: 64px;
 }
 

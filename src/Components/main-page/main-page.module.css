@@ -8,8 +8,8 @@
 .content {
     width: 100%;
     display: grid;
-    grid-template-columns: 38.5% auto;
-    gap: 12px;
+    grid-template-columns: 34.5% auto;
+    gap: 18px;
     padding: 10px 12px 0;
 }
 

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GlobalChatStateT, PushMessagesPayloadT } from "../types/globalChat";
+import { GlobalChatMessageT, GlobalChatStateT, PushMessagesPayloadT } from "../types/globalChat";
 import { UserRole } from "./enums/user-role";
 
 const initialState: GlobalChatStateT = {
@@ -28,7 +28,7 @@ const initialState: GlobalChatStateT = {
         },
         {
             id: '3',
-            text: 'ребята, давайте жить дружно)) я ебу козу, я не знаю почему я ебу козу, я не знаю почему я ебу козу, я не знаю почему я ебу козу, я не знаю почему',
+            text: 'ребята, давайте жить дружно)) да, я кот гей Леопольд. Ебите меня в сраку',
             sender: {
                 id: '3',
                 name: 'Русец отсосской кратодемии',
@@ -43,7 +43,7 @@ const initialState: GlobalChatStateT = {
             sender: {
                 id: '1',
                 name: 'видеокал',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEfGn7ner5O1tTQAk9HBUhT_z8phEhvGtrQ&s',
+                avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
                 role: UserRole.REGULAR
             },
             createdAt: '14:37'
@@ -54,7 +54,7 @@ const initialState: GlobalChatStateT = {
             sender: {
                 id: '1',
                 name: 'видеокал',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEfGn7ner5O1tTQAk9HBUhT_z8phEhvGtrQ&s',
+                avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
                 role: UserRole.REGULAR
             },
             createdAt: '14:37'
@@ -77,12 +77,15 @@ const globalChatSlice = createSlice({
     name: 'global-chat',
     initialState,
     reducers: {
+        pushMessage(state, action: PayloadAction<GlobalChatMessageT>) {
+            state.globalChatMessages.push(action.payload)
+        },
         pushMessages(state, action: PayloadAction<PushMessagesPayloadT>) {
             state.globalChatMessages.push(...action.payload.messages)
         }
     }
 })
 
-export const { pushMessages } = globalChatSlice.actions;
+export const { pushMessage, pushMessages } = globalChatSlice.actions;
 
 export default globalChatSlice.reducer;

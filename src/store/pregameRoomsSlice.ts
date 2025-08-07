@@ -10,7 +10,7 @@ const initialState: PregameRoomsStateT = {
                 {
                     id: '1',
                     name: 'видеокал',
-                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEfGn7ner5O1tTQAk9HBUhT_z8phEhvGtrQ&s',
+                    avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
                     slot: 1,
                     isOwner: true,
                     role: UserRole.REGULAR
