@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5vmin 2vmin 2vmin 2vmin;
+    border-bottom: 0.3vmin solid #eeeeee;
+    border-left: 0.3vmin solid #eeeeee;
+    border-right: 0.3vmin solid #eeeeee;
+}
+
+.title {
+    font-size: 2vmin;
+    margin-bottom: 1vmin;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6vmin;
+    margin-bottom: 1.6vmin;
+}
+
+.lower_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2vmin;
+}
+
+.link {
+    font-size: 1.4vmin;
+    color: #0c73b8;
+    text-decoration: underline;
+    cursor: pointer;
+}

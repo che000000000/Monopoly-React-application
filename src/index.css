@@ -8,10 +8,11 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
     margin: 0;
     font-family: 'Jost';
-    font-weight: 500;
-    background-color: #ffffff;
+    font-weight: 600;
 }
 
 ul {
@@ -29,10 +30,22 @@ button {
     font-family: 'Jost';
     font-weight: 600;
     background-color: #000000;
+    color: #ffffff;
     border: none;
     padding: 0;
+    cursor: pointer;
 }
 
-.input {
+input {
     background-color: none;
+    outline: none;
+    font-family: 'Jost';
+    border: none;
+    border-radius: 0;
+}
+
+a {
+    font-style: 'Jost';
+    text-decoration: none;
+    color: #000000;
 }
