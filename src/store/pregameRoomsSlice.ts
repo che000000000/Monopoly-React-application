@@ -8,15 +8,15 @@ const initialState: PregameRoomsStateT = {
             id: '1',
             members: [
                 {
-                    id: '3',
-                    name: 'видеокал-',
+                    id: '1',
+                    name: 'видеокал',
                     avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEfGn7ner5O1tTQAk9HBUhT_z8phEhvGtrQ&s',
                     slot: 1,
                     isOwner: true,
                     role: UserRole.REGULAR
                 },
                 {
-                    id: '4',
+                    id: '2',
                     name: 'Koka',
                     avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
                     slot: 2,
@@ -54,7 +54,7 @@ const initialState: PregameRoomsStateT = {
             id: '2',
             members: [
                 {
-                    id: '5',
+                    id: '6',
                     name: 'уебан',
                     avatarUrl: 'https://m.media-amazon.com/images/I/51f7XSQcmVL._UXNaN_FMjpg_QL85_.jpg',
                     isOwner: true,
@@ -62,7 +62,7 @@ const initialState: PregameRoomsStateT = {
                     role: UserRole.REGULAR
                 },
                 {
-                    id: '6',
+                    id: '7',
                     name: 'che000',
                     avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTnPHSyO97SPouZ-oCujaQHoG8bSWM7Y7uxQ&s',
                     slot: 3,
@@ -73,19 +73,19 @@ const initialState: PregameRoomsStateT = {
             createdAt: '03.08.2025'
         }
     ],
-    currentPregameRoom: null
+    currentPregameRoom: null,
 }
 
 const pregameRoomsSlice: Slice = createSlice({
     name: 'pregame',
     initialState,
     reducers: {
-        pushPregameRooms(state, action: PayloadAction<PushPregameRoomsPayloadT>) {
+        pushPregameRooms(state, action: PayloadAction<PushPregameRoomsPayloadT>): void {
             state.pregameRooms.push([action.payload.pregameRooms])
         }
     }
 })
 
-export const { pushPregameRooms } = pregameRoomsSlice.actions
+export const { pushPregameRooms } = pregameRoomsSlice.actions;
 
-export default pregameRoomsSlice.reducer
+export default pregameRoomsSlice.reducer;

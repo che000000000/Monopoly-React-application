@@ -19,38 +19,6 @@
     gap: 12px;
 }
 
-.chat {
-    border-radius: 3px;
-}
-
-.global_chat__messages_list {
-    height: 168px;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 10px;
-    font-weight: 400;
-    border-left: 0.3vmin solid #eeeeee;
-    border-right: 0.3vmin solid #eeeeee;
-}
-
-.global_chat__lower_section {
-    display: flex;
-}
-
-.global_chat__input {
-    width: 100%;
-    padding: 0 6px;
-    font-weight: 500;
-    border: 1px solid #000000;
-    border-radius: 0 0 0 3px;
-}
-
-.global_chat__btn {
-    padding: 5px;
-    font-weight: 500;
-    border-radius: 0 0 3px 0;
-}
-
 .pregame_rooms {
     display: flex;
     flex-direction: column;
@@ -74,14 +42,6 @@
     .title {
         font-size: 16px;
     }
-
-    .global_chat__input {
-        font-size: 15px;
-    }
-
-    .global_chat__btn {
-        font-size: 15px;
-    }
 }
 
 @media(max-width: 1024px) {
@@ -90,14 +50,6 @@
     }
 
     .title {
-        font-size: 14px;
-    }
-
-    .global_chat__input {
-        font-size: 14px;
-    }
-
-    .global_chat__btn {
         font-size: 14px;
     }
 }
@@ -120,14 +72,6 @@
 
     .title {
         font-size: 13px;
-    }
-
-    .global_chat__input {
-        font-size: 12px;
-    }
-
-    .global_chat__btn {
-        font-size: 12px;
     }
 }
 
@@ -155,15 +99,5 @@
     .global_chat__messages_list {
         height: 26vw;
         font-size: 2.6vw;
-    }
-
-    .global_chat__btn {
-        font-size: 2.6vw;
-        padding: 1.4vw;
-    }
-
-    .global_chat__input {
-       font-size: 2.8vw;
-       padding: 0 1.8vw;
     }
 }

@@ -1,11 +1,13 @@
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import styles from './main-page.module.css'
 import { PregameRoomsStateT, PregameRoomT } from '../../types/pregameRooms'
-import PregameRoom from '../pregame-room/PregameRoom';
+import PregameRoom from './pregame/pregame-room/PregameRoom';
 import MainHeader from '../headers/main-header/MainHeader';
+import GlobalChat from './global-chat/GlobalChat';
 
 function MainPage() {
     const pregameRoomsState: PregameRoomsStateT = useAppSelector(state => state.pregame)
+
     return (
         <div className={styles.container}>
             <MainHeader />
@@ -19,26 +21,18 @@ function MainPage() {
                     </div>
                 </div>
                 <div className={styles.content__side}>
-                    <div className={styles.chat}>
-                    <div className={styles.title}>Общий чат</div>
-                    <ul className={styles.global_chat__messages_list}>
-                        <li>Ку всем!!</li>
-                        <li>Кто играть пойдёт?</li>
-                        <li>ИДИ НАХУЙ!"!!!! </li>
-                    </ul>
-                    <div className={styles.global_chat__lower_section}>
-                        <input className={styles.global_chat__input} placeholder='ввод сообщения...'/>
-                        <button className={styles.global_chat__btn}>Отправить</button>
+                    <div className={styles.global_chat}>
+                        <div className={styles.title}>Общий чат</div>
+                        <GlobalChat />
                     </div>
-                </div>
-                <div className={styles.pregame_rooms}>
-                    <div className={styles.title}>Активные лобби</div>
-                    <div className={styles.pregame_rooms__list}>
-                        {pregameRoomsState.pregameRooms.map(pregameRoom =>
-                            <PregameRoom key={pregameRoom.id} pregameRoom={pregameRoom} />
-                        )}
+                    <div className={styles.pregame_rooms}>
+                        <div className={styles.title}>Активные лобби</div>
+                        <div className={styles.pregame_rooms__list}>
+                            {pregameRoomsState.pregameRooms.map(pregameRoom =>
+                                <PregameRoom key={pregameRoom.id} pregameRoom={pregameRoom} />
+                            )}
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

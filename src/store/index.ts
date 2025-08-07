@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from './authSlice'
-import pregameRoomsSlice from "./pregameRoomsSlice";
+import pregameRoomsReducer from "./pregameRoomsSlice";
+import globalChatReducer from "./globalChatSlice"
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        pregame: pregameRoomsSlice
+        pregame: pregameRoomsReducer,
+        globalChat: globalChatReducer
     }
 })
 

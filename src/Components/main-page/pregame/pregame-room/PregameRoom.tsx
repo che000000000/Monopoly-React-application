@@ -1,5 +1,5 @@
 import styles from './pregame-room.module.css'
-import { type PregameRoomT } from '../../types/pregameRooms';
+import { type PregameRoomT } from '../../../../types/pregameRooms';
 import PregameRoomMember from '../pregame-room-member/PregameRoomMember';
 
 function PregameRoom(props: { pregameRoom: PregameRoomT }) {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { type PregameRoomMemberT } from '../../types/pregameRooms';
+import { type PregameRoomMemberT } from '../../../../types/pregameRooms';
 import styles from './pregame-room-member.module.css'
 
 function PregameRoomMember(props: PregameRoomMemberT ) {
