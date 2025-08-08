@@ -7,7 +7,7 @@
     flex-direction: column;
     overflow-y: scroll;
     gap: 5px;
-    height: 298px;
+    height: 282px;
     padding: 6px 10px;
     font-weight: 400;
     border-left: 0.3vmin solid #eeeeee;
@@ -22,7 +22,7 @@
     width: 100%;
     padding: 0 6px;
     font-weight: 500;
-    border: 0.15vw solid #000000;
+    border: 1px solid #000000;
     border-radius: 0 0 0 3px;
 }
 
@@ -48,7 +48,7 @@
 
 @media(max-width: 1024px) {
     .messages_list {
-        height: 302px;
+        height: 272px;
         padding: 6px 8px;
     }
 
@@ -63,7 +63,7 @@
 
 @media(max-width: 786px) {
     .messages_list {
-        height: 274px;
+        height: 260px;
         padding: 8px;
     }
 
@@ -78,7 +78,7 @@
 
 @media(max-width: 480px) {
     .messages_list {
-        height: 57vw;
+        height: 55vw;
         padding: 5px;
     }
 

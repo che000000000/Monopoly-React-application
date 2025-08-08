@@ -1,4 +1,4 @@
-import { GlobalChatMessageT } from '../../../../types/globalChat';
+import { GlobalChatMessageT } from '../../../../types/global-chat';
 import styles from './global-chat-message.module.css'
 
 function GlobalChatMessage(props: { message: GlobalChatMessageT, isMine: boolean }) {

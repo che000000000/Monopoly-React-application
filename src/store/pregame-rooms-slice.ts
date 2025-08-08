@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { PushPregameRoomsPayloadT, type PregameRoomsStateT } from "../types/pregameRooms";
+import { PushPregameRoomsPayloadT, type PregameRoomsStateT } from "../types/pregame-rooms";
 import { UserRole } from "./enums/user-role";
 
 const initialState: PregameRoomsStateT = {

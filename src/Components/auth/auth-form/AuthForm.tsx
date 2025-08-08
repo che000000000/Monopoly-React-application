@@ -5,7 +5,7 @@ import styles from './auth-form.module.css'
 import AuthButton from '../auth-button/AuthButton';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser, registerUser } from '../../../store/authSlice';
+import { loginUser, registerUser } from '../../../store/auth-slice';
 
 export enum AuthFormTypes {
     LOGIN,
