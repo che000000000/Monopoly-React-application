@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppSelector } from '../../../hoocks/useAppSelector';
 import { AuthStateT } from '../../../types/auth';
-import { GlobalChatStateT } from '../../../types/globalChat';
+import { GlobalChatStateT } from '../../../types/global-chat';
 import GlobalChatMessage from './global-chat-message/GlobalChatMessage';
 import styles from './global-chat.module.css'
-import { pushMessage } from '../../../store/globalChatSlice';
+import { pushMessage } from '../../../store/global-chat-slice';
 import { useAppDispatch } from '../../../hoocks/useAppDispatch';
 
 function GlobalChat() {

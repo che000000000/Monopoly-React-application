@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    padding: 10px 0 5px 0;
+    border: 0.3vmin solid #eeeeee;
+    border-radius: 0 0 3px 3px;
+}
+
+.no_friends_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
