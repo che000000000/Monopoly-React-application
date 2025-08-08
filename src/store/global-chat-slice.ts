@@ -39,17 +39,6 @@ const initialState: GlobalChatStateT = {
         },
         {
             id: '4',
-            text: 'а',
-            sender: {
-                id: '1',
-                name: 'видеокал',
-                avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
-                role: UserRole.REGULAR
-            },
-            createdAt: '14:37'
-        },
-        {
-            id: '5',
             text: 'вы че ебаны?!',
             sender: {
                 id: '1',
@@ -60,7 +49,7 @@ const initialState: GlobalChatStateT = {
             createdAt: '14:37'
         },
         {
-            id: '6',
+            id: '5',
             text: 'Ребят. Может пойдём в лобак?',
             sender: {
                 id: '4',

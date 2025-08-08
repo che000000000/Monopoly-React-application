@@ -11,8 +11,22 @@
     border-radius: 0 0 3px 3px;
 }
 
+@media(max-width: 2560px) {
+
+}
+
+@media(max-width: 1024px) {
+
+}
+
+@media(max-width: 786px) {
+    .container {
+        padding: 6px;
+    }
+}
+
 @media(max-width: 480px) {
     .container {
-        padding: 2vw;
+        padding: 1.4vw;
     }
 }

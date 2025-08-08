@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import AuthHeader from '../../headers/auth-header/AuthHeader';
-import AuthInput, { AuthInputTypes } from '../auth-input/AuthInput';
+import AuthHeader from '../headers/auth-header/AuthHeader';
+import AuthInput, { AuthInputTypes } from './auth-input/AuthInput';
 import styles from './auth-form.module.css'
-import AuthButton from '../auth-button/AuthButton';
+import AuthButton from './auth-button/AuthButton';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { loginUser, registerUser } from '../../../store/auth-slice';
+import { loginUser, registerUser } from '../../store/auth-slice';
+import { useAppDispatch } from '../../hoocks/useAppDispatch';
 
 export enum AuthFormTypes {
     LOGIN,
@@ -19,7 +19,7 @@ export enum AuthFormData {
 }
 
 function AuthForm(props: { type: AuthFormTypes }) {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const [formInputsData, setformInputsData] = useState({
         login: '',

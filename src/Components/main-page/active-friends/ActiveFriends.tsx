@@ -10,7 +10,7 @@ function ActiveFriends() {
 			{
 				friendsState.friends.length !== 0
 					? friendsState.friends.map(friend => <ActiveFriendItem {...friend} />)
-					: <div className={styles.no_friends_container}>{`У вас пока ещё нет друзей((`}</div>
+					: <div className={styles.no_friends_container}>{`Никто из друзей сейчас не в сети`}</div>
 			}
 		</div>
 	)
