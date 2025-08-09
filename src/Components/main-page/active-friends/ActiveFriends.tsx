@@ -8,9 +8,9 @@ function ActiveFriends() {
 	return (
 		<div className={styles.container}>
 			{
-				friendsState.friends.length !== 0
-					? friendsState.friends.map(friend => <ActiveFriendItem {...friend} />)
-					: <div className={styles.no_friends_container}>{`У вас пока ещё нет друзей((`}</div>
+				friendsState.activeFriends.length !== 0
+					? friendsState.activeFriends.map(friend => <ActiveFriendItem {...friend} />)
+					: <div className={styles.no_friends_container}>{`Никто из друзей сейчас не в сети`}</div>
 			}
 		</div>
 	)

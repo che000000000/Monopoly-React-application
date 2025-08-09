@@ -1,4 +1,5 @@
 .container {
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -31,4 +32,17 @@
 
 .go_icon {
     width: 90%;
+}
+
+.dynamic_area {
+    width: 73%;
+    height: 47%;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.player_chip {
+    width: 100%;
 }

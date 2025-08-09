@@ -1,32 +1,33 @@
 import styles from './random-event.module.css'
-import chance from '../../../icons/chance.svg'
-import railway from '../../../icons/railway.svg'
-import community_chest from '../../../icons/community-chest.svg'
-import tax from '../../../icons/tax.svg'
-import utility_electric_station from '../../../icons/utility_electric_station.svg'
-import utility_water_works from '../../../icons/utility_water_works.svg'
+import chance from '../../../icons/field-icons/chance.svg'
+import railway from '../../../icons/field-icons/railway.svg'
+import community_chest from '../../../icons/field-icons/community-chest.svg'
+import tax from '../../../icons/field-icons/tax.svg'
+import utility_electric_station from '../../../icons/field-icons/utility_electric_station.svg'
+import utility_water_works from '../../../icons/field-icons/utility_water_works.svg'
+import iron_chip from '../../../images/iron-chip.png'
+import hat_chip from '../../../images/hat-chip.png'
+import cart_chip from '../../../images/cart-chip.png'
+import penguin_chip from '../../../images/penguin-chip.png'
+import thimble_chip from '../../../images/thimble-chip.png'
+import { GameFieldType } from '../../../store/enums/game-field-type'
+import { GameFieldOrientation } from '../enums/game-field-orientation'
+import { GameFieldT } from '../../../types/games'
+import { PlayerChip } from '../../../store/enums/player-chip'
 
-export enum RandomEvents {
-    CHANCE = 'CHANCE',
-    COMMUNITY_CHEST = 'COMMUNITY_CHEST',
-    RAILROAD = 'RAILROAD',
-    TAX = 'TAX',
-    UTILITY = 'UTILITY'
-}
-
-function RandomEvent(props: { orientation: string, type: RandomEvents, name: string }) {
-    const getIcon = (fieldType: RandomEvents, fieldName: string) => {
+function RandomEvent(props: {orientation: GameFieldOrientation, fieldData: GameFieldT}) {
+    const getIcon = (fieldType: GameFieldType, fieldName: string) => {
         switch (fieldType) {
-            case RandomEvents.CHANCE:
+            case GameFieldType.CHANCE:
                 return chance;
-            case RandomEvents.COMMUNITY_CHEST:
+            case GameFieldType.COMMUNITY_CHEST:
                 return community_chest;
-            case RandomEvents.RAILROAD:
+            case GameFieldType.RAILROAD:
                 return railway;
-            case RandomEvents.TAX:
+            case GameFieldType.TAX:
                 return tax;
-            case RandomEvents.UTILITY:
-                return fieldName === 'ЭЛЕКТРИЧЕСТВО'
+            case GameFieldType.UTILITY:
+                return fieldName === 'Мосэнерго'
                     ? utility_electric_station
                     : utility_water_works;
             default:
@@ -34,34 +35,68 @@ function RandomEvent(props: { orientation: string, type: RandomEvents, name: str
         }
     }
 
+    function definePlayerChipIcon(playerChip: PlayerChip): string {
+        switch(playerChip) {
+            case PlayerChip.CART: return cart_chip
+            case PlayerChip.HAT: return hat_chip
+            case PlayerChip.IRON: return iron_chip
+            case PlayerChip.PENGUIN: return penguin_chip
+            case PlayerChip.THIMBLE: return thimble_chip
+            default: return ''
+        }
+    }
+
+
     switch (props.orientation) {
-        case 'top': return (
+        case GameFieldOrientation.TOP: return (
             <div className={`${styles.container} ${styles.top_container}`}>
-                <img className={`${styles.icon}`} alt={props.name} src={getIcon(props.type, props.name)}></img>
-                <div className={styles.vertical_field_name}>{props.name}</div>
+                <img className={`${styles.icon}`} alt={props.fieldData.name} src={getIcon(props.fieldData.type, props.fieldData.name)}></img>
+                <div className={styles.vertical_field_name}>{props.fieldData.name}</div>
+                <div className={`${styles.dynamic_area} ${styles.top_players_area}`}>
+                    {props.fieldData.players
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        : null
+                    }
+                </div>
             </div>
         )
-        case 'right': return (
+        case GameFieldOrientation.RIGHT: return (
             <div className={`${styles.container} ${styles.right_container}`}>
-                <div className={styles.horizontal_field_name}>{props.name}</div>
-                <img className={`${styles.icon} ${styles.right_icon}`} alt={props.name} src={getIcon(props.type, props.name)}></img>
+                <div className={styles.horizontal_field_name}>{props.fieldData.name}</div>
+                <img className={`${styles.icon} ${styles.right_icon}`} alt={props.fieldData.name} src={getIcon(props.fieldData.type, props.fieldData.name)}></img>
+                <div className={`${styles.dynamic_area} ${styles.right_players_area}`}>
+                    {props.fieldData.players
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        : null
+                    }
+                </div>
             </div>
         )
-        case 'bottom': return (
+        case GameFieldOrientation.BOTTOM: return (
             <div className={`${styles.container} ${styles.bottom_container}`}>
-                <img className={styles.icon} alt={props.name} src={getIcon(props.type, props.name)}></img>
-                <div className={styles.vertical_field_name}>{props.name}</div>
+                <img className={styles.icon} alt={props.fieldData.name} src={getIcon(props.fieldData.type, props.fieldData.name)}></img>
+                <div className={styles.vertical_field_name}>{props.fieldData.name}</div>
+                <div className={`${styles.dynamic_area} ${styles.bottom_players_area}`}>
+                    {props.fieldData.players
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        : null
+                    }
+                </div>
             </div>
         )
-        case 'left': return (
+        case GameFieldOrientation.LEFT: return (
             <div className={`${styles.container} ${styles.left_container}`}>
-                <div className={styles.horizontal_field_name}>{props.name}</div>
-                <img className={`${styles.icon} ${styles.left_icon}`} alt={props.name} src={getIcon(props.type, props.name)}></img>
+                <div className={styles.horizontal_field_name}>{props.fieldData.name}</div>
+                <img className={`${styles.icon} ${styles.left_icon}`} alt={props.fieldData.name} src={getIcon(props.fieldData.type, props.fieldData.name)}></img>
+                <div className={`${styles.dynamic_area} ${styles.left_players_area}`}>
+                    {props.fieldData.players
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        : null
+                    }
+                </div>
             </div>
         )
-        default: return (
-            <div></div>
-        )
+        default: return null
     }
 }
 

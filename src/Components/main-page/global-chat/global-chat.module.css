@@ -7,8 +7,8 @@
     flex-direction: column;
     overflow-y: scroll;
     gap: 5px;
-    height: 282px;
-    padding: 6px 10px;
+    height: 279px;
+    padding: 6px 10px 2px 10px;
     font-weight: 400;
     border-left: 0.3vmin solid #eeeeee;
     border-right: 0.3vmin solid #eeeeee;
@@ -48,8 +48,8 @@
 
 @media(max-width: 1024px) {
     .messages_list {
-        height: 272px;
-        padding: 6px 8px;
+        height: 286px;
+        padding: 4px 7px 1px 7px;
     }
 
     .send_input {
@@ -63,8 +63,8 @@
 
 @media(max-width: 786px) {
     .messages_list {
-        height: 260px;
-        padding: 8px;
+        height: 255px;
+        padding: 4px 7px 1px 7px;
     }
 
     .send_input {
@@ -79,16 +79,16 @@
 @media(max-width: 480px) {
     .messages_list {
         height: 55vw;
-        padding: 5px;
+        padding: 1.1vw 1.1vw 0.1vw 1.1vw;
     }
 
     .send_btn {
         font-size: 2.6vw;
-        padding: 1.4vw;
+        padding: 1.1vw;
     }
 
     .send_input {
        font-size: 2.8vw;
-       padding: 0 1.8vw;
+       padding: 0 1.3vw;
     }
 }

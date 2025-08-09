@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    padding: 10px 0 5px 0;
+    padding: 10px;
     border: 0.3vmin solid #eeeeee;
     border-radius: 0 0 3px 3px;
 }
@@ -11,4 +11,28 @@
     justify-content: center;
     font-size: 14px;
     font-weight: 500;
+}
+
+@media(max-width: 2560px) {
+    .no_friends_container {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .no_friends_container {
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 786px) {
+    .no_friends_container {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 480px) {
+    .no_friends_container {
+        font-size: 2.6vw
+    }
 }

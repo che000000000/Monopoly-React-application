@@ -1,10 +1,10 @@
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import styles from './main-page.module.css'
-import { PregameRoomsStateT, PregameRoomT } from '../../types/pregame-rooms'
+import { PregameRoomsStateT } from '../../types/pregame-rooms'
 import PregameRoom from './pregame/pregame-room/PregameRoom';
 import MainHeader from '../headers/main-header/MainHeader';
 import GlobalChat from './global-chat/GlobalChat';
-import Friends from './active-friends/ActiveFriends';
+import ActiveFriends from './active-friends/ActiveFriends';
 
 function MainPage() {
     const pregameRoomsState: PregameRoomsStateT = useAppSelector(state => state.pregame)
@@ -30,7 +30,7 @@ function MainPage() {
                 <div className={styles.content__side}>
                     <div className={styles.friends}>
                         <div className={styles.title}>Сейчас в сети</div>
-                        <Friends />
+                        <ActiveFriends />
                     </div>
                 </div>
             </div>
