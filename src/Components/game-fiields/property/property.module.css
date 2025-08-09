@@ -1,4 +1,5 @@
 .container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,26 +10,25 @@
 
 .top_container {
     flex-direction: column;
-    border-right: 0.3vmin solid;
+    border-right: 0.3vmin solid #000000;
     padding: 0 0 0.5vmin;
-
 }
 
 .right_container {
     align-items: center;
-    border-bottom: 0.3vmin solid;
+    border-bottom: 0.3vmin solid #000000;
     padding: 0 0 0 0.5vmin;
 }
 
 .bottom_container {
     flex-direction: column;
-    border-right: 0.3vmin solid;
+    border-right: 0.3vmin solid #000000;
     padding: 0.3vmin 0 0 0;
 }
 
 .left_container {
     align-items: center;
-    border-bottom: 0.3vmin solid;
+    border-bottom: 0.3vmin solid #000000;
     padding: 0 0.5vmin 0 0;
 }
 
@@ -73,9 +73,96 @@
 }
 
 .vertical_field_name {
+    text-transform: uppercase;
     width: 7vmin;
 }
 
 .horizontal_field_name {
-    width: 7vmin    ;
+    text-transform: uppercase;
+    width: 7vmin;
+}
+
+.field_price {
+    text-transform: uppercase;
+}
+
+.vertical_dynamic_area {
+    position: absolute;
+    display: flex;
+    width: 56%;
+    height: 25%;
+}
+
+.horizontal_dynamic_area {
+    position: absolute;
+    display: flex;
+    width: 70%;
+    height: 29%;
+}
+
+.bottom_builds_area {
+    top: 58%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+    grid-auto-flow: dense;
+    direction: rtl;
+    align-content: start;
+    transform: scaleY(-1);
+}
+
+.bottom_builds_area > * {
+    transform: scaleY(-1);
+    direction: ltr;
+}
+
+.bottom_players_area {
+    top: 12%;
+}
+
+.top_builds_area {
+    top: 61%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+    grid-auto-flow: dense;
+    direction: rtl;
+    align-content: start;
+    transform: scaleY(-1);
+}
+
+.top_builds_area > * {
+    transform: scaleY(-1);
+    direction: ltr;
+}
+
+.top_players_area {
+    top: 16%;
+}
+
+.right_builds_area {
+    top: 69%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}
+
+.right_players_area {
+    top: 2%;
+}
+
+.left_builds_area {
+    left: 19%;
+    top: 69%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}
+
+.left_players_area {
+    left: 19%;
+    top: 2%;
+}
+
+.field_build {
+    width: 100%;
+    height: 100%;
 }

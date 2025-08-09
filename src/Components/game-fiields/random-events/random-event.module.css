@@ -33,11 +33,13 @@
 }
 
 .vertical_field_name {
+    text-transform: uppercase;
     font-size: 0.85vmin;
     font-weight: 700;
 }
 
 .horizontal_field_name {
+    text-transform: uppercase;
     font-size: 0.85vmin;
     font-weight: 700;
     width: 7vmin;

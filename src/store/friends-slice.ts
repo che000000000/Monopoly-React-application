@@ -3,7 +3,7 @@ import { FriendsStateT } from "../types/friends"
 import { UserRole } from "./enums/user-role";
 
 const initialState: FriendsStateT = {
-    friends: [
+    activeFriends: [
         // {
         //     id: '8',
         //     name: 'пиздач',

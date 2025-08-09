@@ -8,6 +8,6 @@ export type FriendRequestT = {
 }
 
 export type FriendsStateT = {
-    friends: UserT[],
+    activeFriends: UserT[],
     friendsRequests: FriendRequestT[]
 }

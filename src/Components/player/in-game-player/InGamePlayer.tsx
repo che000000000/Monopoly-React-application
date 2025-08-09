@@ -4,18 +4,12 @@ import hat_chip from '../../../images/hat-chip.png'
 import cart_chip from '../../../images/cart-chip.png'
 import penguin_chip from '../../../images/penguin-chip.png'
 import thimble_chip from '../../../images/thimble-chip.png'
+import { PlayerChip } from '../../../store/enums/player-chip'
 
 export enum PlayerStatus {
-    isTurnOwner,
-    isLeft
-}
-
-export enum PlayerChip {
-    CART,
-    HAT,
-    IRON,
-    PENGUIN,
-    THIMBLE
+    COMMON,
+    IS_TURN_OWNER,
+    IS_LEFT
 }
 
 function InGamePlayer(props: { name: string, avatarUrl: string, playerChip: PlayerChip, status?: PlayerStatus }) {
@@ -32,8 +26,8 @@ function InGamePlayer(props: { name: string, avatarUrl: string, playerChip: Play
     return (
         <li className={
             `${styles.container} 
-            ${props.status === PlayerStatus.isTurnOwner ? styles.is_turn_owner_container : ''}
-            ${props.status === PlayerStatus.isLeft ? styles.left_player_container : ''}
+            ${props.status === PlayerStatus.IS_TURN_OWNER ? styles.is_turn_owner_container : ''}
+            ${props.status === PlayerStatus.IS_LEFT ? styles.left_player_container : ''}
             `}>
             <div className={styles.name}>{props.name}</div>
             {/* <img className={styles.avatar} alt={props.name} src={props.avatarUrl} /> */}

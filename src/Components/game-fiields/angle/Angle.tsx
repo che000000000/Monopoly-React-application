@@ -1,40 +1,34 @@
 import styles from './angle.module.css'
-import go_arrow from '../../../icons/go_arrow.svg'
-import just_visiting from '../../../icons/just_visiting.svg'
-import free_parking from '../../../icons/free_parking.svg'
-import jail from '../../../icons/jail.svg'
+import go_arrow from '../../../icons/field-icons/go_arrow.svg'
+import just_visiting from '../../../icons/field-icons/just_visiting.svg'
+import free_parking from '../../../icons/field-icons/free_parking.svg'
+import jail from '../../../icons/field-icons/jail.svg'
+import { GameFieldType } from '../../../store/enums/game-field-type'
 
-export enum AngleTypes {
-    GO = 'GO',
-    JUST_VISITING = 'JUST_VISITING',
-    FREE_PARKING = 'FREE_PARKING',
-    JAIL = 'JAIL'
-}
-
-function Angle(props: { type: AngleTypes }) {
+function Angle(props: { type: GameFieldType }) {
     switch (props.type) {
-        case AngleTypes.GO: return (
+        case GameFieldType.GO: return (
             <div className={styles.container}>
                 <div className={styles.go_description}>ПОЛУЧИТЕ ЗАРПЛАТУ M200. КОГДА ВЫ ПРОХОДИТЕ ЭТО ПОЛЕ.</div>
                 <div className={styles.go_name}>ВПЕРЕД</div>
                 <img className={styles.go_icon} alt='go' src={go_arrow}></img>
             </div>
         )
-        case AngleTypes.JUST_VISITING: return (
+        case GameFieldType.JUST_VISITING: return (
             <div className={styles.container}>
                 <div className={styles.name}>ПРОСТО</div>
                 <img className={styles.icon} alt='just-visiting' src={just_visiting}></img>
                 <div className={styles.name}>ПОСЕТИЛИ</div>
             </div>
         )
-        case AngleTypes.FREE_PARKING: return (
+        case GameFieldType.FREE_PARKING: return (
             <div className={styles.container}>
                 <div className={styles.name}>БЕСПЛАТНАЯ</div>
                 <img className={styles.icon} alt='free-parking' src={free_parking}></img>
                 <div className={styles.name}>ПАРКОВКА</div>
             </div>
         )
-        case AngleTypes.JAIL: return (
+        case GameFieldType.JUST_VISITING: return (
             <div className={styles.container}>
                 <div className={styles.name}>ОТПРАВЛЯЙТЕСЬ</div>
                 <img className={styles.icon} alt='jail' src={jail}></img>
