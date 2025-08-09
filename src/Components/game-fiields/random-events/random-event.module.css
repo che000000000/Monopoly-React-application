@@ -1,4 +1,5 @@
 .container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,4 +57,43 @@
 
 .left_icon {
     transform: rotate(-90deg);
+}
+
+.dynamic_area {
+    position: absolute;
+    display: grid;
+}
+
+.bottom_players_area {
+    width: 100%;
+    height: 40%;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.left_players_area {
+    width: 66%;
+    height: 69%;
+    left: 35%;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.top_players_area {
+    width: 100%;
+    height: 40%;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.right_players_area {
+    width: 66%;
+    height: 69%;
+    left: 9%;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);  
+}
+
+.player_chip {
+    height: 100%;
 }

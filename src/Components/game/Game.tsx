@@ -11,19 +11,19 @@ function Game() {
 	const gamesState = useAppSelector(state => state.games)
 
 	const gameSectionFields = {
-		go: gamesState.currentGame.fields.filter(field => field.type === GameFieldType.GO),
+		go: gamesState.currentGame.fields.find(field => field.type === GameFieldType.GO),
 
 		bottomSection: gamesState.currentGame.fields
 			.filter(field => field.position >= 2 && field.position <= 10)
 			.sort((a, b) => b.position - a.position),
 
-		justVisiting: gamesState.currentGame.fields.filter(field => field.type === GameFieldType.JUST_VISITING),
+		justVisiting: gamesState.currentGame.fields.find(field => field.type === GameFieldType.JUST_VISITING),
 
 		leftSection: gamesState.currentGame.fields
 			.filter(field => field.position >= 12 && field.position <= 20)
 			.sort((a, b) => b.position - a.position),
 
-		freeParking: gamesState.currentGame.fields.filter(field =>
+		freeParking: gamesState.currentGame.fields.find(field =>
 			field.type === GameFieldType.FREE_PARKING
 		),
 
@@ -31,7 +31,7 @@ function Game() {
 			field.position >= 22 && field.position <= 30
 		),
 
-		goToJail: gamesState.currentGame.fields.filter(field =>
+		goToJail: gamesState.currentGame.fields.find(field =>
 			field.type === GameFieldType.GO_TO_JAIL
 		),
 
@@ -43,7 +43,7 @@ function Game() {
 	return (
 		<div className={styles.container}>
 			<div className={`${styles.section} ${styles.stop}`}>
-				<Angle type={GameFieldType.FREE_PARKING} />
+				{gameSectionFields.freeParking ? <Angle {...gameSectionFields.freeParking} /> : null}
 			</div>
 			<div className={`${styles.section} ${styles.top_section}`}>
 				{gameSectionFields.topSection.map(field => (
@@ -53,7 +53,7 @@ function Game() {
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.goto_prison}`}>
-				<Angle type={GameFieldType.JUST_VISITING} />
+				{gameSectionFields.goToJail ? <Angle {...gameSectionFields.goToJail} /> : null} 
 			</div>
 			<div className={`${styles.section} ${styles.left_section}`}>
 				{gameSectionFields.leftSection.map(field => (
@@ -73,7 +73,7 @@ function Game() {
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.forward_joly}`}>
-				<Angle type={GameFieldType.JUST_VISITING} />
+				{gameSectionFields.justVisiting ? <Angle {...gameSectionFields.justVisiting} /> : null }
 			</div>
 			<div className={`${styles.section} ${styles.bottom_section}`}>
 				{gameSectionFields.bottomSection.map(field => (
@@ -83,7 +83,7 @@ function Game() {
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.start}`}>
-				<Angle type={GameFieldType.GO} />
+				{gameSectionFields.go ? <Angle {...gameSectionFields.go}/> : null}
 			</div>
 		</div>
 	)

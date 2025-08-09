@@ -47,7 +47,7 @@ const initialState: GamesStateT = {
                 name: 'Koka',
                 avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
                 chip: PlayerChip.PENGUIN,
-                turnNumber: 1,
+                turnNumber: 4,
                 status: PlayerStatus.IS_LEFT,
                 balance: 1500,
                 role: UserRole.REGULAR
@@ -195,7 +195,48 @@ const initialState: GamesStateT = {
                 buildsCount: null,
                 rent: null,
                 owner: null,
-                players: null
+                players: [
+                    {
+                        id: '4',
+                        name: 'Sn1k',
+                        avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                        chip: PlayerChip.IRON,
+                        turnNumber: 3,
+                        status: PlayerStatus.COMMON,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                    {
+                        id: '3',
+                        name: 'Русец отсосской кратодемии',
+                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                        chip: PlayerChip.HAT,
+                        turnNumber: 2,
+                        status: PlayerStatus.COMMON,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                    {
+                        id: '2',
+                        name: 'Koka',
+                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                        chip: PlayerChip.PENGUIN,
+                        turnNumber: 4,
+                        status: PlayerStatus.IS_LEFT,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                    {
+                        id: '1',
+                        name: 'видеокал',
+                        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                        chip: PlayerChip.CART,
+                        turnNumber: 1,
+                        status: PlayerStatus.IS_TURN_OWNER,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                ]
             },
             {
                 id: '12',
@@ -400,7 +441,7 @@ const initialState: GamesStateT = {
                 color: GameFieldColor.YELLOW,
                 basePrice: 260,
                 housePrice: 150,
-                buildsCount: 2,
+                buildsCount: 4,
                 rent: [22, 110, 330, 800, 975, 1150],
                 owner: null,
                 players: null

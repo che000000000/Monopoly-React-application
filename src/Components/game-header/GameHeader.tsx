@@ -1,6 +1,5 @@
-import { PlayerChip } from '../../store/enums/player-chip';
 import { PlayerT } from '../../types/games';
-import InGamePlayer, { PlayerStatus } from '../player/in-game-player/InGamePlayer';
+import InGamePlayer from '../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
 
 function GameHeader(props: {players: PlayerT[]}) {
