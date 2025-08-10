@@ -1,0 +1,48 @@
+.my_message_container {
+    display: flex;
+    justify-content: end;
+}
+
+.message {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 0.6vmin;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+.my_message {
+    background-color: #d5ffca;
+}
+
+.message_sender {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.2vmin;
+}
+
+.sender_name {
+    max-width: 27vmin;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.2vmin;
+}
+
+.sender_chip {
+    width: 2.2vmin;
+}
+
+.message_text {
+    font-weight: 400;
+}
+
+.sent_time {
+    display: flex;
+    justify-content: end;
+    font-size: 0.9vmin;
+    color: #5a5a5a;
+}

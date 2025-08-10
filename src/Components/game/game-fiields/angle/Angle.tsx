@@ -1,16 +1,16 @@
 import styles from './angle.module.css'
-import go_arrow from '../../../icons/field-icons/go_arrow.svg'
-import just_visiting from '../../../icons/field-icons/just_visiting.svg'
-import free_parking from '../../../icons/field-icons/free_parking.svg'
-import jail from '../../../icons/field-icons/jail.svg'
-import iron_chip from '../../../images/iron-chip.png'
-import hat_chip from '../../../images/hat-chip.png'
-import cart_chip from '../../../images/cart-chip.png'
-import penguin_chip from '../../../images/penguin-chip.png'
-import thimble_chip from '../../../images/thimble-chip.png'
-import { GameFieldType } from '../../../store/enums/game-field-type'
-import { GameFieldT } from '../../../types/games'
-import { PlayerChip } from '../../../store/enums/player-chip'
+import go_arrow from '../../../../icons/field-icons/go_arrow.svg'
+import just_visiting from '../../../../icons/field-icons/just_visiting.svg'
+import free_parking from '../../../../icons/field-icons/free_parking.svg'
+import jail from '../../../../icons/field-icons/jail.svg'
+import iron_chip from '../../../../images/iron-chip.png'
+import hat_chip from '../../../../images/hat-chip.png'
+import cart_chip from '../../../../images/cart-chip.png'
+import penguin_chip from '../../../../images/penguin-chip.png'
+import thimble_chip from '../../../../images/thimble-chip.png'
+import { GameFieldType } from '../../../../store/enums/game-field-type'
+import { GameFieldT } from '../../../../types/games'
+import { PlayerChip } from '../../../../store/enums/player-chip'
 
 function Angle(props: GameFieldT) {
 
@@ -78,9 +78,7 @@ function Angle(props: GameFieldT) {
                 </div>
             </div>
         )
-        default: return (
-            <div></div>
-        )
+        default: return null
     }
 }
 

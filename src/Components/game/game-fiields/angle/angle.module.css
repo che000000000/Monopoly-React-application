@@ -41,6 +41,8 @@
     display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-template-rows: repeat(2, 50%);
+    user-select: none;
+    pointer-events: none;
 }
 
 .player_chip {

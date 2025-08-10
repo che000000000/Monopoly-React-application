@@ -84,21 +84,20 @@
 
 .field_price {
     text-transform: uppercase;
+    font-size: 0.96vmin;
 }
 
-.vertical_dynamic_area {
+.dynamic_area {
     position: absolute;
-}
-
-.horizontal_dynamic_area {
-    position: absolute;
+    display: grid;
+    user-select: none;
+    pointer-events: none;
 }
 
 .bottom_builds_area {
     width: 56%;
     height: 25%;
     top: 58%;
-    display: grid;
     grid-template-columns: repeat(2, 50%);
     grid-template-rows: repeat(2, 50%);
     grid-auto-flow: dense;
@@ -113,7 +112,6 @@
 }
 
 .bottom_players_area {
-    display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-template-rows: repeat(2, 50%);
     width: 100%;
@@ -125,7 +123,6 @@
     width: 56%;
     height: 25%;
     top: 61%;
-    display: grid;
     grid-template-columns: repeat(2, 50%);
     grid-template-rows: repeat(2, 50%);
     grid-auto-flow: dense;
@@ -142,7 +139,6 @@
 .top_players_area {
     width: 100%;
     height: 41%;
-    display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-template-rows: repeat(2, 50%);
     top: 16%;
@@ -151,14 +147,12 @@
 .right_builds_area {
     width: 70%;
     top: 69%;
-    display: grid;
     grid-template-columns: repeat(4, 25%);
 }
 
 .right_players_area {
     width: 65%;
     height: 69%;
-    display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-template-rows: repeat(2, 50%);
     left: 23%;
@@ -169,14 +163,12 @@
     width: 70%;
     left: 19%;
     top: 69%;
-    display: grid;
     grid-template-columns: repeat(4, 25%);
 }
 
 .left_players_area {
     width: 67%;
     height: 69%;
-    display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-template-rows: repeat(2, 50%);
     left: 16%;

@@ -3,7 +3,6 @@ import { GameFieldColor } from "../store/enums/game-field-color"
 import { GameFieldType } from "../store/enums/game-field-type"
 import { PlayerChip } from "../store/enums/player-chip"
 import { UserRole } from "../store/enums/user-role"
-import { UserT } from "./auth"
 
 export type PlayerT = {
     id: string,
@@ -36,11 +35,19 @@ export type GameTurnT = {
     expires: number
 }
 
+export type GameChatMessageSenderT = {
+    id: string,
+    name: string,
+    avatarUrl: string
+    chip: PlayerChip,
+    role: UserRole
+}
+
 export type GameChatMessageT = {
     id: string,
     text: string
-    sender: UserT,
-    createdAt: string
+    sender: GameChatMessageSenderT,
+    sentTime: string
 }
 
 export type GameT = {
@@ -48,12 +55,16 @@ export type GameT = {
     players: PlayerT[],
     fields: GameFieldT[],
     currentTurn: GameTurnT | null,
-    chatId: string,
     chatMessages: GameChatMessageT[],
+    builds: {
+        housesCount: number,
+        hotelsCount: number
+    }
     createdAt: string
 }
 
 export type GamesStateT = {
     games: GameT[]
+    currentPlayer: PlayerT | null
     currentGame: GameT,
 }

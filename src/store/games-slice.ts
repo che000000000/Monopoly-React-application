@@ -8,13 +8,23 @@ import { PlayerChip } from "./enums/player-chip";
 
 const initialState: GamesStateT = {
     games: [],
+    currentPlayer: {
+        id: '1',
+        name: 'видеокал-',
+        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+        chip: PlayerChip.CART,
+        turnNumber: 1,
+        status: PlayerStatus.IS_TURN_OWNER,
+        balance: 1500,
+        role: UserRole.REGULAR
+    },
     currentGame: {
         id: '1',
         currentTurn: null,
         players: [
             {
                 id: '1',
-                name: 'видеокал',
+                name: 'видеокал-',
                 avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
                 chip: PlayerChip.CART,
                 turnNumber: 1,
@@ -51,7 +61,17 @@ const initialState: GamesStateT = {
                 status: PlayerStatus.IS_LEFT,
                 balance: 1500,
                 role: UserRole.REGULAR
-            }
+            },
+            {
+                id: '9',
+                name: 'Алекс вы абсолютно непримемлимы',
+                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                chip: PlayerChip.THIMBLE,
+                turnNumber: 4,
+                status: PlayerStatus.IS_LEFT,
+                balance: 1500,
+                role: UserRole.REGULAR
+            },
         ],
         fields: [
             {
@@ -91,7 +111,48 @@ const initialState: GamesStateT = {
                 buildsCount: null,
                 rent: null,
                 owner: null,
-                players: null
+                players: [
+                    {
+                        id: '4',
+                        name: 'Sn1k',
+                        avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                        chip: PlayerChip.IRON,
+                        turnNumber: 3,
+                        status: PlayerStatus.COMMON,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                    {
+                        id: '3',
+                        name: 'Русец отсосской кратодемии',
+                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                        chip: PlayerChip.HAT,
+                        turnNumber: 2,
+                        status: PlayerStatus.COMMON,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                    {
+                        id: '2',
+                        name: 'Koka',
+                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                        chip: PlayerChip.PENGUIN,
+                        turnNumber: 4,
+                        status: PlayerStatus.IS_LEFT,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                    {
+                        id: '1',
+                        name: 'видеокал',
+                        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                        chip: PlayerChip.CART,
+                        turnNumber: 1,
+                        status: PlayerStatus.IS_TURN_OWNER,
+                        balance: 1500,
+                        role: UserRole.REGULAR
+                    },
+                ]
             },
             {
                 id: '4',
@@ -195,48 +256,7 @@ const initialState: GamesStateT = {
                 buildsCount: null,
                 rent: null,
                 owner: null,
-                players: [
-                    {
-                        id: '4',
-                        name: 'Sn1k',
-                        avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
-                        chip: PlayerChip.IRON,
-                        turnNumber: 3,
-                        status: PlayerStatus.COMMON,
-                        balance: 1500,
-                        role: UserRole.REGULAR
-                    },
-                    {
-                        id: '3',
-                        name: 'Русец отсосской кратодемии',
-                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
-                        chip: PlayerChip.HAT,
-                        turnNumber: 2,
-                        status: PlayerStatus.COMMON,
-                        balance: 1500,
-                        role: UserRole.REGULAR
-                    },
-                    {
-                        id: '2',
-                        name: 'Koka',
-                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
-                        chip: PlayerChip.PENGUIN,
-                        turnNumber: 4,
-                        status: PlayerStatus.IS_LEFT,
-                        balance: 1500,
-                        role: UserRole.REGULAR
-                    },
-                    {
-                        id: '1',
-                        name: 'видеокал',
-                        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
-                        chip: PlayerChip.CART,
-                        turnNumber: 1,
-                        status: PlayerStatus.IS_TURN_OWNER,
-                        balance: 1500,
-                        role: UserRole.REGULAR
-                    },
-                ]
+                players: null
             },
             {
                 id: '12',
@@ -616,8 +636,192 @@ const initialState: GamesStateT = {
                 players: null
             }
         ],
-        chatId: '1',
-        chatMessages: [],
+        chatMessages: [
+            {
+                id: '1',
+                text: 'Ходи чмоня',
+                sender: {
+                    id: '3',
+                    name: 'Русец отсосской кратодемии',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                    chip: PlayerChip.HAT,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:02'
+            },
+            {
+                id: '2',
+                text: 'Да иди нахуй',
+                sender: {
+                    id: '4',
+                    name: 'Sn1k',
+                    avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                    chip: PlayerChip.IRON,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:02'
+            },
+            {
+                id: '3',
+                text: 'Вы оба дебилы, я уже хожу',
+                sender: {
+                    id: '1',
+                    name: 'видеокал-',
+                    avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                    chip: PlayerChip.CART,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:03'
+            },
+            {
+                id: '4',
+                text: 'Кто последний - тот говна кусок',
+                sender: {
+                    id: '9',
+                    name: 'Алекс вы абсолютно непримемлимы',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    chip: PlayerChip.THIMBLE,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:03'
+            },
+            {
+                id: '5',
+                text: 'Пингвинчик, ты где?',
+                sender: {
+                    id: '3',
+                    name: 'Русец отсосской кратодемии',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                    chip: PlayerChip.HAT,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:04'
+            },
+            {
+                id: '6',
+                text: 'Я в тюрьме, как обычно',
+                sender: {
+                    id: '2',
+                    name: 'Koka',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    chip: PlayerChip.PENGUIN,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:04'
+            },
+            {
+                id: '7',
+                text: 'Лол, снова проиграл на старте?',
+                sender: {
+                    id: '4',
+                    name: 'Sn1k',
+                    avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                    chip: PlayerChip.IRON,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:05'
+            },
+            {
+                id: '8',
+                text: 'Да заткнитесь все, я думаю',
+                sender: {
+                    id: '1',
+                    name: 'видеокал-',
+                    avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                    chip: PlayerChip.CART,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:05'
+            },
+            {
+                id: '9',
+                text: 'Купите у меня оранжевые, дешево',
+                sender: {
+                    id: '9',
+                    name: 'Алекс вы абсолютно непримемлимы',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    chip: PlayerChip.THIMBLE,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:06'
+            },
+            {
+                id: '10',
+                text: 'Ты уже все проиграл, Алекс',
+                sender: {
+                    id: '3',
+                    name: 'Русец отсосской кратодемии',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                    chip: PlayerChip.HAT,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:06'
+            },
+            {
+                id: '11',
+                text: 'Я вас всех обыграю, ждите',
+                sender: {
+                    id: '4',
+                    name: 'Sn1k',
+                    avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                    chip: PlayerChip.IRON,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:07'
+            },
+            {
+                id: '12',
+                text: 'Опять телега последняя...',
+                sender: {
+                    id: '1',
+                    name: 'видеокал-',
+                    avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                    chip: PlayerChip.CART,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:08'
+            },
+            {
+                id: '13',
+                text: 'Кто следующий? Шляпа или наперсток?',
+                sender: {
+                    id: '2',
+                    name: 'Koka',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    chip: PlayerChip.PENGUIN,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:08'
+            },
+            {
+                id: '14',
+                text: 'Я уже 10 минут жду своего хода!',
+                sender: {
+                    id: '9',
+                    name: 'Алекс вы абсолютно непримемлимы',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    chip: PlayerChip.THIMBLE,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:09'
+            },
+            {
+                id: '15',
+                text: 'Все свободны, я банкрот',
+                sender: {
+                    id: '3',
+                    name: 'Русец отсосской кратодемии',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                    chip: PlayerChip.HAT,
+                    role: UserRole.REGULAR
+                },
+                sentTime: '14:10'
+            }
+        ],
+        builds: {
+            housesCount: 8,
+            hotelsCount: 8
+        },
         createdAt: '08.08.2025'
     },
 }

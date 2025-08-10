@@ -1,0 +1,37 @@
+.container {
+    width: 100%;
+    display: flex;
+    padding: 0.6vmin;
+    background-color: #da2a0b;
+    border-bottom: 0.3vmin solid #000000;
+}
+
+.hollow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1vmin;
+    padding: 0.3vmin;
+    background-color: #b92409;
+    border-radius: 5px;
+}
+
+.builds_list{
+    width: 38.4vmin;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.houses_list {
+    height: 3.7vmin;
+    grid-template-rows: repeat(2, 1.8vmin);
+    grid-template-columns: repeat(16, 2.4vmin);
+}
+
+.hotels_list {
+    grid-template-columns: repeat(16, 2.4vmin);
+}
+
+.build_icon {
+    width: 2.4vmin;
+}
