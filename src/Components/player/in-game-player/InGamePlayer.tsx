@@ -30,7 +30,6 @@ function InGamePlayer(props: { name: string, avatarUrl: string, playerChip: Play
             ${props.status === PlayerStatus.IS_LEFT ? styles.left_player_container : ''}
             `}>
             <div className={styles.name}>{props.name}</div>
-            {/* <img className={styles.avatar} alt={props.name} src={props.avatarUrl} /> */}
             <img className={styles.figurine} alt={props.name} src={definePlayerChip(props.playerChip)} />
         </li>
     )

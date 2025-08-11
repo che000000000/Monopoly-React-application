@@ -10,7 +10,7 @@ function App() {
             <Routes>
                 <Route path='/login' element={<AuthForm type={AuthFormTypes.LOGIN} />} />
                 <Route path='/register' element={<AuthForm type={AuthFormTypes.REGISTER} />} />
-                <Route path='/game' element={<Game />} />
+                <Route path='/game' element={<div className={styles.game_wrap}><Game /></div>} />
                 <Route path='/main' element={<MainPage />} />
                 <Route path='*' element={<MainPage />} />
             </Routes>

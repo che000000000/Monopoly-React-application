@@ -1,7 +1,7 @@
 .container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    height: fit-content;
     background-color: #ececec;
     border-bottom: 0.3vmin solid #000000;
     gap: 1vmin;
@@ -20,6 +20,7 @@
 
 .players_list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 0.8vmin;
 }

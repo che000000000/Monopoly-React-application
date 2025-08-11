@@ -1,5 +1,5 @@
-import { PlayerT } from '../../types/games';
-import InGamePlayer from '../player/in-game-player/InGamePlayer';
+import { PlayerT } from '../../../types/games';
+import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
 
 function GameHeader(props: {players: PlayerT[]}) {
@@ -12,6 +12,7 @@ function GameHeader(props: {players: PlayerT[]}) {
             <ul className={styles.players_list}>
                 {props.players.map(player => (
                     <InGamePlayer
+                        key={player.id}
                         name={player.name}
                         avatarUrl={player.avatarUrl}
                         playerChip={player.chip}

@@ -21,7 +21,7 @@
 }
 
 .name {
-    max-width: 11vmin;
+    max-width: 16vmin;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -4,50 +4,52 @@ import { AuthStateT } from '../../../types/auth';
 import { GlobalChatStateT } from '../../../types/global-chat';
 import GlobalChatMessage from './global-chat-message/GlobalChatMessage';
 import styles from './global-chat.module.css'
-import { pushMessage } from '../../../store/global-chat-slice';
-import { useAppDispatch } from '../../../hoocks/useAppDispatch';
+import GlobalChatSendForm from './global-chat-send-form/GlobalChatSendForm';
 
 function GlobalChat() {
     const globalChatState: GlobalChatStateT = useAppSelector(state => state.globalChat)
     const authState: AuthStateT = useAppSelector(state => state.auth)
 
-    const dispatch = useAppDispatch()
+    const messagesListElement = useRef<HTMLDivElement>(null)
+    const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
 
-    const [sendMessageInputText, setSendMessageInputText] = useState('')
+    const [isAutoScrollEnabled, setIsAutoScrollEnabled] = useState(true)
 
-    const messagesEndRef = useRef<HTMLDivElement>(null)
+    function toggleAutoScroll(): void {
+        if (!messagesListElement.current) return
+        const { scrollTop, scrollHeight, clientHeight } = messagesListElement.current
+        if (scrollHeight - (scrollTop + clientHeight) < 10) {
+            setIsAutoScrollEnabled(true)
+            return
+        }
+        setIsAutoScrollEnabled(false)
+    }
 
-    const scrollToBottom = (isInstant: boolean) => {
+    messagesListElement.current?.addEventListener('scroll', () => toggleAutoScroll())
+
+    function scrollToBottom(isInstant: boolean): void {
         setTimeout(() => {
-            messagesEndRef.current?.scrollIntoView({ behavior: 'auto' })
+            bottomMessagesListElemet.current?.scrollIntoView({ behavior: 'auto' })
         }, isInstant ? 0 : 50)
     }
 
+    function handleScrollBottom(): void {
+        if (isAutoScrollEnabled) scrollToBottom(true)
+        else return
+    }
+
     useEffect(() => {
-        setTimeout(() => scrollToBottom(false), 0)
+        scrollToBottom(false)
     }, [])
 
-    function handleSendMessage(messageText: string) {
-        if (messageText.length === 0) return null
-
-        dispatch(pushMessage({
-            id: Date.now().toString(),
-            text: messageText,
-            sender: {
-                id: authState.user.id,
-                name: authState.user.name,
-                avatarUrl: authState.user.avatarUrl,
-                role: authState.user.role
-            },
-            createdAt: '19:35'
-        }))
-        scrollToBottom(true)
-        setSendMessageInputText('')
-    }
+    useEffect(() => {
+        if (isAutoScrollEnabled) handleScrollBottom()
+        else return
+    }, [globalChatState.globalChatMessages])
 
     return (
         <div className={styles.container}>
-            <div className={styles.messages_list}>
+            <div className={styles.messages_list} ref={messagesListElement}>
                 {globalChatState.globalChatMessages.map(message =>
                     <GlobalChatMessage
                         key={message.id}
@@ -55,23 +57,9 @@ function GlobalChat() {
                         isMine={message.sender.id === authState.user.id}
                     />
                 )}
-                <div className={styles.lower_scroll_position} ref={messagesEndRef} />
+                <div className={styles.lower_scroll_position} ref={bottomMessagesListElemet} />
             </div>
-            <div className={styles.send_message_form}>
-                <input className={styles.send_input}
-                    placeholder='введите сообщение...'
-                    value={sendMessageInputText}
-                    onChange={(event) => setSendMessageInputText(event.target.value)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter' && !event.shiftKey) {
-                            handleSendMessage(sendMessageInputText)
-                        }
-                    }}
-                />
-                <button className={styles.send_btn}
-                    onClick={() => handleSendMessage(sendMessageInputText)}
-                >Отправить</button>
-            </div>
+            <GlobalChatSendForm authUser={authState.user} />
         </div>
     )
 }

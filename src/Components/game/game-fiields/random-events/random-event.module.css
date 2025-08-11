@@ -62,6 +62,8 @@
 .dynamic_area {
     position: absolute;
     display: grid;
+    user-select: none;
+    pointer-events: none;
 }
 
 .bottom_players_area {

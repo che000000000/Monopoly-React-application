@@ -1,11 +1,13 @@
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import { GameFieldType } from '../../store/enums/game-field-type';
-import Angle from '../game-fiields/angle/Angle';
-import { GameFieldOrientation } from '../game-fiields/enums/game-field-orientation';
-import Property from '../game-fiields/property/Property';
-import RandomEvent from '../game-fiields/random-events/RandomEvent';
-import GameHeader from '../game-header/GameHeader';
+import Angle from './game-fiields/angle/Angle';
+import { GameFieldOrientation } from './game-fiields/enums/game-field-orientation';
+import Property from './game-fiields/property/Property';
+import RandomEvent from './game-fiields/random-events/RandomEvent';
+import GameHeader from './game-header/GameHeader';
+import GameChat from './game-chat/GameChat';
 import styles from './game.module.css'
+import GameBuilds from './game-builds/GameBuilds';
 
 function Game() {
 	const gamesState = useAppSelector(state => state.games)
@@ -48,42 +50,44 @@ function Game() {
 			<div className={`${styles.section} ${styles.top_section}`}>
 				{gameSectionFields.topSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.TOP} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.TOP} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.goto_prison}`}>
-				{gameSectionFields.goToJail ? <Angle {...gameSectionFields.goToJail} /> : null} 
+				{gameSectionFields.goToJail ? <Angle {...gameSectionFields.goToJail} /> : null}
 			</div>
 			<div className={`${styles.section} ${styles.left_section}`}>
 				{gameSectionFields.leftSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.LEFT} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.LEFT} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.chat_section}`}>
 				<GameHeader players={gamesState.currentGame.players} />
+				<GameBuilds housesCount={gamesState.currentGame.builds.housesCount} hotelsCount={gamesState.currentGame.builds.hotelsCount} />
+				<GameChat chatMessages={gamesState.currentGame.chatMessages} currentPlayer={gamesState.currentPlayer}/>
 			</div>
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.RIGHT} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.RIGHT} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.forward_joly}`}>
-				{gameSectionFields.justVisiting ? <Angle {...gameSectionFields.justVisiting} /> : null }
+				{gameSectionFields.justVisiting ? <Angle {...gameSectionFields.justVisiting} /> : null}
 			</div>
 			<div className={`${styles.section} ${styles.bottom_section}`}>
 				{gameSectionFields.bottomSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.start}`}>
-				{gameSectionFields.go ? <Angle {...gameSectionFields.go}/> : null}
+				{gameSectionFields.go ? <Angle {...gameSectionFields.go} /> : null}
 			</div>
 		</div>
 	)
