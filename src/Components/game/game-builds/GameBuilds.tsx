@@ -6,12 +6,12 @@ function GameBuilds(props: { housesCount: number, hotelsCount: number }) {
     return (
         <div className={styles.container}>
             <div className={styles.hollow}>
-                <ul className={`${styles.builds_list} ${styles.houses_list}`}>
+                <div className={`${styles.builds_list} ${styles.houses_list}`}>
                     {Array.from({ length: props.housesCount }).map(_ => <img className={`${styles.build_icon} ${styles.house_icon}`} alt='house' src={house_icon} />)}
-                </ul>
-                <ul className={`${styles.builds_list} ${styles.hotels_list}`}>
+                </div>
+                <div className={`${styles.builds_list} ${styles.hotels_list}`}>
                     {Array.from({ length: props.hotelsCount }).map(_ => <img className={`${styles.build_icon} ${styles.house_icon}`} alt='hotel' src={hotel_icon} />)}
-                </ul>
+                </div>
             </div>
         </div>
     )

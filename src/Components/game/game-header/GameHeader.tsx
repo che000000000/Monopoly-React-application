@@ -12,6 +12,7 @@ function GameHeader(props: {players: PlayerT[]}) {
             <ul className={styles.players_list}>
                 {props.players.map(player => (
                     <InGamePlayer
+                        key={player.id}
                         name={player.name}
                         avatarUrl={player.avatarUrl}
                         playerChip={player.chip}

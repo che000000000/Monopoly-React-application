@@ -50,8 +50,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.top_section}`}>
 				{gameSectionFields.topSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.TOP} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.TOP} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.goto_prison}`}>
@@ -60,8 +60,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.left_section}`}>
 				{gameSectionFields.leftSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.LEFT} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.LEFT} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.chat_section}`}>
@@ -72,8 +72,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.RIGHT} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.RIGHT} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.forward_joly}`}>
@@ -82,8 +82,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.bottom_section}`}>
 				{gameSectionFields.bottomSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
-						: <RandomEvent orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
+						: <RandomEvent key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.start}`}>

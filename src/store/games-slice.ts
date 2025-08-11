@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { UserRole } from "./enums/user-role";
 import { PlayerStatus } from "../Components/player/in-game-player/InGamePlayer";
-import { GamesStateT } from "../types/games";
+import { GameChatMessageT, GamesStateT } from "../types/games";
 import { GameFieldType } from "./enums/game-field-type";
 import { GameFieldColor } from "./enums/game-field-color";
 import { PlayerChip } from "./enums/player-chip";
@@ -830,10 +830,12 @@ const gamesSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
-
+        pushMessage(state, action: PayloadAction<GameChatMessageT>) {
+            state.currentGame.chatMessages.push(action.payload)
+        }
     }
 })
 
-export const { } = gamesSlice.actions;
+export const { pushMessage } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

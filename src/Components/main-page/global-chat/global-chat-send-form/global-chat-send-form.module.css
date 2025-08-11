@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+}
+
+.send_input {
+    width: 100%;
+    padding: 0 6px;
+    font-weight: 500;
+    border: 1px solid #000000;
+    border-radius: 0 0 0 3px;
+}
+
+.send_btn {
+    padding: 5px;
+    font-weight: 500;
+    border-radius: 0 0 3px 0;
+    transition: 250ms;
+}
+
+.send_btn:active {
+    background-color: #1f1f1f;
+}
+
+@media(max-width: 2560px) {
+    .send_input {
+        font-size: 15px;
+    }
+
+    .send_btn {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .send_input {
+        font-size: 14px;
+    }
+
+    .send_btn {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 786px) {
+    .send_input {
+        font-size: 12px;
+    }
+
+    .send_btn {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 480px) {
+    .send_btn {
+        font-size: 2.6vw;
+        padding: 1.1vw;
+    }
+
+    .send_input {
+       font-size: 2.8vw;
+       padding: 0 1.3vw;
+    }
+}

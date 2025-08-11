@@ -34,4 +34,5 @@
 
 .build_icon {
     width: 2.4vmin;
+    user-select: none;
 }

@@ -7,7 +7,7 @@
     width: fit-content;
     display: flex;
     flex-direction: column;
-    padding: 0.6vmin;
+    padding: 0.9vmin;
     background-color: #eee;
     border-radius: 3px;
 }
@@ -44,5 +44,6 @@
     display: flex;
     justify-content: end;
     font-size: 0.9vmin;
+    font-weight: 600;
     color: #5a5a5a;
 }

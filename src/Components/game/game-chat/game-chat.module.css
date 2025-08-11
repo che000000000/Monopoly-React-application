@@ -14,26 +14,3 @@
     border: 0.3vmin solid #808080;
     border-bottom: none;
 }
-
-.input_form {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 84% auto;
-}
-
-.send_message_input {
-    padding: 0.3vmin 0.6vmin;
-    font-size: 1.6vmin;
-    font-weight: 500;
-    background-color: #eeeeee;
-    border: 0.3vmin solid #808080;
-    border-right: none;
-}
-
-.send_message_btn {
-    color: #000000;
-    font-size: 1.6vmin;
-    font-weight: 500;
-    background-color: #ffffff;
-    border: 0.3vmin solid #808080;
-}

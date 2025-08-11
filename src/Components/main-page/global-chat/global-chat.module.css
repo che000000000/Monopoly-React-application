@@ -14,50 +14,10 @@
     border-right: 0.3vmin solid #eeeeee;
 }
 
-.send_message_form {
-    display: flex;
-}
-
-.send_input {
-    width: 100%;
-    padding: 0 6px;
-    font-weight: 500;
-    border: 1px solid #000000;
-    border-radius: 0 0 0 3px;
-}
-
-.send_btn {
-    padding: 5px;
-    font-weight: 500;
-    border-radius: 0 0 3px 0;
-}
-
-.send_btn:active {
-    background-color: #1f1f1f;
-}
-
-@media(max-width: 2560px) {
-    .send_input {
-        font-size: 15px;
-    }
-
-    .send_btn {
-        font-size: 15px;
-    }
-}
-
 @media(max-width: 1024px) {
     .messages_list {
         height: 286px;
         padding: 4px 7px 1px 7px;
-    }
-
-    .send_input {
-        font-size: 14px;
-    }
-
-    .send_btn {
-        font-size: 14px;
     }
 }
 
@@ -66,29 +26,11 @@
         height: 255px;
         padding: 4px 7px 1px 7px;
     }
-
-    .send_input {
-        font-size: 12px;
-    }
-
-    .send_btn {
-        font-size: 12px;
-    }
 }
 
 @media(max-width: 480px) {
     .messages_list {
         height: 55vw;
         padding: 1.1vw 1.1vw 0.1vw 1.1vw;
-    }
-
-    .send_btn {
-        font-size: 2.6vw;
-        padding: 1.1vw;
-    }
-
-    .send_input {
-       font-size: 2.8vw;
-       padding: 0 1.3vw;
     }
 }
