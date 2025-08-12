@@ -1,50 +1,48 @@
+import show_password_icon from '../../../icons/password-input-icons/show.svg'
+import hide_password_icon from '../../../icons/password-input-icons/hide.svg'
 import styles from './auth-input.module.css'
+import { useState } from 'react'
 
-export enum AuthInputTypes {
+export enum AuthInputType {
     LOGIN,
     PASSWORD,
     CONFIRM_PASSWORD
 }
 
-function AuthInput(props: { 
+function AuthInput(props: {
     title: string,
-    type: AuthInputTypes,
+    type: AuthInputType,
     placeholder: string,
-    text: string,
-    onChange: (value: string) => void}
-) {
-    switch (props.type) {
-        case AuthInputTypes.LOGIN: return (
-            <div className={styles.container}>
-                <div className={styles.title}>{props.title}</div>
-                <input className={styles.input} placeholder={props.placeholder}
-                    value={props.text}
-                    onChange={(event) => props.onChange(event.target.value)}
+    value: string,
+    onChange: (value: string) => void
+}) {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+
+    const isPasswordField = props.type === AuthInputType.PASSWORD || props.type === AuthInputType.CONFIRM_PASSWORD
+    const inputType = isPasswordField && !isPasswordVisible ? 'password' : 'text'
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.title}>{props.title}</div>
+            <div className={styles.input_wrap}>
+                <input
+                    className={styles.input}
+                    type={inputType}
+                    placeholder={props.placeholder}
+                    value={props.value}
+                    onChange={(e) => props.onChange(e.target.value)}
                 />
+                {isPasswordField && (
+                    <img
+                        className={styles.password_icons}
+                        src={isPasswordVisible ? hide_password_icon : show_password_icon}
+                        onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                        alt={isPasswordVisible ? 'Hide password' : 'Show password'}
+                    />
+                )}
             </div>
-        )
-        case AuthInputTypes.PASSWORD: return (
-            <div className={styles.container}>
-                <div className={styles.title}>{props.title}</div>
-                <input className={styles.input} placeholder={props.placeholder}
-                    value={props.text}
-                    onChange={(event) => props.onChange(event.target.value)}
-                />
-            </div>
-        )
-        case AuthInputTypes.CONFIRM_PASSWORD: return (
-            <div className={styles.container}>
-                <div className={styles.title}>{props.title}</div>
-                <input className={styles.input} placeholder={props.placeholder}
-                    value={props.text}
-                    onChange={(event) => props.onChange(event.target.value)}
-                />
-            </div>
-        )
-        default: return (
-            <div>Failed to render input.</div>
-        )
-    }
+        </div>
+    )
 }
 
 export default AuthInput;

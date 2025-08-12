@@ -18,11 +18,7 @@ function GlobalChat() {
     function toggleAutoScroll(): void {
         if (!messagesListElement.current) return
         const { scrollTop, scrollHeight, clientHeight } = messagesListElement.current
-        if (scrollHeight - (scrollTop + clientHeight) < 10) {
-            setIsAutoScrollEnabled(true)
-            return
-        }
-        setIsAutoScrollEnabled(false)
+        setIsAutoScrollEnabled(scrollHeight - (scrollTop + clientHeight) < 10)
     }
 
     messagesListElement.current?.addEventListener('scroll', () => toggleAutoScroll())

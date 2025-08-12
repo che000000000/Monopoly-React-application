@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import AuthHeader from '../headers/auth-header/AuthHeader';
-import AuthInput, { AuthInputTypes } from './auth-input/AuthInput';
+import AuthInput, { AuthInputType } from './auth-input/AuthInput';
 import styles from './auth-form.module.css'
 import AuthButton from './auth-button/AuthButton';
 import { useEffect, useState } from 'react';
 import { loginUser, registerUser } from '../../store/auth-slice';
 import { useAppDispatch } from '../../hoocks/useAppDispatch';
 
-export enum AuthFormTypes {
+export enum AuthFormType {
     LOGIN,
     REGISTER
 }
@@ -18,7 +18,7 @@ export enum AuthFormData {
     CONFIRM_PASSWORD = 'confirmPassword'
 }
 
-function AuthForm(props: { type: AuthFormTypes }) {
+function AuthForm(props: { type: AuthFormType }) {
     const dispatch = useAppDispatch()
 
     const [formInputsData, setformInputsData] = useState({
@@ -58,7 +58,7 @@ function AuthForm(props: { type: AuthFormTypes }) {
     }
 
     switch (props.type) {
-        case AuthFormTypes.LOGIN: return (
+        case AuthFormType.LOGIN: return (
             <div className={styles.container}>
                 <AuthHeader />
                 <div className={styles.main_content}>
@@ -66,16 +66,17 @@ function AuthForm(props: { type: AuthFormTypes }) {
                     <div className={styles.inputs}>
                         <AuthInput
                             title='Почта'
-                            type={AuthInputTypes.LOGIN}
+                            type={AuthInputType.LOGIN}
                             placeholder='введите почту...'
-                            text={formInputsData.login}
+                            value={formInputsData.login}
                             onChange={(value) => handleFormInputsData(AuthFormData.LOGIN, value)}
                         />
                         <AuthInput
+                            key={AuthFormType.LOGIN}
                             title='Пароль'
-                            type={AuthInputTypes.PASSWORD}
+                            type={AuthInputType.PASSWORD}
                             placeholder='введите пароль...'
-                            text={formInputsData.password}
+                            value={formInputsData.password}
                             onChange={(value) => handleFormInputsData(AuthFormData.PASSWORD, value)}
                         />
                     </div>
@@ -88,7 +89,7 @@ function AuthForm(props: { type: AuthFormTypes }) {
                 </div>
             </div>
         )
-        case AuthFormTypes.REGISTER: return (
+        case AuthFormType.REGISTER: return (
             <div className={styles.container}>
                 <AuthHeader />
                 <div className={styles.main_content}>
@@ -96,23 +97,24 @@ function AuthForm(props: { type: AuthFormTypes }) {
                     <div className={styles.inputs}>
                         <AuthInput
                             title='Почта'
-                            type={AuthInputTypes.LOGIN}
+                            type={AuthInputType.LOGIN}
                             placeholder='введите почту...'
-                            text={formInputsData.login}
+                            value={formInputsData.login}
                             onChange={(value) => handleFormInputsData(AuthFormData.LOGIN, value)}
                         />
                         <AuthInput
+                            key={AuthFormType.REGISTER}
                             title='Пароль'
-                            type={AuthInputTypes.PASSWORD}
+                            type={AuthInputType.PASSWORD}
                             placeholder='введите пароль...'
-                            text={formInputsData.password}
+                            value={formInputsData.password}
                             onChange={(value) => handleFormInputsData(AuthFormData.PASSWORD, value)}
                         />
                         <AuthInput
                             title='Подтверждение пароля'
-                            type={AuthInputTypes.PASSWORD}
+                            type={AuthInputType.CONFIRM_PASSWORD}
                             placeholder='подтвердите пароль...'
-                            text={formInputsData.confirmPassword}
+                            value={formInputsData.confirmPassword}
                             onChange={(value) => handleFormInputsData(AuthFormData.CONFIRM_PASSWORD, value)}
                         />
                     </div>
