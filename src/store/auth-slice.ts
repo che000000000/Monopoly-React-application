@@ -9,23 +9,21 @@ const initialState: AuthStateT = {
         name: 'видеокал',
         avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
         role: UserRole.REGULAR
-    }
+    },
 }
 
 const authSlice: Slice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        loginUser(state, action: PayloadAction<LoginUserPayloadT>) {
-            console.log(action.payload)
+        loginUser(state) {
             state.isAuth = true
         },
         registerUser(state, action: PayloadAction<RegisterUserPayloadT>) {
-            console.log(action.payload)
         }
     }
 })
 
-export const { loginUser, registerUser } = authSlice.actions
+export const { setAppError, loginUser, registerUser } = authSlice.actions;
 
 export default authSlice.reducer;

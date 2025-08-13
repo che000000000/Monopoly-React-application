@@ -4,8 +4,10 @@ import AuthInput, { AuthInputType } from './auth-input/AuthInput';
 import styles from './auth-form.module.css'
 import AuthButton from './auth-button/AuthButton';
 import { useEffect, useState } from 'react';
-import { loginUser, registerUser } from '../../store/auth-slice';
+import { registerUser } from '../../store/auth-slice';
 import { useAppDispatch } from '../../hoocks/useAppDispatch';
+import { useLoginMutation } from '../../API/authApi'
+import { error } from 'console';
 
 export enum AuthFormType {
     LOGIN,
@@ -20,6 +22,8 @@ export enum AuthFormData {
 
 function AuthForm(props: { type: AuthFormType }) {
     const dispatch = useAppDispatch()
+
+    const [Login] = useLoginMutation()
 
     const [formInputsData, setformInputsData] = useState({
         login: '',
@@ -39,8 +43,16 @@ function AuthForm(props: { type: AuthFormType }) {
         setformInputsData(prev => ({ ...prev, [field]: value }))
     }
 
-    const handleLogin = (login: string, password: string) => {
-        dispatch(loginUser({ login, password }))
+    const handleLogin = async () => {
+        if (formInputsData.login === '' && formInputsData.password === '') return 
+
+        const requestBody = {
+            email: formInputsData.login,
+            password: formInputsData.password
+        }
+
+        await Login(requestBody)
+
         setformInputsData({
             login: '',
             password: '',
@@ -84,7 +96,7 @@ function AuthForm(props: { type: AuthFormType }) {
                         <Link to={'/register'} className={styles.link}>
                             У вас ещё нет уч. записи?
                         </Link>
-                        <AuthButton text='Войти' onClick={() => handleLogin(formInputsData.login, formInputsData.password)} />
+                        <AuthButton text='Войти' onClick={() => handleLogin()} />
                     </div>
                 </div>
             </div>
