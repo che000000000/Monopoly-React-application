@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ILoginReqBody, ILoginResData, IRegisterReqBody } from './interfaces/auth';
-import { loginUser } from '../store/auth-slice';
+import { loginUser, setOauthUrl } from '../store/auth-slice';
 import { handleRtkQuerryError } from './handleRtkQuerryError';
+import { OauthMethod } from './enums/oauth-method';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:7507',
@@ -40,8 +41,41 @@ export const authApi = createApi({
                     handleRtkQuerryError(error, dispatch)
                 }
             },
+        }),
+        getOauthUrl: build.mutation<any, OauthMethod>({
+            query: (oauthMethod: OauthMethod) => ({
+                url: `/auth/oauth/${oauthMethod}`,
+                method: 'GET'
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    const response = await queryFulfilled
+                    dispatch(setOauthUrl(response.data.oauthUrl))
+                } catch (error) {
+                    handleRtkQuerryError(error, dispatch)
+                }
+            }
+        }),
+        getUserProfile: build.mutation<any, void>({
+            query: () => ({
+                url: '/users/profile',
+                method: 'GET'
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    const response = await queryFulfilled
+                    dispatch(loginUser({
+                        id: response.data.id,
+                        name: response.data.name,
+                        avatarUrl: response.data.avatarUrl,
+                        role: response.data.role
+                    }))
+                } catch (error) {
+                    handleRtkQuerryError(error, dispatch)
+                }
+            },
         })
     })
 })
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useGetOauthUrlMutation, useGetUserProfileMutation } = authApi;

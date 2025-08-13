@@ -4,9 +4,12 @@ import AuthInput, { AuthInputType } from './auth-input/AuthInput';
 import styles from './auth-form.module.css'
 import AuthButton from './auth-button/AuthButton';
 import { useEffect, useState } from 'react';
-import { useLoginMutation, useRegisterMutation } from '../../API/authApi'
-import google_oauth_icon from '../../icons/auth-methods/google_oauth.svg'
-import OauthMethod, { OauthMethods } from './oauth-method/OauthMethod';
+import { useGetOauthUrlMutation, useLoginMutation, useRegisterMutation } from '../../API/authApi'
+import Oauth from './oauth-method/Oauth';
+import { OauthMethod } from '../../API/enums/oauth-method';
+import { useAppSelector } from '../../hoocks/useAppSelector';
+import { AuthStateT } from '../../types/auth';
+import AuthRedirect from '../../hoc/AuthRedirect';
 
 export enum AuthFormType {
     LOGIN,
@@ -20,8 +23,11 @@ export enum AuthFormData {
 }
 
 function AuthForm(props: { type: AuthFormType }) {
+    const authState: AuthStateT = useAppSelector(state => state.auth)
+
     const [loginUser] = useLoginMutation()
     const [registerUser] = useRegisterMutation()
+    const [getOauthUrl] = useGetOauthUrlMutation()
 
     const [formInputsData, setformInputsData] = useState({
         login: '',
@@ -72,6 +78,16 @@ function AuthForm(props: { type: AuthFormType }) {
         })
     }
 
+    const handleOauthLogin = async (oauthMethod: OauthMethod) => {
+        await getOauthUrl(oauthMethod)
+    }
+
+    useEffect(() => {
+        if (!authState.oauthUrl) return
+
+        window.location.href = authState.oauthUrl
+    }, [authState.oauthUrl])
+
     switch (props.type) {
         case AuthFormType.LOGIN: return (
             <div className={styles.container}>
@@ -99,10 +115,10 @@ function AuthForm(props: { type: AuthFormType }) {
                         <Link to={'/register'} className={styles.link}>
                             У вас ещё нет уч. записи?
                         </Link>
-                        <AuthButton text='Войти' onClick={() => handleLogin()} />
+                        <AuthButton text='Войти' onClick={handleLogin} />
                     </div>
                     <div className={styles.oauth_methods}>
-                        <OauthMethod method={OauthMethods.GOOGLE} />
+                        <Oauth method={OauthMethod.GOOGLE} onClick={() => handleOauthLogin(OauthMethod.GOOGLE)} />
                     </div>
                 </div>
             </div>
@@ -140,10 +156,10 @@ function AuthForm(props: { type: AuthFormType }) {
                         <Link to={'/login'} className={styles.link}>
                             Уже есть уч. запись?
                         </Link>
-                        <AuthButton text='Зарегестрировать' onClick={() => handleRegister()} />
+                        <AuthButton text='Зарегестрировать' onClick={handleRegister} />
                     </div>
                     <div className={styles.oauth_methods}>
-                        <OauthMethod method={OauthMethods.GOOGLE}/>
+                        <Oauth method={OauthMethod.GOOGLE} onClick={() => handleOauthLogin(OauthMethod.GOOGLE)} />
                     </div>
                 </div>
             </div>
@@ -151,4 +167,4 @@ function AuthForm(props: { type: AuthFormType }) {
     }
 }
 
-export default AuthForm;
+export default AuthRedirect(AuthForm);

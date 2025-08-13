@@ -1,6 +1,7 @@
 import { IRtkQueryError } from "./interfaces/errors";
 import { setCurrentError } from "../store/errors-slice";
 import { Dispatch } from "@reduxjs/toolkit";
+import { setIsAuthLoading } from "../store/auth-slice";
 
 export const handleRtkQuerryError = (error: unknown, dispatch: Dispatch) => {
     const rtkError = error as IRtkQueryError
@@ -9,4 +10,5 @@ export const handleRtkQuerryError = (error: unknown, dispatch: Dispatch) => {
         code: errorData.statusCode,
         message: errorData.message
     }))
+    dispatch(setIsAuthLoading(false))
 }
