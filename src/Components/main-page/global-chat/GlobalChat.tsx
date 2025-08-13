@@ -50,7 +50,7 @@ function GlobalChat() {
                     <GlobalChatMessage
                         key={message.id}
                         message={message}
-                        isMine={message.sender.id === authState.user.id}
+                        isMine={message.sender.id === authState.user?.id}
                     />
                 )}
                 <div className={styles.lower_scroll_position} ref={bottomMessagesListElemet} />

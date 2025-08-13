@@ -4,10 +4,9 @@ import AuthInput, { AuthInputType } from './auth-input/AuthInput';
 import styles from './auth-form.module.css'
 import AuthButton from './auth-button/AuthButton';
 import { useEffect, useState } from 'react';
-import { registerUser } from '../../store/auth-slice';
-import { useAppDispatch } from '../../hoocks/useAppDispatch';
-import { useLoginMutation } from '../../API/authApi'
-import { error } from 'console';
+import { useLoginMutation, useRegisterMutation } from '../../API/authApi'
+import google_oauth_icon from '../../icons/auth-methods/google_oauth.svg'
+import OauthMethod, { OauthMethods } from './oauth-method/OauthMethod';
 
 export enum AuthFormType {
     LOGIN,
@@ -17,13 +16,12 @@ export enum AuthFormType {
 export enum AuthFormData {
     LOGIN = 'login',
     PASSWORD = 'password',
-    CONFIRM_PASSWORD = 'confirmPassword'
+    REPEAT_PASSWORD = 'confirmPassword'
 }
 
 function AuthForm(props: { type: AuthFormType }) {
-    const dispatch = useAppDispatch()
-
-    const [Login] = useLoginMutation()
+    const [loginUser] = useLoginMutation()
+    const [registerUser] = useRegisterMutation()
 
     const [formInputsData, setformInputsData] = useState({
         login: '',
@@ -44,14 +42,12 @@ function AuthForm(props: { type: AuthFormType }) {
     }
 
     const handleLogin = async () => {
-        if (formInputsData.login === '' && formInputsData.password === '') return 
-
         const requestBody = {
             email: formInputsData.login,
             password: formInputsData.password
         }
 
-        await Login(requestBody)
+        await loginUser(requestBody)
 
         setformInputsData({
             login: '',
@@ -60,8 +56,15 @@ function AuthForm(props: { type: AuthFormType }) {
         })
     }
 
-    const handleRegister = (login: string, password: string, confirmPassword: string) => {
-        dispatch(registerUser({ login, password, confirmPassword }))
+    const handleRegister = async () => {
+        const requestBody = {
+            email: formInputsData.login,
+            password: formInputsData.password,
+            repeatPassword: formInputsData.confirmPassword
+        }
+
+        await registerUser(requestBody)
+
         setformInputsData({
             login: '',
             password: '',
@@ -98,6 +101,9 @@ function AuthForm(props: { type: AuthFormType }) {
                         </Link>
                         <AuthButton text='Войти' onClick={() => handleLogin()} />
                     </div>
+                    <div className={styles.oauth_methods}>
+                        <OauthMethod method={OauthMethods.GOOGLE} />
+                    </div>
                 </div>
             </div>
         )
@@ -127,14 +133,17 @@ function AuthForm(props: { type: AuthFormType }) {
                             type={AuthInputType.CONFIRM_PASSWORD}
                             placeholder='подтвердите пароль...'
                             value={formInputsData.confirmPassword}
-                            onChange={(value) => handleFormInputsData(AuthFormData.CONFIRM_PASSWORD, value)}
+                            onChange={(value) => handleFormInputsData(AuthFormData.REPEAT_PASSWORD, value)}
                         />
                     </div>
                     <div className={styles.lower_section}>
                         <Link to={'/login'} className={styles.link}>
                             Уже есть уч. запись?
                         </Link>
-                        <AuthButton text='Зарегестрировать' onClick={() => handleRegister(formInputsData.login, formInputsData.password, formInputsData.confirmPassword)} />
+                        <AuthButton text='Зарегестрировать' onClick={() => handleRegister()} />
+                    </div>
+                    <div className={styles.oauth_methods}>
+                        <OauthMethod method={OauthMethods.GOOGLE}/>
                     </div>
                 </div>
             </div>

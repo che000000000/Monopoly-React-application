@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ILoginReqBody } from './interfaces/auth';
+import { ILoginReqBody, ILoginResData, IRegisterReqBody } from './interfaces/auth';
 import { loginUser } from '../store/auth-slice';
 import { handleRtkQuerryError } from './handleRtkQuerryError';
 
@@ -12,7 +12,7 @@ export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery,
     endpoints: (build) => ({
-        login: build.mutation<any, ILoginReqBody>({
+        login: build.mutation<ILoginResData, ILoginReqBody>({
             query: (requestBody: ILoginReqBody) => ({
                 url: '/auth/login',
                 method: 'POST',
@@ -20,14 +20,28 @@ export const authApi = createApi({
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
-                    await queryFulfilled
-                    dispatch(loginUser(null))
+                    const request = await queryFulfilled
+                    dispatch(loginUser(request.data))
                 } catch (error) {
                     handleRtkQuerryError(error, dispatch)
                 }
             }
         }),
+        register: build.mutation<null, IRegisterReqBody>({
+            query: (requestBody: IRegisterReqBody) => ({
+                url: '/auth/register',
+                method: 'POST',
+                body: requestBody
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled
+                } catch (error) {
+                    handleRtkQuerryError(error, dispatch)
+                }
+            },
+        })
     })
 })
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation } = authApi;
