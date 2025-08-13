@@ -1,10 +1,10 @@
 import { createSlice, Slice, type PayloadAction } from "@reduxjs/toolkit";
-import { type AuthStateT, type LoginUserPayloadT, type RegisterUserPayloadT } from "../types/auth";
-import { UserRole } from "./enums/user-role";
+import { type AuthStateT, type LoginUserPayloadT } from "../types/auth";
 
 const initialState: AuthStateT = {
     isAuth: false,
     user: null,
+    oauthUrl: null
 }
 
 const authSlice: Slice = createSlice({
@@ -15,9 +15,12 @@ const authSlice: Slice = createSlice({
             state.isAuth = true
             state.user = action.payload
         },
+        setOauthUrl(state, action: PayloadAction<string>) {
+            state.oauthUrl = action.payload
+        }
     }
 })
 
-export const { setAppError, loginUser, registerUser } = authSlice.actions;
+export const { loginUser, setOauthUrl } = authSlice.actions;
 
 export default authSlice.reducer;
