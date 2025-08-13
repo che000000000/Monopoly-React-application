@@ -9,6 +9,7 @@ import Oauth from './oauth-method/Oauth';
 import { OauthMethod } from '../../API/enums/oauth-method';
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import { AuthStateT } from '../../types/auth';
+import AuthRedirect from '../../hoc/AuthRedirect';
 
 export enum AuthFormType {
     LOGIN,
@@ -166,4 +167,4 @@ function AuthForm(props: { type: AuthFormType }) {
     }
 }
 
-export default AuthForm;
+export default AuthRedirect(AuthForm);

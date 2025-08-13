@@ -5,6 +5,7 @@ import PregameRoom from './pregame/pregame-room/PregameRoom';
 import MainHeader from '../headers/main-header/MainHeader';
 import GlobalChat from './global-chat/GlobalChat';
 import ActiveFriends from './active-friends/ActiveFriends';
+import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 
 function MainPage() {
     const pregameRoomsState: PregameRoomsStateT = useAppSelector(state => state.pregame)
@@ -38,4 +39,4 @@ function MainPage() {
     )
 }
 
-export default MainPage;
+export default NoAuthRedirect(MainPage);

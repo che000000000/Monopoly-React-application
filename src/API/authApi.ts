@@ -55,8 +55,27 @@ export const authApi = createApi({
                     handleRtkQuerryError(error, dispatch)
                 }
             }
+        }),
+        getUserProfile: build.mutation<any, void>({
+            query: () => ({
+                url: '/users/profile',
+                method: 'GET'
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    const response = await queryFulfilled
+                    dispatch(loginUser({
+                        id: response.data.id,
+                        name: response.data.name,
+                        avatarUrl: response.data.avatarUrl,
+                        role: response.data.role
+                    }))
+                } catch (error) {
+                    handleRtkQuerryError(error, dispatch)
+                }
+            },
         })
     })
 })
 
-export const { useLoginMutation, useRegisterMutation, useGetOauthUrlMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useGetOauthUrlMutation, useGetUserProfileMutation } = authApi;

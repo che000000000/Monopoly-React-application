@@ -17,5 +17,6 @@ export type LoginUserPayloadT = {
 export type AuthStateT = {
     isAuth: boolean
     user: UserT | null,
+    isAuthLoading: boolean, 
     oauthUrl: string | null
 }
