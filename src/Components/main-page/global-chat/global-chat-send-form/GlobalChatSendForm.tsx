@@ -4,13 +4,13 @@ import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import { UserT } from '../../../../types/auth';
 import { pushMessage } from '../../../../store/global-chat-slice';
 
-function GlobalChatSendForm(props: {authUser: UserT}) {
+function GlobalChatSendForm(props: {authUser: UserT | null}) {
     const dispatch = useAppDispatch()
 
     const [sendMessageInputText, setSendMessageInputText] = useState('')
 
-    function handleSendMessage(messageText: string) {
-        if (messageText.length === 0) return null
+    function handleSendMessage(messageText: string): void {
+        if (messageText.length === 0 || !props.authUser) return
 
         dispatch(pushMessage({
             id: Date.now().toString(),
@@ -20,7 +20,7 @@ function GlobalChatSendForm(props: {authUser: UserT}) {
                 name: props.authUser.name,
                 avatarUrl: props.authUser.avatarUrl,
                 role: props.authUser.role
-            },
+            } ,
             createdAt: '19:35'
         }))
         

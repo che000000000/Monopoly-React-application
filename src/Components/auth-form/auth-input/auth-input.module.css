@@ -5,13 +5,24 @@
     gap: 4px;
 }
 
-.input {
-    font-family: 'Jost';
-    font-weight: 600;
+.input_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
     padding: 5px;
     border: 0.1vw solid #000000;
-    border-radius: 3px;
+}
+
+.input {
+    flex-grow: 1;
+    font-family: 'Jost';
+    font-weight: 600;
     outline: none;
+}
+
+.password_icons {
+    cursor: pointer;
 }
 
 @media(max-width: 2560px) {
@@ -22,15 +33,9 @@
     .input {
         font-size: 14px;
     }
-}
 
-@media(max-width: 1024px) {
-    .title {
-        font-size: 17px;
-    }
-
-    .input {
-        font-size: 14px;
+    .password_icons {
+        width: 19px;
     }
 }
 
@@ -39,9 +44,16 @@
         font-size: 15px;
     }
 
-    .input {
+    .input_wrap {
         padding: 4px 5px;
+    }
+
+    .input {
         font-size: 12px;
+    }
+
+    .password_icons {
+        width: 16px;
     }
 }
 
@@ -50,8 +62,15 @@
         font-size: 3.1vw;
     }
 
-    .input {
+    .input_wrap {
         padding: 0.8vw 1.1vw;
+    }
+
+    .input {
         font-size: 2.5vw;
+    }
+
+    .password_icons {
+        width: 3.2vw;
     }
 }

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { FriendsStateT } from "../types/friends"
-import { UserRole } from "./enums/user-role";
 
 const initialState: FriendsStateT = {
     activeFriends: [

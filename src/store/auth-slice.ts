@@ -4,12 +4,7 @@ import { UserRole } from "./enums/user-role";
 
 const initialState: AuthStateT = {
     isAuth: false,
-    user: {
-        id: '1',
-        name: 'видеокал',
-        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
-        role: UserRole.REGULAR
-    }
+    user: null,
 }
 
 const authSlice: Slice = createSlice({
@@ -17,15 +12,12 @@ const authSlice: Slice = createSlice({
     initialState,
     reducers: {
         loginUser(state, action: PayloadAction<LoginUserPayloadT>) {
-            console.log(action.payload)
             state.isAuth = true
+            state.user = action.payload
         },
-        registerUser(state, action: PayloadAction<RegisterUserPayloadT>) {
-            console.log(action.payload)
-        }
     }
 })
 
-export const { loginUser, registerUser } = authSlice.actions
+export const { setAppError, loginUser, registerUser } = authSlice.actions;
 
 export default authSlice.reducer;

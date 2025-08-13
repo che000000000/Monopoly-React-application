@@ -8,18 +8,15 @@ export type UserT = {
 }
 
 export type LoginUserPayloadT = {
-    login: string,
-    password: string
+    id: string,
+    name: string,
+    avatarUrl: string,
+    role: UserRole
 }
 
 export type AuthStateT = {
     isAuth: boolean
-    user: {
-        id: string,
-        name: string,
-        avatarUrl: string,
-        role: UserRole
-    }
+    user: UserT | null,
 }
 
 export type RegisterUserPayloadT = {
