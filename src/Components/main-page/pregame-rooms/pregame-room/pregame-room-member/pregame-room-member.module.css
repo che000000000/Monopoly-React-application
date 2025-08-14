@@ -10,7 +10,12 @@
 .avatar {
     width: 44px;
     height: 44px;
-    border-radius: 64px;
+    border-radius: 2px;
+    border: 0.1vw solid #bbbbbb;
+}
+
+.owner_border {
+    border: 0.1vw solid #ffe600;
 }
 
 .username {

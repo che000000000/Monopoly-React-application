@@ -1,4 +1,4 @@
-import { UserRole } from "../store/enums/user-role"
+import { UserRole } from "../enums/user-role"
 
 export type UserT = {
     id: string,

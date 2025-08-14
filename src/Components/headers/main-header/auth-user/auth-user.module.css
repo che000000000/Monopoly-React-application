@@ -13,8 +13,9 @@
 .avatar {
     width: 4vmin;
     height: 4vmin;
-    border-radius: 64px;
-    background-color: #000000;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 0.1vw solid #bbbbbb;
 }
 
 @media(max-width: 2560px) {

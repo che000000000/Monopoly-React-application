@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Game from './Components/game/Game';
 import styles from './app.module.css'
 import AuthForm, { AuthFormType } from './Components/auth-form/AuthForm';
-import { useGetUserProfileMutation } from './API/authApi';
+import { useGetUserProfileMutation } from './API/rtk/authApi';
 import { useEffect } from 'react';
 import MainPage from './Components/main-page/MainPage';
 

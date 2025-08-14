@@ -1,6 +1,7 @@
 import { useAppSelector } from '../../../hoocks/useAppSelector';
 import ActiveFriendItem from './friend-item/ActiveFriendItem';
 import styles from './active-friends.module.css'
+import NoItems from '../no-items/NoItems';
 
 function ActiveFriends() {
 	const friendsState = useAppSelector(state => state.friends)
@@ -10,7 +11,7 @@ function ActiveFriends() {
 			{
 				friendsState.activeFriends.length !== 0
 					? friendsState.activeFriends.map(friend => <ActiveFriendItem {...friend} />)
-					: <div className={styles.no_friends_container}>{`Никто из друзей сейчас не в сети`}</div>
+					: <NoItems text={'Никто из друзей сейчас не в сети'} />
 			}
 		</div>
 	)

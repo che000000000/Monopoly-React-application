@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ILoginReqBody, ILoginResData, IRegisterReqBody } from './interfaces/auth';
-import { loginUser, setOauthUrl } from '../store/auth-slice';
-import { handleRtkQuerryError } from './handleRtkQuerryError';
-import { OauthMethod } from './enums/oauth-method';
+import { ILoginReqBody, ILoginResData, IRegisterReqBody } from '../interfaces/auth';
+import { loginUser, setOauthUrl } from '../../store/auth-slice';
+import { handleRtkQuerryError } from '../common/handleRtkQuerryError';
+import { OauthMethod } from '../enums/oauth-method';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:7507',
@@ -59,7 +59,8 @@ export const authApi = createApi({
         getUserProfile: build.mutation<any, void>({
             query: () => ({
                 url: '/users/profile',
-                method: 'GET'
+                method: 'GET',
+                cache: 'no-cache'
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {

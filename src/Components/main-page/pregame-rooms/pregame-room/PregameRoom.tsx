@@ -1,17 +1,15 @@
 import styles from './pregame-room.module.css'
-import { type PregameRoomT } from '../../../../types/pregame-rooms';
 import PregameRoomMember from './pregame-room-member/PregameRoomMember';
-import EmptySlot from '../empty-slot/EmptySlot';
+import EmptySlot from './empty-slot/EmptySlot';
+import { PregameRoomT } from '../../../../store/types/pregame-rooms';
 
 function PregameRoom(props: { pregameRoom: PregameRoomT }) {
-	const totalSlots = 5
-
 	return (
 		<div className={styles.container}>
 			<div className={styles.members_list}>
-				{Array.from({ length: totalSlots }).map((_, index) => {
+				{Array.from({ length: props.pregameRoom.members.length + 1 }).map((_, index) => {
 					const slotNumber = index + 1
-					const member = props.pregameRoom.members.find(m => m.slot === slotNumber)
+					const member = props.pregameRoom.members[index] ? props.pregameRoom.members[index] : null
 
 					return member ? (
 						<PregameRoomMember key={member.id} {...member} />

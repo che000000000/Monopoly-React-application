@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { UserRole } from "./enums/user-role";
-import { PlayerStatus } from "../Components/player/in-game-player/InGamePlayer";
-import { GameChatMessageT, GamesStateT } from "../types/games";
 import { GameFieldType } from "./enums/game-field-type";
 import { GameFieldColor } from "./enums/game-field-color";
 import { PlayerChip } from "./enums/player-chip";
+import { GameChatMessageT, GamesStateT } from "./types/games";
+import { PlayerStatus } from "./enums/player-status";
 
 const initialState: GamesStateT = {
+    
     games: [],
     currentPlayer: {
         id: '1',

@@ -1,4 +1,4 @@
-import { PlayerT } from '../../../types/games';
+import { PlayerT } from '../../../store/types/games';
 import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
 

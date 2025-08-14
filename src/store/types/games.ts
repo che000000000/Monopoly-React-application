@@ -1,8 +1,8 @@
-import { PlayerStatus } from "../Components/player/in-game-player/InGamePlayer"
-import { GameFieldColor } from "../store/enums/game-field-color"
-import { GameFieldType } from "../store/enums/game-field-type"
-import { PlayerChip } from "../store/enums/player-chip"
-import { UserRole } from "../store/enums/user-role"
+import { GameFieldColor } from "../enums/game-field-color"
+import { GameFieldType } from "../enums/game-field-type"
+import { PlayerChip } from "../enums/player-chip"
+import { PlayerStatus } from "../enums/player-status"
+import { UserRole } from "../enums/user-role"
 
 export type PlayerT = {
     id: string,
@@ -10,7 +10,7 @@ export type PlayerT = {
     name: string,
     avatarUrl: string,
     turnNumber: number,
-    status: PlayerStatus
+    status: PlayerStatus,
     balance: 1500,
     role: UserRole
 }

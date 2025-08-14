@@ -5,12 +5,7 @@ import cart_chip from '../../../images/cart-chip.png'
 import penguin_chip from '../../../images/penguin-chip.png'
 import thimble_chip from '../../../images/thimble-chip.png'
 import { PlayerChip } from '../../../store/enums/player-chip'
-
-export enum PlayerStatus {
-    COMMON,
-    IS_TURN_OWNER,
-    IS_LEFT
-}
+import { PlayerStatus } from '../../../store/enums/player-status'
 
 function InGamePlayer(props: { name: string, avatarUrl: string, playerChip: PlayerChip, status?: PlayerStatus }) {
     const definePlayerChip = (playerChip: PlayerChip): string => {

@@ -12,6 +12,7 @@
 .members_list {
     display: flex;
     align-items: center;
+    padding-top: 5px;
 }
 
 .slot {
@@ -40,15 +41,27 @@
     .username {
         font-size: 14px;
     }
+
+    .members_list {
+        padding-top: 3px;
+    }
 }
 
 @media(max-width: 786px) {
     .username {
         font-size: 11px;
     }
+
+    .members_list {
+        padding-top: 3px;
+    }
 }
 
 @media(max-width: 480px) {
+    .members_list {
+        padding: 0;
+    }
+
     .username {
         font-size: 3.2vw;
     }

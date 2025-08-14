@@ -1,10 +1,10 @@
-import { UserRole } from "../store/enums/user-role"
+import { UserRole } from "../enums/user-role"
+import { UserT } from "./auth"
 
 export type PregameRoomMemberT = {
     id: string,
     name: string,
     avatarUrl: string,
-    slot: number,
     isOwner: boolean,
     role: UserRole
 }
@@ -15,11 +15,8 @@ export type PregameRoomT = {
     createdAt: string
 }
 
-export type PushPregameRoomsPayloadT = {
-    pregameRooms: PregameRoomT[]
-}
-
 export type PregameRoomsStateT = {
+    isGatewayConnected: boolean,
     pregameRooms: PregameRoomT[]
     currentPregameRoom: PregameRoomT | null
 }

@@ -12,8 +12,8 @@ import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import { GameFieldType } from '../../../../store/enums/game-field-type'
 import { GameFieldOrientation } from '../enums/game-field-orientation'
-import { GameFieldT } from '../../../../types/games'
 import { PlayerChip } from '../../../../store/enums/player-chip'
+import { GameFieldT } from '../../../../store/types/games'
 
 function RandomEvent(props: {orientation: GameFieldOrientation, fieldData: GameFieldT}) {
     const getIcon = (fieldType: GameFieldType, fieldName: string) => {

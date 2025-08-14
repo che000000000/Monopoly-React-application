@@ -3,20 +3,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #ffffff;
-    border-left: 0.3vmin solid #eeeeee;
-    border-bottom: 0.3vmin solid #eeeeee;
-    border-right: 0.3vmin solid #eeeeee;
-    border-radius: 0 0 3px 3px;
+    border: 0.3vmin solid #eeeeee;
+    border-top: none;
 }
 
 @media(max-width: 2560px) {
-
-}
-
-@media(max-width: 1024px) {
-
+    .container {
+        padding: 10px;
+    }
 }
 
 @media(max-width: 786px) {

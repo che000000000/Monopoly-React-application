@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { FriendsStateT } from "../types/friends"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { FriendsStateT } from "./types/friends";
+import { UserT } from "./types/auth";
 
 const initialState: FriendsStateT = {
     activeFriends: [
@@ -40,9 +41,13 @@ const initialState: FriendsStateT = {
 const friendsSlice = createSlice({
     name: 'friends',
     initialState,
-    reducers: {}
+    reducers: {
+        pushActiveFriend(state, action: PayloadAction<UserT>) {
+            state.activeFriends.push(action.payload)
+        }
+    }
 })
 
-export const { } = friendsSlice.actions;
+export const { pushActiveFriend } = friendsSlice.actions;
 
 export default friendsSlice.reducer;

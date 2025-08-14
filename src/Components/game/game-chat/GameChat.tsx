@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { GameChatMessageT, PlayerT } from '../../../types/games';
 import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
+import { GameChatMessageT, PlayerT } from '../../../store/types/games';
 
 function GameChat(props: { chatMessages: GameChatMessageT[], currentPlayer: PlayerT | null }) {
 	const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
