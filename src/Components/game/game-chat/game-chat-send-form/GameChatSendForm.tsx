@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './game-chat-send-form.module.css'
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import { pushMessage } from '../../../../store/games-slice';
-import { PlayerT } from '../../../../types/games';
+import { PlayerT } from '../../../../store/types/games';
 
 function GameChatSendForm(props: { currentPlayer: PlayerT | null }) {
     const dispatch = useAppDispatch()

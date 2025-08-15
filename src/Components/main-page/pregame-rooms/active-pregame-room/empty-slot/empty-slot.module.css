@@ -1,0 +1,65 @@
+.container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    color: #4b4b4b;
+    border: 0.1vw solid #bbbbbb;
+}
+
+@media(max-width: 2560px) {
+    .plus {
+        width: 44px;
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .plus {
+        width: 38px;
+        height: 38px;
+        font-size: 13px;
+    }
+
+    .text {
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 786px) {
+    .plus {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 480px) {
+    .plus {
+        width: 6vw;
+        height: 6vw;
+        font-size: 2.6vw
+    }
+
+    .text {
+        font-size: 2.6vw
+    }
+}

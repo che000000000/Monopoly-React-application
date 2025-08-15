@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GlobalChatMessageT, GlobalChatStateT, PushMessagesPayloadT } from "../types/global-chat";
 import { UserRole } from "./enums/user-role";
+import { GlobalChatMessageT, GlobalChatStateT, PushMessagesPayloadT } from "./types/global-chat";
 
 const initialState: GlobalChatStateT = {
     globalChatMessages: [

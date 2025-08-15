@@ -4,12 +4,12 @@ import AuthInput, { AuthInputType } from './auth-input/AuthInput';
 import styles from './auth-form.module.css'
 import AuthButton from './auth-button/AuthButton';
 import { useEffect, useState } from 'react';
-import { useGetOauthUrlMutation, useLoginMutation, useRegisterMutation } from '../../API/authApi'
+import { useGetOauthUrlMutation, useLoginMutation, useRegisterMutation } from '../../API/rtk/authApi'
 import Oauth from './oauth-method/Oauth';
 import { OauthMethod } from '../../API/enums/oauth-method';
 import { useAppSelector } from '../../hoocks/useAppSelector';
-import { AuthStateT } from '../../types/auth';
 import AuthRedirect from '../../hoc/AuthRedirect';
+import { AuthStateT } from '../../store/types/auth';
 
 export enum AuthFormType {
     LOGIN,

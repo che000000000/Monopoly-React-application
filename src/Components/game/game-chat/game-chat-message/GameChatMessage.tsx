@@ -1,11 +1,11 @@
 import { PlayerChip } from '../../../../store/enums/player-chip';
-import { GameChatMessageT, PlayerT } from '../../../../types/games';
 import iron_chip from '../../../../images/iron-chip.png'
 import hat_chip from '../../../../images/hat-chip.png'
 import cart_chip from '../../../../images/cart-chip.png'
 import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import styles from './game-chat-message.module.css'
+import { GameChatMessageT, PlayerT } from '../../../../store/types/games';
 
 function GameChatMessage(props: {message: GameChatMessageT, currentPlayer: PlayerT | null}) {
 

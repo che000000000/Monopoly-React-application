@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './global-chat-send-form.module.css'
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
-import { UserT } from '../../../../types/auth';
 import { pushMessage } from '../../../../store/global-chat-slice';
+import { UserT } from '../../../../store/types/auth';
 
 function GlobalChatSendForm(props: {authUser: UserT | null}) {
     const dispatch = useAppDispatch()

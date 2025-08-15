@@ -9,8 +9,8 @@ import cart_chip from '../../../../images/cart-chip.png'
 import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import { GameFieldType } from '../../../../store/enums/game-field-type'
-import { GameFieldT } from '../../../../types/games'
 import { PlayerChip } from '../../../../store/enums/player-chip'
+import { GameFieldT } from '../../../../store/types/games'
 
 function Angle(props: GameFieldT) {
 

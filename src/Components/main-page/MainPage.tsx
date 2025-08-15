@@ -1,15 +1,11 @@
-import { useAppSelector } from '../../hoocks/useAppSelector';
 import styles from './main-page.module.css'
-import { PregameRoomsStateT } from '../../types/pregame-rooms'
-import PregameRoom from './pregame/pregame-room/PregameRoom';
 import MainHeader from '../headers/main-header/MainHeader';
 import GlobalChat from './global-chat/GlobalChat';
 import ActiveFriends from './active-friends/ActiveFriends';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
+import PregameRooms from './pregame-rooms/PregameRooms';
 
 function MainPage() {
-    const pregameRoomsState: PregameRoomsStateT = useAppSelector(state => state.pregame)
-
     return (
         <div className={styles.container}>
             <MainHeader />
@@ -20,12 +16,8 @@ function MainPage() {
                         <GlobalChat />
                     </div>
                     <div className={styles.pregame_rooms}>
-                        <div className={styles.title}>Активные лобби</div>
-                        <div className={styles.pregame_rooms__list}>
-                            {pregameRoomsState.pregameRooms.map(pregameRoom =>
-                                <PregameRoom key={pregameRoom.id} pregameRoom={pregameRoom} />
-                            )}
-                        </div>
+                        <div className={styles.title}>Игровые лобби</div>
+                        <PregameRooms />
                     </div>
                 </div>
                 <div className={styles.content__side}>

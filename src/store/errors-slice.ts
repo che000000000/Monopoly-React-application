@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit"
-import { ErrorsStateT, SetCurrentErrorPayloadT } from "../types/errors";
+import { ErrorsStateT, SetCurrentErrorPayloadT } from "./types/errors";
 
 const initialState: ErrorsStateT = {
     currentError: null

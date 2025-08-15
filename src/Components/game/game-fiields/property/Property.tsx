@@ -1,4 +1,3 @@
-import { GameFieldT } from '../../../../types/games'
 import { GameFieldOrientation } from '../enums/game-field-orientation'
 import house_icon from '../../../../icons/game-builds/house.svg';
 import hotel_icon from '../../../../icons/game-builds/hotel.svg'
@@ -9,6 +8,7 @@ import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import styles from './property.module.css'
 import { PlayerChip } from '../../../../store/enums/player-chip';
+import { GameFieldT } from '../../../../store/types/games';
 
 function Property(props: { orientation: GameFieldOrientation, fieldData: GameFieldT }) {
     const fieldColor = props.fieldData.color ? props.fieldData.color : '#fff'
