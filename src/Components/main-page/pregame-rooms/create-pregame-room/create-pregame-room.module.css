@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.create_btn {
+    padding: 3px 10px;
+    transition: 250ms;
+}
+
+.create_btn:active {
+    background-color: #1f1f1f;
+}
+
+@media(max-width: 2560px) {
+    .create_btn {
+        font-size: 14.5px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .create_btn {
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 786px) {
+    .create_btn {
+        padding: 2px 8px;
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 480px) {
+    .create_btn {
+        font-size: 2.3vw;
+        padding: 0.4vw 1.6vw;
+    }
+}

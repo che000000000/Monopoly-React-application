@@ -1,7 +1,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: 5px;
     border-bottom: 0.3vmin solid #eeeeee;
 }
 
@@ -12,7 +11,6 @@
 .members_list {
     display: flex;
     align-items: center;
-    padding-top: 5px;
 }
 
 .slot {
@@ -35,6 +33,10 @@
     .username {
         font-size: 16px;
     }
+
+    .members_list {
+        padding: 10px 0 4px 0;
+    }
 }
 
 @media(max-width: 1024px) {
@@ -43,7 +45,7 @@
     }
 
     .members_list {
-        padding-top: 3px;
+        padding: 9px 0 5px 0;
     }
 }
 
@@ -53,13 +55,13 @@
     }
 
     .members_list {
-        padding-top: 3px;
+        padding: 7px 0 4px 0;
     }
 }
 
 @media(max-width: 480px) {
     .members_list {
-        padding: 0;
+        padding: 1.4vw 0 0.8vw 0;
     }
 
     .username {

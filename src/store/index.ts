@@ -25,3 +25,10 @@ export default store;
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
+
+export type AppThunkApi = {
+    dispatch: AppDispatch;
+    state: RootState;
+    extra?: unknown;
+    rejectValue?: unknown;
+};

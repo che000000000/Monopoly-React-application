@@ -1,5 +1,5 @@
 import styles from './auth-user.module.css'
-import no_avatar from '../../../../images/common/no-avatar.jpg'
+import no_avatar from '../../../../images/common/no-avatar.png'
 
 function AuthUser(props: { name: string, avatarUrl: string | null }) {
 	return (

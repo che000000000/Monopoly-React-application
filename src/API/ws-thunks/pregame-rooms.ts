@@ -1,56 +1,50 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { clearPregameRooms, pushPregameRoom, pushPregameRooms, removePregameRoom, setIsPregameGatewayConnected, updatePregameRoomMembers } from "../../store/pregame-rooms-slice";
-import { io, Socket } from "socket.io-client";
+import { PregameRoomsGatewayService } from "../ws-services/pregame-rooms.service";
+import { AppThunkApi } from "../../store";
+import { setAuthUser } from "../../store/pregame-rooms-slice";
 
-export const connectPregameGateway = createAsyncThunk(
+let pregameRoomsGatewayService: PregameRoomsGatewayService | null = null
+
+export const connectPregameRoomsGateway = createAsyncThunk<PregameRoomsGatewayService, void, AppThunkApi>(
     'pregame-rooms/gateway-connection',
-    async (_, { dispatch }) => {
-        const socket: Socket = io(`http://localhost:7507/pregame`, {
-            withCredentials: true,
-        })
+    (_, { dispatch, getState }) => {
+        if (!pregameRoomsGatewayService) {
+            pregameRoomsGatewayService = new PregameRoomsGatewayService(dispatch)
 
-        socket.on('connect', () => {
-            dispatch(clearPregameRooms(null))
+            const { auth } = getState()
+            dispatch(setAuthUser(auth.user))
+            pregameRoomsGatewayService.connect()
+        }
 
-            dispatch(setIsPregameGatewayConnected(true))
-            
-            socket.emit('pregame-rooms-page', {})
-        })
+        return pregameRoomsGatewayService
+    }
+)
 
-        socket.on('disconnect', () => {
-            dispatch(setIsPregameGatewayConnected(false))
-        })
+export const disconnectPregameRoomsGateway = createAsyncThunk(
+    'pregame-rooms/gateway-disconnection',
+    () => {
+        pregameRoomsGatewayService?.disconnect()
+        pregameRoomsGatewayService = null
+    }
+)
 
-        socket.on('pregame', (data) => {
-            switch (data.event) {
-                case ('create'): {
-                    dispatch(pushPregameRoom(data.newPregameRoom))
-                    break
-                }
-                case ('rooms-page'): {
-                    dispatch(pushPregameRooms(data.pregameRoomsList))
-                    break
-                }
-                case ('create-pregame-room'): {
-                    dispatch(pushPregameRoom(data.pregameRoom))
-                    break
-                }
-                case ('join-pregame-room'): {
-                    dispatch(updatePregameRoomMembers(data.pregameRoom))
-                    break
-                }
-                case ('leave-pregame-room'): {
-                    dispatch(updatePregameRoomMembers(data.pregameRoom))
-                    break
-                }
-                case('remove-pregame-room'): {
-                    dispatch(removePregameRoom(data.pregameRoom.id))
-                    break
-                }
-                default: {
-                    break
-                }
-            }
-        })
+export const joinPregameRoom = createAsyncThunk(
+    'pregame-rooms/join-pregame-room',
+    (pregameRoomId: string) => {
+        pregameRoomsGatewayService?.joinPregameRoom(pregameRoomId)
+    }
+)
+
+export const leavePregameRoom = createAsyncThunk(
+    'pregame-rooms/leave-pregame-room',
+    () => {
+        pregameRoomsGatewayService?.leavePregameRoom()
+    }
+)
+
+export const createPregameRoom = createAsyncThunk(
+    'pregame-rooms/create-pregame-room',
+    () => {
+        pregameRoomsGatewayService?.createPregameRoom()
     }
 )

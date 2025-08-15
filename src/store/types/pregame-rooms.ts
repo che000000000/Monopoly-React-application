@@ -12,11 +12,17 @@ export type PregameRoomMemberT = {
 export type PregameRoomT = {
     id: string
     members: PregameRoomMemberT[],
+    isCurrent: boolean,
     createdAt: string
+}
+
+export type SetPregameRoomMembersPayloadT = {
+    pregameRoom: PregameRoomT,
+    user: UserT
 }
 
 export type PregameRoomsStateT = {
     isGatewayConnected: boolean,
+    authUser: UserT | null,
     pregameRooms: PregameRoomT[]
-    currentPregameRoom: PregameRoomT | null
 }

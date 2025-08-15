@@ -3,18 +3,9 @@ import MainHeader from '../headers/main-header/MainHeader';
 import GlobalChat from './global-chat/GlobalChat';
 import ActiveFriends from './active-friends/ActiveFriends';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
-import { useEffect } from 'react';
-import { useAppDispatch } from '../../hoocks/useAppDispatch';
-import { connectPregameGateway } from '../../API/ws-thunks/pregame-rooms';
 import PregameRooms from './pregame-rooms/PregameRooms';
 
 function MainPage() {
-    const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        dispatch(connectPregameGateway())
-    }, [])
-
     return (
         <div className={styles.container}>
             <MainHeader />
@@ -25,7 +16,7 @@ function MainPage() {
                         <GlobalChat />
                     </div>
                     <div className={styles.pregame_rooms}>
-                        <div className={styles.title}>Активные лобби</div>
+                        <div className={styles.title}>Игровые лобби</div>
                         <PregameRooms />
                     </div>
                 </div>
