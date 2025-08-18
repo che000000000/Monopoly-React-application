@@ -3,6 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3px;
+}
+
+.action {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 5px;
     cursor: pointer;
 }
@@ -17,6 +25,10 @@
 }
 
 @media(max-width: 2560px) {
+    .action {
+        gap: 5px;
+    }
+
     .plus {
         width: 44px;
         height: 44px;
@@ -29,6 +41,10 @@
 }
 
 @media(max-width: 1024px) {
+    .action {
+        gap: 5px;
+    }
+
     .plus {
         width: 38px;
         height: 38px;
@@ -53,13 +69,17 @@
 }
 
 @media(max-width: 480px) {
+    .action {
+        gap: 1.1vw;
+    }
+
     .plus {
-        width: 6vw;
-        height: 6vw;
+        width: 6.6vw;
+        height: 6.6vw;
         font-size: 2.6vw
     }
 
     .text {
-        font-size: 2.6vw
+        font-size: 2.5vw
     }
 }

@@ -10,9 +10,10 @@
 .options {
     display: flex;
     justify-content: space-between;
-    padding: 5px 12px;
     gap: 10px;
+    border: 0.3vmin solid #eeeeee;
     border-bottom: 0.3vmin dashed #eeeeee;
+    
 }
 
 .options__leave {
@@ -22,6 +23,8 @@
 .members_list {
     display: flex;
     align-items: center;
+    border: 0.3vmin solid #eeeeee;
+    border-top: none;
 }
 
 .slot {
@@ -41,6 +44,10 @@
 }
 
 @media(max-width: 2560px) {
+    .options {
+        padding: 3px 12px;
+    }
+
     .options__leave {
         font-size: 15px;
     }
@@ -50,11 +57,15 @@
     }
 
     .members_list {
-        padding: 10px 0 4px 0;
+        padding: 4px 0 4px 0;
     }
 }
 
 @media(max-width: 1024px) {
+    .options {
+        padding: 3px 10px;
+    }
+
     .options__leave {
         font-size: 13px;
     }
@@ -64,11 +75,15 @@
     }
 
     .members_list {
-        padding: 9px 0 5px 0;
+        padding: 4px 0 5px 0;
     }
 }
 
 @media(max-width: 786px) {
+    .options {
+        padding: 3px 8px;
+    }
+
     .options__leave {
         font-size: 11.5px;
     }
@@ -78,17 +93,21 @@
     }
 
     .members_list {
-        padding: 7px 0 4px 0;
+        padding: 2.5px 0 4px 0;
     }
 }
 
 @media(max-width: 480px) {
+    .options {
+        padding: 0.6vw 2vw;
+    }
+
     .options__leave {
-        font-size: 2.6vw;
+        font-size: 2.4vw;
     }
 
     .members_list {
-        padding: 1.4vw 0 0.8vw 0;
+        padding: 1.1vw 0 0.8vw 0;
     }
 
     .username {

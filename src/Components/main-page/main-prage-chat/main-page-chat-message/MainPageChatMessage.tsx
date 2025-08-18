@@ -1,7 +1,7 @@
 import { GlobalChatMessageT } from '../../../../store/types/global-chat';
-import styles from './global-chat-message.module.css'
+import styles from './main-page-chat-message.module.css'
 
-function GlobalChatMessage(props: { message: GlobalChatMessageT, isMine: boolean }) {
+function MainPageChatMessage(props: { message: GlobalChatMessageT, isMine: boolean }) {
     switch (props.isMine) {
         case false: return (
                 <div className={`${styles.container} ${styles.alien_container}`}>
@@ -30,4 +30,4 @@ function GlobalChatMessage(props: { message: GlobalChatMessageT, isMine: boolean
     
 }
 
-export default GlobalChatMessage;
+export default MainPageChatMessage;

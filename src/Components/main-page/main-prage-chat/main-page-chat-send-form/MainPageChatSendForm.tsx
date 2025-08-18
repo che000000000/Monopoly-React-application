@@ -1,18 +1,15 @@
 import { useState } from 'react';
-import styles from './global-chat-send-form.module.css'
-import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
-import { pushMessage } from '../../../../store/global-chat-slice';
+import styles from './main-page-chat-send-form.module.css'
 import { UserT } from '../../../../store/types/auth';
+import { MainPageChatMessageT } from '../types/main-page-chat-message';
 
-function GlobalChatSendForm(props: {authUser: UserT | null}) {
-    const dispatch = useAppDispatch()
-
+function MainPageChatSendForm(props: { authUser: UserT | null, onSend: (message: MainPageChatMessageT) => void }) {
     const [sendMessageInputText, setSendMessageInputText] = useState('')
 
     function handleSendMessage(messageText: string): void {
         if (messageText.length === 0 || !props.authUser) return
 
-        dispatch(pushMessage({
+        props.onSend({
             id: Date.now().toString(),
             text: messageText,
             sender: {
@@ -20,10 +17,10 @@ function GlobalChatSendForm(props: {authUser: UserT | null}) {
                 name: props.authUser.name,
                 avatarUrl: props.authUser.avatarUrl,
                 role: props.authUser.role
-            } ,
+            },
             createdAt: '19:35'
-        }))
-        
+        })
+
         setSendMessageInputText('')
     }
 
@@ -46,4 +43,4 @@ function GlobalChatSendForm(props: {authUser: UserT | null}) {
     )
 }
 
-export default GlobalChatSendForm;
+export default MainPageChatSendForm;

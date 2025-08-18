@@ -1,6 +1,6 @@
-import { createPregameRoom } from '../../../../API/ws-thunks/pregame-rooms';
-import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
-import NoItems from '../../no-items/NoItems';
+import { createPregameRoom } from '../../../../../API/ws-thunks/pregame-rooms';
+import { useAppDispatch } from '../../../../../hoocks/useAppDispatch';
+import NoItems from '../../../no-items/NoItems';
 import styles from './create-pregame-room.module.css'
 
 function CreatePregameRoom() {

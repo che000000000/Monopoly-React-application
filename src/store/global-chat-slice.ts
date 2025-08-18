@@ -17,7 +17,7 @@ const initialState: GlobalChatStateT = {
         },
         {
             id: '2',
-            text: 'иди нахуй, ЧМО!',
+            text: 'кому карточки нужны?',
             sender: {
                 id: '5',
                 name: 'WAGO',
@@ -28,7 +28,7 @@ const initialState: GlobalChatStateT = {
         },
         {
             id: '3',
-            text: 'ребята, давайте жить дружно)) да, я кот гей Леопольд. Ебите меня в сраку',
+            text: 'Никому не нужны твои карточки',
             sender: {
                 id: '3',
                 name: 'Русец отсосской кратодемии',
@@ -39,10 +39,10 @@ const initialState: GlobalChatStateT = {
         },
         {
             id: '4',
-            text: 'вы че ебаны?!',
+            text: 'мне нужны',
             sender: {
                 id: '1',
-                name: 'видеокал',
+                name: 'секаший',
                 avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
                 role: UserRole.REGULAR
             },
@@ -50,7 +50,7 @@ const initialState: GlobalChatStateT = {
         },
         {
             id: '5',
-            text: 'Ребят. Может пойдём в лобак?',
+            text: 'Заходите. Я создал',
             sender: {
                 id: '4',
                 name: 'Sn1k',

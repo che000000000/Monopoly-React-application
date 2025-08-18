@@ -30,8 +30,8 @@ export const disconnectPregameRoomsGateway = createAsyncThunk(
 
 export const joinPregameRoom = createAsyncThunk(
     'pregame-rooms/join-pregame-room',
-    (pregameRoomId: string) => {
-        pregameRoomsGatewayService?.joinPregameRoom(pregameRoomId)
+    (payload: {pregameRoomId: string, slot: number}) => {
+        pregameRoomsGatewayService?.joinPregameRoom(payload.pregameRoomId, payload.slot)
     }
 )
 
@@ -46,5 +46,12 @@ export const createPregameRoom = createAsyncThunk(
     'pregame-rooms/create-pregame-room',
     () => {
         pregameRoomsGatewayService?.createPregameRoom()
+    }
+)
+
+export const setPregameRoomMemberSlot = createAsyncThunk(
+    'pregame-rooms/set-pregame-room-member-slot',
+    (payload: {slot: number}) => {
+        pregameRoomsGatewayService?.setPregameRoomMemberSlot(payload.slot)
     }
 )

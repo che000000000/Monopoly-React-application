@@ -58,10 +58,14 @@ export class PregameRoomsGatewayService {
         this.socket?.on('remove-pregame-room', (message) => {
             this.dispatch(removePregameRoom(message.pregameRoom.id))
         })
+
+        this.socket?.on('set-pregame-room-member-slot', (message) => {
+            this.dispatch(setPregameRoomMembers(message))
+        })
     }
 
-    public joinPregameRoom(pregameRoomId: string) {
-        this.socket?.emit('join-pregame-room', { pregameRoomId })
+    public joinPregameRoom(pregameRoomId: string, slot: number) {
+        this.socket?.emit('join-pregame-room', { pregameRoomId, slot })
     }
 
     public leavePregameRoom() {
@@ -70,5 +74,9 @@ export class PregameRoomsGatewayService {
 
     public createPregameRoom() {
         this.socket?.emit('create-pregame-room', {})
+    }
+
+    public setPregameRoomMemberSlot(slot: number) {
+        this.socket?.emit('set-pregame-room-member-slot', { slot })
     }
 }
