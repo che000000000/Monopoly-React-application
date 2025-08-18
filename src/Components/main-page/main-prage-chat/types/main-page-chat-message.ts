@@ -4,5 +4,5 @@ export type MainPageChatMessageT = {
     id: string,
     text: string,
     sender: UserT
-    createdAt: string
+    createdAt: Date
 }

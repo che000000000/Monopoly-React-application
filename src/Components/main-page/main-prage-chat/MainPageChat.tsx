@@ -1,14 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useAppSelector } from '../../../hoocks/useAppSelector';
 import styles from './main-page-chat.module.css'
-import { AuthStateT } from '../../../store/types/auth';
+import { UserT } from '../../../store/types/auth';
 import MainPageChatSendForm from './main-page-chat-send-form/MainPageChatSendForm';
 import MainPageChatMessage from './main-page-chat-message/MainPageChatMessage';
 import { MainPageChatMessageT } from './types/main-page-chat-message';
 
-function MainPageChat(props: { messages: MainPageChatMessageT[], onSend: (message: MainPageChatMessageT) => void }) {
-    const authState: AuthStateT = useAppSelector(state => state.auth)
-
+function MainPageChat(props: { messages: MainPageChatMessageT[], authUser: UserT, onSend: (messageText: string) => void }) {
     const messagesListElement = useRef<HTMLDivElement>(null)
     const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
 
@@ -49,12 +46,12 @@ function MainPageChat(props: { messages: MainPageChatMessageT[], onSend: (messag
                     <MainPageChatMessage
                         key={message.id}
                         message={message}
-                        isMine={message.sender.id === authState.user?.id}
+                        isMine={message.sender.id === props.authUser.id}
                     />
                 )}
                 <div className={styles.lower_scroll_position} ref={bottomMessagesListElemet} />
             </div>
-            <MainPageChatSendForm authUser={authState.user} onSend={props.onSend}/>
+            <MainPageChatSendForm authUser={props.authUser} onSend={props.onSend}/>
         </div>
     )
 }

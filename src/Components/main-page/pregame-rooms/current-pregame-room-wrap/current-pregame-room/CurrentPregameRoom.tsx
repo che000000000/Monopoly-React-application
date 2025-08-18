@@ -1,28 +1,35 @@
-import { leavePregameRoom, setPregameRoomMemberSlot } from '../../../../../API/ws-thunks/pregame-rooms';
+import { useEffect } from 'react';
+import { getPregameRoomMessagesPage, leavePregameRoom, sendPregameRoomMessage, setPregameRoomMemberSlot } from '../../../../../API/ws-thunks/pregame-rooms';
 import { useAppDispatch } from '../../../../../hoocks/useAppDispatch';
-import { pushMessage } from '../../../../../store/pregame-rooms-slice';
 import { UserT } from '../../../../../store/types/auth';
-import { CurrentPregameRoomChatMessageT, PregameRoomMemberT, PregameRoomT } from '../../../../../store/types/pregame-rooms';
+import { PregameRoomMessageT, PregameRoomMemberT, PregameRoomT } from '../../../../../store/types/pregame-rooms';
 import MainPageChat from '../../../main-prage-chat/MainPageChat';
 import EmptySlot from '../../empty-slot/EmptySlot';
 import PregameRoomMember from '../../pregame-room-member/PregameRoomMember';
 import CreatePregameRoom from '../create-pregame-room/CreatePregameRoom';
 import styles from './current-pregame-room.module.css'
+import { clearCurrentPregameRoomMessages } from '../../../../../store/pregame-rooms-slice';
 
-function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: CurrentPregameRoomChatMessageT[], authUser: UserT | null }) {
+function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: PregameRoomMessageT[], authUser: UserT }) {
     const dispatch = useAppDispatch()
 
     const handleLeavePregameRoom = () => {
         dispatch(leavePregameRoom())
+        dispatch(clearCurrentPregameRoomMessages(null))
     }
 
-    const handleSendMessage = (message: CurrentPregameRoomChatMessageT) => {
-        dispatch(pushMessage(message))
+    const handleSendMessage = (messageText: string) => {
+        dispatch(sendPregameRoomMessage({ messageText }))
     }
 
     const handleSetSlot = (slotNumber: number) => {
         dispatch(setPregameRoomMemberSlot({ slot: slotNumber }))
     }
+
+    useEffect(() => {
+        dispatch(clearCurrentPregameRoomMessages(null))
+        dispatch(getPregameRoomMessagesPage({ pageNumber: 1, pageSize: 12 }))
+    }, [dispatch])
 
     return (
         <div className={styles.container}>
@@ -40,7 +47,7 @@ function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: Curren
                     })
                     : <CreatePregameRoom />}
             </div>
-            <MainPageChat messages={props.messages} onSend={handleSendMessage} />
+            <MainPageChat messages={props.messages} authUser={props.authUser} onSend={handleSendMessage} />
         </div>
     )
 }

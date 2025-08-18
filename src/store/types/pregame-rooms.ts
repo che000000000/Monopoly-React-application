@@ -18,11 +18,16 @@ export type PregameRoomT = {
     createdAt: Date
 }
 
-export type CurrentPregameRoomChatMessageT = {
+export type PregameRoomMessageT = {
     id: string,
     text: string,
     sender: UserT
-    createdAt: string
+    createdAt: Date
+}
+
+export type CurrentPregameRoomChatT = {
+    messages: PregameRoomMessageT[],
+    totalCount: number
 }
 
 export type SetPregameRoomMembersPayloadT = {
@@ -30,9 +35,19 @@ export type SetPregameRoomMembersPayloadT = {
     user: UserT
 }
 
+export type PushPregameRoomMessagePayloadT = {
+    message: PregameRoomMessageT,
+    totalCount: number
+}
+
+export type PushPregameRoomMessagesPayloadT = {
+    messages: PregameRoomMessageT[],
+    totalCount: number
+}
+
 export type PregameRoomsStateT = {
     isGatewayConnected: boolean,
     authUser: UserT | null,
-    currentPregameRoomChatMessages: CurrentPregameRoomChatMessageT[]
+    currentPregameRoomChat: CurrentPregameRoomChatT
     pregameRooms: PregameRoomT[]
 }

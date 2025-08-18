@@ -11,10 +11,10 @@ function CurrentPregameRoomWrap() {
 
     return (
         <div className={styles.container}>
-            {currentPregameRoom
+            {currentPregameRoom && pregameRoomsState.authUser
                 ? <CurrentPregameRoom
                     pregameRoom={currentPregameRoom}
-                    messages={pregameRoomsState.currentPregameRoomChatMessages}
+                    messages={pregameRoomsState.currentPregameRoomChat.messages}
                     authUser={pregameRoomsState.authUser}
                 />
                 : <CreatePregameRoom />

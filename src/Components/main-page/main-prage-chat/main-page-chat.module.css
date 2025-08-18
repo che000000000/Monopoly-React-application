@@ -5,7 +5,7 @@
 .messages_list {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     gap: 5px;
     height: 279px;
     padding: 6px 10px 2px 10px;

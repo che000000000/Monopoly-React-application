@@ -28,7 +28,7 @@ function MainPage() {
                     </div>
                     <div className={styles.global_chat}>
                         <div className={styles.title}>Общий чат</div>
-                        <GlobalChat />
+                        {/* <GlobalChat /> */}
                     </div>
                 </div>
             </div>

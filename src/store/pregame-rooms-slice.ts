@@ -1,57 +1,14 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { CurrentPregameRoomChatMessageT, PregameRoomMemberT, PregameRoomsStateT, PregameRoomT, SetPregameRoomMembersPayloadT } from "./types/pregame-rooms";
+import { PregameRoomMemberT, PregameRoomMessageT, PregameRoomsStateT, PregameRoomT, PushPregameRoomMessagePayloadT, PushPregameRoomMessagesPayloadT, SetPregameRoomMembersPayloadT } from "./types/pregame-rooms";
 import { UserT } from "./types/auth";
-import { UserRole } from "./enums/user-role";
 
 const initialState: PregameRoomsStateT = {
     isGatewayConnected: false,
     authUser: null,
-    currentPregameRoomChatMessages: [
-        {
-            id: '1',
-            text: 'Привет всем!',
-            sender: {
-                id: '2',
-                name: 'koka',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
-                role: UserRole.REGULAR
-            },
-            createdAt: '14:32'
-        },
-        {
-            id: '2',
-            text: 'да запускай уже',
-            sender: {
-                id: '10',
-                name: 'секаший',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
-                role: UserRole.REGULAR
-            },
-            createdAt: '14:32'
-        },
-        {
-            id: '1',
-            text: 'Подожди. Диман придёт.',
-            sender: {
-                id: '2',
-                name: 'koka',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
-                role: UserRole.REGULAR
-            },
-            createdAt: '14:32'
-        },
-        {
-            id: '1',
-            text: 'ДА НЕ ХОЧУ Я ЖДАТЬ!!!"%;*№!',
-            sender: {
-                id: '2',
-                name: 'секаший',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
-                role: UserRole.REGULAR
-            },
-            createdAt: '14:32'
-        },
-    ],
+    currentPregameRoomChat: {
+        messages: [],
+        totalCount: 0
+    },
     pregameRooms: [],
 }
 
@@ -109,8 +66,17 @@ const pregameRoomsSlice: Slice = createSlice({
             state.pregameRooms = state.pregameRooms
                 .filter((room: PregameRoomT) => room.id !== action.payload)
         },
-        pushMessage(state, action: PayloadAction<CurrentPregameRoomChatMessageT>) {
-            state.currentPregameRoomChatMessages.push(action.payload)
+        pushCurrentPregameRoomMessage(state, action: PayloadAction<PushPregameRoomMessagePayloadT>) {
+            console.log(action.payload)
+            state.currentPregameRoomChat.messages.push(action.payload.message)
+            state.currentPregameRoomChat.totalCount = action.payload.totalCount
+        },
+        pushCurrentPregameRoomMessages(state, action: PayloadAction<PushPregameRoomMessagesPayloadT>) {
+            action.payload.messages.map((message: PregameRoomMessageT) => state.currentPregameRoomChat.messages.push(message))
+            state.currentPregameRoomChat.totalCount = action.payload.totalCount
+        },
+        clearCurrentPregameRoomMessages(state, action: PayloadAction<null>) {
+            state.currentPregameRoomChat.messages = []
         }
     },
 })
@@ -123,7 +89,9 @@ export const {
     pushPregameRooms,
     setPregameRoomMembers,
     removePregameRoom,
-    pushMessage
+    pushCurrentPregameRoomMessage,
+    pushCurrentPregameRoomMessages,
+    clearCurrentPregameRoomMessages
 } = pregameRoomsSlice.actions;
 
 export default pregameRoomsSlice.reducer;
