@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { PregameRoomsStateT, PregameRoomT, SetPregameRoomMembersPayloadT } from "./types/pregame-rooms";
+import { PregameRoomMemberT, PregameRoomMessageT, PregameRoomsStateT, PregameRoomT, PushPregameRoomMessagePayloadT, PushPregameRoomMessagesPayloadT, SetPregameRoomMembersPayloadT } from "./types/pregame-rooms";
 import { UserT } from "./types/auth";
 
 const initialState: PregameRoomsStateT = {
     isGatewayConnected: false,
     authUser: null,
+    currentPregameRoomChat: {
+        messages: [],
+        totalCount: 0
+    },
     pregameRooms: [],
 }
 
@@ -22,7 +26,7 @@ const pregameRoomsSlice: Slice = createSlice({
             state.pregameRooms = []
         },
         pushPregameRoom(state, action: PayloadAction<PregameRoomT>) {
-            if (action.payload.members.find((user: UserT) => user.id === state.authUser.id)) {
+            if (action.payload.members.find((pregameRoommember: PregameRoomMemberT) => pregameRoommember.user.id === state.authUser.id)) {
                 state.pregameRooms.push({
                     ...action.payload,
                     isCurrent: true
@@ -35,15 +39,15 @@ const pregameRoomsSlice: Slice = createSlice({
             }
         },
         pushPregameRooms(state, action: PayloadAction<PregameRoomT[]>) {
-            action.payload.map(room => {
-                if (room.members.find((user: UserT) => user.id === state.authUser.id)) {
+            action.payload.forEach((pregameRoom: PregameRoomT) => {
+                if (pregameRoom.members.find((pregameRoomMember: PregameRoomMemberT) => pregameRoomMember.user.id === state.authUser.id)) {
                     state.pregameRooms.push({
-                        ...room,
+                        ...pregameRoom,
                         isCurrent: true
                     })
                 } else {
                     state.pregameRooms.push({
-                        ...room,
+                        ...pregameRoom,
                         isCurrent: false
                     })
                 }
@@ -54,13 +58,25 @@ const pregameRoomsSlice: Slice = createSlice({
             if (pregameRoom) {
                 pregameRoom.members = action.payload.pregameRoom.members
 
-                const isAuthUserInTheRoom = pregameRoom.members.some((user: UserT) => user.id === state.authUser.id)
+                const isAuthUserInTheRoom = pregameRoom.members.some((member: PregameRoomMemberT) => member.user.id === state.authUser.id)
                 isAuthUserInTheRoom ? pregameRoom.isCurrent = true : pregameRoom.isCurrent = false
             }
         },
         removePregameRoom(state, action: PayloadAction<string>) {
             state.pregameRooms = state.pregameRooms
                 .filter((room: PregameRoomT) => room.id !== action.payload)
+        },
+        pushCurrentPregameRoomMessage(state, action: PayloadAction<PushPregameRoomMessagePayloadT>) {
+            console.log(action.payload)
+            state.currentPregameRoomChat.messages.push(action.payload.message)
+            state.currentPregameRoomChat.totalCount = action.payload.totalCount
+        },
+        pushCurrentPregameRoomMessages(state, action: PayloadAction<PushPregameRoomMessagesPayloadT>) {
+            action.payload.messages.map((message: PregameRoomMessageT) => state.currentPregameRoomChat.messages.push(message))
+            state.currentPregameRoomChat.totalCount = action.payload.totalCount
+        },
+        clearCurrentPregameRoomMessages(state, action: PayloadAction<null>) {
+            state.currentPregameRoomChat.messages = []
         }
     },
 })
@@ -72,7 +88,10 @@ export const {
     pushPregameRoom,
     pushPregameRooms,
     setPregameRoomMembers,
-    removePregameRoom
+    removePregameRoom,
+    pushCurrentPregameRoomMessage,
+    pushCurrentPregameRoomMessages,
+    clearCurrentPregameRoomMessages
 } = pregameRoomsSlice.actions;
 
 export default pregameRoomsSlice.reducer;

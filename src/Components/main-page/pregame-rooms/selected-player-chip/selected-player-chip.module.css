@@ -1,0 +1,27 @@
+@media(max-width: 2560px) {
+    .container {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .container {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media(max-width: 786px) {
+    .container {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media(max-width: 480px) {
+    .container {
+        width: 3.9vw;
+        height: 3.9vw;
+    }
+}   

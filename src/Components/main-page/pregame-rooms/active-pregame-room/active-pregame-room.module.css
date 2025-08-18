@@ -10,7 +10,6 @@
 
 .members_list {
     display: flex;
-    align-items: center;
 }
 
 .slot {
@@ -35,7 +34,7 @@
     }
 
     .members_list {
-        padding: 10px 0 4px 0;
+        padding: 4px 0 4px 0;
     }
 }
 
@@ -45,7 +44,7 @@
     }
 
     .members_list {
-        padding: 9px 0 5px 0;
+        padding: 4px 0 5px 0;
     }
 }
 
@@ -55,13 +54,13 @@
     }
 
     .members_list {
-        padding: 7px 0 4px 0;
+        padding: 2.5px 0 4px 0;
     }
 }
 
 @media(max-width: 480px) {
     .members_list {
-        padding: 1.4vw 0 0.8vw 0;
+        padding: 1.1vw 0 0.8vw 0;
     }
 
     .username {

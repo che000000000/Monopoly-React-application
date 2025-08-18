@@ -4,6 +4,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3px;
+}
+
+.user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 5px;
 }
 
@@ -14,12 +22,17 @@
     border: 0.1vw solid #bbbbbb;
 }
 
+.player_chip{
+    height: 26px;
+    width: 26px;
+}
+
 .owner_border {
     border: 0.1vw solid #ffe600;
 }
 
-.username {
-    max-width: 95%;
+.name {
+    max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -27,7 +40,7 @@
 }
 
 @media(max-width: 2560px) {
-    .username {
+    .name {
         font-size: 14px;
     }
 
@@ -38,7 +51,7 @@
 }
 
 @media(max-width: 1024px) {
-    .username {
+    .name {
         font-size: 13px;
     }
 
@@ -49,7 +62,7 @@
 }
 
 @media(max-width: 786px) {
-    .username {
+    .name {
         font-size: 12px;
     }
 
@@ -60,12 +73,16 @@
 }
 
 @media(max-width: 480px) {
-    .username {
+    .user {
+        gap: 1.1vw;
+    }
+
+    .name {
         font-size: 2.6vw
     }
 
     .avatar {
-        width: 6vw;
-        height: 6vw;
+        width: 6.6vw;
+        height: 6.6vw;
     }
-}
+}   

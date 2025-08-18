@@ -11,7 +11,7 @@ export type GlobalChatMessageT = {
     id: string,
     text: string,
     sender: MessageSenderT,
-    createdAt: string
+    createdAt: Date
 }
 
 export type PushMessagesPayloadT = {

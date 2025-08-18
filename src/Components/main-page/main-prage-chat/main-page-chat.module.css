@@ -1,0 +1,36 @@
+.container {
+    border-radius: 3px;
+}
+
+.messages_list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 5px;
+    height: 279px;
+    padding: 6px 10px 2px 10px;
+    font-weight: 400;
+    border-left: 0.3vmin solid #eeeeee;
+    border-right: 0.3vmin solid #eeeeee;
+}
+
+@media(max-width: 1024px) {
+    .messages_list {
+        height: 286px;
+        padding: 4px 7px 1px 7px;
+    }
+}
+
+@media(max-width: 786px) {
+    .messages_list {
+        height: 255px;
+        padding: 4px 7px 1px 7px;
+    }
+}
+
+@media(max-width: 480px) {
+    .messages_list {
+        height: 55vw;
+        padding: 1.1vw 1.1vw 0.1vw 1.1vw;
+    }
+}
