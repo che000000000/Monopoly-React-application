@@ -7,17 +7,19 @@ import { GameChatMessageT, GamesStateT } from "./types/games";
 import { PlayerStatus } from "./enums/player-status";
 
 const initialState: GamesStateT = {
-    
     games: [],
     currentPlayer: {
         id: '1',
-        name: 'видеокал-',
-        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+        user: {
+            id: '1',
+            name: 'видеокал-',
+            avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+            role: UserRole.REGULAR
+        },
         chip: PlayerChip.CART,
-        turnNumber: 1,
         status: PlayerStatus.IS_TURN_OWNER,
+        turnNumber: 1,
         balance: 1500,
-        role: UserRole.REGULAR
     },
     currentGame: {
         id: '1',
@@ -25,53 +27,68 @@ const initialState: GamesStateT = {
         players: [
             {
                 id: '1',
-                name: 'видеокал-',
-                avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                user: {
+                    id: '1',
+                    name: 'видеокал-',
+                    avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                    role: UserRole.REGULAR
+                },
                 chip: PlayerChip.CART,
-                turnNumber: 1,
                 status: PlayerStatus.IS_TURN_OWNER,
+                turnNumber: 1,
                 balance: 1500,
-                role: UserRole.REGULAR
             },
             {
                 id: '3',
-                name: 'Русец отсосской кратодемии',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                user: {
+                    id: '3',
+                    name: 'Русец отсосской кратодемии',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                    role: UserRole.REGULAR
+                },
                 chip: PlayerChip.HAT,
                 turnNumber: 2,
                 status: PlayerStatus.COMMON,
                 balance: 1500,
-                role: UserRole.REGULAR
             },
             {
                 id: '4',
-                name: 'Sn1k',
-                avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                user: {
+                    id: '4',
+                    name: 'Sn1k',
+                    avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                    role: UserRole.REGULAR
+                },
                 chip: PlayerChip.IRON,
                 turnNumber: 3,
                 status: PlayerStatus.COMMON,
                 balance: 1500,
-                role: UserRole.REGULAR
             },
             {
                 id: '2',
-                name: 'Koka',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                user: {
+                    id: '2',
+                    name: 'Koka',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    role: UserRole.REGULAR
+                },
                 chip: PlayerChip.PENGUIN,
                 turnNumber: 4,
                 status: PlayerStatus.IS_LEFT,
                 balance: 1500,
-                role: UserRole.REGULAR
             },
             {
                 id: '9',
-                name: 'Алекс вы абсолютно непримемлимы',
-                avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                user: {
+                    id: '9',
+                    name: 'Алекс вы абсолютно непримемлимы',
+                    avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                    role: UserRole.REGULAR
+                },
                 chip: PlayerChip.THIMBLE,
                 turnNumber: 4,
                 status: PlayerStatus.IS_LEFT,
                 balance: 1500,
-                role: UserRole.REGULAR
             },
         ],
         fields: [
@@ -115,43 +132,55 @@ const initialState: GamesStateT = {
                 players: [
                     {
                         id: '4',
-                        name: 'Sn1k',
-                        avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                        user: {
+                            id: '4',
+                            name: 'Sn1k',
+                            avatarUrl: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrg-RoaiWeDBlA0VQcaAHtgvpzsrUaLHaZsJSOxQ2Tz1ITjK6x',
+                            role: UserRole.REGULAR
+                        },
                         chip: PlayerChip.IRON,
                         turnNumber: 3,
                         status: PlayerStatus.COMMON,
                         balance: 1500,
-                        role: UserRole.REGULAR
                     },
                     {
                         id: '3',
-                        name: 'Русец отсосской кратодемии',
-                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                        user: {
+                            id: '3',
+                            name: 'Русец отсосской кратодемии',
+                            avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGB3V-tAqVQV4bwaakhE54_sbT_MBKBX1Pv4pTktsdsILoyR46',
+                            role: UserRole.REGULAR
+                        },
                         chip: PlayerChip.HAT,
                         turnNumber: 2,
                         status: PlayerStatus.COMMON,
                         balance: 1500,
-                        role: UserRole.REGULAR
                     },
                     {
                         id: '2',
-                        name: 'Koka',
-                        avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                        user: {
+                            id: '2',
+                            name: 'Koka',
+                            avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGtI0IPVxNpeV1YleZyyVfYVIZZn1hKxBsQ&s',
+                            role: UserRole.REGULAR
+                        },
                         chip: PlayerChip.PENGUIN,
                         turnNumber: 4,
                         status: PlayerStatus.IS_LEFT,
                         balance: 1500,
-                        role: UserRole.REGULAR
                     },
                     {
                         id: '1',
-                        name: 'видеокал',
-                        avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                        user: {
+                            id: '1',
+                            name: 'видеокал-',
+                            avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
+                            role: UserRole.REGULAR
+                        },
                         chip: PlayerChip.CART,
-                        turnNumber: 1,
                         status: PlayerStatus.IS_TURN_OWNER,
+                        turnNumber: 1,
                         balance: 1500,
-                        role: UserRole.REGULAR
                     },
                 ]
             },

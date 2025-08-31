@@ -1,5 +1,4 @@
 import { UserRole } from "../../store/enums/user-role"
-import { OauthMethod } from "../enums/oauth-method"
 
 export interface ILoginReqBody {
     email: string,

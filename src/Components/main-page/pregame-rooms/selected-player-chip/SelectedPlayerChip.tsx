@@ -14,18 +14,20 @@ const CHIP_IMAGES = {
     [PlayerChip.THIMBLE]: thimble_chip,
 } as const
 
-function SelectedPlayerChip(props: { playerChip: PlayerChip | null }) {
+function SelectedPlayerChip(props: { playerChip: PlayerChip | null}) {
     const definedPlayerChip = props.playerChip ? CHIP_IMAGES[props.playerChip] : null
 
     return definedPlayerChip
         ? (
-            <img
-                className={styles.container}
-                alt={`${props.playerChip} chip`}
-                src={definedPlayerChip}
-            />
+            <div className={styles.container}>
+                <img
+                    className={styles.player_chip}
+                    alt={`${props.playerChip} chip`}
+                    src={definedPlayerChip}
+                />
+            </div>
         )
-        : <span className={styles.container} aria-hidden="true" />
+        : <span className={styles.player_chip} />
 }
 
 export default SelectedPlayerChip;

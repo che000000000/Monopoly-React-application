@@ -4,6 +4,7 @@ import { UserT } from '../../../store/types/auth';
 import MainPageChatSendForm from './main-page-chat-send-form/MainPageChatSendForm';
 import MainPageChatMessage from './main-page-chat-message/MainPageChatMessage';
 import { MainPageChatMessageT } from './types/main-page-chat-message';
+import NoMessages from './no-messages/NoMessages';
 
 function MainPageChat(props: { messages: MainPageChatMessageT[], authUser: UserT, onSend: (messageText: string) => void }) {
     const messagesListElement = useRef<HTMLDivElement>(null)
@@ -42,16 +43,20 @@ function MainPageChat(props: { messages: MainPageChatMessageT[], authUser: UserT
     return (
         <div className={styles.container}>
             <div className={styles.messages_list} ref={messagesListElement}>
-                {props.messages.map(message =>
-                    <MainPageChatMessage
-                        key={message.id}
-                        message={message}
-                        isMine={message.sender.id === props.authUser.id}
-                    />
-                )}
+                {
+                    props.messages.length !== 0
+                        ? props.messages.map(message =>
+                            <MainPageChatMessage
+                                key={message.id}
+                                message={message}
+                                isMine={message.sender.id === props.authUser.id}
+                            />
+                        )
+                        : <NoMessages />
+                    }
                 <div className={styles.lower_scroll_position} ref={bottomMessagesListElemet} />
             </div>
-            <MainPageChatSendForm authUser={props.authUser} onSend={props.onSend}/>
+            <MainPageChatSendForm authUser={props.authUser} onSend={props.onSend} />
         </div>
     )
 }

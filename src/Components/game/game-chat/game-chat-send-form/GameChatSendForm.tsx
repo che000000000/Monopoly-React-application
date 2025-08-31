@@ -22,10 +22,10 @@ function GameChatSendForm(props: { currentPlayer: PlayerT | null }) {
             text: messageText,
             sender: {
                 id: currentPlayer.id,
-                name: currentPlayer.name,
-                avatarUrl: currentPlayer.avatarUrl,
+                name: currentPlayer.user.name,
+                avatarUrl: currentPlayer.user.avatarUrl,
                 chip: currentPlayer.chip,
-                role: currentPlayer.role
+                role: currentPlayer.user.role
             },
             sentTime: '19:14'
         }))

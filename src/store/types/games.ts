@@ -3,29 +3,28 @@ import { GameFieldType } from "../enums/game-field-type"
 import { PlayerChip } from "../enums/player-chip"
 import { PlayerStatus } from "../enums/player-status"
 import { UserRole } from "../enums/user-role"
+import { UserT } from "./auth"
 
 export type PlayerT = {
     id: string,
     chip: PlayerChip
-    name: string,
-    avatarUrl: string,
-    turnNumber: number,
+    user: UserT,
     status: PlayerStatus,
+    turnNumber: number,
     balance: 1500,
-    role: UserRole
 }
 
 export type GameFieldT = {
     id: string,
-    type: GameFieldType,
     name: string,
+    type: GameFieldType,
     color: GameFieldColor | null,
-    owner: PlayerT | null,
+    position: number,
     players: PlayerT[] | null,
+    owner: PlayerT | null,
     rent: number[] | null,
     housePrice: number | null,
     basePrice: number | null,
-    position: number,
     buildsCount: number | null
 }
 
@@ -52,9 +51,9 @@ export type GameChatMessageT = {
 
 export type GameT = {
     id: string,
+    currentTurn: GameTurnT | null,
     players: PlayerT[],
     fields: GameFieldT[],
-    currentTurn: GameTurnT | null,
     chatMessages: GameChatMessageT[],
     builds: {
         housesCount: number,
