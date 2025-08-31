@@ -13,8 +13,8 @@ function GameHeader(props: {players: PlayerT[]}) {
                 {props.players.map(player => (
                     <InGamePlayer
                         key={player.id}
-                        name={player.name}
-                        avatarUrl={player.avatarUrl}
+                        name={player.user.name}
+                        avatarUrl={player.user.avatarUrl}
                         playerChip={player.chip}
                     />
                 ))}

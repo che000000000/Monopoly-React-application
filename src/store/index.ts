@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth-slice";
 import errorsReducer from "./errors-slice"
-import pregameRoomsReducer from "./pregame-rooms-slice";
+import pregameRoomsReducer from "./pregame-rooms/pregame-rooms-slice";
 import globalChatReducer from "./global-chat-slice";
 import friendsReducer from "./friends-slice";
 import gamesReducer from "./games-slice"

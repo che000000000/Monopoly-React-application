@@ -32,7 +32,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: GameFie
                 <div className={styles.field_price}>{`M${props.fieldData.basePrice}`}</div>
                 <div className={`${styles.dynamic_area} ${styles.top_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -53,7 +53,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: GameFie
                 <div className={styles.right_header} style={{ backgroundColor: fieldColor }}></div>
                 <div className={`${styles.dynamic_area} ${styles.right_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -74,7 +74,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: GameFie
                 <div className={styles.bottom_header} style={{ backgroundColor: fieldColor }}></div>
                 <div className={`${styles.dynamic_area} ${styles.bottom_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -95,7 +95,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: GameFie
                 <div className={styles.field_price}>{`M${props.fieldData.basePrice}`}</div>
                 <div className={`${styles.dynamic_area} ${styles.left_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>

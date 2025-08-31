@@ -4,7 +4,6 @@ import ActiveFriends from './active-friends/ActiveFriends';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 import PregameRooms from './pregame-rooms/PregameRooms';
 import CurrentPregameRoomWrap from './pregame-rooms/current-pregame-room-wrap/CurrentPregameRoomWrap';
-import GlobalChat from './global-chat/GlobalChat';
 
 function MainPage() {
     return (

@@ -2,13 +2,15 @@ import { useEffect } from 'react';
 import { getPregameRoomMessagesPage, leavePregameRoom, sendPregameRoomMessage, setPregameRoomMemberSlot } from '../../../../../API/ws-thunks/pregame-rooms';
 import { useAppDispatch } from '../../../../../hoocks/useAppDispatch';
 import { UserT } from '../../../../../store/types/auth';
-import { PregameRoomMessageT, PregameRoomMemberT, PregameRoomT } from '../../../../../store/types/pregame-rooms';
 import MainPageChat from '../../../main-prage-chat/MainPageChat';
 import EmptySlot from '../../empty-slot/EmptySlot';
 import PregameRoomMember from '../../pregame-room-member/PregameRoomMember';
 import CreatePregameRoom from '../create-pregame-room/CreatePregameRoom';
 import styles from './current-pregame-room.module.css'
-import { clearCurrentPregameRoomMessages } from '../../../../../store/pregame-rooms-slice';
+import { clearCurrentPregameRoomMessages } from '../../../../../store/pregame-rooms/pregame-rooms-slice';
+import { PregameRoomMemberT } from '../../../../../store/pregame-rooms/types/pregame-room-member';
+import { PregameRoomT } from '../../../../../store/pregame-rooms/types/pregame-room';
+import { PregameRoomMessageT } from '../../../../../store/pregame-rooms/types/pregame-room-message';
 
 function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: PregameRoomMessageT[], authUser: UserT }) {
     const dispatch = useAppDispatch()
@@ -42,7 +44,10 @@ function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: Pregam
                     ? Array.from({ length: 5 }).map((_, index) => {
                         const pregameRoomMember = props.pregameRoom?.members.find((member: PregameRoomMemberT) => member.slot === index + 1)
                         return pregameRoomMember
-                            ? <PregameRoomMember member={pregameRoomMember} authUser={props.authUser} />
+                            ? <PregameRoomMember
+                                member={pregameRoomMember}
+                                authUser={props.authUser}
+                            />
                             : <EmptySlot key={index + 1} slotNumber={index + 1} onClick={handleSetSlot} />
                     })
                     : <CreatePregameRoom />}
