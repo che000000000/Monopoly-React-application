@@ -1,7 +1,7 @@
 import { PlayerChip } from "../../enums/player-chip"
 import { UserT } from "../../types/auth"
 
-export type PregameRoomMemberT = {
+export type IPregameRoomMember = {
     id: string,
     slot: number,
     playerChip: PlayerChip,

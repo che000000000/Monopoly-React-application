@@ -13,9 +13,9 @@ import thimble_chip from '../../../../images/thimble-chip.png'
 import { GameFieldType } from '../../../../store/enums/game-field-type'
 import { GameFieldOrientation } from '../enums/game-field-orientation'
 import { PlayerChip } from '../../../../store/enums/player-chip'
-import { GameFieldT } from '../../../../store/types/games'
+import { IGameField } from '../../../../store/games/interfaces/game-field'
 
-function RandomEvent(props: { orientation: GameFieldOrientation, fieldData: GameFieldT }) {
+function RandomEvent(props: { orientation: GameFieldOrientation, fieldData: IGameField }) {
     const getIcon = (fieldType: GameFieldType, fieldName: string) => {
         switch (fieldType) {
             case GameFieldType.CHANCE:

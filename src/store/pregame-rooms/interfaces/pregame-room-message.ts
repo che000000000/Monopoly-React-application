@@ -1,6 +1,6 @@
 import { UserT } from "../../types/auth"
 
-export type PregameRoomMessageT = {
+export interface IPregameRoomMessage {
     id: string,
     text: string,
     sender: UserT

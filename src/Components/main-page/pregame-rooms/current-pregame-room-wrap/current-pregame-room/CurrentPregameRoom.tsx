@@ -8,12 +8,17 @@ import PregameRoomMember from '../../pregame-room-member/PregameRoomMember';
 import CreatePregameRoom from '../create-pregame-room/CreatePregameRoom';
 import styles from './current-pregame-room.module.css'
 import { clearCurrentPregameRoomMessages } from '../../../../../store/pregame-rooms/pregame-rooms-slice';
-import { PregameRoomMemberT } from '../../../../../store/pregame-rooms/types/pregame-room-member';
-import { PregameRoomT } from '../../../../../store/pregame-rooms/types/pregame-room';
-import { PregameRoomMessageT } from '../../../../../store/pregame-rooms/types/pregame-room-message';
+import { startGame } from '../../../../../API/ws-thunks/games';
+import { IPregameRoomMember } from '../../../../../store/pregame-rooms/interfaces/pregame-room-member';
+import { IPregameRoom } from '../../../../../store/pregame-rooms/interfaces/pregame-room';
+import { IPregameRoomMessage } from '../../../../../store/pregame-rooms/interfaces/pregame-room-message';
 
-function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: PregameRoomMessageT[], authUser: UserT }) {
+function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPregameRoomMessage[], authUser: UserT }) {
     const dispatch = useAppDispatch()
+
+    const handleStartGame = () => {
+        dispatch(startGame())
+    }
 
     const handleLeavePregameRoom = () => {
         dispatch(leavePregameRoom())
@@ -36,13 +41,13 @@ function CurrentPregameRoom(props: { pregameRoom: PregameRoomT, messages: Pregam
     return (
         <div className={styles.container}>
             <div className={styles.options}>
-                <div className={styles.options__select_chip}></div>
+                <button className={styles.options__start_game_btn} onClick={() => handleStartGame()}>Начать игру</button>
                 <div className={styles.options__leave} onClick={() => handleLeavePregameRoom()}>Выйти</div>
             </div>
             <div className={styles.members_list}>
                 {props.pregameRoom
                     ? Array.from({ length: 5 }).map((_, index) => {
-                        const pregameRoomMember = props.pregameRoom?.members.find((member: PregameRoomMemberT) => member.slot === index + 1)
+                        const pregameRoomMember = props.pregameRoom?.members.find((member: IPregameRoomMember) => member.slot === index + 1)
                         return pregameRoomMember
                             ? <PregameRoomMember
                                 member={pregameRoomMember}

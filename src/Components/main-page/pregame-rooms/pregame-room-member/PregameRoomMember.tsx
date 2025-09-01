@@ -3,9 +3,9 @@ import styles from './pregame-room-member.module.css'
 import no_avatar from '../../../../images/common/no-avatar.png'
 import SelectedPlayerChip from '../selected-player-chip/SelectedPlayerChip';
 import { UserT } from '../../../../store/types/auth';
-import { PregameRoomMemberT } from '../../../../store/pregame-rooms/types/pregame-room-member';
+import { IPregameRoomMember } from '../../../../store/pregame-rooms/interfaces/pregame-room-member';
 
-function PregameRoomMember(props: { member: PregameRoomMemberT, authUser?: UserT | null }) {
+function PregameRoomMember(props: { member: IPregameRoomMember, authUser?: UserT | null }) {
     return (
         <div className={styles.container}>
             <SelectedPlayerChip playerChip={props.member.playerChip} />

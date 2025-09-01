@@ -10,10 +10,9 @@ import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import { GameFieldType } from '../../../../store/enums/game-field-type'
 import { PlayerChip } from '../../../../store/enums/player-chip'
-import { GameFieldT } from '../../../../store/types/games'
+import { IGameField } from '../../../../store/games/interfaces/game-field'
 
-function Angle(props: GameFieldT) {
-
+function Angle(props: IGameField) {
     function definePlayerChipIcon(playerChip: PlayerChip): string {
         switch (playerChip) {
             case PlayerChip.CART: return cart_chip

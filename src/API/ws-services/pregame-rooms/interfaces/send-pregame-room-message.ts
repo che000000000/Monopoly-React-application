@@ -1,5 +1,5 @@
-import { PregameRoomMessageT } from "../../../../store/pregame-rooms/types/pregame-room-message";
+import { IPregameRoomMessage } from "../../../../store/pregame-rooms/interfaces/pregame-room-message";
 
 export interface ISendPregameRoomMessage {
-    message: PregameRoomMessageT
+    message: IPregameRoomMessage
 }

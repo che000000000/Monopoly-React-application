@@ -5,39 +5,55 @@ import { GameFieldOrientation } from './game-fiields/enums/game-field-orientatio
 import Property from './game-fiields/property/Property';
 import RandomEvent from './game-fiields/random-events/RandomEvent';
 import GameHeader from './game-header/GameHeader';
-import GameChat from './game-chat/GameChat';
+// import GameChat from './game-chat/GameChat';
 import styles from './game.module.css'
 import GameBuilds from './game-builds/GameBuilds';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../hoocks/useAppDispatch';
+import { getGameState } from '../../API/ws-thunks/games';
+import { useParams } from 'react-router-dom';
 
 function Game() {
 	const gamesState = useAppSelector(state => state.games)
+	const dispatch = useAppDispatch()
+	const { gameId } = useParams()
+
+	useEffect(() => {
+		dispatch(getGameState(gameId))
+	}, [dispatch, gamesState.isGatewayConnected, gameId])
+
+	if (!gamesState.currentGame) {
+		return <div>Текущая игра не загружена</div>
+	}
+
+	const sortedGameFieldsByPosition = [...gamesState.currentGame.fields].sort((a, b) => a.position - b.position)
 
 	const gameSectionFields = {
-		go: gamesState.currentGame.fields.find(field => field.type === GameFieldType.GO),
+		go: sortedGameFieldsByPosition.find(field => field.type === GameFieldType.GO),
 
-		bottomSection: gamesState.currentGame.fields
+		bottomSection: sortedGameFieldsByPosition
 			.filter(field => field.position >= 2 && field.position <= 10)
 			.sort((a, b) => b.position - a.position),
 
-		justVisiting: gamesState.currentGame.fields.find(field => field.type === GameFieldType.JUST_VISITING),
+		justVisiting: sortedGameFieldsByPosition.find(field => field.type === GameFieldType.JUST_VISITING),
 
-		leftSection: gamesState.currentGame.fields
+		leftSection: sortedGameFieldsByPosition
 			.filter(field => field.position >= 12 && field.position <= 20)
 			.sort((a, b) => b.position - a.position),
 
-		freeParking: gamesState.currentGame.fields.find(field =>
+		freeParking: sortedGameFieldsByPosition.find(field =>
 			field.type === GameFieldType.FREE_PARKING
 		),
 
-		topSection: gamesState.currentGame.fields.filter(field =>
+		topSection: sortedGameFieldsByPosition.filter(field =>
 			field.position >= 22 && field.position <= 30
 		),
 
-		goToJail: gamesState.currentGame.fields.find(field =>
+		goToJail: sortedGameFieldsByPosition.find(field =>
 			field.type === GameFieldType.GO_TO_JAIL
 		),
 
-		rightSection: gamesState.currentGame.fields.filter(field =>
+		rightSection: sortedGameFieldsByPosition.filter(field =>
 			field.position >= 32 && field.position <= 40
 		)
 	}
@@ -66,8 +82,8 @@ function Game() {
 			</div>
 			<div className={`${styles.section} ${styles.chat_section}`}>
 				<GameHeader players={gamesState.currentGame.players} />
-				<GameBuilds housesCount={gamesState.currentGame.builds.housesCount} hotelsCount={gamesState.currentGame.builds.hotelsCount} />
-				<GameChat chatMessages={gamesState.currentGame.chatMessages} currentPlayer={gamesState.currentPlayer}/>
+				<GameBuilds housesCount={gamesState.currentGame.houses} hotelsCount={gamesState.currentGame.hotels} />
+				{/* <GameChat chatMessages={gamesState.currentGame.chatMessages} currentPlayer={gamesState.currentPlayer}/> */}
 			</div>
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (

@@ -8,9 +8,9 @@ import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import styles from './property.module.css'
 import { PlayerChip } from '../../../../store/enums/player-chip';
-import { GameFieldT } from '../../../../store/types/games';
+import { IGameField } from '../../../../store/games/interfaces/game-field';
 
-function Property(props: { orientation: GameFieldOrientation, fieldData: GameFieldT }) {
+function Property(props: { orientation: GameFieldOrientation, fieldData: IGameField }) {
     const fieldColor = props.fieldData.color ? props.fieldData.color : '#fff'
 
     function definePlayerChipIcon(playerChip: PlayerChip): string {

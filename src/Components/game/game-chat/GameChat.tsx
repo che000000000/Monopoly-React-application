@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
-import { GameChatMessageT, PlayerT } from '../../../store/types/games';
+import { IPlayer } from '../../../store/games/interfaces/player';
+import { IGameChatMessage } from '../../../store/games/interfaces/game-chat-message';
 
-function GameChat(props: { chatMessages: GameChatMessageT[], currentPlayer: PlayerT | null }) {
+function GameChat(props: { chatMessages: IGameChatMessage[], currentPlayer: IPlayer | null }) {
 	const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
 	const messagesListElement = useRef<HTMLDivElement>(null)
 
