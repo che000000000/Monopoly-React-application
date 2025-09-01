@@ -1,6 +1,6 @@
-import { PregameRoomT } from "../../../../store/pregame-rooms/types/pregame-room"
+import { IPregameRoom } from "../../../../store/pregame-rooms/interfaces/pregame-room"
 
 export interface IPregameRoomsPage {
-    pregameRoomsList: PregameRoomT[]
+    pregameRoomsList: IPregameRoom[]
     totalCount: number
 }

@@ -1,10 +1,9 @@
 import { io, Socket } from "socket.io-client";
 import { AppDispatch } from "../../../store";
-import { clearPregameRooms, pushCurrentPregameRoomMessage, pushCurrentPregameRoomMessagesPage, pushPregameRoom, pushPregameRoomsPage, removePregameRoom, setPregameRoomMembers, setPregameRoomsTotalCount } from "../../../store/pregame-rooms/pregame-rooms-slice";
+import { pushCurrentPregameRoomMessage, pushCurrentPregameRoomMessagesPage, pushPregameRoom, pushPregameRoomsPage, removePregameRoom, setIsGatewayConnected, setPregameRoomMembers, setPregameRoomsTotalCount } from "../../../store/pregame-rooms/pregame-rooms-slice";
 import { PlayerChip } from "../../../store/enums/player-chip";
 import { IPregameRoomsPage } from "./interfaces/pregame-rooms-page";
 import { ICreatePregameRoom } from "./interfaces/create-pregame-room";
-import { PregameRoomT } from "../../../store/pregame-rooms/types/pregame-room";
 import { IJoinPregameRoom } from "./interfaces/join-pregame-room";
 import { ILeavePregameRoom } from "./interfaces/leave-pregame-room";
 import { IRemovePregameRoom } from "./interfaces/remove-pregame-room";
@@ -32,18 +31,15 @@ export class PregameRoomsGatewayService {
     disconnect() {
         this.socket?.disconnect()
         this.socket = null
-
-        this.dispatch(clearPregameRooms(null))
     }
 
     private setupListeners() {
         this.socket?.on('connect', () => {
-            this.dispatch(clearPregameRooms(null))
-            this.socket?.emit('pregame-rooms-page', {})
+            this.dispatch(setIsGatewayConnected(true))
         })
 
         this.socket?.on('disconnect', () => {
-            this.dispatch(clearPregameRooms(null))
+            this.dispatch(setIsGatewayConnected(false))
         })
 
         this.socket?.on('pregame-rooms-page', (message: IPregameRoomsPage) => {
@@ -64,7 +60,7 @@ export class PregameRoomsGatewayService {
         })
 
         this.socket?.on('remove-pregame-room', (message: IRemovePregameRoom) => {
-            this.dispatch(removePregameRoom(message.pregameRoom))
+            this.dispatch(removePregameRoom(message.pregameRoom.id))
         })
 
         this.socket?.on('set-pregame-room-member-slot', (message: ISetPregameRoomMemberSlot) => {
@@ -82,6 +78,10 @@ export class PregameRoomsGatewayService {
         this.socket?.on('set-pregame-room-player-chip', (message: ISetPregameRoomMemberPlayerChip) => {
             this.dispatch(setPregameRoomMembers(message.pregameRoom))
         })
+    }
+
+    public getPregameRoomsPage(pageNumber?: number, pageSize?: number) {
+        this.socket?.emit('pregame-rooms-page', {pageNumber, pageSize})
     }
 
     public joinPregameRoom(pregameRoomId: string, slot: number) {

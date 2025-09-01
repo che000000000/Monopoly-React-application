@@ -1,8 +1,8 @@
-import { PlayerT } from '../../../store/types/games';
+import { IPlayer } from '../../../store/games/interfaces/player';
 import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
 
-function GameHeader(props: {players: PlayerT[]}) {
+function GameHeader(props: {players: IPlayer[]}) {
     return (
         <div className={styles.container}>
             <div className={styles.turn_timer}>

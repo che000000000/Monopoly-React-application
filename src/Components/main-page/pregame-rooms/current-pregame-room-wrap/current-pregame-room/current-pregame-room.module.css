@@ -10,10 +10,14 @@
 .options {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    align-items: center;
     border: 0.3vmin solid #eeeeee;
     border-bottom: 0.3vmin dashed #eeeeee;
-    
+}
+
+.options__start_game_btn {
+    background-color: #0b7a0b;
+    border-radius: 3px;
 }
 
 .options__leave {
@@ -45,7 +49,11 @@
 
 @media(max-width: 2560px) {
     .options {
-        padding: 3px 12px;
+        padding: 8px 12px;
+    }
+
+    .options__start_game_btn {
+        padding: 3px 6px;
     }
 
     .options__leave {
@@ -63,7 +71,12 @@
 
 @media(max-width: 1024px) {
     .options {
-        padding: 3px 10px;
+        padding: 7px 10px;
+    }
+
+    .options__start_game_btn {
+        font-size: 13px;
+        padding: 2px 5px;
     }
 
     .options__leave {
@@ -81,8 +94,13 @@
 
 @media(max-width: 786px) {
     .options {
-        padding: 3px 8px;
+        padding: 6px 8px;
     }
+
+    .options__start_game_btn {
+        font-size: 11.5px;
+        padding: 2px 5px;
+    }    
 
     .options__leave {
         font-size: 11.5px;
@@ -99,8 +117,13 @@
 
 @media(max-width: 480px) {
     .options {
-        padding: 0.6vw 2vw;
+        padding: 1.2vw 1.6vw;
     }
+
+    .options__start_game_btn {
+        font-size: 2.4vw;
+        padding: 0.45vw 1.1vw;
+    }    
 
     .options__leave {
         font-size: 2.4vw;

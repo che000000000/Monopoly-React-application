@@ -5,9 +5,10 @@ import cart_chip from '../../../../images/cart-chip.png'
 import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import styles from './game-chat-message.module.css'
-import { GameChatMessageT, PlayerT } from '../../../../store/types/games';
+import { IPlayer } from '../../../../store/games/interfaces/player';
+import { IGameChatMessage } from '../../../../store/games/interfaces/game-chat-message';
 
-function GameChatMessage(props: {message: GameChatMessageT, currentPlayer: PlayerT | null}) {
+function GameChatMessage(props: {message: IGameChatMessage, currentPlayer: IPlayer | null}) {
 
 	function definePlayerChipIcon(playerChip: PlayerChip): string {
 		switch (playerChip) {

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styles from './game-chat-send-form.module.css'
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
-import { pushMessage } from '../../../../store/games-slice';
-import { PlayerT } from '../../../../store/types/games';
+import { pushMessage } from '../../../../store/games/games-slice';
+import { IPlayer } from '../../../../store/games/interfaces/player';
 
-function GameChatSendForm(props: { currentPlayer: PlayerT | null }) {
+function GameChatSendForm(props: { currentPlayer: IPlayer | null }) {
     const dispatch = useAppDispatch()
 
     const [sendInputText, setSendInputText] = useState('')

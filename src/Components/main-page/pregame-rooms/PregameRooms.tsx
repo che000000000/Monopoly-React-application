@@ -4,27 +4,29 @@ import { useAppSelector } from '../../../hoocks/useAppSelector';
 import NoPregameRooms from '../no-items/NoItems';
 import PregameRoom from './active-pregame-room/ActivePregameRoom';
 import styles from './pregame-rooms.module.css'
-import { connectPregameRoomsGateway } from '../../../API/ws-thunks/pregame-rooms';
-import { PregameRoomT } from '../../../store/pregame-rooms/types/pregame-room';
+import { getPregameRoomsPage } from '../../../API/ws-thunks/pregame-rooms';
 import { PregameRoomsStateT } from '../../../store/pregame-rooms/types/pregame-rooms-state';
+import { IPregameRoom } from '../../../store/pregame-rooms/interfaces/pregame-room';
 
 function PregameRooms() {
     const dispatch = useAppDispatch()
     const pregameRoomsState: PregameRoomsStateT = useAppSelector(state => state.pregameRooms)
 
     useEffect(() => {
-        dispatch(connectPregameRoomsGateway())
-    }, [])
+        if (pregameRoomsState.isGatewayConnected) {
+            dispatch(getPregameRoomsPage({ pageNumber: 1, pageSize: 12 }))
+        }
+    }, [pregameRoomsState.isGatewayConnected, dispatch])
 
-    const activePregameRooms = pregameRoomsState.pregameRooms.pregameRoomsList.filter((room: PregameRoomT) => room.isCurrent !== true)
-    
+    const activePregameRooms = pregameRoomsState.pregameRooms.pregameRoomsList.filter((room: IPregameRoom) => room.isCurrent !== true)
+
     return (
         <div className={styles.container}>
             <div className={styles.active_pregame_rooms_list}>
-                {activePregameRooms
+                {activePregameRooms.length !== 0
                     ? activePregameRooms.map(pregameRoom => {
                         if (pregameRoom.isCurrent === true) return null
-                        else return <PregameRoom key={pregameRoom.id} pregameRoom={pregameRoom} authUser={pregameRoomsState.authUser}/>
+                        else return <PregameRoom key={pregameRoom.id} pregameRoom={pregameRoom} authUser={pregameRoomsState.authUser} />
                     })
                     : <NoPregameRooms text='В данный момент активных лобби нет' />
                 }

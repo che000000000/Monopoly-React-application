@@ -1,9 +1,9 @@
 import { PlayerChip } from "../../enums/player-chip"
-import { PregameRoomMemberT } from "./pregame-room-member"
+import { IPregameRoomMember } from "../interfaces/pregame-room-member"
 
-export type PregameRoomT = {
+export interface IPregameRoom {
     id: string
-    members: PregameRoomMemberT[],
+    members: IPregameRoomMember[],
     isCurrent: boolean,
     availableChips: PlayerChip[]
     createdAt: Date

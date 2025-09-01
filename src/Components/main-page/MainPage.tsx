@@ -4,6 +4,7 @@ import ActiveFriends from './active-friends/ActiveFriends';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 import PregameRooms from './pregame-rooms/PregameRooms';
 import CurrentPregameRoomWrap from './pregame-rooms/current-pregame-room-wrap/CurrentPregameRoomWrap';
+import Games from './games/Games';
 
 function MainPage() {
     return (
@@ -28,6 +29,10 @@ function MainPage() {
                     <div className={styles.global_chat}>
                         <div className={styles.title}>Общий чат</div>
                         {/* <GlobalChat /> */}
+                    </div>
+                    <div className={styles.games}>
+                        <div className={styles.title}>Игры</div>
+                        <Games />
                     </div>
                 </div>
             </div>

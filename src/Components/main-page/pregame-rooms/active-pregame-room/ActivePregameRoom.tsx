@@ -4,10 +4,10 @@ import EmptySlot from '../empty-slot/EmptySlot';
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import { joinPregameRoom } from '../../../../API/ws-thunks/pregame-rooms';
 import { UserT } from '../../../../store/types/auth';
-import { PregameRoomMemberT } from '../../../../store/pregame-rooms/types/pregame-room-member';
-import { PregameRoomT } from '../../../../store/pregame-rooms/types/pregame-room';
+import { IPregameRoomMember } from '../../../../store/pregame-rooms/interfaces/pregame-room-member';
+import { IPregameRoom } from '../../../../store/pregame-rooms/interfaces/pregame-room';
 
-function ActivePregameRoom(props: { pregameRoom: PregameRoomT, authUser: UserT | null }) {
+function ActivePregameRoom(props: { pregameRoom: IPregameRoom, authUser: UserT | null }) {
 	const dispatch = useAppDispatch()
 
 	const handleJoinPregameRoom = (slotNumber: number) => {
@@ -18,7 +18,7 @@ function ActivePregameRoom(props: { pregameRoom: PregameRoomT, authUser: UserT |
 		<div className={styles.container}>
 			<div className={styles.members_list}>
 				{Array.from({ length: 5 }).map((_, index) => {
-					const pregameRoomMember = props.pregameRoom.members.find((member: PregameRoomMemberT) => member.slot === index + 1)
+					const pregameRoomMember = props.pregameRoom.members.find((member: IPregameRoomMember) => member.slot === index + 1)
 					return pregameRoomMember
 						? <PregameRoomMember key={pregameRoomMember.id} member={pregameRoomMember} />
 						: <EmptySlot key={index + 1} slotNumber={index + 1} onClick={handleJoinPregameRoom} />
