@@ -8,8 +8,8 @@ import MainPage from './Components/main-page/MainPage';
 import { useAppDispatch } from './hoocks/useAppDispatch';
 import { connectGamesGateway } from './API/ws-thunks/games';
 import { connectPregameRoomsGateway } from './API/ws-thunks/pregame-rooms';
-import { AuthStateT } from './store/types/auth';
 import { useAppSelector } from './hoocks/useAppSelector';
+import { AuthStateT } from './store/slices/auth/types/auth-state';
 
 function App() {
     const authState: AuthStateT = useAppSelector(state => state.auth)

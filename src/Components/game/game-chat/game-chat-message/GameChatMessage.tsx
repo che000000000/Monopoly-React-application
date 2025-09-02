@@ -5,10 +5,10 @@ import cart_chip from '../../../../images/cart-chip.png'
 import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import styles from './game-chat-message.module.css'
-import { IPlayer } from '../../../../store/games/interfaces/player';
-import { IGameChatMessage } from '../../../../store/games/interfaces/game-chat-message';
+import { IGameChatMessage } from '../../../../store/slices/games/interfaces/game-chat-message';
+import { IUser } from '../../../../store/slices/auth/interfaces/user';
 
-function GameChatMessage(props: {message: IGameChatMessage, currentPlayer: IPlayer | null}) {
+function GameChatMessage(props: {message: IGameChatMessage, authUser: IUser | null}) {
 
 	function definePlayerChipIcon(playerChip: PlayerChip): string {
 		switch (playerChip) {
@@ -21,15 +21,24 @@ function GameChatMessage(props: {message: IGameChatMessage, currentPlayer: IPlay
 		}
 	}
 
+	const formatDate = (date: Date): string => {
+		const dateObj = typeof date === 'string' ? new Date(date) : date;
+
+		const hours = dateObj.getHours().toString().padStart(2, '0');
+		const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+
+		return `${hours}:${minutes}`;
+	}
+
 	return (
-		<div className={props.message.sender.id !== props.currentPlayer?.id ? styles.container : styles.my_message_container}>
-			<div className={props.message.sender.id !== props.currentPlayer?.id ? styles.message : `${styles.message} ${styles.my_message}`}>
+		<div className={props.message.sender.id !== props.authUser?.id ? styles.container : styles.my_message_container}>
+			<div className={props.message.sender.id !== props.authUser?.id ? styles.message : `${styles.message} ${styles.my_message}`}>
 				<div className={styles.message_sender}>
 					<div className={styles.sender_name}>{props.message.sender.name}</div>
 					<img className={styles.sender_chip} alt={`${props.message.sender.name}-icon`} src={definePlayerChipIcon(props.message.sender.chip)} />
 				</div>
 				<div className={styles.message_text}>{props.message.text}</div>
-				<div className={styles.sent_time}>{props.message.sentTime}</div>
+				<div className={styles.sent_time}>{formatDate(props.message.createdAt)}</div>
 			</div>
 		</div>
 	)

@@ -1,4 +1,4 @@
-import { IPregameRoom } from "../../../../store/pregame-rooms/interfaces/pregame-room"
+import { IPregameRoom } from "../../../../store/slices/pregame-rooms/interfaces/pregame-room"
 
 export interface IPregameRoomsPage {
     pregameRoomsList: IPregameRoom[]

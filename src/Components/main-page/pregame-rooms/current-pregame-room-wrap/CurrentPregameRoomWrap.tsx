@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../../hoocks/useAppSelector';
-import { IPregameRoom } from '../../../../store/pregame-rooms/interfaces/pregame-room';
-import { PregameRoomsStateT } from '../../../../store/pregame-rooms/types/pregame-rooms-state';
+import { IPregameRoom } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room';
+import { PregameRoomsStateT } from '../../../../store/slices/pregame-rooms/types/pregame-rooms-state';
 import CreatePregameRoom from './create-pregame-room/CreatePregameRoom';
 import styles from './current-pregame-room-wrap.module.css'
 import CurrentPregameRoom from './current-pregame-room/CurrentPregameRoom';

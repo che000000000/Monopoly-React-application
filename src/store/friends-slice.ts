@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { FriendsStateT } from "./types/friends";
-import { UserT } from "./types/auth";
+import { IUser } from "./slices/auth/interfaces/user";
 
 const initialState: FriendsStateT = {
     activeFriends: [
@@ -42,7 +42,7 @@ const friendsSlice = createSlice({
     name: 'friends',
     initialState,
     reducers: {
-        pushActiveFriend(state, action: PayloadAction<UserT>) {
+        pushActiveFriend(state, action: PayloadAction<IUser>) {
             state.activeFriends.push(action.payload)
         }
     }

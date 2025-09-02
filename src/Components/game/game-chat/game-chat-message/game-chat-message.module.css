@@ -5,9 +5,11 @@
 
 .message {
     width: fit-content;
+    max-width: 62%;
+    word-wrap: break-word;
     display: flex;
     flex-direction: column;
-    padding: 0.9vmin;
+    padding: 0.6vmin 0.9vmin;
     background-color: #eee;
     border-radius: 3px;
 }
@@ -20,7 +22,7 @@
     width: fit-content;
     display: flex;
     align-items: center;
-    gap: 0.2vmin;
+    gap: 0.5vmin;
 }
 
 .sender_name {

@@ -1,7 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { UserRole } from "../enums/user-role";
-import { PlayerChip } from "../enums/player-chip";
-import { PlayerStatus } from "../enums/player-status";
 import { GamesStateT } from "./types/games-state";
 import { IGameChatMessage } from "./interfaces/game-chat-message";
 import { IGameState } from "./interfaces/game-state";
@@ -9,21 +6,11 @@ import { IGameState } from "./interfaces/game-state";
 const initialState: GamesStateT = {
     isGatewayConnected: false,
     games: [],
-    currentPlayer: {
-        id: '1',
-        user: {
-            id: '1',
-            name: 'видеокал-',
-            avatarUrl: 'https://avatars.mds.yandex.net/get-shedevrum/11511289/f64db62ec6d411eebe70aa2339796401/orig',
-            role: UserRole.REGULAR
-        },
-        chip: PlayerChip.CART,
-        status: PlayerStatus.IS_TURN_OWNER,
-        turnNumber: 1,
-        balance: 1500,
-    },
     currentGame: null,
-    currentGameChat: []
+    currentGameChat: {
+        messages: [],
+        totlaCount: 0
+    }
 }
 
 const gamesSlice = createSlice({
@@ -36,12 +23,17 @@ const gamesSlice = createSlice({
         setCurrentGame(state: GamesStateT, action: PayloadAction<IGameState>) {
             state.currentGame = action.payload
         },
-        pushMessage(state, action: PayloadAction<IGameChatMessage>) {
-            
+        pushGameChatMessagesPage(state: GamesStateT, action: PayloadAction<{messagesList: IGameChatMessage[], totalCount: number}>) {
+            action.payload.messagesList.forEach((message: IGameChatMessage) => state.currentGameChat.messages.push(message))
+            state.currentGameChat.totlaCount = action.payload.totalCount
+        },
+        pushGameChatMessage(state, action: PayloadAction<IGameChatMessage>) {
+            state.currentGameChat.messages.push(action.payload)
+            state.currentGameChat.totlaCount++
         }
     }
 })
 
-export const { setIsGatewayConnected, setCurrentGame, pushMessage } = gamesSlice.actions;
+export const { setIsGatewayConnected, setCurrentGame, pushGameChatMessagesPage, pushGameChatMessage } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

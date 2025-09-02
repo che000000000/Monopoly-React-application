@@ -7,9 +7,10 @@
 
 .messages_list {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
-    overflow-y: scroll;
-    padding: 0.6vmin 0.8vmin 0.1vmin 0.6vmin;
+    overflow-y: auto;
+    padding: 1vmin 0.8vmin 0.2vmin 0.6vmin;
     gap: 0.6vmin;
     border: 0.3vmin solid #808080;
     border-bottom: none;

@@ -9,7 +9,7 @@ import Oauth from './oauth-method/Oauth';
 import { OauthMethod } from '../../API/enums/oauth-method';
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import AuthRedirect from '../../hoc/AuthRedirect';
-import { AuthStateT } from '../../store/types/auth';
+import { AuthStateT } from '../../store/slices/auth/types/auth-state';
 
 export enum AuthFormType {
     LOGIN,

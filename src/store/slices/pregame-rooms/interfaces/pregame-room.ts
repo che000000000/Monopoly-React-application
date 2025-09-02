@@ -1,5 +1,5 @@
-import { PlayerChip } from "../../enums/player-chip"
-import { IPregameRoomMember } from "../interfaces/pregame-room-member"
+import { PlayerChip } from "../../../enums/player-chip"
+import { IPregameRoomMember } from "./pregame-room-member"
 
 export interface IPregameRoom {
     id: string

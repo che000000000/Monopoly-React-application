@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styles from './game-chat-send-form.module.css'
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
-import { pushMessage } from '../../../../store/games/games-slice';
-import { IPlayer } from '../../../../store/games/interfaces/player';
+import { sendGameChatMessage } from '../../../../API/ws-thunks/games';
+import { IUser } from '../../../../store/slices/auth/interfaces/user';
 
-function GameChatSendForm(props: { currentPlayer: IPlayer | null }) {
+function GameChatSendForm(props: { authUser: IUser | null }) {
     const dispatch = useAppDispatch()
 
     const [sendInputText, setSendInputText] = useState('')
@@ -14,21 +14,7 @@ function GameChatSendForm(props: { currentPlayer: IPlayer | null }) {
     }
 
     function handleSendMessage(messageText: string): void {
-        const currentPlayer = props.currentPlayer
-        if (!currentPlayer || messageText.length === 0) return
-
-        dispatch(pushMessage({
-            id: '228',
-            text: messageText,
-            sender: {
-                id: currentPlayer.id,
-                name: currentPlayer.user.name,
-                avatarUrl: currentPlayer.user.avatarUrl,
-                chip: currentPlayer.chip,
-                role: currentPlayer.user.role
-            },
-            sentTime: '19:14'
-        }))
+        dispatch(sendGameChatMessage({ messageText }))
 
         setSendInputText('')
     }

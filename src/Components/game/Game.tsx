@@ -5,26 +5,27 @@ import { GameFieldOrientation } from './game-fiields/enums/game-field-orientatio
 import Property from './game-fiields/property/Property';
 import RandomEvent from './game-fiields/random-events/RandomEvent';
 import GameHeader from './game-header/GameHeader';
-// import GameChat from './game-chat/GameChat';
+import GameChat from './game-chat/GameChat';
 import styles from './game.module.css'
 import GameBuilds from './game-builds/GameBuilds';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../hoocks/useAppDispatch';
-import { getGameState } from '../../API/ws-thunks/games';
-import { useParams } from 'react-router-dom';
+import { getGameChatMessagesPage, getGameState } from '../../API/ws-thunks/games';
+import { GamesStateT } from '../../store/slices/games/types/games-state';
+import { AuthStateT } from '../../store/slices/auth/types/auth-state';
+import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 
 function Game() {
-	const gamesState = useAppSelector(state => state.games)
+	const authState: AuthStateT = useAppSelector(state => state.auth)
+	const gamesState: GamesStateT = useAppSelector(state => state.games)
 	const dispatch = useAppDispatch()
-	const { gameId } = useParams()
 
 	useEffect(() => {
-		dispatch(getGameState(gameId))
-	}, [dispatch, gamesState.isGatewayConnected, gameId])
+		dispatch(getGameState())
+		dispatch(getGameChatMessagesPage({ pageNumber: 1, pageSize: 32 }))
+	}, [dispatch, gamesState.isGatewayConnected])
 
-	if (!gamesState.currentGame) {
-		return <div>Текущая игра не загружена</div>
-	}
+	if (!gamesState.currentGame) return null
 
 	const sortedGameFieldsByPosition = [...gamesState.currentGame.fields].sort((a, b) => a.position - b.position)
 
@@ -83,7 +84,7 @@ function Game() {
 			<div className={`${styles.section} ${styles.chat_section}`}>
 				<GameHeader players={gamesState.currentGame.players} />
 				<GameBuilds housesCount={gamesState.currentGame.houses} hotelsCount={gamesState.currentGame.hotels} />
-				{/* <GameChat chatMessages={gamesState.currentGame.chatMessages} currentPlayer={gamesState.currentPlayer}/> */}
+				<GameChat chatMessages={gamesState.currentGameChat.messages} authUser={authState.user}/>
 			</div>
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
@@ -109,4 +110,4 @@ function Game() {
 	)
 }
 
-export default Game;
+export default NoAuthRedirect(Game);

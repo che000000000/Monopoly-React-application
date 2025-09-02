@@ -8,7 +8,7 @@ import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import styles from './property.module.css'
 import { PlayerChip } from '../../../../store/enums/player-chip';
-import { IGameField } from '../../../../store/games/interfaces/game-field';
+import { IGameField } from '../../../../store/slices/games/interfaces/game-field';
 
 function Property(props: { orientation: GameFieldOrientation, fieldData: IGameField }) {
     const fieldColor = props.fieldData.color ? props.fieldData.color : '#fff'
@@ -32,7 +32,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: IGameFi
                 <div className={styles.field_price}>{`M${props.fieldData.basePrice}`}</div>
                 <div className={`${styles.dynamic_area} ${styles.top_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={player.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -53,7 +53,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: IGameFi
                 <div className={styles.right_header} style={{ backgroundColor: fieldColor }}></div>
                 <div className={`${styles.dynamic_area} ${styles.right_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={player.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -74,7 +74,7 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: IGameFi
                 <div className={styles.bottom_header} style={{ backgroundColor: fieldColor }}></div>
                 <div className={`${styles.dynamic_area} ${styles.bottom_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={player.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -95,15 +95,15 @@ function Property(props: { orientation: GameFieldOrientation, fieldData: IGameFi
                 <div className={styles.field_price}>{`M${props.fieldData.basePrice}`}</div>
                 <div className={`${styles.dynamic_area} ${styles.left_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={player.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
                 <div className={`${styles.dynamic_area} ${styles.left_builds_area}`}>
                     {props.fieldData.buildsCount === 5
                         ? <img className={styles.field_build} alt='hotel' src={hotel_icon} />
-                        : Array.from({ length: props.fieldData.buildsCount ? props.fieldData.buildsCount : 0 }).map(_ =>
-                            <img className={styles.field_build} alt='house' src={house_icon} />
+                        : Array.from({ length: props.fieldData.buildsCount ? props.fieldData.buildsCount : 0 }).map((_, index) =>
+                            <img key={index} className={styles.field_build} alt='house' src={house_icon} />
                         )
                     }
                 </div>

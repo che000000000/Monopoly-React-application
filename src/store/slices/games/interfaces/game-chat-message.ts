@@ -4,5 +4,5 @@ export interface IGameChatMessage {
     id: string,
     text: string
     sender: IGameChatMessageSender,
-    sentTime: string
+    createdAt: Date
 }

@@ -1,5 +1,5 @@
-import { PlayerChip } from "../../enums/player-chip"
-import { UserRole } from "../../enums/user-role"
+import { PlayerChip } from "../../../enums/player-chip"
+import { UserRole } from "../../../enums/user-role"
 
 export interface IGameChatMessageSender {
     id: string,

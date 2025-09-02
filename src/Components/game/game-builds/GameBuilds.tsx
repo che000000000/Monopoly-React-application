@@ -7,10 +7,14 @@ function GameBuilds(props: { housesCount: number, hotelsCount: number }) {
         <div className={styles.container}>
             <div className={styles.hollow}>
                 <div className={`${styles.builds_list} ${styles.houses_list}`}>
-                    {Array.from({ length: props.housesCount }).map(_ => <img className={`${styles.build_icon} ${styles.house_icon}`} alt='house' src={house_icon} />)}
+                    {Array.from({ length: props.housesCount }).map((_, index) => (
+                        <img key={`${index}`} className={`${styles.build_icon} ${styles.house_icon}`} alt='house' src={house_icon} />
+                    ))}
                 </div>
                 <div className={`${styles.builds_list} ${styles.hotels_list}`}>
-                    {Array.from({ length: props.hotelsCount }).map(_ => <img className={`${styles.build_icon} ${styles.house_icon}`} alt='hotel' src={hotel_icon} />)}
+                    {Array.from({ length: props.hotelsCount }).map((_, index) => (
+                        <img key={`${index}`} className={`${styles.build_icon} ${styles.house_icon}`} alt='hotel' src={hotel_icon} />
+                    ))}
                 </div>
             </div>
         </div>

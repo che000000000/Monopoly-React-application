@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../hoocks/useAppSelector';
-import { AuthStateT } from '../store/types/auth';
+import { AuthStateT } from '../store/slices/auth/types/auth-state';
 
 const NoAuthRedirect = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
     const ComponentWithAuthRedirect = (props: P) => {

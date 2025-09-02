@@ -1,51 +1,57 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
-import { IPlayer } from '../../../store/games/interfaces/player';
-import { IGameChatMessage } from '../../../store/games/interfaces/game-chat-message';
+import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
+import { IUser } from '../../../store/slices/auth/interfaces/user';
 
-function GameChat(props: { chatMessages: IGameChatMessage[], currentPlayer: IPlayer | null }) {
+function GameChat(props: { chatMessages: IGameChatMessage[], authUser: IUser | null }) {
 	const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
 	const messagesListElement = useRef<HTMLDivElement>(null)
 
 	const [isAutoScrollEnabled, setIsAutoScrollEnabled] = useState(true)
 
-	function toggleAutoScroll(): void {
+	const toggleAutoScroll = useCallback((): void => {
 		if (!messagesListElement.current) return
 		const { scrollTop, scrollHeight, clientHeight } = messagesListElement.current
 		setIsAutoScrollEnabled(scrollHeight - (scrollTop + clientHeight) < 10)
-	}
-
-	messagesListElement.current?.addEventListener('scroll', () => toggleAutoScroll())
-
-	function handleScrollBottom(): void {
-		if (isAutoScrollEnabled) {
-			scrollToBottom(true)
-		} else return
-	}
-
-	function scrollToBottom(isInstant: boolean): void {
-		setTimeout(() => {
-			bottomMessagesListElemet.current?.scrollIntoView({ behavior: 'auto' })
-		}, isInstant ? 0 : 50)
-	}
-
-	useEffect(() => {
-		scrollToBottom(false)
 	}, [])
 
 	useEffect(() => {
+		const element = messagesListElement.current;
+		if (!element) return;
+		
+		element.addEventListener('scroll', toggleAutoScroll);
+		return () => element.removeEventListener('scroll', toggleAutoScroll);
+	}, [toggleAutoScroll])
+
+	const scrollToBottom = useCallback((isInstant: boolean): void => {
+		setTimeout(() => {
+			bottomMessagesListElemet.current?.scrollIntoView({ behavior: 'auto' })
+		}, isInstant ? 0 : 50)
+	}, [])
+
+	const handleScrollBottom = useCallback((): void => {
+		if (isAutoScrollEnabled) {
+			scrollToBottom(true)
+		}
+	}, [isAutoScrollEnabled, scrollToBottom])
+
+	useEffect(() => {
+		scrollToBottom(false)
+	}, [scrollToBottom])
+
+	useEffect(() => {
 		handleScrollBottom()
-	}, [props.chatMessages])
+	}, [props.chatMessages, handleScrollBottom])
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.messages_list} ref={messagesListElement}>
-				{props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} currentPlayer={props.currentPlayer} />)}
+				{props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} authUser={props.authUser} />)}
 				<div className={styles.bottom_scroll_position} ref={bottomMessagesListElemet} />
 			</div>
-			<SendForm currentPlayer={props.currentPlayer} />
+			<SendForm authUser={props.authUser} />
 		</div>
 	)
 }

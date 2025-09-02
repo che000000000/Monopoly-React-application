@@ -16,8 +16,10 @@
 }
 
 .options__start_game_btn {
-    background-color: #0b7a0b;
+    background-color: #ce1b1b;
     border-radius: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border: 1px solid #dddddd;
 }
 
 .options__leave {

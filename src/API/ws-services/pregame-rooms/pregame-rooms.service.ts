@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client";
 import { AppDispatch } from "../../../store";
-import { pushCurrentPregameRoomMessage, pushCurrentPregameRoomMessagesPage, pushPregameRoom, pushPregameRoomsPage, removePregameRoom, setIsGatewayConnected, setPregameRoomMembers, setPregameRoomsTotalCount } from "../../../store/pregame-rooms/pregame-rooms-slice";
+import { pushCurrentPregameRoomMessage, pushCurrentPregameRoomMessagesPage, pushPregameRoom, pushPregameRoomsPage, removePregameRoom, setIsGatewayConnected, setPregameRoomMembers, setPregameRoomsTotalCount } from "../../../store/slices/pregame-rooms/pregame-rooms-slice";
 import { PlayerChip } from "../../../store/enums/player-chip";
 import { IPregameRoomsPage } from "./interfaces/pregame-rooms-page";
 import { ICreatePregameRoom } from "./interfaces/create-pregame-room";
