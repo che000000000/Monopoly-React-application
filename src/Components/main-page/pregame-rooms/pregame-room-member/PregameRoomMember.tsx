@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import styles from './pregame-room-member.module.css'
 import no_avatar from '../../../../images/common/no-avatar.png'
 import SelectedPlayerChip from '../selected-player-chip/SelectedPlayerChip';
-import { UserT } from '../../../../store/types/auth';
-import { IPregameRoomMember } from '../../../../store/pregame-rooms/interfaces/pregame-room-member';
+import { IPregameRoomMember } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room-member';
+import { IUser } from '../../../../store/slices/auth/interfaces/user';
 
-function PregameRoomMember(props: { member: IPregameRoomMember, authUser?: UserT | null }) {
+function PregameRoomMember(props: { member: IPregameRoomMember, authUser?: IUser | null }) {
     return (
         <div className={styles.container}>
             <SelectedPlayerChip playerChip={props.member.playerChip} />

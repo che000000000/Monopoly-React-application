@@ -5,8 +5,8 @@ import NoPregameRooms from '../no-items/NoItems';
 import PregameRoom from './active-pregame-room/ActivePregameRoom';
 import styles from './pregame-rooms.module.css'
 import { getPregameRoomsPage } from '../../../API/ws-thunks/pregame-rooms';
-import { PregameRoomsStateT } from '../../../store/pregame-rooms/types/pregame-rooms-state';
-import { IPregameRoom } from '../../../store/pregame-rooms/interfaces/pregame-room';
+import { PregameRoomsStateT } from '../../../store/slices/pregame-rooms/types/pregame-rooms-state';
+import { IPregameRoom } from '../../../store/slices/pregame-rooms/interfaces/pregame-room';
 
 function PregameRooms() {
     const dispatch = useAppDispatch()

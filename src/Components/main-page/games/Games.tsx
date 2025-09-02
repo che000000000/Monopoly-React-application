@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../../../hoocks/useAppSelector';
-import { GamesStateT } from '../../../store/games/types/games-state';
 import NoItems from '../no-items/NoItems';
 import styles from './games.module.css'
 import { useNavigate } from 'react-router-dom';
+import { GamesStateT } from '../../../store/slices/games/types/games-state';
 
 function Games() {
     const gamesState: GamesStateT = useAppSelector(state => state.games)
@@ -12,7 +12,7 @@ function Games() {
 
     useEffect(() => {
         if (gamesState.currentGame) {
-            navigate(`/game/${gamesState.currentGame.id}`)
+            navigate(`/game`)
         }
     }, [gamesState.currentGame, navigate])
 

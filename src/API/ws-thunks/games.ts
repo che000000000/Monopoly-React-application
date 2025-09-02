@@ -4,7 +4,7 @@ import { AppThunkApi } from "../../store";
 
 let gamesGatewayService: GamesGatewayService | null = null
 
-export const connectGamesGateway = createAsyncThunk<GamesGatewayService, void, AppThunkApi>(
+export const connectGamesGateway = createAsyncThunk<void, void, AppThunkApi>(
     'games/gateway-connection',
     (_, { dispatch, getState }) => {
         if (!gamesGatewayService) {
@@ -12,8 +12,6 @@ export const connectGamesGateway = createAsyncThunk<GamesGatewayService, void, A
 
             gamesGatewayService.connect()
         }
-
-        return gamesGatewayService
     }
 )
 
@@ -26,8 +24,21 @@ export const startGame = createAsyncThunk(
 
 export const getGameState = createAsyncThunk(
     'games/get-game-state',
-    (gameId?: string) => {
-        // console.log(gameId)
-        gamesGatewayService?.getGameState(gameId)
+    () => {
+        gamesGatewayService?.getGameState()
+    }
+)
+
+export const getGameChatMessagesPage = createAsyncThunk(
+    'games/get-game-chat-messages-page',
+    (payload: { pageNumber: number, pageSize: number }) => {
+        gamesGatewayService?.getGameChatMessagesPage(payload.pageNumber, payload.pageSize)
+    }
+)
+
+export const sendGameChatMessage = createAsyncThunk(
+    'games/send-game-chat-message',
+    (payload: { messageText: string }) => {
+        gamesGatewayService?.sendGameChatMessage(payload.messageText)
     }
 )

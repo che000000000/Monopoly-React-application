@@ -1,8 +1,8 @@
-import { UserT } from "../../../../store/types/auth"
+import { IUser } from "../../../../store/slices/auth/interfaces/user"
 
 export type MainPageChatMessageT = {
     id: string,
     text: string,
-    sender: UserT
+    sender: IUser
     createdAt: Date
 }

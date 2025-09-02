@@ -3,11 +3,11 @@ import PregameRoomMember from '../pregame-room-member/PregameRoomMember';
 import EmptySlot from '../empty-slot/EmptySlot';
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import { joinPregameRoom } from '../../../../API/ws-thunks/pregame-rooms';
-import { UserT } from '../../../../store/types/auth';
-import { IPregameRoomMember } from '../../../../store/pregame-rooms/interfaces/pregame-room-member';
-import { IPregameRoom } from '../../../../store/pregame-rooms/interfaces/pregame-room';
+import { IPregameRoomMember } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room-member';
+import { IPregameRoom } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room';
+import { IUser } from '../../../../store/slices/auth/interfaces/user';
 
-function ActivePregameRoom(props: { pregameRoom: IPregameRoom, authUser: UserT | null }) {
+function ActivePregameRoom(props: { pregameRoom: IPregameRoom, authUser: IUser | null }) {
 	const dispatch = useAppDispatch()
 
 	const handleJoinPregameRoom = (slotNumber: number) => {

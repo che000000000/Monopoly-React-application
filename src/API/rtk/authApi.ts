@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ILoginReqBody, ILoginResData, IRegisterReqBody } from '../interfaces/auth';
-import { loginUser, setOauthUrl } from '../../store/auth-slice';
+import { loginUser, setOauthUrl } from '../../store/slices/auth/auth-slice';
 import { handleRtkQuerryError } from '../common/handleRtkQuerryError';
 import { OauthMethod } from '../enums/oauth-method';
 

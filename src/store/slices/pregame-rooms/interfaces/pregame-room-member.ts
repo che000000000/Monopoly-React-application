@@ -1,11 +1,11 @@
-import { PlayerChip } from "../../enums/player-chip"
-import { UserT } from "../../types/auth"
+import { PlayerChip } from "../../../enums/player-chip"
+import { IUser } from "../../auth/interfaces/user"
 
 export type IPregameRoomMember = {
     id: string,
     slot: number,
     playerChip: PlayerChip,
     isOwner: boolean,
-    user: UserT,
+    user: IUser,
     createdAt: Date
 }

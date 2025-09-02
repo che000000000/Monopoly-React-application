@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../hoocks/useAppSelector';
-import { AuthStateT } from '../../../store/types/auth';
 import AuthUser from './auth-user/AuthUser';
 import MainLogo, { LogoTypes } from '../../main-logo/MainLogo';
 import styles from './main-header.module.css'
+import { AuthStateT } from '../../../store/slices/auth/types/auth-state';
 
 function MainHeader() {
     const authState: AuthStateT = useAppSelector(state => state.auth)

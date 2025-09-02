@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { UserT } from "../types/auth";
 import { PregameRoomsStateT } from "./types/pregame-rooms-state";
 import { IPregameRoomMember } from "./interfaces/pregame-room-member";
 import { IPregameRoom } from "./interfaces/pregame-room";
 import { IPregameRoomMessage } from "./interfaces/pregame-room-message";
+import { IUser } from "../auth/interfaces/user";
 
 const initialState: PregameRoomsStateT = {
     authUser: null,
@@ -22,7 +22,7 @@ const pregameRoomsSlice: Slice = createSlice({
     name: 'pregame-rooms',
     initialState,
     reducers: {
-        setAuthUser(state: PregameRoomsStateT, action: PayloadAction<UserT>) {
+        setAuthUser(state: PregameRoomsStateT, action: PayloadAction<IUser>) {
             state.authUser = action.payload
         },
         setIsGatewayConnected(state: PregameRoomsStateT, action: PayloadAction<boolean>) {

@@ -1,5 +1,5 @@
-import { GameFieldColor } from "../../enums/game-field-color"
-import { GameFieldType } from "../../enums/game-field-type"
+import { GameFieldColor } from "../../../enums/game-field-color"
+import { GameFieldType } from "../../../enums/game-field-type"
 import { IPlayer } from "./player"
 
 export interface IGameField {

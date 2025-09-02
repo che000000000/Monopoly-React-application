@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import { getPregameRoomMessagesPage, leavePregameRoom, sendPregameRoomMessage, setPregameRoomMemberSlot } from '../../../../../API/ws-thunks/pregame-rooms';
 import { useAppDispatch } from '../../../../../hoocks/useAppDispatch';
-import { UserT } from '../../../../../store/types/auth';
 import MainPageChat from '../../../main-prage-chat/MainPageChat';
 import EmptySlot from '../../empty-slot/EmptySlot';
 import PregameRoomMember from '../../pregame-room-member/PregameRoomMember';
 import CreatePregameRoom from '../create-pregame-room/CreatePregameRoom';
 import styles from './current-pregame-room.module.css'
-import { clearCurrentPregameRoomMessages } from '../../../../../store/pregame-rooms/pregame-rooms-slice';
+import { clearCurrentPregameRoomMessages } from '../../../../../store/slices/pregame-rooms/pregame-rooms-slice';
 import { startGame } from '../../../../../API/ws-thunks/games';
-import { IPregameRoomMember } from '../../../../../store/pregame-rooms/interfaces/pregame-room-member';
-import { IPregameRoom } from '../../../../../store/pregame-rooms/interfaces/pregame-room';
-import { IPregameRoomMessage } from '../../../../../store/pregame-rooms/interfaces/pregame-room-message';
+import { IPregameRoomMember } from '../../../../../store/slices/pregame-rooms/interfaces/pregame-room-member';
+import { IPregameRoom } from '../../../../../store/slices/pregame-rooms/interfaces/pregame-room';
+import { IPregameRoomMessage } from '../../../../../store/slices/pregame-rooms/interfaces/pregame-room-message';
+import { IUser } from '../../../../../store/slices/auth/interfaces/user';
 
-function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPregameRoomMessage[], authUser: UserT }) {
+function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPregameRoomMessage[], authUser: IUser }) {
     const dispatch = useAppDispatch()
 
     const handleStartGame = () => {
@@ -41,8 +41,8 @@ function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPrega
     return (
         <div className={styles.container}>
             <div className={styles.options}>
-                <button className={styles.options__start_game_btn} onClick={() => handleStartGame()}>Начать игру</button>
                 <div className={styles.options__leave} onClick={() => handleLeavePregameRoom()}>Выйти</div>
+                <button className={styles.options__start_game_btn} onClick={() => handleStartGame()}>Начать игру</button>
             </div>
             <div className={styles.members_list}>
                 {props.pregameRoom

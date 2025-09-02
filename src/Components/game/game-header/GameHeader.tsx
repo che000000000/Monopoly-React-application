@@ -1,4 +1,4 @@
-import { IPlayer } from '../../../store/games/interfaces/player';
+import { IPlayer } from '../../../store/slices/games/interfaces/player';
 import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
 

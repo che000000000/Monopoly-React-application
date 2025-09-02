@@ -10,7 +10,7 @@ import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
 import { GameFieldType } from '../../../../store/enums/game-field-type'
 import { PlayerChip } from '../../../../store/enums/player-chip'
-import { IGameField } from '../../../../store/games/interfaces/game-field'
+import { IGameField } from '../../../../store/slices/games/interfaces/game-field'
 
 function Angle(props: IGameField) {
     function definePlayerChipIcon(playerChip: PlayerChip): string {
@@ -32,7 +32,7 @@ function Angle(props: IGameField) {
                 <img className={styles.go_icon} alt='go' src={go_arrow}></img>
                 <div className={`${styles.dynamic_area}`}>
                     { props.players 
-                        ? props.players.map(player => <img className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
+                        ? props.players.map(player => <img key={player.id} className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
                         : null
                     }
                 </div>
@@ -45,7 +45,7 @@ function Angle(props: IGameField) {
                 <div className={styles.name}>ПОСЕТИЛИ</div>
                 <div className={`${styles.dynamic_area}`}>
                     { props.players 
-                        ? props.players.map(player => <img className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
+                        ? props.players.map(player => <img key={player.id} className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
                         : null
                     }
                 </div>
@@ -58,7 +58,7 @@ function Angle(props: IGameField) {
                 <div className={styles.name}>ПАРКОВКА</div>
                 <div className={`${styles.dynamic_area}`}>
                     { props.players 
-                        ? props.players.map(player => <img className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
+                        ? props.players.map(player => <img key={player.id} className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
                         : null
                     }
                 </div>
@@ -71,7 +71,7 @@ function Angle(props: IGameField) {
                 <div className={styles.name}>В ТЮРЬМУ</div>
                 <div className={`${styles.dynamic_area}`}>
                     { props.players 
-                        ? props.players.map(player => <img className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
+                        ? props.players.map(player => <img key={player.id} className={styles.player_chip} alt={props.name} src={definePlayerChipIcon(player.chip)}/>)
                         : null
                     }
                 </div>

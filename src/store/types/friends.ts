@@ -1,13 +1,13 @@
-import { UserT } from "./auth"
+import { IUser } from "../slices/auth/interfaces/user"
 
 export type FriendRequestT = {
     id: string,
-    from: UserT,
-    to: UserT,
+    from: IUser,
+    to: IUser,
     createdAt: string
 }
 
 export type FriendsStateT = {
-    activeFriends: UserT[],
+    activeFriends: IUser[],
     friendsRequests: FriendRequestT[]
 }

@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { PregameRoomsGatewayService } from "../ws-services/pregame-rooms/pregame-rooms.service";
 import { AppThunkApi } from "../../store";
-import { setAuthUser } from "../../store/pregame-rooms/pregame-rooms-slice";
+import { setAuthUser } from "../../store/slices/pregame-rooms/pregame-rooms-slice";
 import { PlayerChip } from "../../store/enums/player-chip";
 
 let pregameRoomsGatewayService: PregameRoomsGatewayService | null = null
 
-export const connectPregameRoomsGateway = createAsyncThunk<PregameRoomsGatewayService, void, AppThunkApi>(
+export const connectPregameRoomsGateway = createAsyncThunk<void, void, AppThunkApi>(
     'pregame-rooms/gateway-connection',
     (_, { dispatch, getState }) => {
         if (!pregameRoomsGatewayService) {
@@ -16,8 +16,6 @@ export const connectPregameRoomsGateway = createAsyncThunk<PregameRoomsGatewaySe
             dispatch(setAuthUser(auth.user))
             pregameRoomsGatewayService.connect()
         }
-
-        return pregameRoomsGatewayService
     }
 )
 

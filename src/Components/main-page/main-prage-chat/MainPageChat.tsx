@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './main-page-chat.module.css'
-import { UserT } from '../../../store/types/auth';
 import MainPageChatSendForm from './main-page-chat-send-form/MainPageChatSendForm';
 import MainPageChatMessage from './main-page-chat-message/MainPageChatMessage';
 import { MainPageChatMessageT } from './types/main-page-chat-message';
 import NoMessages from './no-messages/NoMessages';
+import { IUser } from '../../../store/slices/auth/interfaces/user';
 
-function MainPageChat(props: { messages: MainPageChatMessageT[], authUser: UserT, onSend: (messageText: string) => void }) {
+function MainPageChat(props: { messages: MainPageChatMessageT[], authUser: IUser, onSend: (messageText: string) => void }) {
     const messagesListElement = useRef<HTMLDivElement>(null)
     const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
 
