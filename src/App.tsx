@@ -10,6 +10,7 @@ import { connectGamesGateway } from './API/ws-thunks/games';
 import { connectPregameRoomsGateway } from './API/ws-thunks/pregame-rooms';
 import { useAppSelector } from './hoocks/useAppSelector';
 import { AuthStateT } from './store/slices/auth/types/auth-state';
+import { connectGlobalChatGateway } from './API/ws-thunks/global-chat';
 
 function App() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
@@ -29,6 +30,7 @@ function App() {
         if (authState.isAuth) {
             dispatch(connectGamesGateway())
             dispatch(connectPregameRoomsGateway())
+            dispatch(connectGlobalChatGateway())
         }
     }, [authState.isAuth, dispatch])
 

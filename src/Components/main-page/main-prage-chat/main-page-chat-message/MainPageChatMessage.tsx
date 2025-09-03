@@ -1,7 +1,7 @@
-import { GlobalChatMessageT } from '../../../../store/types/global-chat';
+import { IGLobalChatMessage } from '../../../../store/slices/global-chat/interfaces/global-chat-message';
 import styles from './main-page-chat-message.module.css'
 
-function MainPageChatMessage(props: { message: GlobalChatMessageT, isMine: boolean }) {
+function MainPageChatMessage(props: { message: IGLobalChatMessage, isMine: boolean }) {
     const formatDate = (date: Date): string => {
         const dateObj = typeof date === 'string' ? new Date(date) : date;
 
