@@ -48,7 +48,10 @@ function GameChat(props: { chatMessages: IGameChatMessage[], authUser: IUser | n
 	return (
 		<div className={styles.container}>
 			<div className={styles.messages_list} ref={messagesListElement}>
-				{props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} authUser={props.authUser} />)}
+				{props.chatMessages.length !== 0 
+					? props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} authUser={props.authUser} />)
+					: <div className={styles.no_messages}>Нет сообщений</div>
+				}
 				<div className={styles.bottom_scroll_position} ref={bottomMessagesListElemet} />
 			</div>
 			<SendForm authUser={props.authUser} />

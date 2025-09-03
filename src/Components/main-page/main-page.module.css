@@ -7,7 +7,7 @@
 .content {
     width: 100%;
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 56% auto;
     gap: 1%;
     padding: 1%;
 }

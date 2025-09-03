@@ -57,7 +57,7 @@ function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPrega
                     })
                     : <CreatePregameRoom />}
             </div>
-            <MainPageChat messages={props.messages} authUser={props.authUser} onSend={handleSendMessage} />
+            <MainPageChat messages={props.messages} onSend={handleSendMessage} />
         </div>
     )
 }

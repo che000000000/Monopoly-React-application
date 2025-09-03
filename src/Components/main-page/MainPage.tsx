@@ -5,6 +5,7 @@ import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 import PregameRooms from './pregame-rooms/PregameRooms';
 import CurrentPregameRoomWrap from './pregame-rooms/current-pregame-room-wrap/CurrentPregameRoomWrap';
 import Games from './games/Games';
+import GlobalChat from './global-chat/GlobalChat';
 
 function MainPage() {
     return (
@@ -28,7 +29,7 @@ function MainPage() {
                     </div>
                     <div className={styles.global_chat}>
                         <div className={styles.title}>Общий чат</div>
-                        {/* <GlobalChat /> */}
+                        <GlobalChat />
                     </div>
                     <div className={styles.games}>
                         <div className={styles.title}>Игры</div>
