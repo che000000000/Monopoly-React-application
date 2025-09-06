@@ -17,16 +17,9 @@
     }
 }
 
-@media(max-width: 786px) {
-    .player_chip {
-        width: 18px;
-        height: 18px;
-    }
-}
-
 @media(max-width: 480px) {
     .player_chip {
-        width: 3.9vw;
-        height: 3.9vw;
+        width: 4.4vw;
+        height: 4.4vw;
     }
 }   

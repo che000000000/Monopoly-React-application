@@ -2,30 +2,42 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './main-page-chat.module.css'
 import MainPageChatSendForm from './main-page-chat-send-form/MainPageChatSendForm';
 import MainPageChatMessage from './main-page-chat-message/MainPageChatMessage';
-import { MainPageChatMessageT } from './types/main-page-chat-message';
 import NoMessages from './no-messages/NoMessages';
 import { useAppSelector } from '../../../hoocks/useAppSelector';
 import { AuthStateT } from '../../../store/slices/auth/types/auth-state';
+import { IGLobalChatMessage } from '../../../store/slices/global-chat/interfaces/global-chat-message';
+import { IPregameRoomMessage } from '../../../store/slices/pregame-rooms/interfaces/pregame-room-message';
 
-function MainPageChat(props: { messages: MainPageChatMessageT[], onSend: (messageText: string) => void }) {
+function MainPageChat(props: { messages: IGLobalChatMessage[] | IPregameRoomMessage[], name: string, onSend: (messageText: string) => void }) {
     const authState: AuthStateT = useAppSelector(state => state.auth)
 
     const messagesListElement = useRef<HTMLDivElement>(null)
-    const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
+    
 
     const [isAutoScrollEnabled, setIsAutoScrollEnabled] = useState(true)
 
-    const toggleAutoScroll = (): void => {
+    const toggleAutoScroll = useCallback((): void => {
         if (!messagesListElement.current) return
         const { scrollTop, scrollHeight, clientHeight } = messagesListElement.current
         setIsAutoScrollEnabled(scrollHeight - (scrollTop + clientHeight) < 10)
-    }
+    }, [messagesListElement, setIsAutoScrollEnabled])
 
-    messagesListElement.current?.addEventListener('scroll', () => toggleAutoScroll())
+    useEffect(() => {
+        const element = messagesListElement.current
+        if (!element) return
+
+        element.addEventListener('scroll', toggleAutoScroll)
+
+        return () => {
+            element.removeEventListener('scroll', toggleAutoScroll)
+        }
+    }, [toggleAutoScroll])
 
     const scrollToBottom = useCallback((isInstant: boolean): void => {
         setTimeout(() => {
-            bottomMessagesListElemet.current?.scrollIntoView({ behavior: 'auto' })
+            if (messagesListElement.current) {
+                messagesListElement.current.scrollTop = messagesListElement.current.scrollHeight
+            }
         }, isInstant ? 0 : 50)
     }, [])
 
@@ -52,14 +64,13 @@ function MainPageChat(props: { messages: MainPageChatMessageT[], onSend: (messag
                             <MainPageChatMessage
                                 key={message.id}
                                 message={message}
-                                isMine={message.sender.id === authState.user?.id}
+                                isMine={message.sender !== null && message.sender.id === authState.user?.id}
                             />
                         )
                         : <NoMessages />
                     }
-                <div className={styles.lower_scroll_position} ref={bottomMessagesListElemet} />
             </div>
-            <MainPageChatSendForm authUser={authState.user} onSend={props.onSend} />
+            <MainPageChatSendForm key={props.name} name={props.name} authUser={authState.user} onSend={props.onSend} />
         </div>
     )
 }

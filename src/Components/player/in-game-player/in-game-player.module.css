@@ -17,7 +17,8 @@
 }
 
 .left_player_container {
-    background-color: #e74c4c;
+    background-color: #fc7b7b;
+    opacity: 67%;
 }
 
 .name {

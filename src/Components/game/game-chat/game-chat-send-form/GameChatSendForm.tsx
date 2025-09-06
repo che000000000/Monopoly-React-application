@@ -2,9 +2,8 @@ import { useState } from 'react';
 import styles from './game-chat-send-form.module.css'
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import { sendGameChatMessage } from '../../../../API/ws-thunks/games';
-import { IUser } from '../../../../store/slices/auth/interfaces/user';
 
-function GameChatSendForm(props: { authUser: IUser | null }) {
+function GameChatSendForm() {
     const dispatch = useAppDispatch()
 
     const [sendInputText, setSendInputText] = useState('')

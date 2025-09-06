@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/auth/auth-slice";
 import errorsReducer from "./errors-slice"
 import pregameRoomsReducer from "./slices/pregame-rooms/pregame-rooms-slice";
-import friendsReducer from "./friends-slice";
 import gamesReducer from "./slices/games/games-slice"
 import globalChatReducer from "./slices/global-chat/global-chat-slice"
 import { authApi } from "../API/rtk/authApi";
@@ -13,7 +12,6 @@ const store = configureStore({
         erors: errorsReducer,
         pregameRooms: pregameRoomsReducer,
         globalChat: globalChatReducer,
-        friends: friendsReducer,
         games: gamesReducer,
         [authApi.reducerPath]: authApi.reducer
     },

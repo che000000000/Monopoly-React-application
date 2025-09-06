@@ -10,19 +10,18 @@ import styles from './game.module.css'
 import GameBuilds from './game-builds/GameBuilds';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../hoocks/useAppDispatch';
-import { getGameChatMessagesPage, getGameState } from '../../API/ws-thunks/games';
+import { getGameChatMessagesPage } from '../../API/ws-thunks/games';
 import { GamesStateT } from '../../store/slices/games/types/games-state';
-import { AuthStateT } from '../../store/slices/auth/types/auth-state';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
+import { clearGameChatMessages } from '../../store/slices/games/games-slice';
 
 function Game() {
-	const authState: AuthStateT = useAppSelector(state => state.auth)
 	const gamesState: GamesStateT = useAppSelector(state => state.games)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		dispatch(getGameState())
-		dispatch(getGameChatMessagesPage({ pageNumber: 1, pageSize: 32 }))
+		dispatch(clearGameChatMessages())
+		dispatch(getGameChatMessagesPage({ pageSize: 32 }))
 	}, [dispatch, gamesState.isGatewayConnected])
 
 	if (!gamesState.currentGame) return null
@@ -84,7 +83,7 @@ function Game() {
 			<div className={`${styles.section} ${styles.chat_section}`}>
 				<GameHeader players={gamesState.currentGame.players} />
 				<GameBuilds housesCount={gamesState.currentGame.houses} hotelsCount={gamesState.currentGame.hotels} />
-				<GameChat chatMessages={gamesState.currentGameChat.messages} authUser={authState.user}/>
+				<GameChat chatMessages={gamesState.currentGameChat.messages} />
 			</div>
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
