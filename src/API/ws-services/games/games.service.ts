@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client"
 import { AppDispatch } from "../../../store"
-import { pushGameChatMessage, pushGameChatMessagesPage, setCurrentGame, setIsGatewayConnected } from "../../../store/slices/games/games-slice"
+import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamesPage, setCurrentGame, setIsGatewayConnected, setStartGameFlag } from "../../../store/slices/games/games-slice"
 
 export class GamesGatewayService {
     private socket: Socket | null = null
@@ -30,6 +30,13 @@ export class GamesGatewayService {
         this.socket?.on('disconnect', () => {
             this.dispatch(setIsGatewayConnected(false))
         })
+        this.socket?.on('start-game', (message) => {
+            this.dispatch(setCurrentGame(message.gameState))
+            this.dispatch(setStartGameFlag(true))
+        })
+        this.socket?.on('new-game', (message) => {
+            this.dispatch(pushGame(message.game))
+        })
         this.socket?.on('game-state', (message) => {
             this.dispatch(setCurrentGame(message.gameState))
         })
@@ -38,6 +45,9 @@ export class GamesGatewayService {
         })
         this.socket?.on('send-game-chat-message', (message) => {
             this.dispatch(pushGameChatMessage(message.message))
+        })
+        this.socket?.on('get-game-previews-page', (message) => {
+            this.dispatch(pushGamesPage(message))
         })
     }
 
@@ -49,11 +59,15 @@ export class GamesGatewayService {
         this.socket?.emit('game-state', {})
     }
 
-    public getGameChatMessagesPage(pageNumber: number, pageSize: number) {
+    public getGameChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {
         this.socket?.emit('game-chat-messages-page', { pageNumber, pageSize })
     }
 
     public sendGameChatMessage(messageText: string) {
         this.socket?.emit('send-game-chat-message', { messageText })
+    }
+
+    public getGamePreviewsPage(pageNumber?: number | null, pageSize?: number | null) {
+        this.socket?.emit('get-game-previews-page', { pageNumber, pageSize })
     }
 }

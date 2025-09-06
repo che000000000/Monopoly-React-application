@@ -24,10 +24,14 @@ const globalChatSlice = createSlice({
         pushGlobalChatMessagesPage(state: GlobalChatStateT, action: PayloadAction<{messagesList: IGLobalChatMessage[], totalCount: number}>) {
             action.payload.messagesList.forEach((message: IGLobalChatMessage) => state.globalChat.messages.push(message))
             state.globalChat.totalCount = action.payload.totalCount
+        },
+        clearGlobalChatMessages(state: GlobalChatStateT, action: PayloadAction<void>) {
+            state.globalChat.messages = []
+            state.globalChat.totalCount = 0
         }
     }
 })
 
-export const { setIsGatewayConnected, pushGlobalChatMessage, pushGlobalChatMessagesPage } = globalChatSlice.actions;
+export const { setIsGatewayConnected, pushGlobalChatMessage, pushGlobalChatMessagesPage, clearGlobalChatMessages } = globalChatSlice.actions;
 
 export default globalChatSlice.reducer;

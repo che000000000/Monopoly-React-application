@@ -6,14 +6,16 @@ import { useGetUserProfileMutation } from './API/rtk/authApi';
 import { useCallback, useEffect } from 'react';
 import MainPage from './Components/main-page/MainPage';
 import { useAppDispatch } from './hoocks/useAppDispatch';
-import { connectGamesGateway } from './API/ws-thunks/games';
+import { connectGamesGateway, getGameState } from './API/ws-thunks/games';
 import { connectPregameRoomsGateway } from './API/ws-thunks/pregame-rooms';
 import { useAppSelector } from './hoocks/useAppSelector';
 import { AuthStateT } from './store/slices/auth/types/auth-state';
 import { connectGlobalChatGateway } from './API/ws-thunks/global-chat';
+import { GamesStateT } from './store/slices/games/types/games-state';
 
 function App() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
+    const gamesState: GamesStateT = useAppSelector(state => state.games)
     const dispatch = useAppDispatch()
 
     const [getUserProfile] = useGetUserProfileMutation()
@@ -33,6 +35,12 @@ function App() {
             dispatch(connectGlobalChatGateway())
         }
     }, [authState.isAuth, dispatch])
+
+    useEffect(() => {
+        if (gamesState.isGatewayConnected) {
+            dispatch(getGameState())
+        }
+    }, [gamesState.isGatewayConnected, dispatch])
 
     return (
         <div className={styles.container}>

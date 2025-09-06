@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background-color: #ececec;
     border-bottom: 0.3vmin solid #000000;
     gap: 1vmin;
     padding: 1vmin;

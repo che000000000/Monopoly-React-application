@@ -3,10 +3,8 @@ import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
 import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
-import { IUser } from '../../../store/slices/auth/interfaces/user';
 
-function GameChat(props: { chatMessages: IGameChatMessage[], authUser: IUser | null }) {
-	const bottomMessagesListElemet = useRef<HTMLDivElement>(null)
+function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 	const messagesListElement = useRef<HTMLDivElement>(null)
 
 	const [isAutoScrollEnabled, setIsAutoScrollEnabled] = useState(true)
@@ -27,7 +25,9 @@ function GameChat(props: { chatMessages: IGameChatMessage[], authUser: IUser | n
 
 	const scrollToBottom = useCallback((isInstant: boolean): void => {
 		setTimeout(() => {
-			bottomMessagesListElemet.current?.scrollIntoView({ behavior: 'auto' })
+			if(messagesListElement.current) {
+				messagesListElement.current.scrollTop = messagesListElement.current.scrollHeight
+			}
 		}, isInstant ? 0 : 50)
 	}, [])
 
@@ -49,12 +49,11 @@ function GameChat(props: { chatMessages: IGameChatMessage[], authUser: IUser | n
 		<div className={styles.container}>
 			<div className={styles.messages_list} ref={messagesListElement}>
 				{props.chatMessages.length !== 0 
-					? props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} authUser={props.authUser} />)
+					? props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} />)
 					: <div className={styles.no_messages}>Нет сообщений</div>
 				}
-				<div className={styles.bottom_scroll_position} ref={bottomMessagesListElemet} />
 			</div>
-			<SendForm authUser={props.authUser} />
+			<SendForm />
 		</div>
 	)
 }

@@ -31,7 +31,7 @@ export const getGameState = createAsyncThunk(
 
 export const getGameChatMessagesPage = createAsyncThunk(
     'games/get-game-chat-messages-page',
-    (payload: { pageNumber: number, pageSize: number }) => {
+    (payload: { pageNumber?: number | null, pageSize?: number | null }) => {
         gamesGatewayService?.getGameChatMessagesPage(payload.pageNumber, payload.pageSize)
     }
 )
@@ -40,5 +40,12 @@ export const sendGameChatMessage = createAsyncThunk(
     'games/send-game-chat-message',
     (payload: { messageText: string }) => {
         gamesGatewayService?.sendGameChatMessage(payload.messageText)
+    }
+)
+
+export const getGamePreviewsPage = createAsyncThunk(
+    'games/get-game-previews-page',
+    (payload: { pageNumber?: number | null, pageSize?: number | null }) => {
+        gamesGatewayService?.getGamePreviewsPage(payload.pageNumber, payload.pageSize)
     }
 )

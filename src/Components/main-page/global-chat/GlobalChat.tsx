@@ -5,6 +5,7 @@ import styles from './global-chat.module.css'
 import { useAppDispatch } from '../../../hoocks/useAppDispatch';
 import { getGlobalChatMessagesPage, sendGlobalChatMessage } from '../../../API/ws-thunks/global-chat';
 import MainPageChat from '../main-prage-chat/MainPageChat';
+import { clearGlobalChatMessages } from '../../../store/slices/global-chat/global-chat-slice';
 
 function GlobalChat() {
     const dispatch = useAppDispatch()
@@ -15,14 +16,17 @@ function GlobalChat() {
     }
 
     useEffect(() => {
-        if (!globalChatState.isGatewayConnected) return
+        if (globalChatState.isGatewayConnected) {
+            dispatch(clearGlobalChatMessages())
+            dispatch(getGlobalChatMessagesPage({}))
+        }
 
-        dispatch(getGlobalChatMessagesPage({ pageNumber: 1, pageSize: 12 }))
+
     }, [globalChatState.isGatewayConnected, dispatch])
 
     return (
         <div className={styles.container}>
-            <MainPageChat messages={globalChatState.globalChat.messages} onSend={handleSendMessage} />
+            <MainPageChat name='global-chat' messages={globalChatState.globalChat.messages} onSend={handleSendMessage} />
         </div>
     )
 }

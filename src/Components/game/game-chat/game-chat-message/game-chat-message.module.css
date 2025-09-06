@@ -9,13 +9,13 @@
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
-    padding: 0.6vmin 0.9vmin;
+    padding: 0.4vmin 0.9vmin;
     background-color: #eee;
     border-radius: 3px;
 }
 
 .my_message {
-    background-color: #d5ffca;
+    background-color: #d7ffd9;
 }
 
 .message_sender {

@@ -50,6 +50,7 @@ function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPrega
                         const pregameRoomMember = props.pregameRoom?.members.find((member: IPregameRoomMember) => member.slot === index + 1)
                         return pregameRoomMember
                             ? <PregameRoomMember
+                                key={pregameRoomMember.id}
                                 member={pregameRoomMember}
                                 authUser={props.authUser}
                             />
@@ -57,7 +58,7 @@ function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPrega
                     })
                     : <CreatePregameRoom />}
             </div>
-            <MainPageChat messages={props.messages} onSend={handleSendMessage} />
+            <MainPageChat name='current-pregame-room-chat' messages={props.messages} onSend={handleSendMessage} />
         </div>
     )
 }

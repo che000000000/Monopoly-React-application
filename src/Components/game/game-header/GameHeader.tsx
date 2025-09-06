@@ -2,7 +2,7 @@ import { IPlayer } from '../../../store/slices/games/interfaces/player';
 import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
 
-function GameHeader(props: {players: IPlayer[]}) {
+function GameHeader(props: { players: IPlayer[] }) {
     return (
         <div className={styles.container}>
             <div className={styles.turn_timer}>
@@ -11,11 +11,7 @@ function GameHeader(props: {players: IPlayer[]}) {
             </div>
             <ul className={styles.players_list}>
                 {props.players.map(player => (
-                    <InGamePlayer
-                        key={player.id}
-                        name={player.user.name}
-                        avatarUrl={player.user.avatarUrl}
-                        playerChip={player.chip}
+                    <InGamePlayer key={player.id} player={player}
                     />
                 ))}
             </ul>

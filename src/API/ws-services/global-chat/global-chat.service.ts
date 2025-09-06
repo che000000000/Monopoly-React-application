@@ -38,7 +38,7 @@ export class GlobalChatGatewayService {
         })
     }
 
-    public getGlobalChatMessagesPage(pageNumber: number, pageSize: number) {
+    public getGlobalChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {
         this.socket?.emit('global-chat-messages-page', { pageNumber, pageSize })
     }
 

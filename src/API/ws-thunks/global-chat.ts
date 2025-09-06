@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { PregameRoomsGatewayService } from "../ws-services/pregame-rooms/pregame-rooms.service";
 import { AppThunkApi } from "../../store";
 import { GlobalChatGatewayService } from "../ws-services/global-chat/global-chat.service";
 
@@ -18,7 +17,7 @@ export const connectGlobalChatGateway = createAsyncThunk<void, void, AppThunkApi
 
 export const getGlobalChatMessagesPage = createAsyncThunk(
     'pregame-rooms/get-global-chat-messages-page',
-    (payload: { pageNumber: number, pageSize: number }) => {
+    (payload: { pageNumber?: number | null, pageSize?: number | null }) => {
         globalChatGatewayService?.getGlobalChatMessagesPage(payload.pageNumber, payload.pageSize)
     }
 )

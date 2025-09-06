@@ -1,11 +1,10 @@
 import styles from './main-page.module.css'
 import MainHeader from '../headers/main-header/MainHeader';
-import ActiveFriends from './active-friends/ActiveFriends';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 import PregameRooms from './pregame-rooms/PregameRooms';
 import CurrentPregameRoomWrap from './pregame-rooms/current-pregame-room-wrap/CurrentPregameRoomWrap';
-import Games from './games/Games';
 import GlobalChat from './global-chat/GlobalChat';
+import Games from './games/Games';
 
 function MainPage() {
     return (
@@ -23,10 +22,6 @@ function MainPage() {
                     </div>
                 </div>
                 <div className={styles.content__side}>
-                    <div className={styles.friends}>
-                        <div className={styles.title}>Сейчас в сети</div>
-                        <ActiveFriends />
-                    </div>
                     <div className={styles.global_chat}>
                         <div className={styles.title}>Общий чат</div>
                         <GlobalChat />
