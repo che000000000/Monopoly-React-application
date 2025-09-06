@@ -7,6 +7,7 @@ import styles from './pregame-rooms.module.css'
 import { getPregameRoomsPage } from '../../../API/ws-thunks/pregame-rooms';
 import { PregameRoomsStateT } from '../../../store/slices/pregame-rooms/types/pregame-rooms-state';
 import { IPregameRoom } from '../../../store/slices/pregame-rooms/interfaces/pregame-room';
+import { clearPregameRooms } from '../../../store/slices/pregame-rooms/pregame-rooms-slice';
 
 function PregameRooms() {
     const dispatch = useAppDispatch()
@@ -14,6 +15,7 @@ function PregameRooms() {
 
     useEffect(() => {
         if (pregameRoomsState.isGatewayConnected) {
+            dispatch(clearPregameRooms({}))
             dispatch(getPregameRoomsPage({ pageNumber: 1, pageSize: 12 }))
         }
     }, [pregameRoomsState.isGatewayConnected, dispatch])

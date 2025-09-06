@@ -67,9 +67,6 @@ const pregameRoomsSlice: Slice = createSlice({
 
             state.pregameRooms.totalCount--
         },
-        setPregameRoomsTotalCount(state: PregameRoomsStateT, action: PayloadAction<number>) {
-            state.pregameRooms.totalCount = action.payload
-        },
         pushCurrentPregameRoomMessage(state: PregameRoomsStateT, action: PayloadAction<IPregameRoomMessage>) {
             state.currentPregameRoomChat.messages.push(action.payload)
             state.currentPregameRoomChat.totalCount++
@@ -78,7 +75,7 @@ const pregameRoomsSlice: Slice = createSlice({
             action.payload.messagesList.forEach((message: IPregameRoomMessage) => state.currentPregameRoomChat.messages.push(message))
             state.currentPregameRoomChat.totalCount = action.payload.totalCount
         },
-        clearPregameRooms(state: PregameRoomsStateT, action: PayloadAction<null>) {
+        clearPregameRooms(state: PregameRoomsStateT, action: PayloadAction<void>) {
             state.pregameRooms.pregameRoomsList = []
             state.pregameRooms.totalCount = 0
         },
@@ -96,7 +93,6 @@ export const {
     pushPregameRoomsPage,
     setPregameRoomMembers,
     removePregameRoom,
-    setPregameRoomsTotalCount,
     pushCurrentPregameRoomMessage,
     pushCurrentPregameRoomMessagesPage,
     clearPregameRooms,
