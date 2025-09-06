@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    padding: 1px 0 3px 0;
+    padding: 2px 0;
     border: 0.3vmin dashed #8ada8e;
     background-color: #d7ffd9;
 }
