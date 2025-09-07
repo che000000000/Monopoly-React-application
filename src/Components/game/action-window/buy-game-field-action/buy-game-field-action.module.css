@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6vmin;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 0.9vmin;
+}
+
+.action_btn {
+    padding: 0.4vmin 0.9vmin;
+    border-radius: 5px;
+    font-size: 1.4vmin;
+    border: 0.3vmin solid #dddddd;
+    transition: 150ms;
+}
+
+.buy_btn {
+    background-color: #2e7e34;
+}
+
+.not_buy_btn {
+    background-color: #ce1b1b;
+}
+
+.buy_btn:active {
+    background-color: #2a7530;
+}
+
+.not_buy_btn:active {
+    background-color: #c01f1f;
+}

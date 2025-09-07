@@ -13,12 +13,11 @@
 }
 
 .is_turn_owner_container {
-    background-color: #6dd459;
+    background-color: #c5fac7;
 }
 
 .left_player_container {
-    background-color: #fc7b7b;
-    opacity: 76%;
+    background-color: #fda9a9;
 }
 
 .name {
