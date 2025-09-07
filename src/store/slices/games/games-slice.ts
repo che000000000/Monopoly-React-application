@@ -3,6 +3,8 @@ import { GamesStateT } from "./types/games-state";
 import { IGameChatMessage } from "./interfaces/game-chat-message";
 import { IGameState } from "./interfaces/game-state";
 import { IGamePreview } from "./interfaces/game-preview";
+import { IGameField } from "./interfaces/game-field";
+import { IGameTurn } from "./interfaces/game-turn";
 
 const initialState: GamesStateT = {
     isGatewayConnected: false,
@@ -31,7 +33,7 @@ const gamesSlice = createSlice({
         setCurrentGame(state: GamesStateT, action: PayloadAction<IGameState>) {
             state.currentGame = action.payload
         },
-        pushGameChatMessagesPage(state: GamesStateT, action: PayloadAction<{messagesList: IGameChatMessage[], totalCount: number}>) {
+        pushGameChatMessagesPage(state: GamesStateT, action: PayloadAction<{ messagesList: IGameChatMessage[], totalCount: number }>) {
             action.payload.messagesList.forEach((message: IGameChatMessage) => state.currentGameChat.messages.push(message))
             state.currentGameChat.totlaCount = action.payload.totalCount
         },
@@ -43,7 +45,7 @@ const gamesSlice = createSlice({
             state.currentGameChat.messages = []
             state.currentGameChat.totlaCount = 0
         },
-        pushGamesPage(state: GamesStateT, action: PayloadAction<{gamePreviewsList: IGamePreview[], totalCount: number}>) {
+        pushGamesPage(state: GamesStateT, action: PayloadAction<{ gamePreviewsList: IGamePreview[], totalCount: number }>) {
             action.payload.gamePreviewsList.forEach((gamePreview: IGamePreview) => {
                 state.games.games.push(gamePreview)
                 state.games.totalCount = action.payload.totalCount
@@ -55,13 +57,29 @@ const gamesSlice = createSlice({
         clearGames(state: GamesStateT, action: PayloadAction<void>) {
             state.games.games = []
             state.games.totalCount = 0
+        },
+        updateGameField(state: GamesStateT, action: PayloadAction<IGameField>) {
+            if (!state.currentGame) return
+
+            const index = state.currentGame.fields.findIndex(
+                (gameField: IGameField) => gameField.id === action.payload.id
+            )
+
+            if (index !== -1) {
+                state.currentGame.fields[index] = action.payload;
+            }
+        },
+        setGameTurn(state: GamesStateT, action: PayloadAction<IGameTurn>) {
+            if (!state.currentGame) return
+
+            state.currentGame.turn = action.payload
         }
     }
 })
 
-export const { 
-    setIsGatewayConnected, setStartGameFlag, setCurrentGame, 
-    pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages, 
-    pushGamesPage, pushGame, clearGames } = gamesSlice.actions;
+export const {
+    setIsGatewayConnected, setStartGameFlag, setCurrentGame,
+    pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages,
+    pushGamesPage, pushGame, clearGames, updateGameField, setGameTurn } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

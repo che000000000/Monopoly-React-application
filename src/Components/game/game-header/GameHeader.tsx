@@ -1,14 +1,12 @@
 import { IPlayer } from '../../../store/slices/games/interfaces/player';
 import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
+import TurnTimer from './turn-timer/TurnTimer';
 
 function GameHeader(props: { players: IPlayer[] }) {
     return (
         <div className={styles.container}>
-            <div className={styles.turn_timer}>
-                <div className={styles.turn_timer__text}>ТАЙМЕР ХОДА</div>
-                <div className={styles.timer}>00 : 60</div>
-            </div>
+            <TurnTimer />
             <ul className={styles.players_list}>
                 {props.players.map(player => (
                     <InGamePlayer key={player.id} player={player}

@@ -3,6 +3,7 @@ import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
 import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
+import ActionWindow from '../action-window/ActionWindow';
 
 function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 	const messagesListElement = useRef<HTMLDivElement>(null)
@@ -28,7 +29,7 @@ function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 			if(messagesListElement.current) {
 				messagesListElement.current.scrollTop = messagesListElement.current.scrollHeight
 			}
-		}, isInstant ? 0 : 50)
+		}, isInstant ? 0 : 100)
 	}, [])
 
 	const handleScrollBottom = useCallback((): void => {
@@ -47,6 +48,7 @@ function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 
 	return (
 		<div className={styles.container}>
+			<ActionWindow />
 			<div className={styles.messages_list} ref={messagesListElement}>
 				{props.chatMessages.length !== 0 
 					? props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} />)

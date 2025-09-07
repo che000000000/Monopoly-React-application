@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client"
 import { AppDispatch } from "../../../store"
-import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamesPage, setCurrentGame, setIsGatewayConnected, setStartGameFlag } from "../../../store/slices/games/games-slice"
+import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamesPage, setCurrentGame, setGameTurn, setIsGatewayConnected, setStartGameFlag, updateGameField } from "../../../store/slices/games/games-slice"
 
 export class GamesGatewayService {
     private socket: Socket | null = null
@@ -30,6 +30,9 @@ export class GamesGatewayService {
         this.socket?.on('disconnect', () => {
             this.dispatch(setIsGatewayConnected(false))
         })
+        this.socket?.on('exceptions', (message) => {
+            console.log(message)
+        })
         this.socket?.on('start-game', (message) => {
             this.dispatch(setCurrentGame(message.gameState))
             this.dispatch(setStartGameFlag(true))
@@ -48,6 +51,13 @@ export class GamesGatewayService {
         })
         this.socket?.on('get-game-previews-page', (message) => {
             this.dispatch(pushGamesPage(message))
+        })
+        this.socket?.on('make-move', (message) => {
+            this.dispatch(updateGameField(message.leftGameField))
+            this.dispatch(updateGameField(message.newGameField))
+        })
+        this.socket?.on('new-game-turn', (message) => {
+            this.dispatch(setGameTurn(message.gameTurn))
         })
     }
 
@@ -69,5 +79,10 @@ export class GamesGatewayService {
 
     public getGamePreviewsPage(pageNumber?: number | null, pageSize?: number | null) {
         this.socket?.emit('get-game-previews-page', { pageNumber, pageSize })
+    }
+
+    public makeMove() {
+
+        this.socket?.emit('make-move', {})
     }
 }

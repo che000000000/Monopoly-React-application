@@ -49,3 +49,10 @@ export const getGamePreviewsPage = createAsyncThunk(
         gamesGatewayService?.getGamePreviewsPage(payload.pageNumber, payload.pageSize)
     }
 )
+
+export const makeMove = createAsyncThunk(
+    'games/make-move',
+    () => {
+        gamesGatewayService?.makeMove()
+    }
+)
