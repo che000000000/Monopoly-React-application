@@ -54,7 +54,7 @@ function RandomEvent(props: { orientation: GameFieldOrientation, fieldData: IGam
                 <div className={styles.vertical_field_name}>{props.fieldData.name}</div>
                 <div className={`${styles.dynamic_area} ${styles.top_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={props.fieldData.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -66,7 +66,7 @@ function RandomEvent(props: { orientation: GameFieldOrientation, fieldData: IGam
                 <img className={`${styles.icon} ${styles.right_icon}`} alt={props.fieldData.name} src={getIcon(props.fieldData.type, props.fieldData.name)}></img>
                 <div className={`${styles.dynamic_area} ${styles.right_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={props.fieldData.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -78,7 +78,7 @@ function RandomEvent(props: { orientation: GameFieldOrientation, fieldData: IGam
                 <div className={styles.vertical_field_name}>{props.fieldData.name}</div>
                 <div className={`${styles.dynamic_area} ${styles.bottom_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={props.fieldData.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>
@@ -90,7 +90,7 @@ function RandomEvent(props: { orientation: GameFieldOrientation, fieldData: IGam
                 <img className={`${styles.icon} ${styles.left_icon}`} alt={props.fieldData.name} src={getIcon(props.fieldData.type, props.fieldData.name)}></img>
                 <div className={`${styles.dynamic_area} ${styles.left_players_area}`}>
                     {props.fieldData.players
-                        ? props.fieldData.players.map(player => <img className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
+                        ? props.fieldData.players.map(player => <img key={props.fieldData.id} className={styles.player_chip} alt={player.user.name} src={definePlayerChipIcon(player.chip)} />)
                         : null
                     }
                 </div>

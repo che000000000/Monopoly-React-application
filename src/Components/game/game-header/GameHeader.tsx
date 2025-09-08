@@ -8,10 +8,13 @@ function GameHeader(props: { players: IPlayer[] }) {
         <div className={styles.container}>
             <TurnTimer />
             <ul className={styles.players_list}>
-                {props.players.map(player => (
-                    <InGamePlayer key={player.id} player={player}
-                    />
-                ))}
+                {props.players
+                    .slice()
+                    .sort((a, b) => a.turnNumber - b.turnNumber)
+                    .map(player => (
+                        <InGamePlayer key={player.id} player={player}
+                        />
+                    ))}
             </ul>
         </div>
     )

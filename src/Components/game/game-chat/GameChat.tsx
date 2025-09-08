@@ -4,6 +4,7 @@ import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
 import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
 import ActionWindow from '../action-window/ActionWindow';
+import ThrowDices from '../throw-dices/ThrowDices';
 
 function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 	const messagesListElement = useRef<HTMLDivElement>(null)
@@ -49,6 +50,7 @@ function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 	return (
 		<div className={styles.container}>
 			<ActionWindow />
+			<ThrowDices />
 			<div className={styles.messages_list} ref={messagesListElement}>
 				{props.chatMessages.length !== 0 
 					? props.chatMessages.map(message => <GameChatMessage key={message.id} message={message} />)

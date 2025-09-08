@@ -45,7 +45,7 @@ function TurnTimer() {
             <div className={styles.turn_timer__text}>
                 ТАЙМЕР ХОДА
             </div>
-            <div className={`${styles.timer} ${timeLeft <= 10 ? styles.warning : ''}`}>
+            <div className={styles.timer}>
                 {formatTime(timeLeft)}
             </div>
         </div>

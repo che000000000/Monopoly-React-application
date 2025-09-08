@@ -1,4 +1,3 @@
-import { IGame } from "../interfaces/game"
 import { IGameChatMessage } from "../interfaces/game-chat-message"
 import { IGamePreview } from "../interfaces/game-preview"
 import { IGameState } from "../interfaces/game-state"

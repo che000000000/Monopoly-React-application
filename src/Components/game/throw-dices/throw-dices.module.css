@@ -1,0 +1,15 @@
+.container {
+    position: absolute;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    user-select: none;
+    opacity: 100%;
+    transition: 1500ms;
+}
+
+.hide_container {
+    opacity: 0%;
+}
