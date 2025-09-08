@@ -71,8 +71,11 @@ const gamesSlice = createSlice({
         },
         setGameTurn(state: GamesStateT, action: PayloadAction<IGameTurn>) {
             if (!state.currentGame) return
-
             state.currentGame.turn = action.payload
+        },
+        setDices(state: GamesStateT, action: PayloadAction<number[]>) {
+            if (!state.currentGame) return
+            state.currentGame.dices = action.payload
         }
     }
 })
@@ -80,6 +83,7 @@ const gamesSlice = createSlice({
 export const {
     setIsGatewayConnected, setStartGameFlag, setCurrentGame,
     pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages,
-    pushGamesPage, pushGame, clearGames, updateGameField, setGameTurn } = gamesSlice.actions;
+    pushGamesPage, pushGame, clearGames, updateGameField, setGameTurn,
+    setDices } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

@@ -10,12 +10,13 @@ function ActionWindow() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
     const gamesState: GamesStateT = useAppSelector(state => state.games)
 
-    if (gamesState.currentGame?.turn.player.user.id !== authState.user?.id) {
-        return null
-    }
-
     return (
-        <div className={styles.container}>
+        <div className={`
+            ${styles.container} 
+            ${gamesState.currentGame?.turn.player.user.id === authState.user?.id
+                ? styles.show_container
+                : ''}
+            `}>
             {gamesState.currentGame?.turn.stage === GameTurnStage.MOVE
                 ? <MakeMove />
                 : <BuyGameFieldAction />}
