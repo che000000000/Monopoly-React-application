@@ -3,27 +3,11 @@ import go_arrow from '../../../../icons/field-icons/go_arrow.svg'
 import just_visiting from '../../../../icons/field-icons/just_visiting.svg'
 import free_parking from '../../../../icons/field-icons/free_parking.svg'
 import jail from '../../../../icons/field-icons/jail.svg'
-import iron_chip from '../../../../images/iron-chip.png'
-import hat_chip from '../../../../images/hat-chip.png'
-import cart_chip from '../../../../images/cart-chip.png'
-import penguin_chip from '../../../../images/penguin-chip.png'
-import thimble_chip from '../../../../images/thimble-chip.png'
 import { GameFieldType } from '../../../../store/enums/game-field-type'
-import { PlayerChip } from '../../../../store/enums/player-chip'
 import { IGameField } from '../../../../store/slices/games/interfaces/game-field'
+import { definePlayerChipIcon } from '../../../../common/define-player-chip'
 
 function Angle(props: IGameField) {
-    function definePlayerChipIcon(playerChip: PlayerChip): string {
-        switch (playerChip) {
-            case PlayerChip.CART: return cart_chip
-            case PlayerChip.HAT: return hat_chip
-            case PlayerChip.IRON: return iron_chip
-            case PlayerChip.PENGUIN: return penguin_chip
-            case PlayerChip.THIMBLE: return thimble_chip
-            default: return ''
-        }
-    }
-
     switch (props.type) {
         case GameFieldType.GO: return (
             <div className={styles.container}>

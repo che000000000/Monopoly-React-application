@@ -1,4 +1,4 @@
-export enum GameFieldOrientation {
+export enum GameFieldSection {
     BOTTOM,
     LEFT,
     TOP,

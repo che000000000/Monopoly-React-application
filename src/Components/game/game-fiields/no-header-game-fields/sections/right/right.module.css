@@ -1,0 +1,6 @@
+.container {
+    padding: 0 8% 0 4%;
+    gap: 2%;
+    border-bottom: 0.3vmin solid #000000;
+    border-right: 0.3vmin solid #000000;
+}
