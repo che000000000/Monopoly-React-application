@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client"
 import { AppDispatch } from "../../../store"
-import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamesPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setStartGameFlag, updateGameField } from "../../../store/slices/games/games-slice"
+import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamesPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setStartGameFlag, updateGameField, updatePlayer } from "../../../store/slices/games/games-slice"
 
 export class GamesGatewayService {
     private socket: Socket | null = null
@@ -62,6 +62,10 @@ export class GamesGatewayService {
         this.socket?.on('new-game-turn', (message) => {
             this.dispatch(setGameTurn(message.gameTurn))
         })
+        this.socket?.on('buy-game-field', (message) => {
+            this.dispatch(updateGameField(message.gameField))
+            this.dispatch(updatePlayer(message.player))
+        })
     }
 
     public startGame() {
@@ -85,7 +89,10 @@ export class GamesGatewayService {
     }
 
     public makeMove() {
-
         this.socket?.emit('make-move', {})
+    }
+
+    public buyGameField() {
+        this.socket?.emit('buy-game-field', {})
     }
 }

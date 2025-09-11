@@ -1,0 +1,21 @@
+.players_area_vertical {
+    width: 100%;
+    height: 41%;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);
+    top: 16%;
+}
+
+.players_area_horizontal {
+    left: 16%;
+    top: 2%;
+    width: 67%;
+    height: 69%;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.player_chip {
+    width: 100%;
+    height: 100%;
+}

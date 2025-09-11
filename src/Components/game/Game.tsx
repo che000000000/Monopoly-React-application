@@ -1,9 +1,6 @@
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import { GameFieldType } from '../../store/enums/game-field-type';
 import Angle from './game-fiields/angle/Angle';
-import { GameFieldOrientation } from './game-fiields/enums/game-field-orientation';
-import Property from './game-fiields/property/Property';
-import RandomEvent from './game-fiields/random-events/RandomEvent';
 import GameHeader from './game-header/GameHeader';
 import GameChat from './game-chat/GameChat';
 import styles from './game.module.css'
@@ -14,6 +11,9 @@ import { getGameChatMessagesPage } from '../../API/ws-thunks/games';
 import { GamesStateT } from '../../store/slices/games/types/games-state';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
 import { clearGameChatMessages } from '../../store/slices/games/games-slice';
+import { GameFieldSection } from './game-fiields/enums/game-field-orientation';
+import NoHeader from './game-fiields/no-header-game-fields/No-header';
+import WithHeader from './game-fiields/with-header-game-fields/Property';
 
 function Game() {
 	const gamesState: GamesStateT = useAppSelector(state => state.games)
@@ -66,8 +66,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.top_section}`}>
 				{gameSectionFields.topSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
-						: <RandomEvent key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
+						? <WithHeader key={field.id} section={GameFieldSection.TOP} gameField={field} />
+						: <NoHeader key={field.id} orientation={GameFieldSection.TOP} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.goto_prison}`}>
@@ -76,8 +76,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.left_section}`}>
 				{gameSectionFields.leftSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
-						: <RandomEvent key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
+						? <WithHeader key={field.id} section={GameFieldSection.LEFT} gameField={field} />
+						: <NoHeader key={field.id} orientation={GameFieldSection.LEFT} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.chat_section}`}>
@@ -88,8 +88,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
-						: <RandomEvent key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
+						? <WithHeader key={field.id} section={GameFieldSection.RIGHT} gameField={field} />
+						: <NoHeader key={field.id} orientation={GameFieldSection.RIGHT} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.forward_joly}`}>
@@ -98,8 +98,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.bottom_section}`}>
 				{gameSectionFields.bottomSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
-						: <RandomEvent key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
+						? <WithHeader key={field.id} section={GameFieldSection.BOTTOM} gameField={field} />
+						: <NoHeader key={field.id} orientation={GameFieldSection.BOTTOM} fieldData={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.start}`}>

@@ -2,10 +2,11 @@ import { makeMove } from '../../../../API/ws-thunks/games';
 import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import styles from './make-move.module.css'
 
-function MakeMove() {
+function MakeMove(props: { setIsShowWindow: (value: boolean) => void }) {
     const dispatch = useAppDispatch()
 
     const handleMakeMove = () => {
+        props.setIsShowWindow(false)
         dispatch(makeMove())
     }
 

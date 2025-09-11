@@ -1,7 +1,7 @@
-import { IPlayer } from '../../../store/slices/games/interfaces/player';
-import InGamePlayer from '../../player/in-game-player/InGamePlayer';
 import styles from './game-header.module.css'
+import { IPlayer } from '../../../store/slices/games/interfaces/player';
 import TurnTimer from './turn-timer/TurnTimer';
+import Player from './player/Player';
 
 function GameHeader(props: { players: IPlayer[] }) {
     return (
@@ -11,9 +11,8 @@ function GameHeader(props: { players: IPlayer[] }) {
                 {props.players
                     .slice()
                     .sort((a, b) => a.turnNumber - b.turnNumber)
-                    .map(player => (
-                        <InGamePlayer key={player.id} player={player}
-                        />
+                    .map((player: IPlayer) => (
+                        <Player key={player.id} player={player} />
                     ))}
             </ul>
         </div>

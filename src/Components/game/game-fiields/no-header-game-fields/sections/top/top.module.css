@@ -1,0 +1,6 @@
+.container {
+    flex-direction: column;
+    padding: 35% 0 20%;
+    border-right: 0.3vmin solid #000000;
+    border-top: 0.3vmin solid #000000;
+}

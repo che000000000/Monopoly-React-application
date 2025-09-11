@@ -56,3 +56,10 @@ export const makeMove = createAsyncThunk(
         gamesGatewayService?.makeMove()
     }
 )
+
+export const buyGameField = createAsyncThunk(
+    'games/buy-game-field',
+    () => {
+        gamesGatewayService?.buyGameField()
+    }
+)
