@@ -1,0 +1,19 @@
+.container {
+    align-items: center;
+    border-bottom: 0.3vmin solid #000000;
+}
+
+.container:first-child {
+    border-top: 0.3vmin solid #000000;
+}
+
+.content {
+    align-items: center;
+    padding-right: 3%;
+}
+
+.header {
+    height: 100%;
+    width: 2vmin;
+    border-right: 0.3vmin solid #000000;
+}

@@ -66,7 +66,7 @@ function Game() {
 			<div className={`${styles.section} ${styles.top_section}`}>
 				{gameSectionFields.topSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.TOP} gameField={field} />
 						: <RandomEvent key={field.id} orientation={GameFieldOrientation.TOP} fieldData={field} />
 				))}
 			</div>
@@ -76,7 +76,7 @@ function Game() {
 			<div className={`${styles.section} ${styles.left_section}`}>
 				{gameSectionFields.leftSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.LEFT} gameField={field} />
 						: <RandomEvent key={field.id} orientation={GameFieldOrientation.LEFT} fieldData={field} />
 				))}
 			</div>
@@ -88,7 +88,7 @@ function Game() {
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.RIGHT} gameField={field} />
 						: <RandomEvent key={field.id} orientation={GameFieldOrientation.RIGHT} fieldData={field} />
 				))}
 			</div>
@@ -98,7 +98,7 @@ function Game() {
 			<div className={`${styles.section} ${styles.bottom_section}`}>
 				{gameSectionFields.bottomSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <Property key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
+						? <Property key={field.id} orientation={GameFieldOrientation.BOTTOM} gameField={field} />
 						: <RandomEvent key={field.id} orientation={GameFieldOrientation.BOTTOM} fieldData={field} />
 				))}
 			</div>

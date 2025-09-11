@@ -5,6 +5,7 @@ import { IGameState } from "./interfaces/game-state";
 import { IGamePreview } from "./interfaces/game-preview";
 import { IGameField } from "./interfaces/game-field";
 import { IGameTurn } from "./interfaces/game-turn";
+import { IPlayer } from "./interfaces/player";
 
 const initialState: GamesStateT = {
     isGatewayConnected: false,
@@ -71,11 +72,21 @@ const gamesSlice = createSlice({
         },
         setGameTurn(state: GamesStateT, action: PayloadAction<IGameTurn>) {
             if (!state.currentGame) return
+
             state.currentGame.turn = action.payload
         },
         setDices(state: GamesStateT, action: PayloadAction<number[]>) {
             if (!state.currentGame) return
+
             state.currentGame.dices = action.payload
+        },
+        updatePlayer(state: GamesStateT, action: PayloadAction<IPlayer>) {
+            if (!state.currentGame) return
+
+            const index = state.currentGame.players.findIndex((palyer: IPlayer) => palyer.id === action.payload.id)
+            if (index === -1) return
+
+            state.currentGame.players[index] = action.payload
         }
     }
 })
@@ -84,6 +95,6 @@ export const {
     setIsGatewayConnected, setStartGameFlag, setCurrentGame,
     pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages,
     pushGamesPage, pushGame, clearGames, updateGameField, setGameTurn,
-    setDices } = gamesSlice.actions;
+    setDices, updatePlayer } = gamesSlice.actions;
 
 export default gamesSlice.reducer;
