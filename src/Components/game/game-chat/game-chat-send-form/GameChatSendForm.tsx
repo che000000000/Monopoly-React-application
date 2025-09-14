@@ -8,13 +8,12 @@ function GameChatSendForm() {
 
     const [sendInputText, setSendInputText] = useState('')
 
-    function handleSendInputText(inputText: string): void {
+    const handleSendInputText = (inputText: string): void => {
         setSendInputText(inputText)
     }
 
-    function handleSendMessage(messageText: string): void {
+    const handleSendMessage = (messageText: string): void => {
         dispatch(sendGameChatMessage({ messageText }))
-
         setSendInputText('')
     }
 

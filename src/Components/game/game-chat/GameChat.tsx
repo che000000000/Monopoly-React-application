@@ -3,8 +3,8 @@ import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
 import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
-import ActionWindow from '../action-window/ActionWindow';
 import ThrowDices from '../throw-dices/ThrowDices';
+import GameDialogue from '../GameDialogue/GameDialogue';
 
 function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 	const messagesListElement = useRef<HTMLDivElement>(null)
@@ -49,7 +49,7 @@ function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 
 	return (
 		<div className={styles.container}>
-			<ActionWindow />
+			<GameDialogue />
 			<ThrowDices />
 			<div className={styles.messages_list} ref={messagesListElement}>
 				{props.chatMessages.length !== 0 

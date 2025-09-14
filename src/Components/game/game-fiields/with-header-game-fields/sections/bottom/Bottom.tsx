@@ -11,7 +11,7 @@ function Bottom(props: IGameField) {
     return (
         <div className={`${general.container} ${styles.container}`}>
             <div className={`${general.content} ${styles.content}`}>
-                <div className={general.field_price}>{`M${props.basePrice}`}</div>
+                <div className={general.field_price}>{`M${props.basePrice && Math.abs(props.basePrice)}`}</div>
                 <div className={general.field_name}>{props.name}</div>
                 <span />
                 {props.owner?.chip && (

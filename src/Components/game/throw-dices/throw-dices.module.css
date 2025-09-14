@@ -6,6 +6,7 @@
     align-items: center;
     gap: 2vmin;
     user-select: none;
+    pointer-events: none;
     opacity: 100%;
     transition: 1500ms;
 }

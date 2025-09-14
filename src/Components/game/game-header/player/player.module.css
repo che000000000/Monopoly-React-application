@@ -27,10 +27,8 @@
     text-overflow: ellipsis;
 }
 
-.avatar {
-    width: 3vmin;
-    height: 3vmin;
-    border-radius: 64px;
+.balance {
+    font-size: 1vmin;
 }
 
 .figurine {

@@ -1,0 +1,12 @@
+.container {
+    position: absolute;
+    top: 0.5vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4vmin;
+}
+
+.text {
+    font-size: 1.4vmin;
+}

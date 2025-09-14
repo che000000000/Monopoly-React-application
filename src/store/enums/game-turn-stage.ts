@@ -2,6 +2,10 @@ export enum GameTurnStage {
     MOVE = 'MOVE',
     BUY_GAME_FIELD = 'BUY_GAME_FIELD',
     PAY_RENT = 'PAY_RENT',
+    PAY_TAX = 'PAY_TAX',
+    CHANCE = 'CHANCE',
+    PAY_AMOUNT = 'PAY_AMOUNT',
+    COMMUNITY_CHEST = 'COMMUNITY_CHEST',
     AYCTION = 'AUCTION',
     DEAL = 'DEAL'
 }
