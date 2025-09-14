@@ -63,3 +63,10 @@ export const buyGameField = createAsyncThunk(
         gamesGatewayService?.buyGameField()
     }
 )
+
+export const payRent = createAsyncThunk(
+    'games/pay-rent',
+    () => {
+        gamesGatewayService?.payRent()
+    }
+)

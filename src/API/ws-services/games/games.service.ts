@@ -57,6 +57,7 @@ export class GamesGatewayService {
             setTimeout(() => {
                 this.dispatch(updateGameField(message.leftGameField))
                 this.dispatch(updateGameField(message.newGameField))
+                this.dispatch(updatePlayer(message.player))
             }, 1000)
         })
         this.socket?.on('new-game-turn', (message) => {
@@ -65,6 +66,10 @@ export class GamesGatewayService {
         this.socket?.on('buy-game-field', (message) => {
             this.dispatch(updateGameField(message.gameField))
             this.dispatch(updatePlayer(message.player))
+        })
+        this.socket?.on('pay-rent', (message) => {
+            this.dispatch(updatePlayer(message.payingPlayer))
+            this.dispatch(updatePlayer(message.getPaymentPlayer))
         })
     }
 
@@ -94,5 +99,9 @@ export class GamesGatewayService {
 
     public buyGameField() {
         this.socket?.emit('buy-game-field', {})
+    }
+
+    public payRent() {
+        this.socket?.emit('pay-rent')
     }
 }

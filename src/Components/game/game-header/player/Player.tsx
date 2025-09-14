@@ -17,6 +17,7 @@ function Player(props: { player: IPlayer }) {
             `}>
             <div className={styles.name}>{props.player.user.id === authState.user?.id ? 'Вы' : props.player.user.name}</div>
             <img className={styles.figurine} alt={`${props.player.user.name}-chip`} src={definePlayerChipIcon(props.player.chip)} />
+            <div className={styles.balance}>{`M${props.player.balance}`}</div>
         </li>
     )
 }

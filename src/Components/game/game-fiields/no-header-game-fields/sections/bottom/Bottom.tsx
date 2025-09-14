@@ -4,6 +4,7 @@ import Players, { GameFieldPlayerOrientation } from '../../../players/Players';
 import { defineGameFieldIcon } from '../../common/define-game-field-icon';
 import styles from './bottom.module.css'
 import general from '../general.module.css'
+import { GameFieldType } from '../../../../../../store/enums/game-field-type';
 
 function Bottom(props: IGameField) {
     return (

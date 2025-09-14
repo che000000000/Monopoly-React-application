@@ -6,15 +6,14 @@
     opacity: 95%;
 }
 
-.action_btn {
-    padding: 0.4vmin 0.9vmin;
-    border-radius: 2px;
-    font-size: 1.4vmin;
-    background-color: #ce1b1b;
-    border: 0.3vmin solid #dddddd;
-    transition: 150ms;
+.hide_container {
+    opacity: 0;
 }
 
-.action_btn:active {
+.pay_rent_btn {
+    background-color: #ce1b1b;
+}
+
+.pay_rent_btn:active {
     background-color: #c01f1f;
 }
