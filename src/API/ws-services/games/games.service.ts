@@ -71,14 +71,18 @@ export class GamesGatewayService {
             this.dispatch(updatePlayer(message.payingPlayer))
             this.dispatch(updatePlayer(message.getPaymentPlayer))
         })
+        this.socket?.on('pay-tax', (message) => {
+            console.log(message)
+            this.dispatch(updatePlayer(message.player))
+        })
     }
 
     public startGame() {
-        this.socket?.emit('start-game', {})
+        this.socket?.emit('start-game')
     }
 
     public getGameState() {
-        this.socket?.emit('game-state', {})
+        this.socket?.emit('game-state')
     }
 
     public getGameChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {
@@ -94,14 +98,18 @@ export class GamesGatewayService {
     }
 
     public makeMove() {
-        this.socket?.emit('make-move', {})
+        this.socket?.emit('make-move')
     }
 
     public buyGameField() {
-        this.socket?.emit('buy-game-field', {})
+        this.socket?.emit('buy-game-field')
     }
 
     public payRent() {
         this.socket?.emit('pay-rent')
+    }
+
+    public payTax() {
+        this.socket?.emit('pay-tax')
     }
 }

@@ -14,7 +14,7 @@ function BuyGameField() {
     return (
         <div className={general.container}>
             <div className={styles.text}>У вас есть возможность купить поле.</div>
-            <div className={styles.options}>
+            <div className={general.options}>
                 <button className={`${general.btn} ${styles.buy_game_field_btn}`} onClick={() => handleBuyGameField()}>Купить</button>
                 <button className={`${general.btn} ${styles.throw_buy_game_field_btn}`}>Не покупать</button>
             </div>

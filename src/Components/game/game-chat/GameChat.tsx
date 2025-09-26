@@ -4,7 +4,7 @@ import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
 import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
 import ThrowDices from '../throw-dices/ThrowDices';
-import GameDialogue from '../GameDialogue/GameDialogue';
+import GameDialogue from '../game-dialogue/GameDialogue';
 
 function GameChat(props: { chatMessages: IGameChatMessage[] }) {
 	const messagesListElement = useRef<HTMLDivElement>(null)

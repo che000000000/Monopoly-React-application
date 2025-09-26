@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8vmin;
+    padding: 0.6vmin 1.2vmin;
+    background-color: #fafafa;
+    border: 0.3vmin solid #eeeeee;
+    opacity: 0.94;
+    animation: slideIn 200ms ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-0.4vmin);
+    }
+    to {
+        opacity: 0.94;
+        transform: translateY(0);
+    }
+}
+
+.options {
+    display: flex;
+    gap: 1.3vmin;
+}
+
+.btn {
+    padding: 0.5vmin 1vmin;
+    border-radius: 2px;
+    font-size: 1.4vmin;
+    transition: 450ms;
+}
+
+.btn_red {
+    background-color: #c43434;
+}
+
+.btn_red:active {
+    background-color: #ad2f2f;
+}
+
+.btn_green {
+    background-color: #327534;
+}
+
+.btn_green:active {
+    background-color: #285f2a
+}

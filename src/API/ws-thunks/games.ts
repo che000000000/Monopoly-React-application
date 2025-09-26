@@ -70,3 +70,10 @@ export const payRent = createAsyncThunk(
         gamesGatewayService?.payRent()
     }
 )
+
+export const payTax = createAsyncThunk(
+    'games/pay-tax',
+    () => {
+        gamesGatewayService?.payTax()
+    }
+)
