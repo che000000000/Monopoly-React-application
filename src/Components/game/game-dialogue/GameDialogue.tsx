@@ -6,6 +6,7 @@ import MakeMove from './actions/make-move/MakeMove';
 import { GameTurnStage } from '../../../store/enums/game-turn-stage';
 import PayRent from './actions/pay-rent/PayRent';
 import { AuthStateT } from '../../../store/slices/auth/types/auth-state';
+import PayTax from './actions/pay-tax/PayTax';
 
 function GameDialogue() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
@@ -29,6 +30,11 @@ function GameDialogue() {
         case GameTurnStage.PAY_RENT: return (
             <div className={`${styles.container}`}>
                 <PayRent />
+            </div>
+        )
+        case GameTurnStage.PAY_TAX: return (
+            <div className={`${styles.container}`}>
+                <PayTax />
             </div>
         )
         default: return null

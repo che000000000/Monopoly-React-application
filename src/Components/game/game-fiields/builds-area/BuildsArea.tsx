@@ -16,8 +16,8 @@ function BuildsArea(props: { buildsCount: number | null, orientation: BuildAreaO
             }`}>
             {props.buildsCount === 5
                 ? <img className={styles.build_icon} alt='hotel' src={hotel_icon} />
-                : Array.from({ length: props.buildsCount ? props.buildsCount : 0 }).map(_ =>
-                    <img className={styles.build_icon} alt='house' src={house_icon} />
+                : Array.from({ length: props.buildsCount ? props.buildsCount : 0 }).map((_, index) =>
+                    <img key={index} className={styles.build_icon} alt='house' src={house_icon} />
                 )
             }
         </div>

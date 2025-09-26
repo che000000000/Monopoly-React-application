@@ -14,7 +14,7 @@ function MakeMove() {
     return (
         <div className={general.container}>
             <div className={styles.text}>Успейте бросить кости, время ограниченно.</div>
-            <button className={`${general.btn} ${styles.make_move_btn}`} onClick={() => handleMakeMove()}>Бросить кости</button>
+            <button className={`${general.btn} ${general.btn_green}`} onClick={() => handleMakeMove()}>Бросить кости</button>
         </div>
     )
 }
