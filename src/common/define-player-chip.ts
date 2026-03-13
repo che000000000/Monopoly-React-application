@@ -1,9 +1,9 @@
-import { PlayerChip } from '../store/enums/player-chip'
 import iron_chip from '../images/iron-chip.png'
 import hat_chip from '../images/hat-chip.png'
 import cart_chip from '../images/cart-chip.png'
 import penguin_chip from '../images/penguin-chip.png'
 import thimble_chip from '../images/thimble-chip.png'
+import { PlayerChip } from '../store/interfaces/player'
 
 export function definePlayerChipIcon(playerChip: PlayerChip): string {
     switch (playerChip) {

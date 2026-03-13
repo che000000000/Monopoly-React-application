@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { IGamePreview } from '../../../../store/slices/games/interfaces/game-preview';
 import PlayersList from '../players-list/PlayersList';
 import styles from './current-game.module.css'
+import { IGamePreview } from '../../../../store/interfaces/game-preview';
 
 function CurrentGame(props: { game: IGamePreview }) {
     return (

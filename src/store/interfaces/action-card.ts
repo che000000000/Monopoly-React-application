@@ -5,14 +5,13 @@ export enum ActionCardDeckType {
 
 export enum ActionCardType {
     MOVE = 'MOVE',
-    MONEY = 'MONEY',
+    MOVE_BACK = 'MOVE_BACK',
+    PAY_MONEY = 'PAY_MONEY',
+    GET_MONEY = 'GET_MONEY',
     PAY_PLAYERS = 'PAY_PLAYERS',
-    JAIL = 'JAIL',
+    GET_PAYMENT_FROM_PLAYERS = 'GET_PAYMENT_FROM_PLAYERS',
     GET_OUT_OF_JAIL = 'GET_OUT_OF_JAIL',
-    UTILITY = 'UTILITY',
-    RAILROAD = 'RAILROAD',
-    PROPERTY_REPAIR = 'PROPERTY_REPAIR',
-    MOVE_BACK = 'MOVE_BACK'
+    PROPERTY_REPAIR = 'PROPERTY_REPAIR'
 }
 
 export interface IActionCard {

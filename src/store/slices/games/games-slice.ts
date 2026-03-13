@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { GamesStateT } from "./types/games-state";
-import { IGameChatMessage } from "./interfaces/game-chat-message";
-import { IGameState } from "./interfaces/game-state";
-import { IGamePreview } from "./interfaces/game-preview";
-import { IGameField } from "./interfaces/game-field";
-import { IGameTurn } from "./interfaces/game-turn";
-import { IPlayer } from "./interfaces/player";
+import { IGameChatMessage } from "../../interfaces/game-chat-message";
+import { IGameState } from "../../interfaces/game-state";
+import { IGameField } from "../../interfaces/game-field";
+import { IGameTurn } from "../../interfaces/game-turn";
+import { IGamePreview } from "../../interfaces/game-preview";
+import { IPlayer } from "../../interfaces/player";
 
 const initialState: GamesStateT = {
     isGatewayConnected: false,
@@ -39,14 +39,15 @@ const gamesSlice = createSlice({
             state.currentGameChat.totlaCount = action.payload.totalCount
         },
         pushGameChatMessage(state: GamesStateT, action: PayloadAction<IGameChatMessage>) {
+            console.log(action.payload)
             state.currentGameChat.messages.push(action.payload)
             state.currentGameChat.totlaCount++
         },
-        clearGameChatMessages(state: GamesStateT, action: PayloadAction<void>) {
+        clearGameChatMessages(state: GamesStateT, _: PayloadAction<void>) {
             state.currentGameChat.messages = []
             state.currentGameChat.totlaCount = 0
         },
-        pushGamesPage(state: GamesStateT, action: PayloadAction<{ gamePreviewsList: IGamePreview[], totalCount: number }>) {
+        pushGamePreviewsPage(state: GamesStateT, action: PayloadAction<{ gamePreviewsList: IGamePreview[], totalCount: number }>) {
             action.payload.gamePreviewsList.forEach((gamePreview: IGamePreview) => {
                 state.games.games.push(gamePreview)
                 state.games.totalCount = action.payload.totalCount
@@ -94,7 +95,7 @@ const gamesSlice = createSlice({
 export const {
     setIsGatewayConnected, setStartGameFlag, setCurrentGame,
     pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages,
-    pushGamesPage, pushGame, clearGames, updateGameField, setGameTurn,
+    pushGamePreviewsPage, pushGame, clearGames, updateGameField, setGameTurn,
     setDices, updatePlayer } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

@@ -1,6 +1,6 @@
-import { ISendPregameRoomMessage } from "./send-pregame-room-message";
+import { IPregameRoomMessage } from "../../../../store/slices/pregame-rooms/interfaces/pregame-room-message";
 
 export interface IPregameRoomMessagesPage {
-    messagesList: ISendPregameRoomMessage[],
+    messagesList: IPregameRoomMessage[],
     totalCount: number
 }

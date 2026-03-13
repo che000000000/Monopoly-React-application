@@ -1,4 +1,4 @@
-import { IGamePreview } from '../../../../store/slices/games/interfaces/game-preview';
+import { IGamePreview } from '../../../../store/interfaces/game-preview';
 import ActiveGameItem from '../active-game-item/ActiveGameItem';
 import styles from './active-games.module.css'
 

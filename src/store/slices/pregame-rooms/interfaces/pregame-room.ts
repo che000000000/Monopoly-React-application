@@ -1,4 +1,4 @@
-import { PlayerChip } from "../../../enums/player-chip"
+import { PlayerChip } from "../../../interfaces/player"
 import { IPregameRoomMember } from "./pregame-room-member"
 
 export interface IPregameRoom {

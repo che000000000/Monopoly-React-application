@@ -1,6 +1,6 @@
 import styles from './right.module.css';
 import general from '../general.module.css'
-import { IGameField } from '../../../../../../store/slices/games/interfaces/game-field';
+import { IGameField } from '../../../../../../store/interfaces/game-field';
 import OwnerBackground from '../../../owner-backround/OwnerBackground';
 import Players, { GameFieldPlayerOrientation } from '../../../players/Players';
 import { defineGameFieldIcon } from '../../common/define-game-field-icon';

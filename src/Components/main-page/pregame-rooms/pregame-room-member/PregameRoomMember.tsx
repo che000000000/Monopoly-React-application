@@ -3,7 +3,7 @@ import styles from './pregame-room-member.module.css'
 import no_avatar from '../../../../images/common/no-avatar.png'
 import SelectedPlayerChip from '../selected-player-chip/SelectedPlayerChip';
 import { IPregameRoomMember } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room-member';
-import { IUser } from '../../../../store/slices/auth/interfaces/user';
+import { IUser } from '../../../../store/interfaces/user';
 
 function PregameRoomMember(props: { member: IPregameRoomMember, authUser?: IUser | null }) {
     return (

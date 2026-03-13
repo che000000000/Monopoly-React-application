@@ -11,7 +11,7 @@ import { startGame } from '../../../../../API/ws-thunks/games';
 import { IPregameRoomMember } from '../../../../../store/slices/pregame-rooms/interfaces/pregame-room-member';
 import { IPregameRoom } from '../../../../../store/slices/pregame-rooms/interfaces/pregame-room';
 import { IPregameRoomMessage } from '../../../../../store/slices/pregame-rooms/interfaces/pregame-room-message';
-import { IUser } from '../../../../../store/slices/auth/interfaces/user';
+import { IUser } from '../../../../../store/interfaces/user';
 
 function CurrentPregameRoom(props: { pregameRoom: IPregameRoom, messages: IPregameRoomMessage[], authUser: IUser }) {
     const dispatch = useAppDispatch()

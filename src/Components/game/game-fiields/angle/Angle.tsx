@@ -3,8 +3,7 @@ import go_arrow from '../../../../icons/field-icons/go_arrow.svg'
 import just_visiting from '../../../../icons/field-icons/just_visiting.svg'
 import free_parking from '../../../../icons/field-icons/free_parking.svg'
 import jail from '../../../../icons/field-icons/jail.svg'
-import { GameFieldType } from '../../../../store/enums/game-field-type'
-import { IGameField } from '../../../../store/slices/games/interfaces/game-field'
+import { GameFieldType, IGameField } from '../../../../store/interfaces/game-field'
 import { definePlayerChipIcon } from '../../../../common/define-player-chip'
 
 function Angle(props: IGameField) {

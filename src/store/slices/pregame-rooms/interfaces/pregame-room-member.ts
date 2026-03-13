@@ -1,5 +1,5 @@
-import { PlayerChip } from "../../../enums/player-chip"
-import { IUser } from "../../auth/interfaces/user"
+import { PlayerChip } from "../../../interfaces/player"
+import { IUser } from "../../../interfaces/user"
 
 export type IPregameRoomMember = {
     id: string,

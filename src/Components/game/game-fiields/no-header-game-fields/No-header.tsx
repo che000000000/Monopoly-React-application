@@ -1,4 +1,4 @@
-import { IGameField } from '../../../../store/slices/games/interfaces/game-field'
+import { IGameField } from '../../../../store/interfaces/game-field'
 import { GameFieldSection } from '../enums/game-field-orientation'
 import Bottom from './sections/bottom/Bottom'
 import Left from './sections/left/Left'

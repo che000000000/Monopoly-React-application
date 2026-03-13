@@ -57,23 +57,9 @@ export const makeMove = createAsyncThunk(
     }
 )
 
-export const buyGameField = createAsyncThunk(
-    'games/buy-game-field',
-    () => {
-        gamesGatewayService?.buyGameField()
-    }
-)
-
-export const payRent = createAsyncThunk(
-    'games/pay-rent',
-    () => {
-        gamesGatewayService?.payRent()
-    }
-)
-
-export const payTax = createAsyncThunk(
-    'games/pay-tax',
-    () => {
-        gamesGatewayService?.payTax()
+export const acceptPayment = createAsyncThunk(
+    'games/accept-payment',
+    (paymentId: string) => {
+        gamesGatewayService?.acceptPayment(paymentId)
     }
 )

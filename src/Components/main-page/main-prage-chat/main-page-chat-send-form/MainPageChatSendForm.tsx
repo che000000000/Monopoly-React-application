@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './main-page-chat-send-form.module.css'
-import { IUser } from '../../../../store/slices/auth/interfaces/user';
+import { IUser } from '../../../../store/interfaces/user';
 
 function MainPageChatSendForm(props: { authUser: IUser | null, name: string, onSend: (messageText: string) => void }) {
     const [sendMessageInputText, setSendMessageInputText] = useState('')

@@ -1,7 +1,7 @@
 import styles from './game-header.module.css'
-import { IPlayer } from '../../../store/slices/games/interfaces/player';
 import TurnTimer from './turn-timer/TurnTimer';
 import Player from './player/Player';
+import { IPlayer } from '../../../store/interfaces/player';
 
 function GameHeader(props: { players: IPlayer[] }) {
     return (
