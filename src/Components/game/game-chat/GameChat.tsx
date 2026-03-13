@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import GameChatMessage from './game-chat-message/GameChatMessage';
 import styles from './game-chat.module.css'
 import SendForm from './game-chat-send-form/GameChatSendForm';
-import { IGameChatMessage } from '../../../store/slices/games/interfaces/game-chat-message';
+import { IGameChatMessage } from '../../../store/interfaces/game-chat-message';
 import ThrowDices from '../throw-dices/ThrowDices';
 import GameDialogue from '../game-dialogue/GameDialogue';
 

@@ -1,4 +1,4 @@
-import { IUser } from "../../auth/interfaces/user"
+import { IUser } from "../../../interfaces/user"
 
 export interface IPregameRoomMessage {
     id: string,

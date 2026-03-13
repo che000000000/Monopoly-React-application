@@ -1,4 +1,4 @@
-import { UserRole } from "../../store/enums/user-role"
+import { UserRole } from "../../store/interfaces/user"
 
 export interface ILoginReqBody {
     email: string,

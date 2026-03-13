@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { PregameRoomsGatewayService } from "../ws-services/pregame-rooms/pregame-rooms.service";
 import { AppThunkApi } from "../../store";
 import { setAuthUser } from "../../store/slices/pregame-rooms/pregame-rooms-slice";
-import { PlayerChip } from "../../store/enums/player-chip";
+import { PlayerChip } from "../../store/interfaces/player";
 
 let pregameRoomsGatewayService: PregameRoomsGatewayService | null = null
 

@@ -21,7 +21,6 @@ function GlobalChat() {
             dispatch(getGlobalChatMessagesPage({}))
         }
 
-
     }, [globalChatState.isGatewayConnected, dispatch])
 
     return (

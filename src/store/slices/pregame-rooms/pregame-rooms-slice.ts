@@ -3,7 +3,7 @@ import { PregameRoomsStateT } from "./types/pregame-rooms-state";
 import { IPregameRoomMember } from "./interfaces/pregame-room-member";
 import { IPregameRoom } from "./interfaces/pregame-room";
 import { IPregameRoomMessage } from "./interfaces/pregame-room-message";
-import { IUser } from "../auth/interfaces/user";
+import { IUser } from "../../interfaces/user";
 
 const initialState: PregameRoomsStateT = {
     authUser: null,
@@ -63,7 +63,7 @@ const pregameRoomsSlice: Slice = createSlice({
         },
         removePregameRoom(state: PregameRoomsStateT, action: PayloadAction<string>) {
             state.pregameRooms.pregameRoomsList = state.pregameRooms.pregameRoomsList
-                .filter((room: IPregameRoom) => room.id !== action.payload)
+                .filter((r) => r.id !== action.payload)
 
             state.pregameRooms.totalCount--
         },

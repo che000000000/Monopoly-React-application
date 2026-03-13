@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { GamesStateT } from '../../../store/slices/games/types/games-state';
 import { useAppDispatch } from '../../../hoocks/useAppDispatch';
 import { getGamePreviewsPage } from '../../../API/ws-thunks/games';
-import { IGamePreview } from '../../../store/slices/games/interfaces/game-preview';
 import CurrentGame from './current-game/CurrentGame';
 import ActiveGames from './active-games/ActiveGames';
 import { clearGames } from '../../../store/slices/games/games-slice';
-import { PlayerStatus } from '../../../store/enums/player-status';
 import { AuthStateT } from '../../../store/slices/auth/types/auth-state';
+import { PlayerStatus } from '../../../store/interfaces/player';
+import { IGamePreview } from '../../../store/interfaces/game-preview';
 
 function Games() {
     const authState: AuthStateT = useAppSelector(state => state.auth)

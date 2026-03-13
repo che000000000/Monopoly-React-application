@@ -1,7 +1,7 @@
 import styles from './players.module.css';
 import general from '../general.module.css'
-import { IPlayer } from '../../../../store/slices/games/interfaces/player';
 import { definePlayerChipIcon } from '../../../../common/define-player-chip';
+import { IPlayer } from '../../../../store/interfaces/player';
 
 export enum GameFieldPlayerOrientation {
     VERTICAL = 'VERTICAL',

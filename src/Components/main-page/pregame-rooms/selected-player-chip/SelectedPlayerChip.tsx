@@ -1,10 +1,10 @@
 import styles from './selected-player-chip.module.css'
-import { PlayerChip } from '../../../../store/enums/player-chip'
 import cart_chip from '../../../../images/cart-chip.png'
 import hat_chip from '../../../../images/hat-chip.png'
 import iron_chip from '../../../../images/iron-chip.png'
 import penguin_chip from '../../../../images/penguin-chip.png'
 import thimble_chip from '../../../../images/thimble-chip.png'
+import { PlayerChip } from '../../../../store/interfaces/player'
 
 const CHIP_IMAGES = {
     [PlayerChip.CART]: cart_chip,

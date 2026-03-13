@@ -1,5 +1,4 @@
 import { useAppSelector } from '../../hoocks/useAppSelector';
-import { GameFieldType } from '../../store/enums/game-field-type';
 import Angle from './game-fiields/angle/Angle';
 import GameHeader from './game-header/GameHeader';
 import GameChat from './game-chat/GameChat';
@@ -14,6 +13,7 @@ import { clearGameChatMessages } from '../../store/slices/games/games-slice';
 import { GameFieldSection } from './game-fiields/enums/game-field-orientation';
 import NoHeader from './game-fiields/no-header-game-fields/No-header';
 import WithHeader from './game-fiields/with-header-game-fields/Property';
+import { GameFieldType } from '../../store/interfaces/game-field';
 
 function Game() {
 	const gamesState: GamesStateT = useAppSelector(state => state.games)

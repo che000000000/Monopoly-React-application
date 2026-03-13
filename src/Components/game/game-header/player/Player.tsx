@@ -1,10 +1,9 @@
 import styles from './player.module.css'
-import { PlayerStatus } from '../../../../store/enums/player-status'
 import { AuthStateT } from '../../../../store/slices/auth/types/auth-state'
 import { useAppSelector } from '../../../../hoocks/useAppSelector'
-import { IPlayer } from '../../../../store/slices/games/interfaces/player'
 import { GamesStateT } from '../../../../store/slices/games/types/games-state'
 import { definePlayerChipIcon } from '../../../../common/define-player-chip'
+import { IPlayer, PlayerStatus } from '../../../../store/interfaces/player'
 
 function Player(props: { player: IPlayer }) {
     const authState: AuthStateT = useAppSelector(state => state.auth)

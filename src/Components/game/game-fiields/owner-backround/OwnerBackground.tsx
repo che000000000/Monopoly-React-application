@@ -1,5 +1,5 @@
 import { definePlayerChipIcon } from '../../../../common/define-player-chip';
-import { PlayerChip } from '../../../../store/enums/player-chip';
+import { PlayerChip } from '../../../../store/interfaces/player';
 import styles from './owner-background.module.css'
 
 function OwnerBackground(props: { playerChip: PlayerChip }) {

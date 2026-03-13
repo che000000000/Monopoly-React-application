@@ -1,4 +1,8 @@
-import { UserRole } from "../../../enums/user-role";
+export enum UserRole {
+    REGULAR = 'REGULAR',
+    ADMIN = 'ADMIN',
+    DEV = 'DEV'
+}
 
 export interface IUser {
     id: string,

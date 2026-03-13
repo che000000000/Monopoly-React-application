@@ -1,4 +1,4 @@
-import { IPlayerPreview } from '../../../../store/slices/games/interfaces/player-prewiew'
+import { IPlayerPreview } from '../../../../store/interfaces/player-prewiew';
 import PlayerItem from '../player-item/PlayerItem'
 import styles from './players-list.module.css'
 

@@ -1,4 +1,4 @@
-import { IUser } from "../slices/auth/interfaces/user"
+import { IUser } from "../interfaces/user"
 
 export type FriendRequestT = {
     id: string,

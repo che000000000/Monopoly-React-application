@@ -1,5 +1,5 @@
 import { GameFieldSection } from '../enums/game-field-orientation'
-import { IGameField } from '../../../../store/slices/games/interfaces/game-field';
+import { IGameField } from '../../../../store/interfaces/game-field';
 import Top from './sections/top/Top';
 import Right from './sections/right/Right';
 import Bottom from './sections/bottom/Bottom';

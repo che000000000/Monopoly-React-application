@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../../../hoocks/useAppDispatch';
 import { joinPregameRoom } from '../../../../API/ws-thunks/pregame-rooms';
 import { IPregameRoomMember } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room-member';
 import { IPregameRoom } from '../../../../store/slices/pregame-rooms/interfaces/pregame-room';
-import { IUser } from '../../../../store/slices/auth/interfaces/user';
+import { IUser } from '../../../../store/interfaces/user';
 
 function ActivePregameRoom(props: { pregameRoom: IPregameRoom, authUser: IUser | null }) {
 	const dispatch = useAppDispatch()

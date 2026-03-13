@@ -1,4 +1,4 @@
-import { IUser } from "../../../../store/slices/auth/interfaces/user"
+import { IUser } from "../../../../store/interfaces/user"
 
 export type MainPageChatMessageT = {
     id: string,

@@ -1,10 +1,10 @@
 import { useAppSelector } from '../../../../hoocks/useAppSelector';
 import { AuthStateT } from '../../../../store/slices/auth/types/auth-state';
-import { IPlayerPreview } from '../../../../store/slices/games/interfaces/player-prewiew';
 import SelectedPlayerChip from '../../pregame-rooms/selected-player-chip/SelectedPlayerChip';
 import styles from './player-item.module.css'
 import no_avatar from '../../../../images/common/no-avatar.png'
-import { PlayerStatus } from '../../../../store/enums/player-status';
+import { PlayerStatus } from '../../../../store/interfaces/player';
+import { IPlayerPreview } from '../../../../store/interfaces/player-prewiew';
 
 function PlayerItem(props: { player: IPlayerPreview }) {
     const authState: AuthStateT = useAppSelector(state => state.auth)
