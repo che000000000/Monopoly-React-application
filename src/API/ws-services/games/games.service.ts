@@ -10,6 +10,7 @@ import { IGameChatMessage } from "../../../store/interfaces/game-chat-message"
 import { GameChatMessagesPageMessage } from "./interfaces/game-chat-messages-page"
 import { IGameState } from "../../../store/interfaces/game-state"
 import { IGamePreview } from "../../../store/interfaces/game-preview"
+import { ThrowDicesMessage } from "./interfaces/throw-dices"
 
 export class GamesGatewayService {
     private socket: Socket | null = null
@@ -61,13 +62,14 @@ export class GamesGatewayService {
         this.socket?.on('game-previews-page', (message: GamePrewiewsPageMessage) => {
             this.dispatch(pushGamePreviewsPage(message))
         })
+        this.socket?.on('throw-dices', (message: ThrowDicesMessage) => {
+            this.dispatch(setDices(message.dices))
+        })
         this.socket?.on('make-move', (message: MakeMoveMessage) => {
-            this.dispatch(setDices(message.thrownDices.dices))
-            this.dispatch(updateGameField(message.leftGameField))
-            this.dispatch(updateGameField(message.newGameField))
+            message.gameFields.map(gf => this.dispatch(updateGameField(gf)))
             this.dispatch(updatePlayer(message.player))
         })
-        this.socket?.on('new-game-turn', (message: IGameTurn) => {
+        this.socket?.on('set-game-turn', (message: IGameTurn) => {
             this.dispatch(setGameTurn(message))
         })
         this.socket?.on('update-players', (message: IPlayer[]) => {
