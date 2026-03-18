@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import styles from './turn-timer.module.css'
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../../hoocks/useAppSelector';
 
 function TurnTimer() {

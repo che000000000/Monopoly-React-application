@@ -5,9 +5,9 @@ export enum ActionCardDeckType {
 
 export enum ActionCardType {
     MOVE = 'MOVE',
-    MOVE_BACK = 'MOVE_BACK',
-    PAY_MONEY = 'PAY_MONEY',
+    GO_TO_JAIL = 'GO_TO_JAIL',
     GET_MONEY = 'GET_MONEY',
+    PAY_MONEY = 'PAY_MONEY',
     PAY_PLAYERS = 'PAY_PLAYERS',
     GET_PAYMENT_FROM_PLAYERS = 'GET_PAYMENT_FROM_PLAYERS',
     GET_OUT_OF_JAIL = 'GET_OUT_OF_JAIL',

@@ -53,12 +53,6 @@ export class GamesGatewayService {
         this.socket?.on('game-state', (message: IGameState) => {
             this.dispatch(setCurrentGame(message))
         })
-        this.socket?.on('game-chat-messages-page', (message: GameChatMessagesPageMessage) => {
-            this.dispatch(pushGameChatMessagesPage(message))
-        })
-        this.socket?.on('game-chat-message', (message: IGameChatMessage) => {
-            this.dispatch(pushGameChatMessage(message))
-        })
         this.socket?.on('game-previews-page', (message: GamePrewiewsPageMessage) => {
             this.dispatch(pushGamePreviewsPage(message))
         })
@@ -78,6 +72,12 @@ export class GamesGatewayService {
         this.socket?.on('update-game-fields', (message: IGameField[]) => {
             message.map(gf => this.dispatch(updateGameField(gf)))
         })
+        this.socket?.on('game-chat-messages-page', (message: GameChatMessagesPageMessage) => {
+            this.dispatch(pushGameChatMessagesPage(message))
+        })
+        this.socket?.on('game-chat-message', (message: IGameChatMessage) => {
+            this.dispatch(pushGameChatMessage(message))
+        })
     }
 
     public startGame() {
@@ -88,23 +88,43 @@ export class GamesGatewayService {
         this.socket?.emit('game-state')
     }
 
+    public getGamePreviewsPage(pageNumber?: number | null, pageSize?: number | null) {
+        this.socket?.emit('get-game-previews-page', { pageNumber, pageSize })
+    }
+
+    public rollTheDiceForMove() {
+        this.socket?.emit('roll-the-dice-for-move')
+    }
+
+    public rollDiceToGetOutOfJail() {
+        this.socket?.emit('roll-dice-to-get-out-of-jail')
+    }
+
+    public buyoutFromJail() {
+        this.socket?.emit('buyout-form-jail')
+    }
+
+    public buyGameField() {
+        this.socket?.emit('buy-game-field')
+    }
+
+    public payRent() {
+        this.socket?.emit('pay-rent')
+    }
+
+    public payTax() {
+        this.socket?.emit('pay-tax')
+    }
+
+    public acceptPayment(paymentId: string) {
+        this.socket?.emit('accept-payment', { paymentId })
+    }
+
     public getGameChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {
         this.socket?.emit('game-chat-messages-page', { pageNumber, pageSize })
     }
 
     public sendGameChatMessage(messageText: string) {
         this.socket?.emit('send-game-chat-message', { messageText })
-    }
-
-    public getGamePreviewsPage(pageNumber?: number | null, pageSize?: number | null) {
-        this.socket?.emit('get-game-previews-page', { pageNumber, pageSize })
-    }
-
-    public makeMove() {
-        this.socket?.emit('make-move')
-    }
-
-    public acceptPayment(paymentId: string) {
-        this.socket?.emit('accept-payment', { paymentId })
     }
 }

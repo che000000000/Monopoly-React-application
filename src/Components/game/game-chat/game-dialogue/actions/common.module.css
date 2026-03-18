@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 34vmin;
+    max-width: 31vmin;
     gap: 0.8vmin;
     padding: 0.6vmin 1.2vmin;
     background-color: #fafafa;
     border: 0.3vmin solid #eeeeee;
-    opacity: 0.94;
-    font-size: 1.6vmin;
+    opacity: 1;
     animation: slideIn 200ms ease-out forwards;
 }
 
@@ -18,7 +17,7 @@
         transform: translateY(-0.4vmin);
     }
     to {
-        opacity: 0.94;
+        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -31,13 +30,23 @@
     max-width: 100%;
 }
 
+.player_presentation {
+    white-space: nowrap;
+}
+
+.player_chip {
+    width: 1.6vmin;
+    height: 1.6vmin;
+    margin-left: 0.1vmin;
+}
+
 .options {
     display: flex;
     gap: 2.3vmin;
 }
 
 .btn {
-    padding: 0.5vmin 1vmin;
+    padding: 0.5vmin 0.7vmin;
     border-radius: 2px;
     font-size: 1.5vmin;
     transition: 450ms;

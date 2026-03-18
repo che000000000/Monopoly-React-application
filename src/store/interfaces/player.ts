@@ -1,9 +1,5 @@
+import { IActionCard } from "./action-card"
 import { IUser } from "./user"
-
-export enum PlayerStatus {
-    COMMON = 'COMMON',
-    IS_LEFT = 'IS_LEFT'
-}
 
 export enum PlayerChip {
     CART= 'CART',
@@ -17,7 +13,8 @@ export interface IPlayer {
     id: string,
     user: IUser,
     chip: PlayerChip,
-    status: PlayerStatus
+    isActive: boolean,
     turnNumber: number,
-    balance: number
+    balance: number,
+    actionCard: IActionCard
 }
