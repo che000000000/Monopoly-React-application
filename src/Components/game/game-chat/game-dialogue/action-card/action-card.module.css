@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    width: 33vmin;
+    height: 19vmin;
+    background-color: #fafafa;
+    border: 0.3vmin solid #eeeeee;
+    padding: 1.1vmin;
+       animation: slideIn 200ms ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-0.4vmin);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 0.8vmin;
+    outline: 0.3vmin solid #000000;
+    z-index: 2;
+}
+
+.title {
+    font-size: 1.7vmin;
+    font-weight: 800;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.text {
+    text-align: center;
+    font-size: 1.4vmin;
+    font-weight: 500;
+    word-break: break-word;
+    max-width: 100%;
+}

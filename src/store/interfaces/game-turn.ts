@@ -4,11 +4,16 @@ import { IPlayer } from "./player"
 
 export enum GameTurnStage {
     MOVE = 'MOVE',
-    THROWING_DICES = 'THROWING_DICES',
+    ROLL_OF_DICE_FOR_MOVE = 'ROLL_OF_DICE_FOR_MOVE',
+    ROLL_OF_DICE_FOR_GET_OUT_OF_JAIL = 'ROLL_OF_DICE_FOR_GET_OUT_OF_JAIL',
     BUY_GAME_FIELD = 'BUY_GAME_FIELD',
     PAY_RENT = 'PAY_RENT',
     PAY_TAX = 'PAY_TAX',
-    ACTION_CARD = 'ACTION_CARD',
+    GO_TO_JAIL = 'GO_TO_JAIL',
+    AT_JAIL = 'AT_JAIL',
+    BUYOUT_FROM_JAIL = 'BUYOUT_FROM_JAIL',
+    ACTION_CARD_SHOWTIME = 'ACTION_CARD_SHOWTIME',
+    ACTION_CARD_REQUIREMENTS = 'ACTION_CARD_REQUIREMENTS',
     AYCTION = 'AUCTION',
     DEAL = 'DEAL'
 }
@@ -18,7 +23,7 @@ export interface IGameTurn {
     player: IPlayer,
     stage: GameTurnStage,
     actionCard: IActionCard | null,
-    gamePayments: IGamePayment[] | null,
+    gamePayments: IGamePayment[],
     expires: number,
     updatedAt: Date
 }

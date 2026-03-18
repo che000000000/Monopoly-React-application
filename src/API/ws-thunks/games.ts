@@ -29,6 +29,62 @@ export const getGameState = createAsyncThunk(
     }
 )
 
+export const getGamePreviewsPage = createAsyncThunk(
+    'games/get-game-previews-page',
+    (payload: { pageNumber?: number | null, pageSize?: number | null }) => {
+        gamesGatewayService?.getGamePreviewsPage(payload.pageNumber, payload.pageSize)
+    }
+)
+
+export const rollTheDiceForMove = createAsyncThunk(
+    'games/roll-the-dice-for-move',
+    () => {
+        gamesGatewayService?.rollTheDiceForMove()
+    }
+)
+
+export const rollDiceToGetOutOfJail = createAsyncThunk(
+    'games/roll-dice-to-get-out-of-jail',
+    () => {
+        gamesGatewayService?.rollDiceToGetOutOfJail()
+    }
+)
+
+export const buyoutFromJail = createAsyncThunk(
+    'games/buyout-form-jail',
+    () => {
+        gamesGatewayService?.buyoutFromJail()
+    }
+)
+
+export const buyGameField = createAsyncThunk(
+    'games/buy-game-field',
+    () => {
+        gamesGatewayService?.buyGameField()
+    }
+)
+
+export const payRent = createAsyncThunk(
+    'games/pay-rent',
+    () => {
+        gamesGatewayService?.payRent()
+    }
+)
+
+export const payTax = createAsyncThunk(
+    'games/pay-tax',
+    () => {
+        gamesGatewayService?.payTax()
+    }
+)
+
+export const acceptPayment = createAsyncThunk(
+    'games/accept-payment',
+    (paymentId: string) => {
+        gamesGatewayService?.acceptPayment(paymentId)
+    }
+)
+
 export const getGameChatMessagesPage = createAsyncThunk(
     'games/get-game-chat-messages-page',
     (payload: { pageNumber?: number | null, pageSize?: number | null }) => {
@@ -40,26 +96,5 @@ export const sendGameChatMessage = createAsyncThunk(
     'games/send-game-chat-message',
     (payload: { messageText: string }) => {
         gamesGatewayService?.sendGameChatMessage(payload.messageText)
-    }
-)
-
-export const getGamePreviewsPage = createAsyncThunk(
-    'games/get-game-previews-page',
-    (payload: { pageNumber?: number | null, pageSize?: number | null }) => {
-        gamesGatewayService?.getGamePreviewsPage(payload.pageNumber, payload.pageSize)
-    }
-)
-
-export const makeMove = createAsyncThunk(
-    'games/make-move',
-    () => {
-        gamesGatewayService?.makeMove()
-    }
-)
-
-export const acceptPayment = createAsyncThunk(
-    'games/accept-payment',
-    (paymentId: string) => {
-        gamesGatewayService?.acceptPayment(paymentId)
     }
 )

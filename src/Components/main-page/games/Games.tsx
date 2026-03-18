@@ -10,7 +10,6 @@ import CurrentGame from './current-game/CurrentGame';
 import ActiveGames from './active-games/ActiveGames';
 import { clearGames } from '../../../store/slices/games/games-slice';
 import { AuthStateT } from '../../../store/slices/auth/types/auth-state';
-import { PlayerStatus } from '../../../store/interfaces/player';
 import { IGamePreview } from '../../../store/interfaces/game-preview';
 
 function Games() {
@@ -37,7 +36,7 @@ function Games() {
         game.id === gamesState.currentGame?.id &&
         game.players.some(player => 
             player.user.id === authState.user?.id && 
-            player.status !== PlayerStatus.IS_LEFT
+            player.isActive !== false
         )
     )
     
