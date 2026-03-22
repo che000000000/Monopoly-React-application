@@ -24,7 +24,7 @@ function Game() {
 		dispatch(getGameChatMessagesPage({ pageSize: 32 }))
 	}, [dispatch, gamesState.isGatewayConnected])
 
-	if (!gamesState.currentGame) return null
+	if (!gamesState.isCurrentGameActive) return null
 
 	const sortedGameFieldsByPosition = [...gamesState.currentGame.fields].sort((a, b) => a.position - b.position)
 

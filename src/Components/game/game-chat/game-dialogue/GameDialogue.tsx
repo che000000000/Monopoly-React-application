@@ -35,10 +35,10 @@ function GameDialogue() {
         return currentGameState.turn.gamePayments.find(p => (p.payerPlayer.user.id === userId && p.type === type))
     }
 
-    const displayError = (text: string) => {
+    const displayError = (message: string): JSX.Element => {
         return (
             <div className={styles.container}>
-                {text}
+                {message}
             </div>
         )
     }

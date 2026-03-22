@@ -18,7 +18,13 @@ function BuyoutFromJail(props: { payment: IGamePayment }) {
                 Похоже вам не удалось выбраться из тюрьмы. Вам придётся заплатить M{payment.amount}, чтобы вас освободили.
             </div>
             <div className={styles.options}>
-                <button className={`${styles.btn} ${styles.btn_green}`} onClick={() => handleBuyoutFromJail()}>Заплатить</button>
+                <button
+                    className={`${styles.btn} ${styles.btn_green}`}
+                    onClick={() => handleBuyoutFromJail()}
+                    disabled={payment.amount > payment.payerPlayer.balance}
+                >
+                    Заплатить
+                </button>
                 <button className={`${styles.btn} ${styles.btn_red}`}>Сдаться</button>
             </div>
         </div>

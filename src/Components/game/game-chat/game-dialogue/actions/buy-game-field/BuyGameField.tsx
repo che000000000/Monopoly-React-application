@@ -19,7 +19,13 @@ function BuyGameField(props: { field: IGameField, payment: IGamePayment }) {
                 У вас есть возможность приобрести собственность "{field.name}". Заплатите M{payment.amount} или эта собственность будет выставлена на аукцион.
             </div>
             <div className={styles.options}>
-                <button className={`${styles.btn} ${styles.btn_green}`} onClick={() => handleBuyGameField()}>Выкупить</button>
+                <button
+                    className={`${styles.btn} ${styles.btn_green}`}
+                    onClick={() => handleBuyGameField()}
+                    disabled={payment.amount > payment.payerPlayer.balance}
+                >
+                    Выкупить
+                </button>
                 <button className={`${styles.btn} ${styles.btn_red}`}>На аукцион</button>
             </div>
         </div>

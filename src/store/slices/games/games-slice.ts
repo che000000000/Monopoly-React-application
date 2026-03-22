@@ -3,18 +3,50 @@ import { GamesStateT } from "./types/games-state";
 import { IGameChatMessage } from "../../interfaces/game-chat-message";
 import { IGameState } from "../../interfaces/game-state";
 import { IGameField } from "../../interfaces/game-field";
-import { IGameTurn } from "../../interfaces/game-turn";
+import { GameTurnStage, IGameTurn } from "../../interfaces/game-turn";
 import { IGamePreview } from "../../interfaces/game-preview";
-import { IPlayer } from "../../interfaces/player";
+import { IPlayer, PlayerChip } from "../../interfaces/player";
+import { UserRole } from "../../interfaces/user";
 
 const initialState: GamesStateT = {
     isGatewayConnected: false,
-    startGameFlag: false,
+    startingGameFlag: false,
+    isCurrentGameActive: false,
     games: {
         games: [],
         totalCount: 0
     },
-    currentGame: null,
+    currentGame: {
+        id: '',
+        players: [],
+        fields: [],
+        turn: {
+            id: '',
+            player: {
+                id: '',
+                user: {
+                    id: '',
+                    name: '',
+                    avatarUrl: '',
+                    role: UserRole.REGULAR
+                },
+                chip: PlayerChip.CART,
+                isActive: false,
+                turnNumber: 0,
+                balance: 0,
+                actionCard: []
+            },
+            stage: GameTurnStage.MOVE,
+            actionCard: null,
+            gamePayments: [],
+            expires: 0,
+            updatedAt: new Date()
+        },
+        dices: [0, 0],
+        houses: 0,
+        hotels: 0,
+        createdAt: new Date()
+    },
     currentGameChat: {
         messages: [],
         totlaCount: 0
@@ -25,11 +57,14 @@ const gamesSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
-        setIsGatewayConnected(start: GamesStateT, action: PayloadAction<boolean>) {
-            start.isGatewayConnected = action.payload
+        setIsGatewayConnected(state: GamesStateT, action: PayloadAction<boolean>) {
+            state.isGatewayConnected = action.payload
         },
-        setStartGameFlag(state: GamesStateT, action: PayloadAction<boolean>) {
-            state.startGameFlag = action.payload
+        setStartingGameFlag(state: GamesStateT, action: PayloadAction<boolean>) {
+            state.startingGameFlag = action.payload
+        },
+        setIsCurrentGameActive(state: GamesStateT, action: PayloadAction<boolean>) {
+            state.isCurrentGameActive = action.payload
         },
         setCurrentGame(state: GamesStateT, action: PayloadAction<IGameState>) {
             state.currentGame = action.payload
@@ -93,7 +128,7 @@ const gamesSlice = createSlice({
 })
 
 export const {
-    setIsGatewayConnected, setStartGameFlag, setCurrentGame,
+    setIsGatewayConnected, setIsCurrentGameActive, setStartingGameFlag, setCurrentGame,
     pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages,
     pushGamePreviewsPage, pushGame, clearGames, updateGameField, setGameTurn,
     setDices, updatePlayer } = gamesSlice.actions;

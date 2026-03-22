@@ -13,8 +13,8 @@ function ActionCard(props: IActionCard) {
                 <div className={styles.title}>
                     {
                         deckType === ActionCardDeckType.CHANCE
-                            ? 'Шанс'
-                            : 'Общественная казна'
+                            ? 'ШАНС'
+                            : 'ОБЩЕСТВЕННАЯ КАЗНА'
                     }
                 </div>
                 <div className={styles.description}>

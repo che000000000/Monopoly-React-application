@@ -21,19 +21,23 @@ function PayRent(props: { field: IGameField, payment: IGamePayment }) {
                 Вы попали на собственность "{field.name}", которым владет игрок{' '}
                 <span className={styles.player_presentation}>
                     {field.owner?.user.name}{receiverPlayerChip
-                        ? <img className={styles.player_chip} src={definePlayerChipIcon(receiverPlayerChip)} />
+                        ? <img className={styles.player_chip} src={definePlayerChipIcon(receiverPlayerChip)} alt='player-chip' />
                         : null}
                 </span>
                 . Заплатите ренту в размере M{payment.amount}.
             </div>
             <div className={styles.options}>
-                <button className={`${styles.btn} ${styles.btn_green}`} onClick={() => handlePayRent()}>Заплатить</button>
+                <button
+                    className={`${styles.btn} ${styles.btn_green}`}
+                    disabled={payment.amount > payment.payerPlayer.balance}
+                    onClick={() => handlePayRent()}
+                >
+                    Заплатить
+                </button>
                 <button className={`${styles.btn} ${styles.btn_red}`}>Сдаться</button>
             </div>
         </div>
     )
 }
-
-{/* <img className={styles.player_chip} src={definePlayerChipIcon(payment.receiverPaymentPlayer?.chip)}/> */ }
 
 export default PayRent;

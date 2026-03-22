@@ -38,7 +38,7 @@ function TurnTimer() {
         }, 1000)
 
         return () => clearInterval(timerId)
-    }, [gamesState.currentGame?.turn])
+    }, [gamesState.currentGame?.turn, gamesState.currentGame])
 
     return (
         <div className={styles.container}>
