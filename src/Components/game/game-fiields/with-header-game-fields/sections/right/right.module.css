@@ -17,3 +17,7 @@
     width: 2vmin;
     border-left: 0.3vmin solid #000000;
 }
+
+.field_card {
+    right: 14vmin;
+}

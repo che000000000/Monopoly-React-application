@@ -18,3 +18,7 @@
     height: 2vmin;
     border-top: 0.3vmin solid #000000;
 }
+
+.field_card {
+    bottom: 14vmin;
+}
