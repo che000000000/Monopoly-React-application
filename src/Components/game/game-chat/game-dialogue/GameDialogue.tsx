@@ -13,13 +13,15 @@ import ActionCard from './action-card/ActionCard';
 import AtJail from './actions/at-jail/AtJail';
 import PayTax from './actions/pay-tax/PayTax';
 import BuyoutFromJail from './actions/buyout-from-jail/BuyoutFromJail';
+import PayMoney from './actions/payments/pay-money/PayMoney';
+import PayPlayers from './actions/payments/pay-players/PayPlayers';
 
 function GameDialogue() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
     const gamesState: GamesStateT = useAppSelector(state => state.games)
 
     const currentGameState = gamesState.currentGame
-    if (!currentGameState || !authState.user) return null
+    if (!authState.user) return null
 
     const myUserId = authState.user.id
     const currentTurnUserId = currentGameState.turn.player.user.id
@@ -35,10 +37,10 @@ function GameDialogue() {
         return currentGameState.turn.gamePayments.find(p => (p.payerPlayer.user.id === userId && p.type === type))
     }
 
-    const displayError = (text: string) => {
+    const displayError = (message: string): JSX.Element => {
         return (
             <div className={styles.container}>
-                {text}
+                {message}
             </div>
         )
     }
@@ -129,6 +131,36 @@ function GameDialogue() {
                 } else {
                     return displayError(`Не удалось обработать стадию платежа за выход из тюрьмы. Платёж не найден.`)
                 }
+            } return null
+        }
+        case GameTurnStage.PAY_MONEY: {
+            if (myUserId === currentTurnUserId) {
+                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.TO_BANK)
+                if (payment) {
+                    return (
+                        <div className={styles.container}>
+                            <PayMoney {...{ payment }} />
+                        </div>
+                    )
+                } else return (
+                    displayError(`Не удалось обработать платеж. Платёж не найден.`)
+                )
+            } return null
+        }
+        case GameTurnStage.PAY_PLAYERS: {
+            if (myUserId === currentTurnUserId) {
+                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.TO_PLAYERS)
+                const receiversPlayers = currentGameState.players.filter(p => p.user.id !== myUserId && p.isActive)
+
+                if (payment && receiversPlayers.length !== 0) {
+                    return (
+                        <div className={styles.container}>
+                            <PayPlayers {...{ payment, receiversPlayers }} />
+                        </div>
+                    )
+                } else return (
+                    displayError(`Не удалось обработать платеж. Платёж не найден или не найдены получатели.`)
+                )
             } return null
         }
         case GameTurnStage.ACTION_CARD_SHOWTIME: {

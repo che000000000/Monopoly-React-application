@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client"
 import { AppDispatch } from "../../../store"
-import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePreviewsPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setStartGameFlag, updateGameField, updatePlayer } from "../../../store/slices/games/games-slice"
+import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePreviewsPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setIsCurrentGameActive, updateGameField, updatePlayer, setStartingGameFlag } from "../../../store/slices/games/games-slice"
 import { IGameField } from "../../../store/interfaces/game-field"
 import { IPlayer } from "../../../store/interfaces/player"
 import { IGameTurn } from "../../../store/interfaces/game-turn"
@@ -45,13 +45,15 @@ export class GamesGatewayService {
         })
         this.socket?.on('start-game', (message: IGameState) => {
             this.dispatch(setCurrentGame(message))
-            this.dispatch(setStartGameFlag(true))
+            this.dispatch(setIsCurrentGameActive(true))
+            this.dispatch(setStartingGameFlag(true))
         })
         this.socket?.on('new-game', (message: IGamePreview) => {
             this.dispatch(pushGame(message))
         })
         this.socket?.on('game-state', (message: IGameState) => {
             this.dispatch(setCurrentGame(message))
+            this.dispatch(setIsCurrentGameActive(true))
         })
         this.socket?.on('game-previews-page', (message: GamePrewiewsPageMessage) => {
             this.dispatch(pushGamePreviewsPage(message))
@@ -116,8 +118,8 @@ export class GamesGatewayService {
         this.socket?.emit('pay-tax')
     }
 
-    public acceptPayment(paymentId: string) {
-        this.socket?.emit('accept-payment', { paymentId })
+    public payThePayment(paymentId: string) {
+        this.socket?.emit('pay-the-payment', { paymentId })
     }
 
     public getGameChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {

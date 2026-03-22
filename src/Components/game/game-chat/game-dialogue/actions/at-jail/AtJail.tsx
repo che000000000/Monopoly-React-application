@@ -23,7 +23,13 @@ function AtJail(props: { payment: IGamePayment }) {
             </div>
             <div className={styles.options}>
                 <button className={`${styles.btn} ${styles.btn_green}`} onClick={() => handleRollDiceToGetOutOfJail()}>Бросить кости</button>
-                <button className={`${styles.btn} ${styles.btn_red}`} onClick={() => handleBuyoutFromJail()}>Заплатить</button>
+                <button
+                    className={`${styles.btn} ${styles.btn_red}`}
+                    onClick={() => handleBuyoutFromJail()}
+                    disabled={payment.amount > payment.payerPlayer.balance}
+                >
+                    Заплатить
+                </button>
             </div>
         </div>
     )

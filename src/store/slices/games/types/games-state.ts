@@ -4,12 +4,13 @@ import { IGameState } from "../../../interfaces/game-state"
 
 export type GamesStateT = {
     isGatewayConnected: boolean
-    startGameFlag: boolean
+    startingGameFlag: boolean
+    isCurrentGameActive: boolean
     games: {
         games: IGamePreview[],
         totalCount: number
     }
-    currentGame: IGameState | null,
+    currentGame: IGameState,
     currentGameChat: {
         messages: IGameChatMessage[]
         totlaCount: number

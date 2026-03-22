@@ -27,10 +27,10 @@ function Games() {
     }, [gamesState.isGatewayConnected, dispatch])
 
     useEffect(() => {
-        if (gamesState.startGameFlag) {
+        if (gamesState.startingGameFlag) {
             navigate(`/game`)
         }
-    }, [gamesState.startGameFlag, navigate])
+    }, [gamesState.startingGameFlag, navigate])
 
     const currentGamePreview = gamesState.games.games.find(game =>
         game.id === gamesState.currentGame?.id &&

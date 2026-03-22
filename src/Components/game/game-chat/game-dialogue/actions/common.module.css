@@ -56,6 +56,11 @@
     background-color: #c43434;
 }
 
+.btn:disabled {
+    opacity: 0.64;
+    cursor: not-allowed;
+}
+
 .btn_red:active {
     background-color: #ad2f2f;
 }

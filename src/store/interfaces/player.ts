@@ -16,5 +16,5 @@ export interface IPlayer {
     isActive: boolean,
     turnNumber: number,
     balance: number,
-    actionCard: IActionCard
+    actionCard: IActionCard[]
 }

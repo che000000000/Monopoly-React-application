@@ -19,7 +19,13 @@ function PayTax(props: { field: IGameField, payment: IGamePayment }) {
                 Вы попали на поле "{field.name}" и должны заплатить налог, в размере M{payment.amount}.
             </div>
             <div className={styles.options}>
-                <button className={`${styles.btn} ${styles.btn_green}`} onClick={() => handlePayTax()}>Заплатить</button>
+                <button
+                    className={`${styles.btn} ${styles.btn_green}`}
+                    onClick={() => handlePayTax()}
+                    disabled={payment.amount > payment.payerPlayer.balance}
+                >
+                    Заплатить
+                </button>
                 <button className={`${styles.btn} ${styles.btn_red}`}>Сдаться</button>
             </div>
         </div>
