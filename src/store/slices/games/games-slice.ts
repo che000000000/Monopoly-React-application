@@ -40,12 +40,12 @@ const initialState: GamesStateT = {
             actionCard: null,
             gamePayments: [],
             expires: 0,
-            updatedAt: new Date()
+            updatedAt: ''
         },
         dices: [0, 0],
         houses: 0,
         hotels: 0,
-        createdAt: new Date()
+        createdAt: ''
     },
     currentGameChat: {
         messages: [],
@@ -74,7 +74,6 @@ const gamesSlice = createSlice({
             state.currentGameChat.totlaCount = action.payload.totalCount
         },
         pushGameChatMessage(state: GamesStateT, action: PayloadAction<IGameChatMessage>) {
-            console.log(action.payload)
             state.currentGameChat.messages.push(action.payload)
             state.currentGameChat.totlaCount++
         },

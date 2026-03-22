@@ -78,10 +78,10 @@ export const payTax = createAsyncThunk(
     }
 )
 
-export const acceptPayment = createAsyncThunk(
-    'games/accept-payment',
+export const payThePayment = createAsyncThunk(
+    'games/pay-the-payment',
     (paymentId: string) => {
-        gamesGatewayService?.acceptPayment(paymentId)
+        gamesGatewayService?.payThePayment(paymentId)
     }
 )
 

@@ -118,8 +118,8 @@ export class GamesGatewayService {
         this.socket?.emit('pay-tax')
     }
 
-    public acceptPayment(paymentId: string) {
-        this.socket?.emit('accept-payment', { paymentId })
+    public payThePayment(paymentId: string) {
+        this.socket?.emit('pay-the-payment', { paymentId })
     }
 
     public getGameChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {

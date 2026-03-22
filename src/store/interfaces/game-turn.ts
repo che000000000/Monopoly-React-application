@@ -13,7 +13,9 @@ export enum GameTurnStage {
     AT_JAIL = 'AT_JAIL',
     BUYOUT_FROM_JAIL = 'BUYOUT_FROM_JAIL',
     ACTION_CARD_SHOWTIME = 'ACTION_CARD_SHOWTIME',
-    ACTION_CARD_REQUIREMENTS = 'ACTION_CARD_REQUIREMENTS',
+    PAY_MONEY = 'PAY_MONEY',
+    PAY_PLAYERS = 'PAY_PLAYERS',
+    GET_PAYMENT_FROM_PLAYERS = 'GET_PAYMENT_FROM_PLAYERS',
     AYCTION = 'AUCTION',
     DEAL = 'DEAL'
 }
@@ -25,5 +27,5 @@ export interface IGameTurn {
     actionCard: IActionCard | null,
     gamePayments: IGamePayment[],
     expires: number,
-    updatedAt: Date
+    updatedAt: Date | string
 }
