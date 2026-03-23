@@ -1,0 +1,38 @@
+.railroad_icon {
+    width: 7.2vmin;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 1.3vmin;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    height: 4vmin;
+    margin-bottom: 0.6vmin;
+}
+
+.rent_list {
+    width: 94%;
+    margin-bottom: 0.6vmin;
+}
+
+.rent_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.3vmin;
+    line-height: 1.8vmin;
+}
+
+.rent_item:first-child {
+    text-transform: uppercase;
+}
+
+.pledge {
+    font-size: 1.12vmin;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.6vmin;
+}

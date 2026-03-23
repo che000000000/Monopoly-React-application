@@ -1,0 +1,54 @@
+.title_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 4vmin;
+    padding: 0.4vmin;
+    outline: 0.3vmin solid #000;
+    margin-bottom: 1.2vmin;
+}
+
+.title {
+    text-transform: uppercase;
+    font-size: 1.3vmin;
+    font-weight: 800;
+}
+
+.base_rent {
+    font-size: 1.05vmin;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5vmin;
+}
+
+.build_rents {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vmin;
+    width: 84%;
+    margin-bottom: 0.6vmin;
+}
+
+.build_rent {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3vmin;
+    font-weight: 600;
+}
+
+.pledge {
+    font-size: 1.4vmin;
+    font-weight: 700;
+    margin-bottom: 0.7vmin;
+}
+
+.build_prices {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2vmin;
+    font-weight: 600;
+    gap: 0.2vmin;
+    margin-bottom: 0.3vmin;
+    line-height: 1.4vmin;
+}

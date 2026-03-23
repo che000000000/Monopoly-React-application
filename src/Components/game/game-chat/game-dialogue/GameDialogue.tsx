@@ -63,7 +63,7 @@ function GameDialogue() {
                 if (field && payment) {
                     return (
                         <div className={styles.container}>
-                            <BuyGameField { ...{ field, payment }} />
+                            <BuyGameField field={field} payment={payment} />
                         </div>
                     )
                 } else {
@@ -79,7 +79,7 @@ function GameDialogue() {
                 if (field && payment) {
                     return (
                         <div className={styles.container}>
-                            <PayRent {...{ field, payment }}/>
+                            <PayRent field={field} payment={payment}/>
                         </div>
                     )
                 } else {
@@ -95,7 +95,7 @@ function GameDialogue() {
                 if (field && payment) {
                     return (
                         <div className={styles.container}>
-                            <PayTax {...{ field, payment }} />
+                            <PayTax field={field} payment={payment} />
                         </div>
                     )
                 } else {
@@ -110,7 +110,7 @@ function GameDialogue() {
                 if (payment) {
                     return (
                         <div className={styles.container}>
-                            <AtJail {...{ payment }} />
+                            <AtJail payment={payment} />
                         </div>
                     )
                 } else {
@@ -125,7 +125,7 @@ function GameDialogue() {
                 if (payment) {
                     return (
                         <div className={styles.container}>
-                            <BuyoutFromJail {...{ payment }} />
+                            <BuyoutFromJail payment={payment} />
                         </div>
                     )
                 } else {
@@ -136,10 +136,11 @@ function GameDialogue() {
         case GameTurnStage.PAY_MONEY: {
             if (myUserId === currentTurnUserId) {
                 const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.TO_BANK)
+
                 if (payment) {
                     return (
                         <div className={styles.container}>
-                            <PayMoney {...{ payment }} />
+                            <PayMoney payment={payment} />
                         </div>
                     )
                 } else return (
@@ -155,7 +156,7 @@ function GameDialogue() {
                 if (payment && receiversPlayers.length !== 0) {
                     return (
                         <div className={styles.container}>
-                            <PayPlayers {...{ payment, receiversPlayers }} />
+                            <PayPlayers payment={payment} receiversPlayers={receiversPlayers} />
                         </div>
                     )
                 } else return (
@@ -165,14 +166,17 @@ function GameDialogue() {
         }
         case GameTurnStage.ACTION_CARD_SHOWTIME: {
             const actionCard = currentGameState.turn.actionCard
+
             if (actionCard) {
                 return (
                     <div className={styles.container}>
-                        <ActionCard {...actionCard} />
+                        <ActionCard actionCard={actionCard} />
                     </div>
                 )
-            }
-            return displayError(`Не удалось отобразить активную карту.`)
+                
+            } else return (
+                displayError(`Не удалось отобразить активную карту.`)
+            ) 
         }
         default: return null
     }

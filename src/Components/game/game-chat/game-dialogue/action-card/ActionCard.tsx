@@ -1,8 +1,9 @@
 import { ActionCardDeckType, IActionCard } from '../../../../../store/interfaces/action-card';
 import styles from './action-card.module.css'
 
-function ActionCard(props: IActionCard) {
-    const deckType = props.deckType
+function ActionCard(props: { actionCard: IActionCard }) {
+    const { actionCard } = props
+    const deckType = actionCard.deckType
 
     return (
         <div className={
@@ -19,7 +20,7 @@ function ActionCard(props: IActionCard) {
                 </div>
                 <div className={styles.description}>
                     <div className={styles.text}>
-                        {props.description}
+                        {actionCard.description}
                     </div>
                 </div>
             </div>
