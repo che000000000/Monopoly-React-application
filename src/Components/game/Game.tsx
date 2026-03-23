@@ -1,18 +1,18 @@
+import styles from './game.module.css'
 import { useAppSelector } from '../../hoocks/useAppSelector';
+import { useAppDispatch } from '../../hoocks/useAppDispatch';
+import { useEffect } from 'react';
 import Angle from './game-fiields/angle/Angle';
 import GameHeader from './game-header/GameHeader';
 import GameChat from './game-chat/GameChat';
-import styles from './game.module.css'
 import GameBuilds from './game-builds/GameBuilds';
-import { useEffect } from 'react';
-import { useAppDispatch } from '../../hoocks/useAppDispatch';
-import { getGameChatMessagesPage } from '../../API/ws-thunks/games';
 import { GamesStateT } from '../../store/slices/games/types/games-state';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
+import FieldWithOutHeader from './game-fiields/field-witout-header/FieldWithoutHeader';
+import FieldWithHeader from './game-fiields/field-with-header/FieldWithHeader';
+import { getGameChatMessagesPage } from '../../API/ws-thunks/games';
 import { clearGameChatMessages } from '../../store/slices/games/games-slice';
 import { GameFieldSection } from './game-fiields/enums/game-field-orientation';
-import NoHeader from './game-fiields/no-header-game-fields/No-header';
-import WithHeader from './game-fiields/with-header-game-fields/Property';
 import { GameFieldType } from '../../store/interfaces/game-field';
 
 function Game() {
@@ -66,8 +66,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.top_section}`}>
 				{gameSectionFields.topSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <WithHeader key={field.id} section={GameFieldSection.TOP} gameField={field} />
-						: <NoHeader key={field.id} orientation={GameFieldSection.TOP} fieldData={field} />
+						? <FieldWithHeader key={field.id} section={GameFieldSection.TOP} field={field} />
+						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.TOP} field={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.goto_prison}`}>
@@ -76,8 +76,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.left_section}`}>
 				{gameSectionFields.leftSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <WithHeader key={field.id} section={GameFieldSection.LEFT} gameField={field} />
-						: <NoHeader key={field.id} orientation={GameFieldSection.LEFT} fieldData={field} />
+						? <FieldWithHeader key={field.id} section={GameFieldSection.LEFT} field={field} />
+						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.LEFT} field={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.chat_section}`}>
@@ -88,8 +88,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.right_section}`}>
 				{gameSectionFields.rightSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <WithHeader key={field.id} section={GameFieldSection.RIGHT} gameField={field} />
-						: <NoHeader key={field.id} orientation={GameFieldSection.RIGHT} fieldData={field} />
+						? <FieldWithHeader key={field.id} section={GameFieldSection.RIGHT} field={field} />
+						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.RIGHT} field={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.forward_joly}`}>
@@ -98,8 +98,8 @@ function Game() {
 			<div className={`${styles.section} ${styles.bottom_section}`}>
 				{gameSectionFields.bottomSection.map(field => (
 					field.type === GameFieldType.PROPERTY
-						? <WithHeader key={field.id} section={GameFieldSection.BOTTOM} gameField={field} />
-						: <NoHeader key={field.id} orientation={GameFieldSection.BOTTOM} fieldData={field} />
+						? <FieldWithHeader key={field.id} section={GameFieldSection.BOTTOM} field={field} />
+						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.BOTTOM} field={field} />
 				))}
 			</div>
 			<div className={`${styles.section} ${styles.start}`}>

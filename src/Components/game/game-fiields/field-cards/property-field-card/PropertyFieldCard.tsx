@@ -1,20 +1,20 @@
 import styles from './property-field-card.module.css'
 import general from '../general.module.css'
 import { IGameField } from '../../../../../store/interfaces/game-field';
+import OwnerBackground from '../../owner-backround/OwnerBackground';
 
 function PropertyFieldCard(props: { field: IGameField }) {
     const { field } = props
     const gameFieldColor = field.color ? field.color : '#fff'
     const fieldRents = field.rent ?? '???'
     const housePrice = field.housePrice
+    const pledgePrice = field.basePrice ? field.basePrice / 2 : '???'
 
     return (
         <div className={general.container}>
             <div className={general.content}>
                 <div className={styles.title_container} style={{ backgroundColor: gameFieldColor }}>
-                    <div className={styles.title}>
-                        {field.name}
-                    </div>
+                    <div className={styles.title}>{field.name}</div>
                 </div>
                 <div className={styles.base_rent}>
                     Арендная плата за участок: M{fieldRents[0]}
@@ -42,7 +42,7 @@ function PropertyFieldCard(props: { field: IGameField }) {
                     </li>
                 </ul>
                 <div className={styles.pledge}>
-                    Залоговая стоимость M???
+                    Залоговая стоимость M{pledgePrice}
                 </div>
                 <div className={styles.build_prices}>
                     <div className={styles.house_price}>
@@ -57,6 +57,9 @@ function PropertyFieldCard(props: { field: IGameField }) {
                     <button className={`${general.btn} ${general.btn_red}`}>Заложить</button>
                 </div>
             </div>
+            {field.owner?.chip && (
+                <OwnerBackground playerChip={field.owner.chip} />
+            )}
         </div>
     )
 }

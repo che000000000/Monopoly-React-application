@@ -1,0 +1,32 @@
+.icon {
+    width: 7.2vmin;
+    height: 7.2vmin;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 1.3vmin;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    height: 4vmin;
+}
+
+.text_list {
+    margin-bottom: 0.6vmin;
+}
+
+.text_item {
+    font-size: 1.2vmin;
+    text-align: center;
+    margin-bottom: 0.4vmin;
+    line-height: 1.4vmin;
+}
+
+.pledge {
+    font-size: 1.2vmin;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.4vmin;
+}
