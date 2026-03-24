@@ -43,7 +43,6 @@
 
 .btn:disabled {
     opacity: 0.64;
-    cursor: not-allowed;
 }
 
 .btn_red:active {

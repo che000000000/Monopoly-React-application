@@ -85,6 +85,13 @@ export const payThePayment = createAsyncThunk(
     }
 )
 
+export const buildOnTheField = createAsyncThunk(
+    'games/build-on-the-field',
+    (fieldId: string) => {
+        gamesGatewayService?.buildOnTheField(fieldId)
+    }
+)
+
 export const getGameChatMessagesPage = createAsyncThunk(
     'games/get-game-chat-messages-page',
     (payload: { pageNumber?: number | null, pageSize?: number | null }) => {

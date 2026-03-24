@@ -13,8 +13,8 @@ export interface IPlayer {
     id: string,
     user: IUser,
     chip: PlayerChip,
-    isActive: boolean,
+    isActive: boolean
     turnNumber: number,
     balance: number,
-    actionCard: IActionCard[]
+    actionCards: IActionCard[]
 }

@@ -34,7 +34,7 @@ const initialState: GamesStateT = {
                 isActive: false,
                 turnNumber: 0,
                 balance: 0,
-                actionCard: []
+                actionCards: [],
             },
             stage: GameTurnStage.MOVE,
             actionCard: null,
