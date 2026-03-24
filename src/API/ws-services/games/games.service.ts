@@ -122,6 +122,10 @@ export class GamesGatewayService {
         this.socket?.emit('pay-the-payment', { paymentId })
     }
 
+    public buildOnTheField(fieldId: string) {
+        this.socket?.emit('build-on-the-field', { fieldId })
+    }
+
     public getGameChatMessagesPage(pageNumber?: number | null, pageSize?: number | null) {
         this.socket?.emit('game-chat-messages-page', { pageNumber, pageSize })
     }

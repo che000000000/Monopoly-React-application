@@ -2,13 +2,39 @@ import styles from './property-field-card.module.css'
 import general from '../general.module.css'
 import { IGameField } from '../../../../../store/interfaces/game-field';
 import OwnerBackground from '../../owner-backround/OwnerBackground';
+import { AppDispatch } from '../../../../../store';
+import { useAppDispatch } from '../../../../../hoocks/useAppDispatch';
+import { buildOnTheField } from '../../../../../API/ws-thunks/games';
+import { GamesStateT } from '../../../../../store/slices/games/types/games-state';
+import { AuthStateT } from '../../../../../store/slices/auth/types/auth-state';
+import { useAppSelector } from '../../../../../hoocks/useAppSelector';
+import { GamePaymentType, IGamePayment } from '../../../../../store/interfaces/game-payment';
 
 function PropertyFieldCard(props: { field: IGameField }) {
+    const dispatch: AppDispatch = useAppDispatch()
+    const gamesState: GamesStateT = useAppSelector(state => state.games)
+    const authState: AuthStateT = useAppSelector(state => state.auth)
+
     const { field } = props
+
+    const myUserId = authState.user?.id
+    const myPlayer = gamesState.currentGame.players.find(p => p.user.id === myUserId)
+
+    let myBuildingPropertyPayments: IGamePayment[] = []
+    if (myPlayer) {
+        const buildingPropertyPayments = gamesState.currentGame.turn.gamePayments.filter(gp => gp.type === GamePaymentType.PROPERTY_BUILDING)
+        myBuildingPropertyPayments = buildingPropertyPayments.filter(gp => gp.payerPlayer.id === myPlayer.id)
+    }
+    const currentBuildingPayment = myBuildingPropertyPayments.find(gp => field.id === gp.buildingPropertyGameField?.id)
+
     const gameFieldColor = field.color ? field.color : '#fff'
     const fieldRents = field.rent ?? '???'
     const housePrice = field.housePrice
     const pledgePrice = field.basePrice ? field.basePrice / 2 : '???'
+
+    const handleBuild = () => {
+        dispatch(buildOnTheField(field.id))
+    }
 
     return (
         <div className={general.container}>
@@ -53,7 +79,13 @@ function PropertyFieldCard(props: { field: IGameField }) {
                     </div>
                 </div>
                 <div className={general.options}>
-                    <button className={`${general.btn} ${general.btn_green}`}>Построить</button>
+                    <button
+                        className={`${general.btn} ${general.btn_green}`}
+                        onClick={handleBuild}
+                        disabled={!currentBuildingPayment || !myPlayer || !housePrice || myPlayer.balance < housePrice}
+                    >
+                        Построить
+                    </button>
                     <button className={`${general.btn} ${general.btn_red}`}>Заложить</button>
                 </div>
             </div>
