@@ -1,7 +1,7 @@
 import styles from './utility-field-card.module.css';
 import general from '../general.module.css'
 import { IGameField } from '../../../../../store/interfaces/game-field';
-import { defineGameFieldIcon } from '../../field-witout-header/common/define-game-field-icon';
+import { defineGameFieldIcon } from '../../fields/action-card-tax/common/define-game-field-icon';
 import OwnerBackground from '../../owner-backround/OwnerBackground';
 
 function UtilityFieldCard(props: { field: IGameField }) {

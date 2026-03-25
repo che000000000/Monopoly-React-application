@@ -1,0 +1,14 @@
+.container {
+    flex-direction: row;
+}
+
+.content {
+    flex-direction: row-reverse;
+    padding: 0 1% 0 1%;
+    border-bottom: 0.3vmin solid #000000;
+    border-left: 0.3vmin solid #000000;
+}
+
+.field_card {
+    left: 14vmin;
+}

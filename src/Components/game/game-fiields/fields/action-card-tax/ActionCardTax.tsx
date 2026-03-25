@@ -1,18 +1,18 @@
-import styles from './styles/field-without-header.module.css';
-import top_section_field from './styles/top-section-field.module.css';
-import right_section_field from './styles/right-section-field.module.css';
-import left_section_field from './styles/left-section-field.module.css';
-import bottom_section_field from './styles/bottom-section-field.module.css';
-import { GameFieldType, IGameField } from '../../../../store/interfaces/game-field';
-import { GameFieldSection } from '../enums/game-field-orientation';
+import styles from './styles/action-card-tax.module.css';
+import top_section from './styles/top-section.module.css';
+import right_section from './styles/right-section.module.css';
+import left_section from './styles/left-section.module.css';
+import bottom_section from './styles/bottom-section.module.css';
+import { GameFieldType, IGameField } from '../../../../../store/interfaces/game-field';
+import { GameFieldSection } from '../../enums/game-field-orientation';
 import { useEffect, useRef, useState } from 'react';
 import { defineGameFieldIcon } from './common/define-game-field-icon';
-import Players, { GameFieldPlayerOrientation } from '../players/Players';
-import OwnerBackground from '../owner-backround/OwnerBackground';
+import Players, { GameFieldPlayerOrientation } from '../../players/Players';
+import OwnerBackground from '../../owner-backround/OwnerBackground';
 import CardByFieldType from './card-by-field-type/CardByFieldType';
 
-function FieldWithoutHeader(props: { orientation: GameFieldSection, field: IGameField }) {
-    const { orientation, field } = props
+function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) {
+    const { section, field } = props
 
     const [isFieldCardVisible, setIsFieldCardVisible] = useState(false)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -43,58 +43,58 @@ function FieldWithoutHeader(props: { orientation: GameFieldSection, field: IGame
         }
     }, [isFieldCardVisible])
 
-    switch (orientation) {
+    switch (section) {
         case GameFieldSection.TOP: return (
             <div
                 ref={containerRef}
                 className={field.type === GameFieldType.RAILROAD || field.type === GameFieldType.UTILITY
-                    ? `${styles.container} ${styles.container_cursor} ${top_section_field.container}`
-                    : `${styles.container} ${top_section_field.container}`
+                    ? `${styles.container} ${styles.container_cursor} ${top_section.container}`
+                    : `${styles.container} ${top_section.container}`
                 }
                 onClick={toggleCard}
             >
-                <div className={`${styles.content} ${top_section_field.content}`}>
+                <div className={`${styles.content} ${top_section.content}`}>
                     <img className={`${styles.game_field_icon}`} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
                     <div className={styles.game_field_name}>{field.name}</div>
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                     {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
                 </div>
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
-                        ? `${styles.field_card} ${top_section_field.field_card}`
-                        : `${styles.field_card} ${top_section_field.field_card} ${styles.field_card_hide}`}
+                        ? `${styles.field_card} ${top_section.field_card}`
+                        : `${styles.field_card} ${top_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
                     <CardByFieldType field={field} />
                 </div>
+                <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
             </div>
         )
         case GameFieldSection.RIGHT: return (
             <div
                 ref={containerRef}
                 className={field.type === GameFieldType.RAILROAD || field.type === GameFieldType.UTILITY
-                    ? `${styles.container} ${styles.container_cursor} ${right_section_field.container}`
-                    : `${styles.container} ${right_section_field.container}`
+                    ? `${styles.container} ${styles.container_cursor} ${right_section.container}`
+                    : `${styles.container} ${right_section.container}`
                 }
                 onClick={toggleCard}
             >
-                <div className={`${styles.content} ${right_section_field.content}`}>
+                <div className={`${styles.content} ${right_section.content}`}>
                     <span />
                     <div className={`${styles.game_field_name} ${styles.horizontal_field_name}`}>{field.name}</div>
                     <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
                     {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
                 </div>
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
-                        ? `${styles.field_card} ${right_section_field.field_card}`
-                        : `${styles.field_card} ${right_section_field.field_card} ${styles.field_card_hide}`}
+                        ? `${styles.field_card} ${right_section.field_card}`
+                        : `${styles.field_card} ${right_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
                     <CardByFieldType field={field} />
                 </div>
+                <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
             </div>
         )
         case GameFieldSection.BOTTOM: return (
@@ -102,26 +102,26 @@ function FieldWithoutHeader(props: { orientation: GameFieldSection, field: IGame
                 <div
                     ref={containerRef}
                     className={field.type === GameFieldType.RAILROAD || field.type === GameFieldType.UTILITY
-                        ? `${styles.container} ${styles.container_cursor} ${bottom_section_field.container}`
-                        : `${styles.container} ${bottom_section_field.container}`
+                        ? `${styles.container} ${styles.container_cursor} ${bottom_section.container}`
+                        : `${styles.container} ${bottom_section.container}`
                     }
                     onClick={toggleCard}
                 >
-                    <div className={`${styles.content} ${bottom_section_field.content}`}>
+                    <div className={`${styles.content} ${bottom_section.content}`}>
                         <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
                         <div className={`${styles.game_field_name} ${styles.horizontal_field_name}`}>{field.name}</div>
-                        <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                         {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
                     </div>
                     <div
                         ref={cardRef}
                         className={isFieldCardVisible
-                            ? `${styles.field_card} ${bottom_section_field.field_card}`
-                            : `${styles.field_card} ${bottom_section_field.field_card} ${styles.field_card_hide}`}
+                            ? `${styles.field_card} ${bottom_section.field_card}`
+                            : `${styles.field_card} ${bottom_section.field_card} ${styles.field_card_hide}`}
                         onClick={handleCardClick}
                     >
                         <CardByFieldType field={field} />
                     </div>
+                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                 </div>
             </div>
         )
@@ -129,12 +129,12 @@ function FieldWithoutHeader(props: { orientation: GameFieldSection, field: IGame
             <div
                 ref={containerRef}
                 className={field.type === GameFieldType.RAILROAD || field.type === GameFieldType.UTILITY
-                    ? `${styles.container} ${styles.container_cursor} ${left_section_field.container}`
-                    : `${styles.container} ${left_section_field.container}`
+                    ? `${styles.container} ${styles.container_cursor} ${left_section.container}`
+                    : `${styles.container} ${left_section.container}`
                 }
                 onClick={toggleCard}
             >
-                <div className={`${styles.content} ${left_section_field.content}`}>
+                <div className={`${styles.content} ${left_section.content}`}>
                     <span />
                     <div className={styles.game_field_name}>{field.name}</div>
                     <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
@@ -144,8 +144,8 @@ function FieldWithoutHeader(props: { orientation: GameFieldSection, field: IGame
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
-                        ? `${styles.field_card} ${left_section_field.field_card}`
-                        : `${styles.field_card} ${left_section_field.field_card} ${styles.field_card_hide}`}
+                        ? `${styles.field_card} ${left_section.field_card}`
+                        : `${styles.field_card} ${left_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
                     <CardByFieldType field={field} />
@@ -156,4 +156,4 @@ function FieldWithoutHeader(props: { orientation: GameFieldSection, field: IGame
     }
 }
 
-export default FieldWithoutHeader;
+export default ActionCardTax;

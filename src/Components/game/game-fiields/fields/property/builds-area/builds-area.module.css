@@ -1,0 +1,25 @@
+.builds_area_vertical {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.builds_area_horizontal {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.build_icon_horizontal {
+    aspect-ratio: 1 / 1;
+    height: 1.7vmin;
+    width: 25%;
+}
+
+.build_icon_vertical {
+    aspect-ratio: 1 / 1;
+    width: 1.7vmin;
+    height: 25%;
+}

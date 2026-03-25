@@ -6,6 +6,7 @@ import jail from '../../../../icons/field-icons/jail.svg'
 import { GameFieldType, IGameField } from '../../../../store/interfaces/game-field'
 import { definePlayerChipIcon } from '../../../../common/define-player-chip'
 
+
 function Angle(props: IGameField) {
     switch (props.type) {
         case GameFieldType.GO: return (

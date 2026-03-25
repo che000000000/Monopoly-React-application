@@ -15,6 +15,7 @@ import PayTax from './actions/pay-tax/PayTax';
 import BuyoutFromJail from './actions/buyout-from-jail/BuyoutFromJail';
 import PayMoney from './actions/payments/pay-money/PayMoney';
 import PayPlayers from './actions/payments/pay-players/PayPlayers';
+import PayPlayer from './actions/payments/pay-player/PayPlayer';
 
 function GameDialogue() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
@@ -162,6 +163,19 @@ function GameDialogue() {
                 } else return (
                     displayError(`Не удалось обработать платеж. Платёж не найден или не найдены получатели.`)
                 )
+            } return null
+        }
+        case GameTurnStage.GET_PAYMENT_FROM_PLAYERS: {
+            if (myUserId !== currentTurnUserId) {
+                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.ONE_OF_TO_PLAYER)
+
+                if (payment) {
+                    return (
+                        <div className={styles.container}>
+                            <PayPlayer payment={payment} />
+                        </div>
+                    )
+                }
             } return null
         }
         case GameTurnStage.ACTION_CARD_SHOWTIME: {

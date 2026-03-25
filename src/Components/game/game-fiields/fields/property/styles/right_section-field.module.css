@@ -13,8 +13,9 @@
 }
 
 .header {
+    display: flex;
     height: 100%;
-    width: 2vmin;
+    width: 2.3vmin;
     border-left: 0.3vmin solid #000000;
 }
 

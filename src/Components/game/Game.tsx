@@ -2,18 +2,19 @@ import styles from './game.module.css'
 import { useAppSelector } from '../../hoocks/useAppSelector';
 import { useAppDispatch } from '../../hoocks/useAppDispatch';
 import { useEffect } from 'react';
-import Angle from './game-fiields/angle/Angle';
 import GameHeader from './game-header/GameHeader';
 import GameChat from './game-chat/GameChat';
 import GameBuilds from './game-builds/GameBuilds';
 import { GamesStateT } from '../../store/slices/games/types/games-state';
 import NoAuthRedirect from '../../hoc/NoAuthRedirect';
-import FieldWithOutHeader from './game-fiields/field-witout-header/FieldWithoutHeader';
-import FieldWithHeader from './game-fiields/field-with-header/FieldWithHeader';
+import ActionCard from './game-fiields/fields/action-card-tax/ActionCardTax';
+import PropertyField from './game-fiields/fields/property/Property';
 import { getGameChatMessagesPage } from '../../API/ws-thunks/games';
 import { clearGameChatMessages } from '../../store/slices/games/games-slice';
 import { GameFieldSection } from './game-fiields/enums/game-field-orientation';
 import { GameFieldType } from '../../store/interfaces/game-field';
+import RailroadUtility from './game-fiields/fields/railroad-utility/RailroadUtility';
+import Angle from './game-fiields/angle/Angle';
 
 function Game() {
 	const gamesState: GamesStateT = useAppSelector(state => state.games)
@@ -64,21 +65,49 @@ function Game() {
 				{gameSectionFields.freeParking ? <Angle {...gameSectionFields.freeParking} /> : null}
 			</div>
 			<div className={`${styles.section} ${styles.top_section}`}>
-				{gameSectionFields.topSection.map(field => (
-					field.type === GameFieldType.PROPERTY
-						? <FieldWithHeader key={field.id} section={GameFieldSection.TOP} field={field} />
-						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.TOP} field={field} />
-				))}
+				{gameSectionFields.topSection.map(field => 
+					{
+						switch(field.type) {
+							case GameFieldType.PROPERTY: return (
+								<PropertyField key={field.id} section={GameFieldSection.TOP} field={field} />
+							)
+							case GameFieldType.CHANCE:
+							case GameFieldType.COMMUNITY_CHEST:
+							case GameFieldType.TAX: return (
+								<ActionCard field={field} section={GameFieldSection.TOP} key={field.id} />
+							)
+							case GameFieldType.RAILROAD:
+							case GameFieldType.UTILITY: return (
+								<RailroadUtility field={field} section={GameFieldSection.TOP} key={field.id} />
+							)
+							default: return null
+						}
+					}
+				)}
 			</div>
 			<div className={`${styles.section} ${styles.goto_prison}`}>
 				{gameSectionFields.goToJail ? <Angle {...gameSectionFields.goToJail} /> : null}
 			</div>
 			<div className={`${styles.section} ${styles.left_section}`}>
-				{gameSectionFields.leftSection.map(field => (
-					field.type === GameFieldType.PROPERTY
-						? <FieldWithHeader key={field.id} section={GameFieldSection.LEFT} field={field} />
-						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.LEFT} field={field} />
-				))}
+				{gameSectionFields.leftSection.map(field => 
+					{
+						switch(field.type) {
+							case GameFieldType.PROPERTY: return (
+								<PropertyField key={field.id} section={GameFieldSection.LEFT} field={field} />
+							)
+							case GameFieldType.CHANCE:
+							case GameFieldType.COMMUNITY_CHEST:
+							case GameFieldType.TAX: return (
+								<ActionCard field={field} section={GameFieldSection.LEFT} key={field.id} />
+							)
+							case GameFieldType.RAILROAD:
+							case GameFieldType.UTILITY: return (
+								<RailroadUtility field={field} section={GameFieldSection.LEFT} key={field.id} />
+							)
+							default: return null
+						}
+					}
+				)}
 			</div>
 			<div className={`${styles.section} ${styles.chat_section}`}>
 				<GameHeader players={gamesState.currentGame.players} />
@@ -86,21 +115,49 @@ function Game() {
 				<GameChat chatMessages={gamesState.currentGameChat.messages} />
 			</div>
 			<div className={`${styles.section} ${styles.right_section}`}>
-				{gameSectionFields.rightSection.map(field => (
-					field.type === GameFieldType.PROPERTY
-						? <FieldWithHeader key={field.id} section={GameFieldSection.RIGHT} field={field} />
-						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.RIGHT} field={field} />
-				))}
+				{gameSectionFields.rightSection.map(field => 
+					{
+						switch(field.type) {
+							case GameFieldType.PROPERTY: return (
+								<PropertyField key={field.id} section={GameFieldSection.RIGHT} field={field} />
+							)
+							case GameFieldType.CHANCE:
+							case GameFieldType.COMMUNITY_CHEST:
+							case GameFieldType.TAX: return (
+								<ActionCard field={field} section={GameFieldSection.RIGHT} key={field.id} />
+							)
+							case GameFieldType.RAILROAD:
+							case GameFieldType.UTILITY: return (
+								<RailroadUtility field={field} section={GameFieldSection.RIGHT} key={field.id} />
+							)
+							default: return null
+						}
+					}
+				)}
 			</div>
 			<div className={`${styles.section} ${styles.forward_joly}`}>
 				{gameSectionFields.justVisiting ? <Angle {...gameSectionFields.justVisiting} /> : null}
 			</div>
 			<div className={`${styles.section} ${styles.bottom_section}`}>
-				{gameSectionFields.bottomSection.map(field => (
-					field.type === GameFieldType.PROPERTY
-						? <FieldWithHeader key={field.id} section={GameFieldSection.BOTTOM} field={field} />
-						: <FieldWithOutHeader key={field.id} orientation={GameFieldSection.BOTTOM} field={field} />
-				))}
+				{gameSectionFields.bottomSection.map(field => 
+					{
+						switch(field.type) {
+							case GameFieldType.PROPERTY: return (
+								<PropertyField key={field.id} section={GameFieldSection.BOTTOM} field={field} />
+							)
+							case GameFieldType.CHANCE:
+							case GameFieldType.COMMUNITY_CHEST:
+							case GameFieldType.TAX: return (
+								<ActionCard field={field} section={GameFieldSection.BOTTOM} key={field.id} />
+							)
+							case GameFieldType.RAILROAD:
+							case GameFieldType.UTILITY: return (
+								<RailroadUtility field={field} section={GameFieldSection.BOTTOM} key={field.id} />
+							)
+							default: return null
+						}
+					}
+				)}
 			</div>
 			<div className={`${styles.section} ${styles.start}`}>
 				{gameSectionFields.go ? <Angle {...gameSectionFields.go} /> : null}

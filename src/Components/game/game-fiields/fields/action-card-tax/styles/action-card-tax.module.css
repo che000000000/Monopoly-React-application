@@ -24,8 +24,8 @@
 }
 
 .game_field_icon {
-    width: 4.7vmin;
-    height: 4.7vmin;
+    width: 4.2vmin;
+    height: 4.2vmin;
     z-index: 1;
 }
 
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     text-transform: uppercase;
-    font-size: 0.85vmin;
+    font-size: 0.89vmin;
     font-weight: 700;
     z-index: 1;
 }
