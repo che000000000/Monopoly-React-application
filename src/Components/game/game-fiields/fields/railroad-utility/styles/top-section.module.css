@@ -1,0 +1,14 @@
+.container {
+    flex-direction: column;
+}
+
+.content {
+    flex-direction: column;
+    padding: 29% 0 19%;
+    border-right: 0.3vmin solid #000000;
+    border-top: 0.3vmin solid #000000;
+}
+
+.field_card {
+    top: 14vmin;
+}

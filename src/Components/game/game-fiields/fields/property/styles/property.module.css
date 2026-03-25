@@ -22,11 +22,17 @@
 
 .field_name {
     z-index: 1;
-    width: 7vmin;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9vmin;
 }
 
 .field_price {
-    font-size: 0.96vmin;
+    font-size: 1vmin;
+}
+
+.players_on_field {
+    position: absolute;
 }
 
 .field_card {

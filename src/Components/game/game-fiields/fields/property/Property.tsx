@@ -1,17 +1,17 @@
-import styles from './styles/field-with-header.module.css';
+import styles from './styles/property.module.css';
 import top_section_field from './styles/top-section-field.module.css';
 import right_section_field from './styles/right_section-field.module.css';
 import left_section_field from './styles/left_section_field.module.css';
 import bottom_section_field from './styles/bottom-section-field.module.css';
-import { GameFieldSection } from '../enums/game-field-orientation'
-import { IGameField } from '../../../../store/interfaces/game-field';
+import { GameFieldSection } from '../../enums/game-field-orientation'
+import { IGameField } from '../../../../../store/interfaces/game-field';
 import { useEffect, useRef, useState } from 'react';
-import PropertyFieldCard from '../field-cards/property-field-card/PropertyFieldCard';
-import BuildsArea, { BuildAreaOrientation } from '../builds-area/BuildsArea';
-import Players, { GameFieldPlayerOrientation } from '../players/Players';
-import OwnerBackground from '../owner-backround/OwnerBackground';
+import PropertyFieldCard from '../../field-cards/property-field-card/PropertyFieldCard';
+import BuildsArea, { BuildAreaOrientation } from './builds-area/BuildsArea';
+import Players, { GameFieldPlayerOrientation } from '../../players/Players';
+import OwnerBackground from '../../owner-backround/OwnerBackground';
 
-function FieldWithHeader(props: { section: GameFieldSection, field: IGameField }) {
+function Property(props: { section: GameFieldSection, field: IGameField }) {
     const { section, field } = props
 
     const gameFieldColor = field.color ? field.color : '#fff'
@@ -51,17 +51,18 @@ function FieldWithHeader(props: { section: GameFieldSection, field: IGameField }
                 className={`${styles.container} ${top_section_field.container}`}
                 onClick={toggleCard}
             >
-                <div className={top_section_field.header} style={{ backgroundColor: gameFieldColor }}></div>
+                <div className={top_section_field.header} style={{ backgroundColor: gameFieldColor }}>
+                    <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.HORIZONTAL} />
+                </div>
                 <div className={`${styles.content} ${top_section_field.content}`}>
                     <span />
                     <div className={styles.field_name}>{field.name}</div>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
+                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
-                <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.VERTICAL} />
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
@@ -83,13 +84,14 @@ function FieldWithHeader(props: { section: GameFieldSection, field: IGameField }
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
                     <div className={styles.field_name}>{field.name}</div>
                     <span />
+                    <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
                 </div>
-                <div className={right_section_field.header} style={{ backgroundColor: gameFieldColor }}></div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
-                <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.HORIZONTAL} />
+                <div className={right_section_field.header} style={{ backgroundColor: gameFieldColor }}>
+                    <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.VERTICAL} />
+                </div>
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
@@ -111,13 +113,14 @@ function FieldWithHeader(props: { section: GameFieldSection, field: IGameField }
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
                     <div className={styles.field_name}>{field.name}</div>
                     <span />
+                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
                 </div>
-                <div className={bottom_section_field.header} style={{ backgroundColor: gameFieldColor }}></div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
-                <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.VERTICAL} />
+                <div className={bottom_section_field.header} style={{ backgroundColor: gameFieldColor }}>
+                    <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.HORIZONTAL} />
+                </div>
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
@@ -135,17 +138,18 @@ function FieldWithHeader(props: { section: GameFieldSection, field: IGameField }
                 className={`${styles.container} ${left_section_field.container}`}
                 onClick={toggleCard}
             >
-                <div className={left_section_field.header} style={{ backgroundColor: gameFieldColor }}></div>
+                <div className={left_section_field.header} style={{ backgroundColor: gameFieldColor }}>
+                    <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.VERTICAL} />
+                </div>
                 <div className={`${styles.content} ${left_section_field.content}`}>
                     <span />
                     <div className={styles.field_name}>{field.name}</div>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
+                    <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
-                <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.HORIZONTAL} />
                 <div
                     ref={cardRef}
                     className={isFieldCardVisible
@@ -161,4 +165,4 @@ function FieldWithHeader(props: { section: GameFieldSection, field: IGameField }
     }
 }
 
-export default FieldWithHeader;
+export default Property;
