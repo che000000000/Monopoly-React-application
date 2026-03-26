@@ -6,7 +6,6 @@ import left_section from './styles/left-section.module.css';
 import { IGameField } from '../../../../../store/interfaces/game-field';
 import { GameFieldSection } from '../../enums/game-field-orientation';
 import { useEffect, useRef, useState } from 'react';
-import Players, { GameFieldPlayerOrientation } from '../../players/Players';
 import OwnerBackground from '../../owner-backround/OwnerBackground';
 import { defineGameFieldIcon } from '../action-card-tax/common/define-game-field-icon';
 import CardByFieldType from '../action-card-tax/card-by-field-type/CardByFieldType';
@@ -64,7 +63,6 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                 >
                     <CardByFieldType field={field} />
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
             </div>
         )
         case GameFieldSection.RIGHT: return (
@@ -88,7 +86,6 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                 >
                     <CardByFieldType field={field} />
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
             </div>
         )
         case GameFieldSection.BOTTOM: return (
@@ -113,7 +110,6 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                         <CardByFieldType field={field} />
                     </div>
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
             </div>
         )
         case GameFieldSection.LEFT: return (
@@ -137,7 +133,6 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                 >
                     <CardByFieldType field={field} />
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
             </div>
         )
         default: return null

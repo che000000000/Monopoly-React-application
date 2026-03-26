@@ -3,7 +3,7 @@ import { IGamePayment } from "./game-payment"
 import { IPlayer } from "./player"
 
 export enum GameTurnStage {
-    MOVE = 'MOVE',
+    WAITING_FOR_MOVE = 'WAITING_FOR_MOVE',
     ROLL_OF_DICE_FOR_MOVE = 'ROLL_OF_DICE_FOR_MOVE',
     ROLL_OF_DICE_FOR_GET_OUT_OF_JAIL = 'ROLL_OF_DICE_FOR_GET_OUT_OF_JAIL',
     BUY_GAME_FIELD = 'BUY_GAME_FIELD',

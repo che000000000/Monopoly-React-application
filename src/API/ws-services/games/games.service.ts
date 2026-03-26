@@ -4,7 +4,6 @@ import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePrevie
 import { IGameField } from "../../../store/interfaces/game-field"
 import { IPlayer } from "../../../store/interfaces/player"
 import { IGameTurn } from "../../../store/interfaces/game-turn"
-import { MakeMoveMessage } from "./interfaces/make-move"
 import { GamePrewiewsPageMessage } from "./interfaces/game-previews-page"
 import { IGameChatMessage } from "../../../store/interfaces/game-chat-message"
 import { GameChatMessagesPageMessage } from "./interfaces/game-chat-messages-page"
@@ -60,10 +59,6 @@ export class GamesGatewayService {
         })
         this.socket?.on('throw-dices', (message: ThrowDicesMessage) => {
             this.dispatch(setDices(message.dices))
-        })
-        this.socket?.on('make-move', (message: MakeMoveMessage) => {
-            message.gameFields.map(gf => this.dispatch(updateGameField(gf)))
-            this.dispatch(updatePlayer(message.player))
         })
         this.socket?.on('set-game-turn', (message: IGameTurn) => {
             this.dispatch(setGameTurn(message))

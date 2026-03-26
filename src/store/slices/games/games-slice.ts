@@ -36,7 +36,7 @@ const initialState: GamesStateT = {
                 balance: 0,
                 actionCards: [],
             },
-            stage: GameTurnStage.MOVE,
+            stage: GameTurnStage.WAITING_FOR_MOVE,
             actionCard: null,
             gamePayments: [],
             expires: 0,

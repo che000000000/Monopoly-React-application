@@ -47,7 +47,7 @@ function GameDialogue() {
     }
 
     switch (turnStage) {
-        case GameTurnStage.MOVE: {
+        case GameTurnStage.WAITING_FOR_MOVE: {
             if (myUserId === currentTurnUserId) {
                 return (
                     <div className={styles.container}>
@@ -188,9 +188,7 @@ function GameDialogue() {
                     </div>
                 )
                 
-            } else return (
-                displayError(`Не удалось отобразить активную карту.`)
-            ) 
+            } else return null
         }
         default: return null
     }

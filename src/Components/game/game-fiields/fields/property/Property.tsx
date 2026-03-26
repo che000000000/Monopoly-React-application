@@ -8,7 +8,6 @@ import { IGameField } from '../../../../../store/interfaces/game-field';
 import { useEffect, useRef, useState } from 'react';
 import PropertyFieldCard from '../../field-cards/property-field-card/PropertyFieldCard';
 import BuildsArea, { BuildAreaOrientation } from './builds-area/BuildsArea';
-import Players, { GameFieldPlayerOrientation } from '../../players/Players';
 import OwnerBackground from '../../owner-backround/OwnerBackground';
 
 function Property(props: { section: GameFieldSection, field: IGameField }) {
@@ -58,7 +57,6 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                     <span />
                     <div className={styles.field_name}>{field.name}</div>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
@@ -84,7 +82,6 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
                     <div className={styles.field_name}>{field.name}</div>
                     <span />
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
@@ -113,7 +110,6 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
                     <div className={styles.field_name}>{field.name}</div>
                     <span />
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
@@ -133,6 +129,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
             </div>
         )
         case GameFieldSection.LEFT: return (
+            
             <div
                 ref={containerRef}
                 className={`${styles.container} ${left_section_field.container}`}
@@ -145,7 +142,6 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                     <span />
                     <div className={styles.field_name}>{field.name}</div>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
                     {field.owner?.chip && (
                         <OwnerBackground playerChip={field.owner.chip} />
                     )}
