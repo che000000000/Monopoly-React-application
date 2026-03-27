@@ -1,10 +1,9 @@
 import { io, Socket } from "socket.io-client"
 import { AppDispatch } from "../../../store"
-import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePreviewsPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setIsCurrentGameActive, updateGameField, updatePlayer, setStartingGameFlag } from "../../../store/slices/games/games-slice"
+import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePreviewsPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setIsCurrentGameActive, updatePlayer, setStartingGameFlag, updateGameFieldsBatch } from "../../../store/slices/games/games-slice"
 import { IGameField } from "../../../store/interfaces/game-field"
 import { IPlayer } from "../../../store/interfaces/player"
 import { IGameTurn } from "../../../store/interfaces/game-turn"
-import { MakeMoveMessage } from "./interfaces/make-move"
 import { GamePrewiewsPageMessage } from "./interfaces/game-previews-page"
 import { IGameChatMessage } from "../../../store/interfaces/game-chat-message"
 import { GameChatMessagesPageMessage } from "./interfaces/game-chat-messages-page"
@@ -61,10 +60,6 @@ export class GamesGatewayService {
         this.socket?.on('throw-dices', (message: ThrowDicesMessage) => {
             this.dispatch(setDices(message.dices))
         })
-        this.socket?.on('make-move', (message: MakeMoveMessage) => {
-            message.gameFields.map(gf => this.dispatch(updateGameField(gf)))
-            this.dispatch(updatePlayer(message.player))
-        })
         this.socket?.on('set-game-turn', (message: IGameTurn) => {
             this.dispatch(setGameTurn(message))
         })
@@ -72,7 +67,7 @@ export class GamesGatewayService {
             message.map(p => this.dispatch(updatePlayer(p)))
         })
         this.socket?.on('update-game-fields', (message: IGameField[]) => {
-            message.map(gf => this.dispatch(updateGameField(gf)))
+            this.dispatch(updateGameFieldsBatch(message))
         })
         this.socket?.on('game-chat-messages-page', (message: GameChatMessagesPageMessage) => {
             this.dispatch(pushGameChatMessagesPage(message))

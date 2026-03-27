@@ -7,7 +7,6 @@ import { GameFieldType, IGameField } from '../../../../../store/interfaces/game-
 import { GameFieldSection } from '../../enums/game-field-orientation';
 import { useEffect, useRef, useState } from 'react';
 import { defineGameFieldIcon } from './common/define-game-field-icon';
-import Players, { GameFieldPlayerOrientation } from '../../players/Players';
 import OwnerBackground from '../../owner-backround/OwnerBackground';
 import CardByFieldType from './card-by-field-type/CardByFieldType';
 
@@ -67,7 +66,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                 >
                     <CardByFieldType field={field} />
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
             </div>
         )
         case GameFieldSection.RIGHT: return (
@@ -94,7 +92,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                 >
                     <CardByFieldType field={field} />
                 </div>
-                <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
             </div>
         )
         case GameFieldSection.BOTTOM: return (
@@ -121,7 +118,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                     >
                         <CardByFieldType field={field} />
                     </div>
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.VERTICAL} />
                 </div>
             </div>
         )
@@ -138,7 +134,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                     <span />
                     <div className={styles.game_field_name}>{field.name}</div>
                     <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
-                    <Players players={field.players} orientation={GameFieldPlayerOrientation.HORIZONTAL} />
                     {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
                 </div>
                 <div

@@ -14,7 +14,8 @@ import { clearGameChatMessages } from '../../store/slices/games/games-slice';
 import { GameFieldSection } from './game-fiields/enums/game-field-orientation';
 import { GameFieldType } from '../../store/interfaces/game-field';
 import RailroadUtility from './game-fiields/fields/railroad-utility/RailroadUtility';
-import Angle from './game-fiields/angle/Angle';
+import RotationsArea from './rotations-area/RotationsArea';
+import Angle from './game-fiields/fields/angle/Angle';
 
 function Game() {
 	const gamesState: GamesStateT = useAppSelector(state => state.games)
@@ -61,6 +62,7 @@ function Game() {
 
 	return (
 		<div className={styles.container}>
+			<RotationsArea/>
 			<div className={`${styles.section} ${styles.stop}`}>
 				{gameSectionFields.freeParking ? <Angle {...gameSectionFields.freeParking} /> : null}
 			</div>
