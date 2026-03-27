@@ -3,7 +3,7 @@ import { GamesStateT } from "./types/games-state";
 import { IGameChatMessage } from "../../interfaces/game-chat-message";
 import { IGameState } from "../../interfaces/game-state";
 import { IGameField } from "../../interfaces/game-field";
-import { GameTurnStage, IGameTurn } from "../../interfaces/game-turn";
+import { GameTurnStage, IGameTurn, MovementType } from "../../interfaces/game-turn";
 import { IGamePreview } from "../../interfaces/game-preview";
 import { IPlayer, PlayerChip } from "../../interfaces/player";
 import { UserRole } from "../../interfaces/user";
@@ -37,6 +37,7 @@ const initialState: GamesStateT = {
                 actionCards: [],
             },
             stage: GameTurnStage.WAITING_FOR_MOVE,
+            movementType: MovementType.DIRECT,
             actionCard: null,
             gamePayments: [],
             expires: 0,
@@ -105,6 +106,21 @@ const gamesSlice = createSlice({
                 state.currentGame.fields[index] = action.payload;
             }
         },
+        updateGameFieldsBatch(state, action: PayloadAction<IGameField[]>) {
+            if (!state.currentGame) return;
+
+            const fieldsToUpdate = action.payload;
+
+            fieldsToUpdate.forEach(updatedField => {
+                const index = state.currentGame!.fields.findIndex(
+                    (gameField: IGameField) => gameField.id === updatedField.id
+                );
+
+                if (index !== -1) {
+                    state.currentGame!.fields[index] = updatedField;
+                }
+            });
+        },
         setGameTurn(state: GamesStateT, action: PayloadAction<IGameTurn>) {
             if (!state.currentGame) return
 
@@ -122,7 +138,7 @@ const gamesSlice = createSlice({
             if (index === -1) return
 
             state.currentGame.players[index] = action.payload
-        }
+        },
     }
 })
 
@@ -130,6 +146,6 @@ export const {
     setIsGatewayConnected, setIsCurrentGameActive, setStartingGameFlag, setCurrentGame,
     pushGameChatMessagesPage, pushGameChatMessage, clearGameChatMessages,
     pushGamePreviewsPage, pushGame, clearGames, updateGameField, setGameTurn,
-    setDices, updatePlayer } = gamesSlice.actions;
+    setDices, updatePlayer, updateGameFieldsBatch } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

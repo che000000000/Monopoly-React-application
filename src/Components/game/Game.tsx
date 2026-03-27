@@ -62,7 +62,7 @@ function Game() {
 
 	return (
 		<div className={styles.container}>
-			<RotationsArea />
+			<RotationsArea/>
 			<div className={`${styles.section} ${styles.stop}`}>
 				{gameSectionFields.freeParking ? <Angle {...gameSectionFields.freeParking} /> : null}
 			</div>

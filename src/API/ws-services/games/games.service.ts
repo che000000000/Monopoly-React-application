@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client"
 import { AppDispatch } from "../../../store"
-import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePreviewsPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setIsCurrentGameActive, updateGameField, updatePlayer, setStartingGameFlag } from "../../../store/slices/games/games-slice"
+import { pushGame, pushGameChatMessage, pushGameChatMessagesPage, pushGamePreviewsPage, setCurrentGame, setDices, setGameTurn, setIsGatewayConnected, setIsCurrentGameActive, updatePlayer, setStartingGameFlag, updateGameFieldsBatch } from "../../../store/slices/games/games-slice"
 import { IGameField } from "../../../store/interfaces/game-field"
 import { IPlayer } from "../../../store/interfaces/player"
 import { IGameTurn } from "../../../store/interfaces/game-turn"
@@ -67,7 +67,7 @@ export class GamesGatewayService {
             message.map(p => this.dispatch(updatePlayer(p)))
         })
         this.socket?.on('update-game-fields', (message: IGameField[]) => {
-            message.map(gf => this.dispatch(updateGameField(gf)))
+            this.dispatch(updateGameFieldsBatch(message))
         })
         this.socket?.on('game-chat-messages-page', (message: GameChatMessagesPageMessage) => {
             this.dispatch(pushGameChatMessagesPage(message))
