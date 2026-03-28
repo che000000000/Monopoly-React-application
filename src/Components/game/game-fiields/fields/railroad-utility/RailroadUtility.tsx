@@ -17,7 +17,7 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
     const containerRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
 
-    const toggleCard = () => {
+    const toggleCardVision = () => {
         setIsFieldCardVisible(!isFieldCardVisible)
     }
 
@@ -47,12 +47,12 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
             <div
                 ref={containerRef}
                 className={`${styles.container} ${top_section.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={`${styles.content} ${top_section.content}`}>
                     <img className={`${styles.game_field_icon}`} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
                     <div className={styles.game_field_name}>{field.name}</div>
-                    {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div
                     ref={cardRef}
@@ -61,7 +61,7 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                         : `${styles.field_card} ${top_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <CardByFieldType field={field} />
+                    <CardByFieldType field={field} toggleCardVision={toggleCardVision}/>
                 </div>
             </div>
         )
@@ -69,13 +69,13 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
             <div
                 ref={containerRef}
                 className={`${styles.container} ${right_section.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={`${styles.content} ${right_section.content}`}>
                     <span />
                     <div className={`${styles.game_field_name} ${styles.horizontal_field_name}`}>{field.name}</div>
                     <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
-                    {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div
                     ref={cardRef}
@@ -84,7 +84,7 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                         : `${styles.field_card} ${right_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <CardByFieldType field={field} />
+                    <CardByFieldType field={field} toggleCardVision={toggleCardVision} />
                 </div>
             </div>
         )
@@ -93,12 +93,12 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                 <div
                     ref={containerRef}
                     className={`${styles.container} ${bottom_section.container}`}
-                    onClick={toggleCard}
+                    onClick={toggleCardVision}
                 >
                     <div className={`${styles.content} ${bottom_section.content}`}>
                         <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
                         <div className={`${styles.game_field_name} ${styles.horizontal_field_name}`}>{field.name}</div>
-                        {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                     </div>
                     <div
                         ref={cardRef}
@@ -107,7 +107,7 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                             : `${styles.field_card} ${bottom_section.field_card} ${styles.field_card_hide}`}
                         onClick={handleCardClick}
                     >
-                        <CardByFieldType field={field} />
+                        <CardByFieldType field={field} toggleCardVision={toggleCardVision}/>
                     </div>
                 </div>
             </div>
@@ -116,13 +116,13 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
             <div
                 ref={containerRef}
                 className={`${styles.container} ${left_section.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={`${styles.content} ${left_section.content}`}>
                     <span />
                     <div className={styles.game_field_name}>{field.name}</div>
                     <img className={styles.game_field_icon} alt={field.name} src={defineGameFieldIcon(field.type, field.name)}></img>
-                    {field.owner?.chip && <OwnerBackground playerChip={field.owner.chip} />}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div
                     ref={cardRef}
@@ -131,7 +131,7 @@ function RailroadUtility(props: { field: IGameField, section: GameFieldSection }
                         : `${styles.field_card} ${left_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <CardByFieldType field={field} />
+                    <CardByFieldType field={field} toggleCardVision={toggleCardVision}/>
                 </div>
             </div>
         )

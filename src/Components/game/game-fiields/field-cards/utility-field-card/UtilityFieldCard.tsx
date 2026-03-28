@@ -27,9 +27,7 @@ function UtilityFieldCard(props: { field: IGameField }) {
                     <button className={`${general.btn} ${general.btn_red}`}>Заложить</button>
                 </div>
             </div>
-            {field.owner?.chip && (
-                <OwnerBackground playerChip={field.owner.chip} />
-            )}
+            <OwnerBackground playerChip={field.owner?.chip} />
         </div>
     )
 }

@@ -1,4 +1,3 @@
-// components/game/rotations-area/RotationsArea.tsx
 import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import { IPlayer } from '../../../store/interfaces/player';
 import { definePlayerChipIcon } from '../../../common/define-player-chip';
