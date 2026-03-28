@@ -2,20 +2,19 @@ import styles from './game-dialogue.module.css'
 import { useAppSelector } from '../../../../hoocks/useAppSelector';
 import { GamesStateT } from '../../../../store/slices/games/types/games-state';
 import { AuthStateT } from '../../../../store/slices/auth/types/auth-state';
-import { GameTurnStage } from '../../../../store/interfaces/game-turn';
-import { IPlayer } from '../../../../store/interfaces/player';
 import { IGameField } from '../../../../store/interfaces/game-field';
 import { GamePaymentType, IGamePayment } from '../../../../store/interfaces/game-payment';
 import Move from './actions/move/Move';
 import BuyGameField from './actions/buy-game-field/BuyGameField';
 import PayRent from './actions/pay-rent/PayRent';
-import ActionCard from './action-card/ActionCard';
-import AtJail from './actions/at-jail/AtJail';
 import PayTax from './actions/pay-tax/PayTax';
+import AtJail from './actions/at-jail/AtJail';
 import BuyoutFromJail from './actions/buyout-from-jail/BuyoutFromJail';
-import PayMoney from './actions/payments/pay-money/PayMoney';
-import PayPlayers from './actions/payments/pay-players/PayPlayers';
-import PayPlayer from './actions/payments/pay-player/PayPlayer';
+import ActionCardShowtime from './action-card-showtime/ActionCardShowtime';
+import ToBankPayment from './actions/to-bank-payment/ToBankPayment';
+import GetPaymentFromPlayers from './actions/get-payment-from-players/GetPaymentFromPlayers';
+import { IPlayer } from '../../../../store/interfaces/player';
+import ToPlayersPayment from './actions/to-players-payment/ToPlayersPayment';
 
 function GameDialogue() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
@@ -25,173 +24,79 @@ function GameDialogue() {
     if (!authState.user) return null
 
     const myUserId = authState.user.id
-    const currentTurnUserId = currentGameState.turn.player.user.id
-    const turnStage = currentGameState.turn.stage
+    const turn = currentGameState.turn
+    const currentPlayer = currentGameState.players.find(p => p.user.id === myUserId)
 
-    const findCurrentGameField = (player: IPlayer): IGameField | undefined => {
+    const findCurrentGameFieldByPlayerId = (playerId: string): IGameField | undefined => {
         return currentGameState.fields.find(f =>
-            f.players.some(p => p.id === player.id)
+            f.players.some(p => p.id === playerId)
         )
     }
 
-    const findGamePaymentByUserIdAndType = (userId: string, type: GamePaymentType): IGamePayment | undefined => {
-        return currentGameState.turn.gamePayments.find(p => (p.payerPlayer.user.id === userId && p.type === type))
+    const findGamePaymentPlayerIdAndType = (playerId: string, type: GamePaymentType): IGamePayment | undefined => {
+        return currentGameState.turn.gamePayments.find(p => (p.payerPlayer.id === playerId && p.type === type))
     }
 
-    const displayError = (message: string): JSX.Element => {
-        return (
-            <div className={styles.container}>
-                {message}
-            </div>
-        )
+    const findAllActivePlayersExceptOnePlayerByPlayerId = (playerId: string): IPlayer[] => {
+        return currentGameState.players.filter(p => p.id !== playerId && p.isActive)
     }
 
-    switch (turnStage) {
-        case GameTurnStage.WAITING_FOR_MOVE: {
-            if (myUserId === currentTurnUserId) {
-                return (
-                    <div className={styles.container}>
-                        <Move />
-                    </div>
-                )
-            } return null
-        }
-        case GameTurnStage.BUY_GAME_FIELD: {
-            if (myUserId === currentTurnUserId) {
-                const field = findCurrentGameField(currentGameState.turn.player)
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.BUY_GAME_FIELD)
-
-                if (field && payment) {
-                    return (
-                        <div className={styles.container}>
-                            <BuyGameField field={field} payment={payment} />
-                        </div>
-                    )
-                } else {
-                    return displayError(`Не удалось отобразить покупку поля. field: ${field}; payment: ${payment}.`)
-                }
-            } return null
-        }
-        case GameTurnStage.PAY_RENT: {
-            if (myUserId === currentTurnUserId) {
-                const field = findCurrentGameField(currentGameState.turn.player)
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.PAY_RENT)
-
-                if (field && payment) {
-                    return (
-                        <div className={styles.container}>
-                            <PayRent field={field} payment={payment}/>
-                        </div>
-                    )
-                } else {
-                    return displayError(`Не удалось обработать оплату ренты. field: ${field}; payment: ${payment}.`)
-                }
-            } return null
-        }
-        case GameTurnStage.PAY_TAX: {
-            if (myUserId === currentTurnUserId) {
-                const field = findCurrentGameField(currentGameState.turn.player)
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.PAY_TAX)
-
-                if (field && payment) {
-                    return (
-                        <div className={styles.container}>
-                            <PayTax field={field} payment={payment} />
-                        </div>
-                    )
-                } else {
-                    return displayError(`Не удалось обработать оплату ренты. field: ${field}; payment: ${payment}.`)
-                }
-            } return null
-        }
-        case GameTurnStage.AT_JAIL: {
-            if (myUserId === currentTurnUserId) {
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.BUYOUT_FROM_JAIL)
-
-                if (payment) {
-                    return (
-                        <div className={styles.container}>
-                            <AtJail payment={payment} />
-                        </div>
-                    )
-                } else {
-                    return displayError(`Не удалось обработать прибывание в тюрьме. Платёж не найден.`)
-                }
-            } return null
-        }
-        case GameTurnStage.BUYOUT_FROM_JAIL: {
-            if (myUserId === currentTurnUserId) {
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.BUYOUT_FROM_JAIL)
-
-                if (payment) {
-                    return (
-                        <div className={styles.container}>
-                            <BuyoutFromJail payment={payment} />
-                        </div>
-                    )
-                } else {
-                    return displayError(`Не удалось обработать стадию платежа за выход из тюрьмы. Платёж не найден.`)
-                }
-            } return null
-        }
-        case GameTurnStage.PAY_MONEY: {
-            if (myUserId === currentTurnUserId) {
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.TO_BANK)
-
-                if (payment) {
-                    return (
-                        <div className={styles.container}>
-                            <PayMoney payment={payment} />
-                        </div>
-                    )
-                } else return (
-                    displayError(`Не удалось обработать платеж. Платёж не найден.`)
-                )
-            } return null
-        }
-        case GameTurnStage.PAY_PLAYERS: {
-            if (myUserId === currentTurnUserId) {
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.TO_PLAYERS)
-                const receiversPlayers = currentGameState.players.filter(p => p.user.id !== myUserId && p.isActive)
-
-                if (payment && receiversPlayers.length !== 0) {
-                    return (
-                        <div className={styles.container}>
-                            <PayPlayers payment={payment} receiversPlayers={receiversPlayers} />
-                        </div>
-                    )
-                } else return (
-                    displayError(`Не удалось обработать платеж. Платёж не найден или не найдены получатели.`)
-                )
-            } return null
-        }
-        case GameTurnStage.GET_PAYMENT_FROM_PLAYERS: {
-            if (myUserId !== currentTurnUserId) {
-                const payment = findGamePaymentByUserIdAndType(myUserId, GamePaymentType.ONE_OF_TO_PLAYER)
-
-                if (payment) {
-                    return (
-                        <div className={styles.container}>
-                            <PayPlayer payment={payment} />
-                        </div>
-                    )
-                }
-            } return null
-        }
-        case GameTurnStage.ACTION_CARD_SHOWTIME: {
-            const actionCard = currentGameState.turn.actionCard
-
-            if (actionCard) {
-                return (
-                    <div className={styles.container}>
-                        <ActionCard actionCard={actionCard} />
-                    </div>
-                )
-                
-            } else return null
-        }
-        default: return null
-    }
+    return (
+        <div className={styles.container}>
+            <Move
+                turn={turn}
+                player={currentPlayer}
+            />
+            <BuyGameField
+                turn={turn}
+                player={currentPlayer}
+                field={currentPlayer ? findCurrentGameFieldByPlayerId(currentPlayer.id) : undefined}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.BUY_GAME_FIELD) : undefined}
+            />
+            <PayRent
+                turn={turn}
+                player={currentPlayer}
+                field={currentPlayer ? findCurrentGameFieldByPlayerId(currentPlayer.id) : undefined}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.PAY_RENT) : undefined}
+            />
+            <PayTax
+                turn={turn}
+                player={currentPlayer}
+                field={currentPlayer ? findCurrentGameFieldByPlayerId(currentPlayer.id) : undefined}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.PAY_TAX) : undefined}
+            />
+            <AtJail
+                turn={turn}
+                player={currentPlayer}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.BUYOUT_FROM_JAIL) : undefined}
+            />
+            <BuyoutFromJail
+                turn={turn}
+                player={currentPlayer}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.BUYOUT_FROM_JAIL) : undefined}
+            />
+            <ActionCardShowtime
+                turn={turn}
+                actionCard={turn.actionCard ?? undefined}
+            />
+            <ToBankPayment
+                turn={turn}
+                player={currentPlayer}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.TO_BANK) : undefined}
+            />
+            <GetPaymentFromPlayers
+                turn={turn}
+                player={currentPlayer}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.ONE_OF_TO_PLAYER) : undefined}
+            />
+            <ToPlayersPayment
+                turn={turn}
+                player={currentPlayer}
+                payment={currentPlayer ? findGamePaymentPlayerIdAndType(currentPlayer.id, GamePaymentType.TO_PLAYERS) : undefined}
+                receiversPlayers={currentPlayer ? findAllActivePlayersExceptOnePlayerByPlayerId(currentPlayer.id) : []}
+            />
+        </div>
+    )
 }
 
 export default GameDialogue;

@@ -1,39 +1,48 @@
 .container {
+    position: absolute;
+    top: 0.8vmin;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 31vmin;
-    gap: 0.8vmin;
+    gap: 0.7vmin;
     padding: 0.6vmin 1.2vmin;
     background-color: #fafafa;
     border: 0.3vmin solid #eeeeee;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
-    animation: slideIn 200ms ease-out forwards;
+    z-index: 2;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-0.4vmin);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.container_hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-0.8vmin);
 }
 
 .text {
     text-align: center;
     font-size: 1.5vmin;
     font-weight: 500;
+    line-height: 2.4vmin;
     word-break: break-word;
     max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .player_presentation {
     white-space: normal;
     word-break: keep-all;
     overflow-wrap: break-word;
+    word-wrap: break-word;
+    display: inline-block;
+    max-width: 100%;
+    hyphens: none;
 }
 
 .player_chip {

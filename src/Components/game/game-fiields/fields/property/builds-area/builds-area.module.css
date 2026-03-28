@@ -3,6 +3,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 0.2vmin;
+    position: relative;
 }
 
 .builds_area_horizontal {
@@ -10,16 +13,66 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.2vmin;
+    position: relative;
+}
+
+.build_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .build_icon_horizontal {
     aspect-ratio: 1 / 1;
     height: 1.7vmin;
-    width: 25%;
+    width: auto;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: scale(1);
 }
 
 .build_icon_vertical {
     aspect-ratio: 1 / 1;
     width: 1.7vmin;
-    height: 25%;
+    height: auto;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.build_icon_appear {
+    animation: buildAppear 300ms cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
+@keyframes buildAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.build_wrapper_exit {
+    animation: buildDisappear 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes buildDisappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
 }

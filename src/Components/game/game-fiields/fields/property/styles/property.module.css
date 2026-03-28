@@ -39,7 +39,7 @@
     position: absolute;
     z-index: 3;
     opacity: 1;
-    transition: 200ms;
+    transition: 400ms;
 }
 
 .field_card_hide {
