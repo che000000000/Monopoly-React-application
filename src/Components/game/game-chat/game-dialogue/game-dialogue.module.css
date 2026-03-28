@@ -1,13 +1,6 @@
 .container {
     position: absolute;
-    top: 0.8vmin;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4vmin;
-    z-index: 2;
-}
-
-.text {
-    font-size: 1.4vmin;
+    width: 100%;
+    justify-content: center;
 }

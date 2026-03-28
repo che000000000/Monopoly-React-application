@@ -1,19 +1,19 @@
 import styles from '../common.module.css';
-import { useEffect, useState, useMemo, useRef } from 'react';
 import { IGamePayment } from '../../../../../../store/interfaces/game-payment';
 import { AppDispatch } from '../../../../../../store';
 import { useAppDispatch } from '../../../../../../hoocks/useAppDispatch';
-import { buyoutFromJail, rollDiceToGetOutOfJail } from '../../../../../../API/ws-thunks/games';
+import { payThePayment } from '../../../../../../API/ws-thunks/games';
 import { GameTurnStage, IGameTurn } from '../../../../../../store/interfaces/game-turn';
 import { IPlayer } from '../../../../../../store/interfaces/player';
+import { useEffect, useState, useMemo, useRef } from 'react';
 
-export interface AtJailProps {
+export interface ToBankPaymentProps {
     turn: IGameTurn,
     player: IPlayer | undefined,
     payment: IGamePayment | undefined
 }
 
-function AtJail(props: AtJailProps) {
+function ToBankPayment(props: ToBankPaymentProps) {
     const dispatch: AppDispatch = useAppDispatch()
     const { turn, player, payment } = props
     const [isVisible, setIsVisible] = useState(false)
@@ -26,27 +26,26 @@ function AtJail(props: AtJailProps) {
         }
     }, [payment])
 
-    const handleRollDiceToGetOutOfJail = () => {
-        dispatch(rollDiceToGetOutOfJail())
-    }
-
-    const handleBuyoutFromJail = () => {
-        dispatch(buyoutFromJail())
+    const handlePayMoney = () => {
+        if (payment) {
+            dispatch(payThePayment(payment.id))
+        }
     }
 
     useEffect(() => {
         const shouldBeVisible = Boolean(
             player &&
-            turn.stage === GameTurnStage.AT_JAIL &&
-            turn.player.id === player.id
+            turn.stage === GameTurnStage.TO_BANK_PAYMENT &&
+            turn.player.id === player.id &&
+            payment
         )
         setIsVisible(shouldBeVisible)
-    }, [player, turn.stage, turn.player.id])
+    }, [player, turn.stage, turn.player.id, payment])
 
     const displayPayment = payment ?? lastValidPayment.current
     const isDataValid = Boolean(displayPayment)
 
-    const paymentAmount = useMemo(() => displayPayment?.amount ?? '???', [displayPayment])
+    const paymentAmount = useMemo(() => displayPayment?.amount ?? 0, [displayPayment])
     const isDisabled = useMemo(() => 
         displayPayment ? displayPayment.amount > displayPayment.payerPlayer.balance : true,
         [displayPayment]
@@ -56,28 +55,27 @@ function AtJail(props: AtJailProps) {
         <div className={isVisible ? styles.container : `${styles.container} ${styles.container_hide}`}>
             <div className={styles.text}>
                 {isDataValid ? (
-                    `Вы оказались заключены в тюрьме. Бросьте кости, чтобы попытаться выбраться, или заплатите M${paymentAmount}, чтобы выйти прямо сейчас.`
+                    `Вам выставлен платеж. Заплатите M${paymentAmount}.`
                 ) : (
-                    'Не удалось загрузить текст для окна тюремного заключения :('
+                    'Не удалось загрузить текст платежа для банка :('
                 )}
             </div>
             <div className={styles.options}>
-                <button 
-                    className={`${styles.btn} ${styles.btn_green}`} 
-                    onClick={handleRollDiceToGetOutOfJail}
-                >
-                    Бросить кости
-                </button>
                 <button
-                    className={`${styles.btn} ${styles.btn_red}`}
-                    onClick={handleBuyoutFromJail}
+                    className={`${styles.btn} ${styles.btn_green}`}
                     disabled={isDisabled || !isDataValid}
+                    onClick={handlePayMoney}
                 >
                     Заплатить
+                </button>
+                <button 
+                    className={`${styles.btn} ${styles.btn_red}`}
+                >
+                    Сдаться
                 </button>
             </div>
         </div>
     )
 }
 
-export default AtJail;
+export default ToBankPayment;
