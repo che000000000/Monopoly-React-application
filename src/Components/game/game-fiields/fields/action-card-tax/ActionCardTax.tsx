@@ -64,7 +64,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                         : `${styles.field_card} ${top_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <CardByFieldType field={field} />
                 </div>
             </div>
         )
@@ -90,7 +89,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                         : `${styles.field_card} ${right_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <CardByFieldType field={field} />
                 </div>
             </div>
         )
@@ -116,7 +114,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                             : `${styles.field_card} ${bottom_section.field_card} ${styles.field_card_hide}`}
                         onClick={handleCardClick}
                     >
-                        <CardByFieldType field={field} />
                     </div>
                 </div>
             </div>
@@ -143,7 +140,6 @@ function ActionCardTax(props: { section: GameFieldSection, field: IGameField }) 
                         : `${styles.field_card} ${left_section.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <CardByFieldType field={field} />
                 </div>
             </div>
         )

@@ -16,7 +16,7 @@ function PayPlayer(props: { payment: IGamePayment }) {
     return (
         <div className={styles.container}>
             <div className={styles.text}>
-                Вы должны заплатить M{payment.amount}, игроку:
+                Вы должны заплатить M{payment.amount}, игроку: {' '}
                 <span className={styles.player_presentation}>
                     {payment.receiverPaymentPlayer?.user.name}{payment.receiverPaymentPlayer?.chip
                         ? <img className={styles.player_chip} src={definePlayerChipIcon(payment.receiverPaymentPlayer.chip)} alt='player-chip' />

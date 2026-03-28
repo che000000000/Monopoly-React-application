@@ -10,12 +10,12 @@ import { AuthStateT } from '../../../../../store/slices/auth/types/auth-state';
 import { useAppSelector } from '../../../../../hoocks/useAppSelector';
 import { GamePaymentType, IGamePayment } from '../../../../../store/interfaces/game-payment';
 
-function PropertyFieldCard(props: { field: IGameField }) {
+function PropertyFieldCard(props: { field: IGameField, toggleCardVision: () => void }) {
     const dispatch: AppDispatch = useAppDispatch()
     const gamesState: GamesStateT = useAppSelector(state => state.games)
     const authState: AuthStateT = useAppSelector(state => state.auth)
 
-    const { field } = props
+    const { field, toggleCardVision } = props
 
     const myUserId = authState.user?.id
     const myPlayer = gamesState.currentGame.players.find(p => p.user.id === myUserId)
@@ -34,6 +34,7 @@ function PropertyFieldCard(props: { field: IGameField }) {
 
     const handleBuild = () => {
         dispatch(buildOnTheField(field.id))
+        toggleCardVision()
     }
 
     return (
@@ -89,9 +90,7 @@ function PropertyFieldCard(props: { field: IGameField }) {
                     <button className={`${general.btn} ${general.btn_red}`}>Заложить</button>
                 </div>
             </div>
-            {field.owner?.chip && (
-                <OwnerBackground playerChip={field.owner.chip} />
-            )}
+            <OwnerBackground playerChip={field.owner?.chip} />
         </div>
     )
 }

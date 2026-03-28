@@ -4,7 +4,7 @@ import { IGameField } from '../../../../../store/interfaces/game-field';
 import { defineGameFieldIcon } from '../../fields/action-card-tax/common/define-game-field-icon';
 import OwnerBackground from '../../owner-backround/OwnerBackground';
 
-function RailroadFieldCard(props: { field: IGameField }) {
+function RailroadFieldCard(props: { field: IGameField, toggleCardVision: () => void }) {
     const { field } = props
     const fieldRents = field.rent ?? '???'
     const pledgePrice = field.basePrice ? field.basePrice / 2 : '???'
@@ -39,9 +39,7 @@ function RailroadFieldCard(props: { field: IGameField }) {
                     <button className={`${general.btn} ${general.btn_red}`}>Заложить</button>
                 </div>
             </div>
-            {field.owner?.chip && (
-                <OwnerBackground playerChip={field.owner.chip} />
-            )}
+            <OwnerBackground playerChip={field.owner?.chip} />
         </div>
     )
 }

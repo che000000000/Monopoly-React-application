@@ -18,7 +18,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
     const containerRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
 
-    const toggleCard = () => {
+    const toggleCardVision = () => {
         setIsFieldCardVisible(!isFieldCardVisible)
     }
 
@@ -48,7 +48,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
             <div
                 ref={containerRef}
                 className={`${styles.container} ${top_section_field.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={top_section_field.header} style={{ backgroundColor: gameFieldColor }}>
                     <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.HORIZONTAL} />
@@ -57,9 +57,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                     <span />
                     <div className={styles.field_name}>{field.name}</div>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
-                    {field.owner?.chip && (
-                        <OwnerBackground playerChip={field.owner.chip} />
-                    )}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div
                     ref={cardRef}
@@ -68,7 +66,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                         : `${styles.field_card} ${top_section_field.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <PropertyFieldCard field={field} />
+                    <PropertyFieldCard field={field} toggleCardVision={toggleCardVision} />
                 </div>
             </div>
         )
@@ -76,15 +74,13 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
             <div
                 ref={containerRef}
                 className={`${styles.container} ${right_section_field.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={`${styles.content} ${right_section_field.content}`}>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
                     <div className={styles.field_name}>{field.name}</div>
                     <span />
-                    {field.owner?.chip && (
-                        <OwnerBackground playerChip={field.owner.chip} />
-                    )}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div className={right_section_field.header} style={{ backgroundColor: gameFieldColor }}>
                     <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.VERTICAL} />
@@ -96,7 +92,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                         : `${styles.field_card} ${right_section_field.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <PropertyFieldCard field={field} />
+                    <PropertyFieldCard field={field} toggleCardVision={toggleCardVision} />
                 </div>
             </div>
         )
@@ -104,15 +100,13 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
             <div
                 ref={containerRef}
                 className={`${styles.container} ${bottom_section_field.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={`${styles.content} ${bottom_section_field.content}`}>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
                     <div className={styles.field_name}>{field.name}</div>
                     <span />
-                    {field.owner?.chip && (
-                        <OwnerBackground playerChip={field.owner.chip} />
-                    )}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div className={bottom_section_field.header} style={{ backgroundColor: gameFieldColor }}>
                     <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.HORIZONTAL} />
@@ -124,16 +118,16 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                         : `${styles.field_card} ${bottom_section_field.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <PropertyFieldCard field={field} />
+                    <PropertyFieldCard field={field} toggleCardVision={toggleCardVision} />
                 </div>
             </div>
         )
         case GameFieldSection.LEFT: return (
-            
+
             <div
                 ref={containerRef}
                 className={`${styles.container} ${left_section_field.container}`}
-                onClick={toggleCard}
+                onClick={toggleCardVision}
             >
                 <div className={left_section_field.header} style={{ backgroundColor: gameFieldColor }}>
                     <BuildsArea buildsCount={field.buildsCount} orientation={BuildAreaOrientation.VERTICAL} />
@@ -142,9 +136,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                     <span />
                     <div className={styles.field_name}>{field.name}</div>
                     <div className={styles.field_price}>{`M${field.basePrice && Math.abs(field.basePrice)}`}</div>
-                    {field.owner?.chip && (
-                        <OwnerBackground playerChip={field.owner.chip} />
-                    )}
+                    <OwnerBackground playerChip={field.owner?.chip} />
                 </div>
                 <div
                     ref={cardRef}
@@ -153,7 +145,7 @@ function Property(props: { section: GameFieldSection, field: IGameField }) {
                         : `${styles.field_card} ${left_section_field.field_card} ${styles.field_card_hide}`}
                     onClick={handleCardClick}
                 >
-                    <PropertyFieldCard field={field} />
+                    <PropertyFieldCard field={field} toggleCardVision={toggleCardVision} />
                 </div>
             </div>
         )
