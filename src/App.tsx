@@ -1,10 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import Game from './Components/game/Game';
-import styles from './app.module.css'
-import AuthForm, { AuthFormType } from './Components/auth-form/AuthForm';
+import styles from './app.module.css';
+import { Routes, Route } from 'react-router-dom';
 import { useGetUserProfileMutation } from './API/rtk/authApi';
 import { useCallback, useEffect } from 'react';
-import MainPage from './Components/main-page/MainPage';
 import { useAppDispatch } from './hoocks/useAppDispatch';
 import { connectGamesGateway, getGameState } from './API/ws-thunks/games';
 import { connectPregameRoomsGateway } from './API/ws-thunks/pregame-rooms';
@@ -12,6 +9,9 @@ import { useAppSelector } from './hoocks/useAppSelector';
 import { AuthStateT } from './store/slices/auth/types/auth-state';
 import { connectGlobalChatGateway } from './API/ws-thunks/global-chat';
 import { GamesStateT } from './store/slices/games/types/games-state';
+import AuthForm, { AuthFormType } from './Components/auth-form/AuthForm';
+import MainPage from './Components/main-page/MainPage';
+import GamePage from './Components/game-page/GamePage';
 
 function App() {
     const authState: AuthStateT = useAppSelector(state => state.auth)
@@ -48,7 +48,7 @@ function App() {
                 <Route path='/login' element={<AuthForm type={AuthFormType.LOGIN} />} />
                 <Route path='/register' element={<AuthForm type={AuthFormType.REGISTER} />} />
                 <Route path='/main' element={<MainPage />} />
-                <Route path='/game/:gameId?' element={<div className={styles.game_wrap}><Game /></div>} />
+                <Route path='/game/:gameId?' element={<GamePage />} />
                 <Route path='*' element={<MainPage />} />
             </Routes>
         </div>
